@@ -1,0 +1,10 @@
+# Local secrets (never commit .env to GitHub)
+.env
+__pycache__/
+runs/
+backups/
+archive/
+logs/
+reports/
+cache/
+prototype_events.json

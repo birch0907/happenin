@@ -1,0 +1,72 @@
+{
+  "rules": [
+    {
+      "id": "hide-posh-weekly-lineup",
+      "enabled": true,
+      "action": "hide",
+      "conditions": [
+        {
+          "field": "source_name",
+          "match": "equals",
+          "value": "POSH"
+        },
+        {
+          "field": "title",
+          "match": "equals",
+          "value": "Boston Weekly Lineup (Discounts, Guestlists, Giveaways, 18+)"
+        }
+      ]
+    },
+    {
+      "id": "hide-posh-early-access-alerts",
+      "enabled": true,
+      "action": "hide",
+      "conditions": [
+        {
+          "field": "source_name",
+          "match": "equals",
+          "value": "POSH"
+        },
+        {
+          "field": "title",
+          "match": "equals",
+          "value": "Boston 18+ Rave Early Access & Alerts"
+        }
+      ]
+    },
+    {
+      "id": "rule-posh-boston-guestlists-discounted-tickets-festival-passes",
+      "enabled": true,
+      "action": "hide",
+      "conditions": [
+        {
+          "field": "source_name",
+          "match": "equals",
+          "value": "POSH"
+        },
+        {
+          "field": "title",
+          "match": "equals",
+          "value": "Boston Guestlists, Discounted Tickets & Festival Passes"
+        }
+      ]
+    },
+    {
+      "id": "rule-posh-free-before-11pm-boston-nightlife-guestlist-seaport-downtown",
+      "enabled": true,
+      "action": "hide",
+      "conditions": [
+        {
+          "field": "source_name",
+          "match": "equals",
+          "value": "POSH"
+        },
+        {
+          "field": "title",
+          "match": "equals",
+          "value": "FREE Before 11pm – Boston Nightlife Guestlist (Seaport, Downtown, Encore, and more) - MUST READ BELOW!"
+        }
+      ]
+    }
+  ]
+}

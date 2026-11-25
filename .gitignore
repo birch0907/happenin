@@ -1,0 +1,31 @@
+# Legacy mobile prototype (kept local only)
+CambridgeEvents/
+
+# Secrets — NEVER commit API keys
+**/.env
+*.env
+
+# Node / Web build artifacts
+**/node_modules/
+**/dist/
+*.tsbuildinfo
+*.zip
+*.log
+.DS_Store
+
+# Python artifacts & generated ingestion snapshots/caches
+**/__pycache__/
+*.pyc
+HappeninIngestion/archive/
+HappeninIngestion/backups/
+HappeninIngestion/logs/
+HappeninIngestion/reports/
+HappeninIngestion/runs/
+HappeninIngestion/cache/
+HappeninIngestion/events.json
+HappeninIngestion/events_*.json
+HappeninIngestion/prototype_events.json
+HappeninIngestion/quality_rules_backup_*.json
+HappeninIngestion/lilypad_events.json
+HappeninIngestion/wordpress_event_sample.json
+HappeninIngestion/crossroads_script_samples.txt

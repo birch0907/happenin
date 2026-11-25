@@ -1,0 +1,9 @@
+{
+  "name": "Happenin'",
+  "short_name": "Happenin'",
+  "description": "See what's happenin' around you tonight.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#131026",
+  "theme_color": "#131026"
+}

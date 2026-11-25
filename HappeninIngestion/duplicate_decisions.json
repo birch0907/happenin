@@ -1,0 +1,597 @@
+{
+  "version": 1,
+  "decisions": {
+    "62012ae5d19be75049274acd": {
+      "decision": "merge",
+      "event_a": [
+        "posh",
+        "id",
+        "6ac2b25fbb965ea4de838557",
+        "2026-10-10T22:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6ac2afd7bb965ea4de8169bf",
+        "2026-10-10T22:00:00-04:00"
+      ],
+      "titles": [
+        "BIJOU SATURDAYS ",
+        "Bijou Saturday "
+      ],
+      "reviewed_at": "2026-10-14T22:35:42-04:00"
+    },
+    "9d6dc34456b2c45fce19d239": {
+      "decision": "merge",
+      "event_a": [
+        "sinclair",
+        "url",
+        "https://www.sinclaircambridge.com/events/detail/1579111",
+        "2026-10-11T20:00:00-04:00"
+      ],
+      "event_b": [
+        "ticketmaster",
+        "id",
+        "Z7r9jZ1AAvKGe",
+        "2026-10-11T20:00:00-04:00"
+      ],
+      "titles": [
+        "Jimbo the Drag Clown & Plane Jane",
+        "Jimbo the Drag Clown and Plane Jane (18 and Over)"
+      ],
+      "reviewed_at": "2026-10-14T22:35:48-04:00"
+    },
+    "9ba87d3a2b23c12ad88dfb7f": {
+      "decision": "merge",
+      "event_a": [
+        "posh",
+        "id",
+        "6a25affa5dcccb950ef763ed",
+        "2026-10-16T20:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6ab976b9232f8bc2f8155895",
+        "2026-10-16T20:00:00-04:00"
+      ],
+      "titles": [
+        "FEEL GOOD FRIDAYS",
+        "FEEL GOOD FRIDAY"
+      ],
+      "reviewed_at": "2026-10-14T22:35:59-04:00"
+    },
+    "0370d42b6772453d1d1c8148": {
+      "decision": "hide_addon",
+      "event_a": [
+        "ticketmaster",
+        "id",
+        "vv177Z_7GklFdeEQ",
+        "2026-10-10T19:00:00-04:00"
+      ],
+      "event_b": [
+        "ticketmaster",
+        "id",
+        "vv177Z_7GklutdBd",
+        "2026-10-10T19:00:00-04:00"
+      ],
+      "titles": [
+        "Michael Blaustein: The Taste Me Tour",
+        "Michael Blaustein VIP M&G Add-on"
+      ],
+      "reviewed_at": "2026-10-14T23:31:25-04:00",
+      "hide_event": [
+        "ticketmaster",
+        "id",
+        "vv177Z_7GklutdBd",
+        "2026-10-10T19:00:00-04:00"
+      ],
+      "keep_event": [
+        "ticketmaster",
+        "id",
+        "vv177Z_7GklFdeEQ",
+        "2026-10-10T19:00:00-04:00"
+      ]
+    },
+    "b268cc57722518f9b1205f71": {
+      "decision": "merge",
+      "event_a": [
+        "ticketmaster",
+        "id",
+        "vv1AvZkfYGkey4FoG",
+        "2026-10-10T22:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6ac2a4842df626d786ff0293",
+        "2026-10-10T22:00:00-04:00"
+      ],
+      "titles": [
+        "Costa",
+        "DJ Costa @ \nThe Grand Saturdays"
+      ],
+      "reviewed_at": "2026-10-14T22:36:23-04:00"
+    },
+    "3a57eea9496eba0400b45669": {
+      "decision": "merge",
+      "event_a": [
+        "ticketmaster",
+        "id",
+        "vv1AvZkfYGkey4FoG",
+        "2026-10-10T22:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6ac53dab2d6547fa471d7ee8",
+        "2026-10-10T22:00:00-04:00"
+      ],
+      "titles": [
+        "Costa",
+        "COSTA [FREE]"
+      ],
+      "reviewed_at": "2026-10-14T22:36:38-04:00"
+    },
+    "841354d8f78c1cf14e325cad": {
+      "decision": "merge",
+      "event_a": [
+        "ticketmaster",
+        "id",
+        "vv1A8vPuyGAuTriJ",
+        "2026-10-10T22:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6ac53eef574983cf4c4ccb4e",
+        "2026-10-10T22:00:00-04:00"
+      ],
+      "titles": [
+        "Stafford Brothers",
+        "Stafford Brothers [link To FREE Rsvp]"
+      ],
+      "reviewed_at": "2026-10-14T22:36:45-04:00"
+    },
+    "5304ffe75f568d0e632c271d": {
+      "decision": "merge",
+      "event_a": [
+        "posh",
+        "id",
+        "6ac2a4842df626d786ff0293",
+        "2026-10-10T22:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6ac53dab2d6547fa471d7ee8",
+        "2026-10-10T22:00:00-04:00"
+      ],
+      "titles": [
+        "DJ Costa @ \nThe Grand Saturdays",
+        "COSTA [FREE]"
+      ],
+      "reviewed_at": "2026-10-14T22:36:54-04:00"
+    },
+    "a1ad5e741c1e1cee0bf7e6cd": {
+      "decision": "merge",
+      "event_a": [
+        "posh",
+        "id",
+        "6abdbb2e1e818f70f86e54ea",
+        "2026-10-10T22:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6ac2b9054b9b6e997bb21afd",
+        "2026-10-10T22:00:00-04:00"
+      ],
+      "titles": [
+        "TREMONT NIGHTS AFROBEAT",
+        "TREMONT NIGHTS"
+      ],
+      "reviewed_at": "2026-10-14T22:37:09-04:00"
+    },
+    "4511185942ca9dabac6852ec": {
+      "decision": "merge",
+      "event_a": [
+        "lilypad",
+        "url",
+        "http://www.google.com/calendar/event?action=TEMPLATE&text=Girls%20Night%20Out%3A%20Tate%20Smith%2C%20Haley%20Montelaro%2C%20%26amp%3B%20Maggie%20Marre&dates=20261012T013000Z/20261012T033000Z&location=1353%20Cambridge%20Street%2C%20Cambridge%2C%20MA%2C%2002139",
+        "2026-10-11T21:30:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6aab22b75c9a578f1a851725",
+        "2026-10-11T21:30:00-04:00"
+      ],
+      "titles": [
+        "Girls Night Out: Tate Smith, Haley Montelaro, & Maggie Marre",
+        "GIRLS NIGHT OUT ✨💗"
+      ],
+      "reviewed_at": "2026-10-14T22:37:19-04:00"
+    },
+    "ce232e28b223a7e65d29b197": {
+      "decision": "merge",
+      "event_a": [
+        "sinclair",
+        "url",
+        "https://www.sinclaircambridge.com/events/detail/1431308",
+        "2026-10-17T20:00:00-04:00"
+      ],
+      "event_b": [
+        "ticketmaster",
+        "id",
+        "Z7r9jZ1A70ObU",
+        "2026-10-17T20:00:00-04:00"
+      ],
+      "titles": [
+        "Zach John King",
+        "Zach John King w/ Jacob Hackworth"
+      ],
+      "reviewed_at": "2026-10-14T22:37:29-04:00"
+    },
+    "39b1719d4eacb675ea8e688f": {
+      "decision": "merge",
+      "event_a": [
+        "sinclair",
+        "url",
+        "https://www.sinclaircambridge.com/events/detail/1492273",
+        "2026-10-18T20:00:00-04:00"
+      ],
+      "event_b": [
+        "ticketmaster",
+        "id",
+        "Z7r9jZ1A7PI-a",
+        "2026-10-18T20:00:00-04:00"
+      ],
+      "titles": [
+        "Carly Pearce",
+        "Carly Pearce w/ Belle Frantz"
+      ],
+      "reviewed_at": "2026-10-14T22:37:34-04:00"
+    },
+    "ce164009c76a7231831e9309": {
+      "decision": "merge",
+      "event_a": [
+        "sinclair",
+        "url",
+        "https://www.sinclaircambridge.com/events/detail/1516752",
+        "2026-10-20T20:00:00-04:00"
+      ],
+      "event_b": [
+        "ticketmaster",
+        "id",
+        "Z7r9jZ1AAZ8jM",
+        "2026-10-20T20:00:00-04:00"
+      ],
+      "titles": [
+        "Greg Freeman",
+        "Greg Freeman w/ Hello Shark"
+      ],
+      "reviewed_at": "2026-10-14T22:37:44-04:00"
+    },
+    "767f5764b5d59422f4d3778b": {
+      "decision": "merge",
+      "event_a": [
+        "ticketmaster",
+        "id",
+        "Z7r9jZ1A7Pp4p",
+        "2026-10-21T19:30:00-04:00"
+      ],
+      "event_b": [
+        "sinclair",
+        "url",
+        "https://www.sinclaircambridge.com/events/detail/1468568",
+        "2026-10-21T20:30:00-04:00"
+      ],
+      "titles": [
+        "Hank Azaria and the EZ Street Band",
+        "Hank Azaria and the EZ Street Band – A Springsteen Celebration"
+      ],
+      "reviewed_at": "2026-10-14T22:37:56-04:00"
+    },
+    "d6200eae75907d6cccdce3ff": {
+      "decision": "merge",
+      "event_a": [
+        "posh",
+        "id",
+        "6ab97a0bf8fb1ac089b7684e",
+        "2026-10-23T20:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6a25affa5dcccb950ef763f3",
+        "2026-10-23T20:00:00-04:00"
+      ],
+      "titles": [
+        "FEEL GOOD FRIDAY: Adult Game Night",
+        "FEEL GOOD FRIDAYS"
+      ],
+      "reviewed_at": "2026-10-14T22:38:08-04:00"
+    },
+    "4d836b61e38fdd71ed4da5a2": {
+      "decision": "merge",
+      "event_a": [
+        "ticketmaster",
+        "id",
+        "1AtZkfsGkd9co7x",
+        "2026-10-23T22:00:00-04:00"
+      ],
+      "event_b": [
+        "ticketmaster",
+        "id",
+        "Z7r9jZ1AAvVjY",
+        "2026-10-23T22:00:00-04:00"
+      ],
+      "titles": [
+        "Virtual Riot & Blanke - Far From Home",
+        "Virtual Riot"
+      ],
+      "reviewed_at": "2026-10-14T22:38:16-04:00"
+    },
+    "81db7c3be43c10493203f914": {
+      "decision": "merge",
+      "event_a": [
+        "posh",
+        "id",
+        "6acd2dfe659fa36f1d744035",
+        "2026-10-15T22:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6a4292f274f1e1e2865f0c76",
+        "2026-10-15T22:00:00-04:00"
+      ],
+      "titles": [
+        "SCORPION THURSDAYS ",
+        "SCORPION BAR THURSDAYS"
+      ],
+      "reviewed_at": "2026-10-15T00:07:06-04:00"
+    },
+    "44d5d133711795d73584128f": {
+      "decision": "merge",
+      "event_a": [
+        "posh",
+        "id",
+        "6ac2afe70897a93ebaf45c25",
+        "2026-10-17T22:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6acd34d84d7429f6dd9e3588",
+        "2026-10-17T22:00:00-04:00"
+      ],
+      "titles": [
+        "Bijou Saturday",
+        "BIJOU SATURDAYS "
+      ],
+      "reviewed_at": "2026-10-15T00:07:18-04:00"
+    },
+    "04d922f1a66038d1095cc26f": {
+      "decision": "merge",
+      "event_a": [
+        "posh",
+        "id",
+        "6acd2dfe659fa36f1d744035",
+        "2026-10-15T22:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6ad03d16081c3187b11bdbab",
+        "2026-10-15T22:00:00-04:00"
+      ],
+      "titles": [
+        "SCORPION THURSDAYS ",
+        "Scorpion Thursdays w/ CERTIFIED (free entry)"
+      ],
+      "reviewed_at": "2026-10-15T00:07:28-04:00"
+    },
+    "3d423ec4918753adf20d8966": {
+      "decision": "merge",
+      "event_a": [
+        "posh",
+        "id",
+        "6ad03d16081c3187b11bdbab",
+        "2026-10-15T22:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6a4292f274f1e1e2865f0c76",
+        "2026-10-15T22:00:00-04:00"
+      ],
+      "titles": [
+        "Scorpion Thursdays w/ CERTIFIED (free entry)",
+        "SCORPION BAR THURSDAYS"
+      ],
+      "reviewed_at": "2026-10-15T00:07:42-04:00"
+    },
+    "f3b9b916bc9e546e581b967e": {
+      "decision": "merge",
+      "event_a": [
+        "ticketmaster",
+        "id",
+        "vv1k7Z_K_sG7Y75P",
+        "2026-10-16T22:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6ad03cd2081c3187b11baf7a",
+        "2026-10-16T22:00:00-04:00"
+      ],
+      "titles": [
+        "Flow Sousa",
+        "FLOW SOUSA [link To FREE Rsvp]"
+      ],
+      "reviewed_at": "2026-10-15T00:07:55-04:00"
+    },
+    "6f970aac3e21649e4260d63c": {
+      "decision": "merge",
+      "event_a": [
+        "ticketmaster",
+        "id",
+        "vv1AvZkfYGkeywIQT",
+        "2026-10-17T22:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6acd2eb998b7e77c779dcfd0",
+        "2026-10-17T22:00:00-04:00"
+      ],
+      "titles": [
+        "Parmida Keshani",
+        "Love Island's Parmida Keshani @ The Grand Saturdays"
+      ],
+      "reviewed_at": "2026-10-15T00:08:06-04:00"
+    },
+    "70177188693888edc08cbd1c": {
+      "decision": "merge",
+      "event_a": [
+        "ticketmaster",
+        "id",
+        "vv1AvZkfYGkeywIQT",
+        "2026-10-17T22:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6ad03c9d4265ef770f1e1f08",
+        "2026-10-17T22:00:00-04:00"
+      ],
+      "titles": [
+        "Parmida Keshani",
+        "Parmida Keshani (Love Island) [FREE ENTRY]"
+      ],
+      "reviewed_at": "2026-10-15T00:08:14-04:00"
+    },
+    "8ec3762c22d1a63b9bc30943": {
+      "decision": "merge",
+      "event_a": [
+        "ticketmaster",
+        "id",
+        "vv117Z_K_w3789",
+        "2026-10-17T22:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6ad03c6c9975d722db29ef2f",
+        "2026-10-17T22:00:00-04:00"
+      ],
+      "titles": [
+        "Costa",
+        "COSTA [link To FREE Rsvp]"
+      ],
+      "reviewed_at": "2026-10-15T00:08:19-04:00"
+    },
+    "c617f17320e7803ee2f448bd": {
+      "decision": "merge",
+      "event_a": [
+        "posh",
+        "id",
+        "6acd2eb998b7e77c779dcfd0",
+        "2026-10-17T22:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6ad03c9d4265ef770f1e1f08",
+        "2026-10-17T22:00:00-04:00"
+      ],
+      "titles": [
+        "Love Island's Parmida Keshani @ The Grand Saturdays",
+        "Parmida Keshani (Love Island) [FREE ENTRY]"
+      ],
+      "reviewed_at": "2026-10-15T00:08:24-04:00"
+    },
+    "4d8ecc739e1fbf53a8274e02": {
+      "decision": "merge",
+      "event_a": [
+        "posh",
+        "id",
+        "6ac439256fcffc7296dabe9d",
+        "2026-10-24T22:00:00-04:00"
+      ],
+      "event_b": [
+        "posh",
+        "id",
+        "6ac29dd8381451243a3b3a64",
+        "2026-10-24T22:00:00-04:00"
+      ],
+      "titles": [
+        "The All Black Gala",
+        "All Black Gala at Bijou"
+      ],
+      "reviewed_at": "2026-10-15T00:08:29-04:00"
+    },
+    "0bfee10098e31f8eba4774a8": {
+      "decision": "merge",
+      "event_a": [
+        "sinclair",
+        "url",
+        "https://www.sinclaircambridge.com/events/detail/1489860",
+        "2026-10-25T20:00:00-04:00"
+      ],
+      "event_b": [
+        "ticketmaster",
+        "id",
+        "Z7r9jZ1A7Ptbp",
+        "2026-10-25T20:00:00-04:00"
+      ],
+      "titles": [
+        "ivri",
+        "ivri w/ Ally Nicholas"
+      ],
+      "reviewed_at": "2026-10-15T00:08:33-04:00"
+    },
+    "93a25f09cc1f72f0a368e515": {
+      "decision": "merge",
+      "event_a": [
+        "sinclair",
+        "url",
+        "https://www.sinclaircambridge.com/events/detail/1481018",
+        "2026-10-27T20:30:00-04:00"
+      ],
+      "event_b": [
+        "ticketmaster",
+        "id",
+        "Z7r9jZ1A7PIPk",
+        "2026-10-27T20:30:00-04:00"
+      ],
+      "titles": [
+        "Built to Spill",
+        "Built To Spill w/ Quasi"
+      ],
+      "reviewed_at": "2026-10-15T00:08:37-04:00"
+    },
+    "5d749e7e5c87ac2db5689bb0": {
+      "decision": "merge",
+      "event_a": [
+        "sinclair",
+        "url",
+        "https://www.sinclaircambridge.com/events/detail/1481027",
+        "2026-10-28T20:30:00-04:00"
+      ],
+      "event_b": [
+        "ticketmaster",
+        "id",
+        "Z7r9jZ1A7PIP6",
+        "2026-10-28T20:30:00-04:00"
+      ],
+      "titles": [
+        "Built to Spill",
+        "Built To Spill w/ Quasi"
+      ],
+      "reviewed_at": "2026-10-15T00:08:46-04:00"
+    }
+  }
+}
