@@ -2,20 +2,26 @@ import { useEffect, useRef } from 'react';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { CATEGORY_COLORS, VenueCluster } from '../data/events';
+import { HotelConfig, HotelPlace, PLACE_TAB_COLORS } from '../data/hotels';
 
 type MapViewProps = {
   clusters: VenueCluster[];
   selectedClusterKey: string | null;
   onSelectCluster: (cluster: VenueCluster) => void;
+  places?: HotelPlace[];
+  selectedPlaceId?: string | null;
+  onSelectPlace?: (place: HotelPlace) => void;
+  hotel?: HotelConfig | null;
   onMapBackgroundClick: () => void;
 };
 
 const DARK_MATTER_STYLE = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
+const DEFAULT_CENTER: [number, number] = [-71.106, 42.369];
+const DEFAULT_ZOOM = 13.4;
 
-// Centered on Central Square / Cambridge; users can pan freely into Somerville & Boston.
-const INITIAL_CENTER: [number, number] = [-71.106, 42.369];
-const INITIAL_ZOOM = 13.4;
-const SOURCE_ID = 'happenin-pins';
+const EVENT_SOURCE_ID = 'happenin-pins';
+const PLACE_SOURCE_ID = 'hotel-places';
+const HOME_SOURCE_ID = 'hotel-home';
 
 function clustersToGeoJSON(
   clusters: VenueCluster[],
@@ -40,34 +46,94 @@ function clustersToGeoJSON(
   };
 }
 
+function placesToGeoJSON(
+  places: HotelPlace[],
+  selectedPlaceId: string | null
+): GeoJSON.FeatureCollection<GeoJSON.Point> {
+  return {
+    type: 'FeatureCollection',
+    features: places.map((place) => ({
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [place.longitude, place.latitude],
+      },
+      properties: {
+        id: place.id,
+        name: place.name,
+        color: PLACE_TAB_COLORS[place.tab],
+        selected: place.id === selectedPlaceId,
+      },
+    })),
+  };
+}
+
+function homeToGeoJSON(hotel: HotelConfig | null | undefined): GeoJSON.FeatureCollection<GeoJSON.Point> {
+  if (!hotel) return { type: 'FeatureCollection', features: [] };
+  return {
+    type: 'FeatureCollection',
+    features: [
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [hotel.longitude, hotel.latitude],
+        },
+        properties: {
+          name: hotel.name,
+          accent: hotel.theme.accent,
+        },
+      },
+    ],
+  };
+}
+
 export function MapView({
   clusters,
   selectedClusterKey,
   onSelectCluster,
+  places = [],
+  selectedPlaceId = null,
+  onSelectPlace,
+  hotel = null,
   onMapBackgroundClick,
 }: MapViewProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const styleLoadedRef = useRef(false);
+  const centeredHotelRef = useRef<string | null>(null);
 
   const clustersRef = useRef(clusters);
   const selectedKeyRef = useRef(selectedClusterKey);
+  const placesRef = useRef(places);
+  const selectedPlaceRef = useRef(selectedPlaceId);
+  const hotelRef = useRef(hotel);
   const onSelectRef = useRef(onSelectCluster);
+  const onSelectPlaceRef = useRef(onSelectPlace);
   const onBgClickRef = useRef(onMapBackgroundClick);
 
   clustersRef.current = clusters;
   selectedKeyRef.current = selectedClusterKey;
+  placesRef.current = places;
+  selectedPlaceRef.current = selectedPlaceId;
+  hotelRef.current = hotel;
   onSelectRef.current = onSelectCluster;
+  onSelectPlaceRef.current = onSelectPlace;
   onBgClickRef.current = onMapBackgroundClick;
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
 
+    const initialCenter: [number, number] = hotelRef.current
+      ? [hotelRef.current.longitude, hotelRef.current.latitude]
+      : DEFAULT_CENTER;
+    const initialZoom = hotelRef.current ? hotelRef.current.initialZoom : DEFAULT_ZOOM;
+
     const map = new maplibregl.Map({
       container: containerRef.current,
       style: DARK_MATTER_STYLE,
-      center: INITIAL_CENTER,
-      zoom: INITIAL_ZOOM,
+      center: initialCenter,
+      zoom: initialZoom,
       pitch: 0,
       maxPitch: 0,
       minPitch: 0,
@@ -78,22 +144,130 @@ export function MapView({
       attributionControl: { compact: true },
     });
 
-    // Keep map strictly flat and north-up on touch devices too.
     map.touchZoomRotate.disableRotation();
 
     map.on('load', () => {
       styleLoadedRef.current = true;
 
-      map.addSource(SOURCE_ID, {
+      // 1. Hotel Home Marker ("You Are Here")
+      map.addSource(HOME_SOURCE_ID, {
+        type: 'geojson',
+        data: homeToGeoJSON(hotelRef.current),
+      });
+
+      map.addLayer({
+        id: 'hotel-home-halo',
+        type: 'circle',
+        source: HOME_SOURCE_ID,
+        paint: {
+          'circle-radius': 24,
+          'circle-color': ['get', 'accent'],
+          'circle-opacity': 0.28,
+          'circle-blur': 0.55,
+        },
+      });
+
+      map.addLayer({
+        id: 'hotel-home-dot',
+        type: 'circle',
+        source: HOME_SOURCE_ID,
+        paint: {
+          'circle-radius': 9,
+          'circle-color': '#ffffff',
+          'circle-stroke-width': 3.5,
+          'circle-stroke-color': ['get', 'accent'],
+        },
+      });
+
+      map.addLayer({
+        id: 'hotel-home-label',
+        type: 'symbol',
+        source: HOME_SOURCE_ID,
+        layout: {
+          'text-field': ['get', 'name'],
+          'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+          'text-size': 11,
+          'text-offset': [0, 1.55],
+          'text-anchor': 'top',
+          'text-allow-overlap': true,
+        },
+        paint: {
+          'text-color': '#f7f4ec',
+          'text-halo-color': '#0f1420',
+          'text-halo-width': 1.5,
+        },
+      });
+
+      // 2. Curated Hotel Places (Dining / Sights)
+      map.addSource(PLACE_SOURCE_ID, {
+        type: 'geojson',
+        data: placesToGeoJSON(placesRef.current, selectedPlaceRef.current),
+      });
+
+      map.addLayer({
+        id: 'places-hit',
+        type: 'circle',
+        source: PLACE_SOURCE_ID,
+        paint: {
+          'circle-radius': 24,
+          'circle-color': '#000000',
+          'circle-opacity': 0,
+        },
+      });
+
+      map.addLayer({
+        id: 'places-glow',
+        type: 'circle',
+        source: PLACE_SOURCE_ID,
+        paint: {
+          'circle-radius': ['case', ['==', ['get', 'selected'], true], 24, 16],
+          'circle-color': ['get', 'color'],
+          'circle-opacity': ['case', ['==', ['get', 'selected'], true], 0.55, 0.3],
+          'circle-blur': 0.7,
+        },
+      });
+
+      map.addLayer({
+        id: 'places-dot',
+        type: 'circle',
+        source: PLACE_SOURCE_ID,
+        paint: {
+          'circle-radius': ['case', ['==', ['get', 'selected'], true], 10, 7.5],
+          'circle-color': ['get', 'color'],
+          'circle-stroke-width': ['case', ['==', ['get', 'selected'], true], 3, 2.2],
+          'circle-stroke-color': ['case', ['==', ['get', 'selected'], true], '#ffffff', '#0f1420'],
+        },
+      });
+
+      map.addLayer({
+        id: 'places-label',
+        type: 'symbol',
+        source: PLACE_SOURCE_ID,
+        layout: {
+          'text-field': ['get', 'name'],
+          'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+          'text-size': 11,
+          'text-offset': [0, 1.25],
+          'text-anchor': 'top',
+          'text-optional': true,
+        },
+        paint: {
+          'text-color': '#f5f2ea',
+          'text-halo-color': '#0f1420',
+          'text-halo-width': 1.4,
+        },
+      });
+
+      // 3. Live Happenin' Event Pins
+      map.addSource(EVENT_SOURCE_ID, {
         type: 'geojson',
         data: clustersToGeoJSON(clustersRef.current, selectedKeyRef.current),
       });
 
-      // Invisible generous touch/click hit target rendered in WebGL coordinates.
       map.addLayer({
         id: 'pins-hit',
         type: 'circle',
-        source: SOURCE_ID,
+        source: EVENT_SOURCE_ID,
         paint: {
           'circle-radius': 22,
           'circle-color': '#000000',
@@ -101,11 +275,10 @@ export function MapView({
         },
       });
 
-      // Soft neon outer glow locked 1:1 to WebGL projection.
       map.addLayer({
         id: 'pins-glow',
         type: 'circle',
-        source: SOURCE_ID,
+        source: EVENT_SOURCE_ID,
         paint: {
           'circle-radius': [
             'case',
@@ -123,11 +296,10 @@ export function MapView({
         },
       });
 
-      // Crisp inner pin dot.
       map.addLayer({
         id: 'pins-dot',
         type: 'circle',
-        source: SOURCE_ID,
+        source: EVENT_SOURCE_ID,
         paint: {
           'circle-radius': [
             'case',
@@ -149,11 +321,10 @@ export function MapView({
         },
       });
 
-      // Event count label for venues with multiple simultaneous events.
       map.addLayer({
         id: 'pins-count',
         type: 'symbol',
-        source: SOURCE_ID,
+        source: EVENT_SOURCE_ID,
         filter: ['>', ['get', 'count'], 1],
         layout: {
           'text-field': ['to-string', ['get', 'count']],
@@ -167,12 +338,14 @@ export function MapView({
         },
       });
 
-      map.on('mouseenter', 'pins-hit', () => {
-        map.getCanvas().style.cursor = 'pointer';
-      });
-      map.on('mouseleave', 'pins-hit', () => {
-        map.getCanvas().style.cursor = '';
-      });
+      for (const layer of ['pins-hit', 'places-hit']) {
+        map.on('mouseenter', layer, () => {
+          map.getCanvas().style.cursor = 'pointer';
+        });
+        map.on('mouseleave', layer, () => {
+          map.getCanvas().style.cursor = '';
+        });
+      }
     });
 
     map.on('click', (e) => {
@@ -180,12 +353,21 @@ export function MapView({
         onBgClickRef.current();
         return;
       }
-      const features = map.queryRenderedFeatures(e.point, { layers: ['pins-hit'] });
-      const hitKey = features[0]?.properties?.key as string | undefined;
+      const eventHits = map.queryRenderedFeatures(e.point, { layers: ['pins-hit'] });
+      const hitKey = eventHits[0]?.properties?.key as string | undefined;
       if (hitKey) {
         const match = clustersRef.current.find((c) => c.key === hitKey);
         if (match) {
           onSelectRef.current(match);
+          return;
+        }
+      }
+      const placeHits = map.queryRenderedFeatures(e.point, { layers: ['places-hit'] });
+      const hitPlaceId = placeHits[0]?.properties?.id as string | undefined;
+      if (hitPlaceId && onSelectPlaceRef.current) {
+        const match = placesRef.current.find((p) => p.id === hitPlaceId);
+        if (match) {
+          onSelectPlaceRef.current(match);
           return;
         }
       }
@@ -200,17 +382,40 @@ export function MapView({
     };
   }, []);
 
-  // Push updated pins to the GPU source instantly with zero DOM lag.
+  // Update event pins GPU source.
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !styleLoadedRef.current) return;
-    const source = map.getSource(SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
-    if (source) {
-      source.setData(clustersToGeoJSON(clusters, selectedClusterKey));
-    }
+    const source = map.getSource(EVENT_SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
+    if (source) source.setData(clustersToGeoJSON(clusters, selectedClusterKey));
   }, [clusters, selectedClusterKey]);
 
-  // Gently pan to selected pin (offset upward so it stays above the event card).
+  // Update hotel places GPU source.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !styleLoadedRef.current) return;
+    const source = map.getSource(PLACE_SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
+    if (source) source.setData(placesToGeoJSON(places, selectedPlaceId));
+  }, [places, selectedPlaceId]);
+
+  // Update hotel home pin and center when hotel config loads.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
+    if (styleLoadedRef.current) {
+      const source = map.getSource(HOME_SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
+      if (source) source.setData(homeToGeoJSON(hotel));
+    }
+    if (hotel && centeredHotelRef.current !== hotel.id) {
+      centeredHotelRef.current = hotel.id;
+      map.jumpTo({
+        center: [hotel.longitude, hotel.latitude],
+        zoom: hotel.initialZoom,
+      });
+    }
+  }, [hotel]);
+
+  // Gently pan to selected event pin.
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !selectedClusterKey) return;
@@ -223,9 +428,31 @@ export function MapView({
     });
   }, [selectedClusterKey, clusters]);
 
+  // Gently pan to selected hotel place pin.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !selectedPlaceId) return;
+    const target = places.find((p) => p.id === selectedPlaceId);
+    if (!target) return;
+    map.easeTo({
+      center: [target.longitude, target.latitude],
+      offset: [0, -110],
+      duration: 280,
+    });
+  }, [selectedPlaceId, places]);
+
   function handleLocateMe() {
     const map = mapRef.current;
-    if (!map || !navigator.geolocation) return;
+    if (!map) return;
+    if (hotel) {
+      map.flyTo({
+        center: [hotel.longitude, hotel.latitude],
+        zoom: hotel.initialZoom,
+        duration: 450,
+      });
+      return;
+    }
+    if (!navigator.geolocation) return;
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         map.flyTo({
@@ -235,7 +462,7 @@ export function MapView({
         });
       },
       () => {
-        map.flyTo({ center: INITIAL_CENTER, zoom: INITIAL_ZOOM, duration: 450 });
+        map.flyTo({ center: DEFAULT_CENTER, zoom: DEFAULT_ZOOM, duration: 450 });
       },
       { enableHighAccuracy: false, timeout: 5000 }
     );
@@ -248,8 +475,8 @@ export function MapView({
         type="button"
         className="locate-btn"
         onClick={handleLocateMe}
-        title="Center on my location"
-        aria-label="Center on my location"
+        title={hotel ? `Re-center on ${hotel.name}` : 'Center on my location'}
+        aria-label={hotel ? `Re-center on ${hotel.name}` : 'Center on my location'}
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="3" />

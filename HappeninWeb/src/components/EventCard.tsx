@@ -5,13 +5,15 @@ import {
   directionsUrl,
   formatEventTime,
 } from '../data/events';
+import { HotelConfig, formatWalkLabel, walkingDirectionsUrl } from '../data/hotels';
 
 type EventCardProps = {
   cluster: VenueCluster;
+  hotel?: HotelConfig | null;
   onClose: () => void;
 };
 
-export function EventCard({ cluster, onClose }: EventCardProps) {
+export function EventCard({ cluster, hotel = null, onClose }: EventCardProps) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -51,6 +53,11 @@ export function EventCard({ cluster, onClose }: EventCardProps) {
           {event.admissionLabel && (
             <span className={`admission-pill admission-${event.admissionType || 'cover'}`}>
               {event.admissionLabel}
+            </span>
+          )}
+          {hotel && (
+            <span className="walk-pill">
+              {formatWalkLabel(hotel, event.latitude, event.longitude)}
             </span>
           )}
           {event.tags.map((tag) => (
@@ -101,7 +108,11 @@ export function EventCard({ cluster, onClose }: EventCardProps) {
           </a>
         )}
         <a
-          href={directionsUrl(event)}
+          href={
+            hotel
+              ? walkingDirectionsUrl(hotel, event.latitude, event.longitude)
+              : directionsUrl(event)
+          }
           target="_blank"
           rel="noopener noreferrer"
           className={event.url ? 'btn-secondary' : 'btn-primary'}
