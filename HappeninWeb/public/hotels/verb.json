@@ -7,14 +7,17 @@
   "latitude": 42.3446,
   "longitude": -71.0975,
   "initialZoom": 14.6,
+  "styleVariant": "verb-poster",
+  "mapStyle": "light",
+  "logoIcon": "pick",
   "theme": {
-    "bg": "#121014",
-    "panel": "rgba(24, 19, 25, 0.90)",
-    "panelSolid": "#19131b",
-    "accent": "#ff5442",
-    "border": "rgba(255, 84, 66, 0.36)",
-    "borderStrong": "rgba(255, 84, 66, 0.65)",
-    "textMuted": "#c6bbb6"
+    "bg": "#e2f7fa",
+    "panel": "#ffffff",
+    "panelSolid": "#ffffff",
+    "accent": "#faf089",
+    "border": "#0d0d0d",
+    "borderStrong": "#0d0d0d",
+    "textMuted": "#444444"
   },
   "places": [
     {

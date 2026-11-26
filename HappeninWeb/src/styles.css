@@ -669,3 +669,352 @@ body,
   text-align: center;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
+
+/* =====================================================================
+   THE VERB HOTEL — RETRO ROCK / EDITORIAL POSTER SKIN
+   Inspired directly by theverbhotel.com:
+   Icy Mint (#E2F7FA) · Crisp White (#FFFFFF) · Jet Black (#0D0D0D) · Canary Yellow (#FAF089)
+   Tall Condensed Uppercase Display Type (Oswald) + Sharp Poster Rules
+   ===================================================================== */
+
+.variant-verb-poster {
+  color: #0d0d0d;
+}
+
+.verb-pick-badge {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.variant-verb-poster .filter-panel {
+  background: #ffffff;
+  backdrop-filter: none;
+  border: 2px solid #0d0d0d;
+  border-radius: 2px;
+  box-shadow: 4px 4px 0 #0d0d0d;
+  padding: 12px 14px 12px;
+}
+
+.variant-verb-poster .brand-row {
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #0d0d0d;
+}
+
+.variant-verb-poster .brand-title {
+  align-items: center;
+}
+
+.variant-verb-poster .hotel-wordmark {
+  font-family: 'Oswald', sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #0d0d0d;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.variant-verb-poster .event-count {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #4a4a4a;
+}
+
+.variant-verb-poster .now-jump-btn {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 2px;
+  border: 1.5px solid #0d0d0d;
+  background: #faf089;
+  color: #0d0d0d;
+  padding: 4px 10px;
+}
+
+.variant-verb-poster .hotel-mode-tabs {
+  background: #e2f7fa;
+  border: 1.5px solid #0d0d0d;
+  border-radius: 2px;
+  padding: 3px;
+  gap: 4px;
+}
+
+.variant-verb-poster .hotel-tab-btn {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0d0d0d;
+  border-radius: 1px;
+  padding: 7px 10px;
+}
+
+.variant-verb-poster .hotel-tab-btn.active {
+  background: #faf089;
+  color: #0d0d0d;
+  border: 1.5px solid #0d0d0d;
+  box-shadow: 2px 2px 0 #0d0d0d;
+}
+
+.variant-verb-poster .category-chip {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 12.5px;
+  border-radius: 2px;
+  border: 1.5px solid #0d0d0d;
+  background: #ffffff;
+  color: #0d0d0d;
+  padding: 5px 11px;
+}
+
+.variant-verb-poster .category-chip.active {
+  background: #0d0d0d;
+  color: #ffffff;
+  box-shadow: 2px 2px 0 var(--chip-color);
+}
+
+.variant-verb-poster .category-chip.active .category-dot {
+  background: var(--chip-color);
+}
+
+.variant-verb-poster .locate-btn {
+  background: #ffffff;
+  color: #0d0d0d;
+  border: 2px solid #0d0d0d;
+  border-radius: 2px;
+  box-shadow: 3px 3px 0 #0d0d0d;
+}
+
+.variant-verb-poster .locate-btn:hover {
+  background: #faf089;
+  color: #0d0d0d;
+}
+
+.variant-verb-poster .event-card {
+  background: #ffffff;
+  color: #0d0d0d;
+  border: 2px solid #0d0d0d;
+  border-radius: 2px;
+  box-shadow: 5px 5px 0 #0d0d0d;
+  backdrop-filter: none;
+}
+
+.variant-verb-poster .venue-tab {
+  border-radius: 2px;
+  border: 1.5px solid #0d0d0d;
+  background: #e2f7fa;
+  color: #0d0d0d;
+}
+
+.variant-verb-poster .venue-tab.active {
+  background: #faf089;
+  color: #0d0d0d;
+  border-color: #0d0d0d;
+}
+
+.variant-verb-poster .category-badge {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 2px;
+  background: #0d0d0d !important;
+  color: #faf089 !important;
+  padding: 3px 9px;
+}
+
+.variant-verb-poster .walk-pill {
+  border-radius: 2px;
+  background: #e2f7fa;
+  color: #0d0d0d;
+  border: 1.5px solid #0d0d0d;
+}
+
+.variant-verb-poster .tag-pill {
+  border-radius: 2px;
+  background: #f3f3f3;
+  color: #222222;
+  border: 1px solid #bdbdbd;
+}
+
+.variant-verb-poster .admission-pill {
+  border-radius: 2px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.variant-verb-poster .admission-free {
+  background: #d8f8e8;
+  color: #0b5d34;
+  border: 1.5px solid #0b5d34;
+}
+
+.variant-verb-poster .admission-cover {
+  background: #fff3c4;
+  color: #6b4c00;
+  border: 1.5px solid #6b4c00;
+}
+
+.variant-verb-poster .admission-ticketed {
+  background: #e2f7fa;
+  color: #0d0d0d;
+  border: 1.5px solid #0d0d0d;
+}
+
+.variant-verb-poster .close-btn {
+  border-radius: 2px;
+  background: #e2f7fa;
+  color: #0d0d0d;
+  border: 1.5px solid #0d0d0d;
+}
+
+.variant-verb-poster .close-btn:hover {
+  background: #faf089;
+  color: #0d0d0d;
+}
+
+.variant-verb-poster .event-title {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 22px;
+  color: #0d0d0d;
+  margin-bottom: 6px;
+}
+
+.variant-verb-poster .event-venue {
+  color: #444444;
+  font-weight: 600;
+}
+
+.variant-verb-poster .event-time {
+  color: #0d0d0d;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.04em;
+  font-size: 14px;
+}
+
+.variant-verb-poster .event-description {
+  color: #222222;
+}
+
+.variant-verb-poster .btn-primary {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 13.5px;
+  border-radius: 2px;
+  background: #faf089;
+  color: #0d0d0d;
+  border: 2px solid #0d0d0d;
+  box-shadow: 3px 3px 0 #0d0d0d;
+}
+
+.variant-verb-poster .btn-secondary {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 13.5px;
+  border-radius: 2px;
+  background: #e2f7fa;
+  color: #0d0d0d;
+  border: 2px solid #0d0d0d;
+  box-shadow: 3px 3px 0 #0d0d0d;
+}
+
+.variant-verb-poster .preview-tonight-pill {
+  border-radius: 2px;
+  background: #faf089;
+  border: 2px solid #0d0d0d;
+  box-shadow: 4px 4px 0 #0d0d0d;
+  backdrop-filter: none;
+}
+
+.variant-verb-poster .preview-muted,
+.variant-verb-poster .preview-dot,
+.variant-verb-poster .preview-cta {
+  color: #0d0d0d;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.variant-verb-poster .date-tile {
+  border-radius: 2px;
+  background: #ffffff;
+  color: #0d0d0d;
+  border: 2px solid #0d0d0d;
+  box-shadow: 3px 3px 0 #0d0d0d;
+  backdrop-filter: none;
+}
+
+.variant-verb-poster .date-tile.selected {
+  background: #faf089;
+  color: #0d0d0d;
+  border-color: #0d0d0d;
+  box-shadow: 3px 3px 0 #0d0d0d;
+}
+
+.variant-verb-poster .date-weekday,
+.variant-verb-poster .date-day {
+  font-family: 'Oswald', sans-serif;
+}
+
+.variant-verb-poster .time-panel {
+  background: #e2f7fa;
+  border: 2px solid #0d0d0d;
+  border-radius: 2px;
+  box-shadow: 4px 4px 0 #0d0d0d;
+  backdrop-filter: none;
+}
+
+.variant-verb-poster .time-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 12px;
+  color: #0d0d0d;
+}
+
+.variant-verb-poster .time-readout {
+  font-family: 'Oswald', sans-serif;
+  font-size: 21px;
+  color: #0d0d0d;
+}
+
+.variant-verb-poster .time-endpoints {
+  color: #333333;
+  font-weight: 600;
+}
+
+.variant-verb-poster .time-range::-webkit-slider-thumb {
+  border-radius: 2px;
+  background: #faf089;
+  border: 2.5px solid #0d0d0d;
+  box-shadow: 2px 2px 0 #0d0d0d;
+}
+
+.variant-verb-poster .time-range::-moz-range-thumb {
+  border-radius: 2px;
+  background: #faf089;
+  border: 2.5px solid #0d0d0d;
+  box-shadow: 2px 2px 0 #0d0d0d;
+}
+
+.variant-verb-poster .hotel-footer-hint {
+  border-radius: 2px;
+  background: #e2f7fa;
+  color: #0d0d0d;
+  border: 2px solid #0d0d0d;
+  box-shadow: 4px 4px 0 #0d0d0d;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 12px;
+  backdrop-filter: none;
+}

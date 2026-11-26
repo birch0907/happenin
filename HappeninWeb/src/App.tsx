@@ -263,6 +263,7 @@ export default function App() {
   const isAtNow = selectedDate === today && Math.abs(selectedTime - currentQuarter()) < QUARTER_MS;
   const selectedDateInfo = dateParts(selectedDate);
 
+  const isVerbPoster = hotel?.styleVariant === 'verb-poster';
   const accentColor = hotel ? hotel.theme.accent : '#2FE6E6';
   const themeStyle = hotel
     ? ({
@@ -276,8 +277,15 @@ export default function App() {
       } as React.CSSProperties)
     : undefined;
 
+  const chipPalette: Record<EventCategory, string> = isVerbPoster
+    ? { 'Live Music': '#E63946', DJ: '#00A6B4', Social: '#7B2CBF' }
+    : CATEGORY_COLORS;
+
   return (
-    <main className={`app-shell${hotel ? ' hotel-mode' : ''}`} style={themeStyle}>
+    <main
+      className={`app-shell${hotel ? ' hotel-mode' : ''}${isVerbPoster ? ' variant-verb-poster' : ''}`}
+      style={themeStyle}
+    >
       <MapView
         clusters={clusters}
         selectedClusterKey={selectedCluster ? selectedCluster.key : null}
@@ -308,6 +316,28 @@ export default function App() {
             <div className="brand-title">
               {hotel ? (
                 <>
+                  {hotel.logoIcon === 'pick' && (
+                    <span className="verb-pick-badge" aria-hidden="true">
+                      <svg width="24" height="26" viewBox="0 0 28 32" fill="none">
+                        <path
+                          d="M14 2C21.5 2 26 5.2 26 11.5C26 19.2 18.8 29.5 14 30C9.2 29.5 2 19.2 2 11.5C2 5.2 6.5 2 14 2Z"
+                          fill="#0D0D0D"
+                        />
+                        <text
+                          x="14"
+                          y="17"
+                          textAnchor="middle"
+                          fill="#FFFFFF"
+                          fontFamily="Oswald, sans-serif"
+                          fontWeight="700"
+                          fontSize="9.5"
+                          letterSpacing="0.5"
+                        >
+                          VERB
+                        </text>
+                      </svg>
+                    </span>
+                  )}
                   <span className="brand-wordmark hotel-wordmark">{hotel.wordmark}</span>
                   <span className="event-count">{hotel.subtitle}</span>
                 </>
@@ -362,7 +392,7 @@ export default function App() {
                     key={category}
                     type="button"
                     className={`category-chip${active ? ' active' : ''}`}
-                    style={{ '--chip-color': CATEGORY_COLORS[category] } as React.CSSProperties}
+                    style={{ '--chip-color': chipPalette[category] } as React.CSSProperties}
                     onClick={() => toggleCategory(category)}
                     aria-pressed={active}
                   >
@@ -475,7 +505,9 @@ export default function App() {
                   value={currentStep}
                   aria-label="Scrub event time"
                   style={{
-                    background: `linear-gradient(to right, ${accentColor} 0%, ${accentColor} ${progressPct}%, rgba(180, 170, 195, 0.28) ${progressPct}%, rgba(180, 170, 195, 0.28) 100%)`,
+                    background: isVerbPoster
+                      ? `linear-gradient(to right, #0D0D0D 0%, #0D0D0D ${progressPct}%, rgba(13, 13, 13, 0.2) ${progressPct}%, rgba(13, 13, 13, 0.2) 100%)`
+                      : `linear-gradient(to right, ${accentColor} 0%, ${accentColor} ${progressPct}%, rgba(180, 170, 195, 0.28) ${progressPct}%, rgba(180, 170, 195, 0.28) 100%)`,
                   }}
                   onChange={(e) => {
                     const step = Number(e.target.value);

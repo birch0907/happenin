@@ -18,6 +18,8 @@ export type HotelPlace = {
   websiteUrl?: string;
 };
 
+export type HotelStyleVariant = 'standard' | 'verb-poster';
+
 export type HotelConfig = {
   id: string;
   name: string;
@@ -27,6 +29,9 @@ export type HotelConfig = {
   latitude: number;
   longitude: number;
   initialZoom: number;
+  styleVariant?: HotelStyleVariant;
+  mapStyle?: 'dark' | 'light';
+  logoIcon?: 'pick';
   theme: {
     bg: string;
     panel: string;

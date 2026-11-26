@@ -16,8 +16,20 @@ type MapViewProps = {
 };
 
 const DARK_MATTER_STYLE = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
+const POSITRON_LIGHT_STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
 const DEFAULT_CENTER: [number, number] = [-71.106, 42.369];
 const DEFAULT_ZOOM = 13.4;
+
+const LIGHT_EVENT_COLORS: Record<string, string> = {
+  'Live Music': '#E63946',
+  DJ: '#00A6B4',
+  Social: '#7B2CBF',
+};
+
+const LIGHT_PLACE_COLORS: Record<'Dining' | 'Sights', string> = {
+  Dining: '#E85D04',
+  Sights: '#1D4ED8',
+};
 
 const EVENT_SOURCE_ID = 'happenin-pins';
 const PLACE_SOURCE_ID = 'hotel-places';
@@ -25,7 +37,8 @@ const HOME_SOURCE_ID = 'hotel-home';
 
 function clustersToGeoJSON(
   clusters: VenueCluster[],
-  selectedKey: string | null
+  selectedKey: string | null,
+  isLight: boolean
 ): GeoJSON.FeatureCollection<GeoJSON.Point> {
   return {
     type: 'FeatureCollection',
@@ -39,7 +52,9 @@ function clustersToGeoJSON(
         key: cluster.key,
         venue: cluster.venue,
         count: cluster.events.length,
-        color: CATEGORY_COLORS[cluster.primaryCategory],
+        color: isLight
+          ? LIGHT_EVENT_COLORS[cluster.primaryCategory] || CATEGORY_COLORS[cluster.primaryCategory]
+          : CATEGORY_COLORS[cluster.primaryCategory],
         selected: cluster.key === selectedKey,
       },
     })),
@@ -48,7 +63,8 @@ function clustersToGeoJSON(
 
 function placesToGeoJSON(
   places: HotelPlace[],
-  selectedPlaceId: string | null
+  selectedPlaceId: string | null,
+  isLight: boolean
 ): GeoJSON.FeatureCollection<GeoJSON.Point> {
   return {
     type: 'FeatureCollection',
@@ -61,7 +77,7 @@ function placesToGeoJSON(
       properties: {
         id: place.id,
         name: place.name,
-        color: PLACE_TAB_COLORS[place.tab],
+        color: isLight ? LIGHT_PLACE_COLORS[place.tab] : PLACE_TAB_COLORS[place.tab],
         selected: place.id === selectedPlaceId,
       },
     })),
@@ -101,6 +117,7 @@ export function MapView({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const styleLoadedRef = useRef(false);
+  const activeStyleModeRef = useRef<'dark' | 'light'>('dark');
   const centeredHotelRef = useRef<string | null>(null);
 
   const clustersRef = useRef(clusters);
@@ -121,8 +138,13 @@ export function MapView({
   onSelectPlaceRef.current = onSelectPlace;
   onBgClickRef.current = onMapBackgroundClick;
 
+  const isLight = hotel?.mapStyle === 'light';
+
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
+
+    const initialMode: 'dark' | 'light' = hotelRef.current?.mapStyle === 'light' ? 'light' : 'dark';
+    activeStyleModeRef.current = initialMode;
 
     const initialCenter: [number, number] = hotelRef.current
       ? [hotelRef.current.longitude, hotelRef.current.latitude]
@@ -131,7 +153,7 @@ export function MapView({
 
     const map = new maplibregl.Map({
       container: containerRef.current,
-      style: DARK_MATTER_STYLE,
+      style: initialMode === 'light' ? POSITRON_LIGHT_STYLE : DARK_MATTER_STYLE,
       center: initialCenter,
       zoom: initialZoom,
       pitch: 0,
@@ -146,24 +168,32 @@ export function MapView({
 
     map.touchZoomRotate.disableRotation();
 
-    map.on('load', () => {
+    function mountLayers() {
+      const light = activeStyleModeRef.current === 'light';
       styleLoadedRef.current = true;
 
+      const labelTextColor = light ? '#0D0D0D' : '#f5f2ea';
+      const labelHaloColor = light ? '#FFFFFF' : '#0f1420';
+      const defaultStrokeColor = light ? '#0D0D0D' : '#120e24';
+      const selectedStrokeColor = light ? '#FAF089' : '#ffffff';
+
       // 1. Hotel Home Marker ("You Are Here")
-      map.addSource(HOME_SOURCE_ID, {
-        type: 'geojson',
-        data: homeToGeoJSON(hotelRef.current),
-      });
+      if (!map.getSource(HOME_SOURCE_ID)) {
+        map.addSource(HOME_SOURCE_ID, {
+          type: 'geojson',
+          data: homeToGeoJSON(hotelRef.current),
+        });
+      }
 
       map.addLayer({
         id: 'hotel-home-halo',
         type: 'circle',
         source: HOME_SOURCE_ID,
         paint: {
-          'circle-radius': 24,
-          'circle-color': ['get', 'accent'],
-          'circle-opacity': 0.28,
-          'circle-blur': 0.55,
+          'circle-radius': light ? 22 : 24,
+          'circle-color': light ? '#FAF089' : ['get', 'accent'],
+          'circle-opacity': light ? 0.85 : 0.28,
+          'circle-blur': light ? 0.15 : 0.55,
         },
       });
 
@@ -173,9 +203,9 @@ export function MapView({
         source: HOME_SOURCE_ID,
         paint: {
           'circle-radius': 9,
-          'circle-color': '#ffffff',
-          'circle-stroke-width': 3.5,
-          'circle-stroke-color': ['get', 'accent'],
+          'circle-color': light ? '#0D0D0D' : '#ffffff',
+          'circle-stroke-width': 3,
+          'circle-stroke-color': light ? '#FAF089' : ['get', 'accent'],
         },
       });
 
@@ -186,33 +216,31 @@ export function MapView({
         layout: {
           'text-field': ['get', 'name'],
           'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
-          'text-size': 11,
+          'text-size': 11.5,
           'text-offset': [0, 1.55],
           'text-anchor': 'top',
           'text-allow-overlap': true,
         },
         paint: {
-          'text-color': '#f7f4ec',
-          'text-halo-color': '#0f1420',
-          'text-halo-width': 1.5,
+          'text-color': labelTextColor,
+          'text-halo-color': labelHaloColor,
+          'text-halo-width': 2,
         },
       });
 
       // 2. Curated Hotel Places (Dining / Sights)
-      map.addSource(PLACE_SOURCE_ID, {
-        type: 'geojson',
-        data: placesToGeoJSON(placesRef.current, selectedPlaceRef.current),
-      });
+      if (!map.getSource(PLACE_SOURCE_ID)) {
+        map.addSource(PLACE_SOURCE_ID, {
+          type: 'geojson',
+          data: placesToGeoJSON(placesRef.current, selectedPlaceRef.current, light),
+        });
+      }
 
       map.addLayer({
         id: 'places-hit',
         type: 'circle',
         source: PLACE_SOURCE_ID,
-        paint: {
-          'circle-radius': 24,
-          'circle-color': '#000000',
-          'circle-opacity': 0,
-        },
+        paint: { 'circle-radius': 24, 'circle-color': '#000000', 'circle-opacity': 0 },
       });
 
       map.addLayer({
@@ -220,10 +248,12 @@ export function MapView({
         type: 'circle',
         source: PLACE_SOURCE_ID,
         paint: {
-          'circle-radius': ['case', ['==', ['get', 'selected'], true], 24, 16],
-          'circle-color': ['get', 'color'],
-          'circle-opacity': ['case', ['==', ['get', 'selected'], true], 0.55, 0.3],
-          'circle-blur': 0.7,
+          'circle-radius': ['case', ['==', ['get', 'selected'], true], 22, 15],
+          'circle-color': light ? '#FAF089' : ['get', 'color'],
+          'circle-opacity': light
+            ? ['case', ['==', ['get', 'selected'], true], 0.9, 0]
+            : ['case', ['==', ['get', 'selected'], true], 0.55, 0.3],
+          'circle-blur': light ? 0.1 : 0.7,
         },
       });
 
@@ -232,10 +262,10 @@ export function MapView({
         type: 'circle',
         source: PLACE_SOURCE_ID,
         paint: {
-          'circle-radius': ['case', ['==', ['get', 'selected'], true], 10, 7.5],
+          'circle-radius': ['case', ['==', ['get', 'selected'], true], 10, 8],
           'circle-color': ['get', 'color'],
-          'circle-stroke-width': ['case', ['==', ['get', 'selected'], true], 3, 2.2],
-          'circle-stroke-color': ['case', ['==', ['get', 'selected'], true], '#ffffff', '#0f1420'],
+          'circle-stroke-width': light ? 2.5 : ['case', ['==', ['get', 'selected'], true], 3, 2.2],
+          'circle-stroke-color': ['case', ['==', ['get', 'selected'], true], selectedStrokeColor, defaultStrokeColor],
         },
       });
 
@@ -252,27 +282,25 @@ export function MapView({
           'text-optional': true,
         },
         paint: {
-          'text-color': '#f5f2ea',
-          'text-halo-color': '#0f1420',
-          'text-halo-width': 1.4,
+          'text-color': labelTextColor,
+          'text-halo-color': labelHaloColor,
+          'text-halo-width': 1.8,
         },
       });
 
       // 3. Live Happenin' Event Pins
-      map.addSource(EVENT_SOURCE_ID, {
-        type: 'geojson',
-        data: clustersToGeoJSON(clustersRef.current, selectedKeyRef.current),
-      });
+      if (!map.getSource(EVENT_SOURCE_ID)) {
+        map.addSource(EVENT_SOURCE_ID, {
+          type: 'geojson',
+          data: clustersToGeoJSON(clustersRef.current, selectedKeyRef.current, light),
+        });
+      }
 
       map.addLayer({
         id: 'pins-hit',
         type: 'circle',
         source: EVENT_SOURCE_ID,
-        paint: {
-          'circle-radius': 22,
-          'circle-color': '#000000',
-          'circle-opacity': 0,
-        },
+        paint: { 'circle-radius': 22, 'circle-color': '#000000', 'circle-opacity': 0 },
       });
 
       map.addLayer({
@@ -282,17 +310,15 @@ export function MapView({
         paint: {
           'circle-radius': [
             'case',
-            ['==', ['get', 'selected'], true], 26,
-            ['>', ['get', 'count'], 1], 21,
-            16,
+            ['==', ['get', 'selected'], true], 24,
+            ['>', ['get', 'count'], 1], 19,
+            15,
           ],
-          'circle-color': ['get', 'color'],
-          'circle-opacity': [
-            'case',
-            ['==', ['get', 'selected'], true], 0.55,
-            0.34,
-          ],
-          'circle-blur': 0.75,
+          'circle-color': light ? '#FAF089' : ['get', 'color'],
+          'circle-opacity': light
+            ? ['case', ['==', ['get', 'selected'], true], 0.9, 0.2]
+            : ['case', ['==', ['get', 'selected'], true], 0.55, 0.34],
+          'circle-blur': light ? 0.15 : 0.75,
         },
       });
 
@@ -305,19 +331,11 @@ export function MapView({
             'case',
             ['>', ['get', 'count'], 1], 12,
             ['==', ['get', 'selected'], true], 10,
-            7.5,
+            8,
           ],
           'circle-color': ['get', 'color'],
-          'circle-stroke-width': [
-            'case',
-            ['==', ['get', 'selected'], true], 3,
-            2.2,
-          ],
-          'circle-stroke-color': [
-            'case',
-            ['==', ['get', 'selected'], true], '#ffffff',
-            '#120e24',
-          ],
+          'circle-stroke-width': light ? 2.5 : ['case', ['==', ['get', 'selected'], true], 3, 2.2],
+          'circle-stroke-color': ['case', ['==', ['get', 'selected'], true], selectedStrokeColor, defaultStrokeColor],
         },
       });
 
@@ -334,7 +352,7 @@ export function MapView({
           'text-ignore-placement': true,
         },
         paint: {
-          'text-color': '#120e24',
+          'text-color': light ? '#FFFFFF' : '#120e24',
         },
       });
 
@@ -346,7 +364,9 @@ export function MapView({
           map.getCanvas().style.cursor = '';
         });
       }
-    });
+    }
+
+    map.on('style.load', mountLayers);
 
     map.on('click', (e) => {
       if (!styleLoadedRef.current) {
@@ -382,23 +402,32 @@ export function MapView({
     };
   }, []);
 
-  // Update event pins GPU source.
+  // Switch basemap cleanly if hotel config asks for 'light' vs 'dark'.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
+    const desiredMode: 'dark' | 'light' = isLight ? 'light' : 'dark';
+    if (desiredMode !== activeStyleModeRef.current) {
+      activeStyleModeRef.current = desiredMode;
+      styleLoadedRef.current = false;
+      map.setStyle(desiredMode === 'light' ? POSITRON_LIGHT_STYLE : DARK_MATTER_STYLE);
+    }
+  }, [isLight]);
+
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !styleLoadedRef.current) return;
     const source = map.getSource(EVENT_SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
-    if (source) source.setData(clustersToGeoJSON(clusters, selectedClusterKey));
-  }, [clusters, selectedClusterKey]);
+    if (source) source.setData(clustersToGeoJSON(clusters, selectedClusterKey, isLight));
+  }, [clusters, selectedClusterKey, isLight]);
 
-  // Update hotel places GPU source.
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !styleLoadedRef.current) return;
     const source = map.getSource(PLACE_SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
-    if (source) source.setData(placesToGeoJSON(places, selectedPlaceId));
-  }, [places, selectedPlaceId]);
+    if (source) source.setData(placesToGeoJSON(places, selectedPlaceId, isLight));
+  }, [places, selectedPlaceId, isLight]);
 
-  // Update hotel home pin and center when hotel config loads.
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
@@ -415,7 +444,6 @@ export function MapView({
     }
   }, [hotel]);
 
-  // Gently pan to selected event pin.
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !selectedClusterKey) return;
@@ -428,7 +456,6 @@ export function MapView({
     });
   }, [selectedClusterKey, clusters]);
 
-  // Gently pan to selected hotel place pin.
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !selectedPlaceId) return;
