@@ -1115,6 +1115,431 @@
           "description": "Public main-stage lounge karaoke at VIVA Karaoke (formerly Stage Karaoke) in Allston Village. First-come, first-served; private rooms excluded."
         }
       ]
+    },
+    {
+      "id": "midway-cafe",
+      "venue": "Midway Café",
+      "address": "3496 Washington St",
+      "city": "Jamaica Plain",
+      "state": "MA",
+      "postal_code": "02130",
+      "latitude": 42.30619,
+      "longitude": -71.10754,
+      "collector_type": "tockify",
+      "url": "https://midwaycafe.com/",
+      "tockify_calendar": "midwaycafejp",
+      "default_category": "Live Music",
+      "default_admission": "cover",
+      "enabled": true
+    },
+    {
+      "id": "drawdown-brewing",
+      "venue": "Drawdown Brewing",
+      "address": "3204 Washington St",
+      "city": "Jamaica Plain",
+      "state": "MA",
+      "postal_code": "02130",
+      "latitude": 42.31253,
+      "longitude": -71.10138,
+      "collector_type": "squarespace_json",
+      "url": "https://www.drawdownbrewing.com/events-2-1",
+      "default_category": "Social",
+      "default_admission": "free",
+      "enabled": true
+    },
+    {
+      "id": "brendan-behan-pub",
+      "venue": "Brendan Behan Pub",
+      "address": "378 Centre St",
+      "city": "Jamaica Plain",
+      "state": "MA",
+      "postal_code": "02130",
+      "latitude": 42.32138,
+      "longitude": -71.11008,
+      "collector_type": "recurring",
+      "url": "https://www.brendanbehanjp.com/",
+      "default_category": "Live Music",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Traditional Irish Music Session",
+          "weekdays": ["SAT"],
+          "start_time": "17:00",
+          "end_time": "20:00",
+          "description": "Beloved Jamaica Plain Saturday evening traditional Irish music session at Brendan Behan Pub."
+        }
+      ]
+    },
+    {
+      "id": "jeanie-johnston-pub",
+      "venue": "Jeanie Johnston Pub & Grill",
+      "address": "144 South St",
+      "city": "Jamaica Plain",
+      "state": "MA",
+      "postal_code": "02130",
+      "latitude": 42.30509,
+      "longitude": -71.11452,
+      "collector_type": "recurring",
+      "url": "https://www.jeaniejohnstonpub.com/events",
+      "default_category": "Social",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Wednesday Trivia Night",
+          "weekdays": ["WED"],
+          "start_time": "19:30",
+          "end_time": "21:30",
+          "description": "Weekly Wednesday pub trivia night at Jeanie Johnston Pub in Jamaica Plain."
+        },
+        {
+          "title": "Thursday Open Mic Night",
+          "weekdays": ["THU"],
+          "start_time": "20:00",
+          "end_time": "23:00",
+          "description": "Weekly Thursday live open mic night at Jeanie Johnston Pub in Jamaica Plain."
+        },
+        {
+          "title": "Friday Live Music",
+          "weekdays": ["FRI"],
+          "start_time": "21:00",
+          "end_time": "00:30",
+          "description": "Weekly Friday night live music at Jeanie Johnston Pub in Jamaica Plain."
+        },
+        {
+          "title": "Saturday Karaoke",
+          "weekdays": ["SAT"],
+          "start_time": "21:30",
+          "end_time": "01:00",
+          "description": "Weekly Saturday karaoke night at Jeanie Johnston Pub in Jamaica Plain."
+        }
+      ]
+    },
+    {
+      "id": "the-haven-jp",
+      "venue": "The Haven",
+      "address": "284 Amory St",
+      "city": "Jamaica Plain",
+      "state": "MA",
+      "postal_code": "02130",
+      "latitude": 42.31474,
+      "longitude": -71.10367,
+      "collector_type": "llm_html",
+      "url": "https://thehavenjp.com/",
+      "default_category": "Social",
+      "default_admission": "free",
+      "default_start_time": "18:00",
+      "llm_hint": "Boston's Scottish pub in the Jamaica Plain Brewery complex. Extract concrete dated special festivals, live music, whisky tastings, and community events in the 14-day window (e.g. St. Andrew's Day Festival). Skip holiday closure notices.",
+      "enabled": true
+    },
+    {
+      "id": "the-haven-jp-weekly",
+      "venue": "The Haven",
+      "address": "284 Amory St",
+      "city": "Jamaica Plain",
+      "state": "MA",
+      "postal_code": "02130",
+      "latitude": 42.31474,
+      "longitude": -71.10367,
+      "collector_type": "recurring",
+      "url": "https://thehavenjp.com/events/",
+      "default_category": "Social",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Monday Quiz Night",
+          "weekdays": ["MON"],
+          "start_time": "19:00",
+          "end_time": "21:00",
+          "description": "Weekly Monday Scottish pub quiz / trivia night at The Haven in the JP Brewery complex."
+        }
+      ]
+    },
+    {
+      "id": "dorchester-brewing",
+      "venue": "Dorchester Brewing Company",
+      "address": "1250 Massachusetts Ave",
+      "city": "Dorchester",
+      "state": "MA",
+      "postal_code": "02125",
+      "latitude": 42.32190,
+      "longitude": -71.06259,
+      "collector_type": "recurring",
+      "url": "https://www.dorchesterbrewing.com/events/",
+      "default_category": "Social",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Weekly Brewery Trivia",
+          "weekdays": ["WED"],
+          "start_time": "19:00",
+          "end_time": "21:00",
+          "description": "Weekly Wednesday taproom trivia night at Dorchester Brewing Company."
+        }
+      ]
+    },
+    {
+      "id": "lower-mills-tavern",
+      "venue": "Lower Mills Tavern",
+      "address": "2269 Dorchester Ave",
+      "city": "Dorchester",
+      "state": "MA",
+      "postal_code": "02124",
+      "latitude": 42.27300,
+      "longitude": -71.06806,
+      "collector_type": "recurring",
+      "url": "https://www.lowermillstavern.com/livemusicschedule/",
+      "default_category": "Live Music",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Traditional Irish Music Session",
+          "weekdays": ["TUE"],
+          "start_time": "19:30",
+          "end_time": "22:00",
+          "description": "Weekly Tuesday traditional live Irish music session at Lower Mills Tavern in Dorchester. No cover."
+        },
+        {
+          "title": "Thursday Local Live Acoustic Music",
+          "weekdays": ["THU"],
+          "start_time": "19:30",
+          "end_time": "21:30",
+          "description": "Weekly Thursday live performances by local Boston musicians at Lower Mills Tavern. No cover."
+        }
+      ]
+    },
+    {
+      "id": "blend-dorchester",
+      "venue": "blend",
+      "address": "1310 Dorchester Ave",
+      "city": "Dorchester",
+      "state": "MA",
+      "postal_code": "02122",
+      "latitude": 42.30578,
+      "longitude": -71.05873,
+      "collector_type": "recurring",
+      "url": "https://blenddorchester.com/events",
+      "default_category": "DJ",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Friday Feels & DJ Night",
+          "weekdays": ["FRI"],
+          "start_time": "21:00",
+          "end_time": "02:00",
+          "description": "Weekly Friday nightlife, drag viewing, and DJ sets at blend on Dorchester Ave. 21+."
+        },
+        {
+          "title": "Mayhem Saturdays DJ Dance Party",
+          "weekdays": ["SAT"],
+          "start_time": "22:00",
+          "end_time": "02:00",
+          "description": "High-energy Saturday resident DJ dance party at blend in Dorchester. No cover, 21+."
+        }
+      ]
+    },
+    {
+      "id": "dbar-dorchester",
+      "venue": "dbar",
+      "address": "1236 Dorchester Ave",
+      "city": "Dorchester",
+      "state": "MA",
+      "postal_code": "02125",
+      "latitude": 42.30836,
+      "longitude": -71.05802,
+      "collector_type": "recurring",
+      "url": "https://www.dbarboston.com/",
+      "default_category": "DJ",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Show Tunes Tuesdays",
+          "weekdays": ["TUE"],
+          "start_time": "21:00",
+          "end_time": "01:00",
+          "description": "Iconic weekly Tuesday Broadway & show tunes video singalong night at dbar in Dorchester. 21+."
+        },
+        {
+          "title": "dbar After Dark: Karaoke Fridays",
+          "weekdays": ["FRI"],
+          "start_time": "22:00",
+          "end_time": "02:00",
+          "description": "Weekly Friday late-night karaoke party at dbar in Dorchester. 21+."
+        },
+        {
+          "title": "dbar After Dark: Saturday Dance Party",
+          "weekdays": ["SAT"],
+          "start_time": "22:00",
+          "end_time": "02:00",
+          "description": "Weekly Saturday DJ lounge and dance party at dbar on Dorchester Ave. 21+."
+        }
+      ]
+    },
+    {
+      "id": "mcgonagles-pub",
+      "venue": "McGonagle's Pub",
+      "address": "367 Neponset Ave",
+      "city": "Dorchester",
+      "state": "MA",
+      "postal_code": "02122",
+      "latitude": 42.28644,
+      "longitude": -71.04516,
+      "collector_type": "recurring",
+      "url": "https://mcgonagles.com/",
+      "default_category": "Live Music",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Weekend Live Irish & Local Music",
+          "weekdays": ["FRI", "SAT"],
+          "start_time": "21:00",
+          "end_time": "01:00",
+          "description": "Weekend live traditional and contemporary Irish & Boston musicians at McGonagle's Pub in Dorchester."
+        }
+      ]
+    },
+    {
+      "id": "zumix-firehouse",
+      "venue": "ZUMIX Firehouse",
+      "address": "260 Sumner St",
+      "city": "East Boston",
+      "state": "MA",
+      "postal_code": "02128",
+      "latitude": 42.36823,
+      "longitude": -71.03770,
+      "collector_type": "tribe_api",
+      "url": "https://www.zumix.org/events/",
+      "tribe_base_url": "https://www.zumix.org",
+      "default_category": "Live Music",
+      "default_admission": "free",
+      "enabled": true
+    },
+    {
+      "id": "veronica-robles-cc",
+      "venue": "Veronica Robles Cultural Center",
+      "address": "282 Meridian St",
+      "city": "East Boston",
+      "state": "MA",
+      "postal_code": "02128",
+      "latitude": 42.37655,
+      "longitude": -71.03944,
+      "collector_type": "tribe_api",
+      "url": "https://veronicaroblesculturalcenter.org/events-east-boston/",
+      "tribe_base_url": "https://veronicaroblesculturalcenter.org",
+      "default_category": "Social",
+      "default_admission": "free",
+      "enabled": true
+    },
+    {
+      "id": "the-quiet-few",
+      "venue": "The Quiet Few",
+      "address": "331 Sumner St",
+      "city": "East Boston",
+      "state": "MA",
+      "postal_code": "02128",
+      "latitude": 42.36709,
+      "longitude": -71.03603,
+      "collector_type": "recurring",
+      "url": "https://www.thequietfew.com/",
+      "default_category": "Social",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Monday Night Phrenology Trivia",
+          "weekdays": ["MON"],
+          "start_time": "20:00",
+          "end_time": "22:00",
+          "description": "Popular East Boston whiskey tavern trivia night every Monday at The Quiet Few. First-come, first-served."
+        }
+      ]
+    },
+    {
+      "id": "jazzurbane-cafe",
+      "venue": "JazzUrbane Cafe",
+      "address": "2300 Washington St",
+      "city": "Roxbury",
+      "state": "MA",
+      "postal_code": "02119",
+      "latitude": 42.33021,
+      "longitude": -71.08364,
+      "collector_type": "wix_events_jsonld",
+      "url": "https://www.jazzurbanecafe.com/events",
+      "default_category": "Live Music",
+      "default_admission": "ticketed",
+      "enabled": true
+    },
+    {
+      "id": "hibernian-hall",
+      "venue": "Hibernian Hall",
+      "address": "184 Dudley St",
+      "city": "Roxbury",
+      "state": "MA",
+      "postal_code": "02119",
+      "latitude": 42.32863,
+      "longitude": -71.08212,
+      "collector_type": "tribe_api",
+      "url": "https://www.madison-park.org/events/category/hibernian-hall/",
+      "tribe_base_url": "https://www.madison-park.org",
+      "tribe_category": "hibernian-hall",
+      "default_category": "Live Music",
+      "default_admission": "ticketed",
+      "enabled": true
+    },
+    {
+      "id": "long-live-roxbury",
+      "venue": "Long Live Roxbury",
+      "address": "152 Hampden St",
+      "city": "Roxbury",
+      "state": "MA",
+      "postal_code": "02119",
+      "latitude": 42.32775,
+      "longitude": -71.07490,
+      "collector_type": "recurring",
+      "url": "https://www.longlivebeerworks.com/boston",
+      "default_category": "Live Music",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Thursday Live Jazz Night",
+          "weekdays": ["THU"],
+          "start_time": "18:00",
+          "end_time": "21:00",
+          "description": "Free weekly Thursday live jazz, Latin, and world music night at Long Live Roxbury taproom."
+        }
+      ]
+    },
+    {
+      "id": "slades-bar-and-grill",
+      "venue": "Slade's Bar & Grill",
+      "address": "958 Tremont St",
+      "city": "Roxbury",
+      "state": "MA",
+      "postal_code": "02120",
+      "latitude": 42.33229,
+      "longitude": -71.09337,
+      "collector_type": "recurring",
+      "url": "https://www.sladesbarandgrill.com/",
+      "default_category": "DJ",
+      "default_admission": "cover",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Weekend Live DJs (R&B, Reggae & Dancehall)",
+          "weekdays": ["FRI", "SAT"],
+          "start_time": "22:00",
+          "end_time": "02:00",
+          "description": "Legendary Roxbury soul-food & nightlife spot featuring weekend DJ sets spinning R&B, reggae, and dancehall. 21+."
+        }
+      ]
     }
   ]
 }

@@ -273,6 +273,8 @@ def collect_tribe_api(venue_cfg, window_start, window_end):
         "end_date": window_end.strftime("%Y-%m-%d %H:%M:%S"),
         "per_page": 50,
     }
+    if venue_cfg.get("tribe_category"):
+        params["categories"] = venue_cfg["tribe_category"]
     events = []
     page = 1
     while page <= 5:
@@ -807,6 +809,175 @@ def collect_llm_html(venue_cfg, window_start, window_end, *, dry_run=False, use_
 
 
 # ---------------------------------------------------------------------------
+# 6b. DETERMINISTIC: TOCKIFY PUBLIC CALENDAR JSON API
+# ---------------------------------------------------------------------------
+
+def collect_tockify(venue_cfg, window_start, window_end):
+    calname = venue_cfg["tockify_calendar"]
+    start_ms = int((window_start - timedelta(hours=6)).timestamp() * 1000)
+    end_ms = int(window_end.timestamp() * 1000)
+    resp = requests.get(
+        "https://tockify.com/api/ngevent",
+        params={"calname": calname, "startms": start_ms, "endms": end_ms, "max": 100},
+        headers=HEADERS,
+        timeout=20,
+    )
+    resp.raise_for_status()
+    payload = resp.json()
+    raw_events = payload.get("events") or []
+
+    events = []
+    for item in raw_events:
+        when = item.get("when") or {}
+        if when.get("allDay"):
+            continue
+        start_ms_val = (when.get("start") or {}).get("millis")
+        if not start_ms_val:
+            continue
+        start_dt = datetime.fromtimestamp(start_ms_val / 1000.0, tz=timezone.utc).astimezone(EASTERN)
+        end_ms_val = (when.get("end") or {}).get("millis")
+        end_dt = None
+        if end_ms_val and end_ms_val > start_ms_val:
+            end_dt = datetime.fromtimestamp(end_ms_val / 1000.0, tz=timezone.utc).astimezone(EASTERN)
+
+        if not in_window(start_dt, end_dt, window_start, window_end):
+            continue
+
+        content = item.get("content") or {}
+        title = html_lib.unescape(str((content.get("summary") or {}).get("text") or "")).strip()
+        if not title or CLOSURE_RE.search(title):
+            continue
+
+        desc_raw = (content.get("description") or {}).get("text") or ""
+        desc = strip_html_inline(desc_raw)
+        if len(desc) > 500:
+            desc = desc[:497].rsplit(" ", 1)[0] + "..."
+
+        cost = html_lib.unescape(str(content.get("cost") or "")).strip() or None
+        event_url = content.get("customButtonLink") or venue_cfg["url"]
+        eid = (item.get("eid") or {}).get("uid") or f"{title}|{start_dt.isoformat()}"
+
+        image_url = None
+        img_sets = content.get("imageSets") or []
+        if isinstance(img_sets, list) and img_sets and isinstance(img_sets[0], dict):
+            image_url = img_sets[0].get("url")
+
+        events.append(base_event(
+            venue_cfg,
+            title=title,
+            start=start_dt.isoformat(),
+            end=end_dt.isoformat() if end_dt else None,
+            url=event_url,
+            description=desc,
+            source_id=f"tockify:{venue_cfg['id']}:{eid}",
+            image_url=image_url,
+            price=cost,
+            extra={"collector": "tockify"},
+        ))
+
+    return sorted(events, key=lambda e: e["start"])
+
+
+# ---------------------------------------------------------------------------
+# 6c. DETERMINISTIC: WIX EVENTS /event-details JSON-LD COLLECTOR
+# ---------------------------------------------------------------------------
+
+def collect_wix_events_jsonld(venue_cfg, window_start, window_end):
+    from urllib.parse import urljoin
+
+    resp = requests.get(venue_cfg["url"], headers=HEADERS, timeout=20)
+    resp.raise_for_status()
+    soup = BeautifulSoup(resp.text, "html.parser")
+
+    detail_urls = []
+    seen = set()
+    for a in soup.find_all("a", href=True):
+        href = a["href"]
+        if "/event-details/" not in href:
+            continue
+        full = urljoin(resp.url, href).split("?")[0].rstrip("/")
+        if full not in seen:
+            seen.add(full)
+            detail_urls.append(full)
+        if len(detail_urls) >= int(venue_cfg.get("max_detail_pages", 15)):
+            break
+
+    events = []
+    for durl in detail_urls:
+        try:
+            dr = requests.get(durl, headers=HEADERS, timeout=15)
+            if dr.status_code != 200:
+                continue
+        except requests.RequestException:
+            continue
+
+        dsoup = BeautifulSoup(dr.text, "html.parser")
+        for script in dsoup.find_all("script", type="application/ld+json"):
+            try:
+                blob = json.loads(script.get_text() or "")
+            except json.JSONDecodeError:
+                continue
+            nodes = blob if isinstance(blob, list) else (blob.get("@graph") if isinstance(blob, dict) and "@graph" in blob else [blob])
+            for node in nodes:
+                if not isinstance(node, dict):
+                    continue
+                ntype = str(node.get("@type") or "")
+                if "Event" not in ntype:
+                    continue
+                title = html_lib.unescape(str(node.get("name") or "")).strip()
+                if not title or CLOSURE_RE.search(title):
+                    continue
+                start_dt = parse_iso_eastern(node.get("startDate"))
+                if start_dt is None:
+                    continue
+                end_dt = parse_iso_eastern(node.get("endDate"))
+                if end_dt is not None and end_dt <= start_dt:
+                    end_dt = None
+                if not in_window(start_dt, end_dt, window_start, window_end):
+                    continue
+
+                desc = strip_html_inline(node.get("description") or "")
+                if len(desc) > 500:
+                    desc = desc[:497].rsplit(" ", 1)[0] + "..."
+
+                img = node.get("image")
+                if isinstance(img, list) and img:
+                    img = img[0]
+                if isinstance(img, dict):
+                    img = img.get("url")
+                image_url = img if isinstance(img, str) else None
+
+                price = None
+                offers = node.get("offers")
+                if isinstance(offers, list) and offers:
+                    offers = offers[0]
+                if isinstance(offers, dict):
+                    p = offers.get("price") or offers.get("lowPrice")
+                    if p not in (None, ""):
+                        try:
+                            val = float(p)
+                            price = "Free" if val == 0 else f"${int(round(val))}"
+                        except (TypeError, ValueError):
+                            price = str(p)
+
+                events.append(base_event(
+                    venue_cfg,
+                    title=title,
+                    start=start_dt.isoformat(),
+                    end=end_dt.isoformat() if end_dt else None,
+                    url=durl,
+                    description=desc,
+                    source_id=f"wix:{venue_cfg['id']}:{durl.rsplit('/', 1)[-1]}",
+                    image_url=image_url,
+                    price=price,
+                    extra={"collector": "wix_events_jsonld"},
+                ))
+                break
+
+    return sorted(events, key=lambda e: e["start"])
+
+
+# ---------------------------------------------------------------------------
 # RUNNER
 # ---------------------------------------------------------------------------
 
@@ -842,6 +1013,10 @@ def run(venue_filter=None, dry_run=False, use_cache=True):
                 found = collect_recurring(venue_cfg, window_start, window_end)
             elif ctype == "ics":
                 found = collect_ics(venue_cfg, window_start, window_end)
+            elif ctype == "tockify":
+                found = collect_tockify(venue_cfg, window_start, window_end)
+            elif ctype == "wix_events_jsonld":
+                found = collect_wix_events_jsonld(venue_cfg, window_start, window_end)
             elif ctype == "llm_html":
                 found = collect_llm_html(venue_cfg, window_start, window_end, dry_run=dry_run, use_cache=use_cache)
             else:
