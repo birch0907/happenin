@@ -23,7 +23,7 @@ import { MapView } from './components/MapView';
 import { EventCard } from './components/EventCard';
 import { PlaceCard } from './components/PlaceCard';
 
-const HOTEL_TABS: HotelTab[] = ['Tonight', 'Dining', 'Sights'];
+const HOTEL_TABS: HotelTab[] = ['Dining', 'Sights', 'Tonight'];
 
 export default function App() {
   const [hotel, setHotel] = useState<HotelConfig | null>(null);

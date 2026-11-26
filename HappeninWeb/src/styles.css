@@ -645,6 +645,27 @@ body,
   opacity: 0.78;
 }
 
+/* Match hotel category filter chips to the hotel's accent color (e.g. gold on Charles)
+   while keeping each pin's category dot color-coded for map legibility. */
+.hotel-mode .category-chip {
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+}
+
+.hotel-mode .category-chip.active {
+  border-color: var(--cyan);
+  background: var(--cyan);
+  color: #101522;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.hotel-mode .category-chip .category-dot,
+.hotel-mode .category-chip.active .category-dot {
+  background: var(--chip-color);
+  border: 1px solid rgba(16, 21, 34, 0.65);
+}
+
 .walk-pill {
   padding: 4px 9px;
   border-radius: 999px;
@@ -775,13 +796,16 @@ body,
 }
 
 .variant-verb-poster .category-chip.active {
-  background: #0d0d0d;
-  color: #ffffff;
-  box-shadow: 2px 2px 0 var(--chip-color);
+  background: #faf089;
+  color: #0d0d0d;
+  border-color: #0d0d0d;
+  box-shadow: 2px 2px 0 #0d0d0d;
 }
 
+.variant-verb-poster .category-chip .category-dot,
 .variant-verb-poster .category-chip.active .category-dot {
   background: var(--chip-color);
+  border: 1px solid #0d0d0d;
 }
 
 .variant-verb-poster .locate-btn {
