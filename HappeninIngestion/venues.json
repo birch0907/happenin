@@ -574,13 +574,75 @@
       "postal_code": "02210",
       "latitude": 42.3522,
       "longitude": -71.0442,
-      "collector_type": "llm_html",
+      "collector_type": "recurring",
       "url": "https://www.gracebynia.com/",
       "default_category": "Live Music",
       "default_admission": "cover",
-      "default_start_time": "20:00",
-      "llm_hint": "Seaport supper club & live music lounge featuring jazz, soul, and R&B. Extract ONLY concrete dated upcoming live music events in the 14-day window.",
-      "enabled": false
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Live Jazz, Soul & R&B",
+          "weekdays": ["THU", "SUN"],
+          "start_time": "19:30",
+          "end_time": "23:00",
+          "description": "Seaport supper club and lounge featuring live jazz, soul, and R&B bands."
+        },
+        {
+          "title": "Late-Night Live Soul, Jazz & R&B",
+          "weekdays": ["FRI", "SAT"],
+          "start_time": "20:00",
+          "end_time": "00:30",
+          "description": "Weekend live jazz, soul, and R&B performances in the heart of Seaport."
+        }
+      ]
+    },
+    {
+      "id": "empire-seaport",
+      "venue": "Empire",
+      "address": "1 Marina Park Dr",
+      "city": "Boston",
+      "state": "MA",
+      "postal_code": "02210",
+      "latitude": 42.3532,
+      "longitude": -71.0439,
+      "collector_type": "recurring",
+      "url": "https://empireboston.com/",
+      "default_category": "DJ",
+      "default_admission": "cover",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Empire Late-Night DJ Lounge",
+          "weekdays": ["FRI", "SAT"],
+          "start_time": "22:00",
+          "end_time": "02:00",
+          "description": "High-energy Seaport Asian restaurant & late-night DJ lounge. 21+."
+        }
+      ]
+    },
+    {
+      "id": "luckys-lounge-weekends",
+      "venue": "Lucky's Lounge",
+      "address": "355 Congress St",
+      "city": "Boston",
+      "state": "MA",
+      "postal_code": "02210",
+      "latitude": 42.3497,
+      "longitude": -71.0468,
+      "collector_type": "recurring",
+      "url": "https://luckyslounge.com/happenings/",
+      "default_category": "Live Music",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Weekend Live Music & Late-Night DJ",
+          "weekdays": ["FRI", "SAT"],
+          "start_time": "21:30",
+          "end_time": "01:30",
+          "description": "Fort Point speakeasy-style lounge featuring live weekend bands and late-night DJs. 21+."
+        }
+      ]
     },
     {
       "id": "nicks-comedy-stop",

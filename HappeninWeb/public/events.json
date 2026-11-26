@@ -510,26 +510,6 @@
     ]
   },
   {
-    "title": "Wednesday Pre-Thanksgiving: College After Dark 18+ Ladies Free",
-    "start": "2026-11-25T22:30:00-05:00",
-    "end": "2026-11-26T02:00:00-05:00",
-    "venue": "878 Massachusetts Ave",
-    "address": "878 Massachusetts Ave, Cambridge, MA 02139, USA",
-    "latitude": 42.3676902,
-    "longitude": -71.1078201,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6b049e8a29cc9c3a45c7a7f8",
-    "url": "https://posh.vip/e/wednesday-prethanksgiving-college-after-dark-18-ladies-free",
-    "image_url": "https://images.posh.vip/originals/6b049e81173988cc5450a386",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Nightlife",
-      "18+"
-    ]
-  },
-  {
     "title": "AFTER PARTY (carlo lio)",
     "start": "2026-11-26T02:00:00-05:00",
     "end": "2026-11-26T05:45:00-05:00",
@@ -717,6 +697,39 @@
     "ai_summary": "Sporcle Stump Trivia every Thursday at Castle Island Brewing in South Boston."
   },
   {
+    "id": "grace-by-nia:7e2cba086055",
+    "title": "Live Jazz, Soul & R&B",
+    "start": "2026-11-26T19:30:00-05:00",
+    "end": "2026-11-26T23:00:00-05:00",
+    "venue": "Grace by Nia",
+    "address": "60 Seaport Blvd",
+    "city": "Boston",
+    "state": "MA",
+    "postal_code": "02210",
+    "latitude": 42.3522,
+    "longitude": -71.0442,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Grace by Nia",
+    "source_url": "https://www.gracebynia.com/",
+    "description": "Seaport supper club and lounge featuring live jazz, soul, and R&B bands.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "cover",
+    "genre": null,
+    "ages": null,
+    "default_category": "Live Music",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "Live Music",
+    "ai_tags": [
+      "Jazz",
+      "Soul",
+      "R&B"
+    ],
+    "ai_summary": "Seaport supper club and lounge featuring live jazz, soul, and R&B bands."
+  },
+  {
     "id": "the-beehive:ee26c4d13920",
     "title": "Live Jazz, Soul & Cabaret",
     "start": "2026-11-26T19:30:00-05:00",
@@ -832,26 +845,6 @@
     "ai_tags": [
       "Hookah",
       "Lounge"
-    ]
-  },
-  {
-    "title": "The best Thursday night in the city! 🔥 FREE hookah before 10PM, FREE entry before 10:30PM! Vibe Thursdays at Karma Hookah Lounge — early bi",
-    "start": "2026-11-26T20:00:00-05:00",
-    "end": "2027-03-05T02:00:00-05:00",
-    "venue": "Karma Hookah Lounge ",
-    "address": "355 Ferry St, Everett, MA 02149, USA",
-    "latitude": 42.4154832,
-    "longitude": -71.0484192,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6aa55a4151048c8a160b4ab2",
-    "url": "https://posh.vip/e/the-best-thursday-night-in-the-city-free-hookah-before-10pm-free-entry-before-1030pm-vibe-thursdays-at-karma-hookah-lounge-early-bi-2027-3-5-7-0",
-    "image_url": "https://images.posh.vip/originals/6aa55656a3eb8d8166b40b8f",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Hookah",
-      "Nightlife"
     ]
   },
   {
@@ -1061,26 +1054,6 @@
     "ai_tags": [
       "Nightlife",
       "Club"
-    ]
-  },
-  {
-    "title": "💰🤑PAID 2 PARTY🤑💰 - FGXzotix Eventertainment",
-    "start": "2026-11-26T22:00:00-05:00",
-    "end": "2026-11-27T02:00:00-05:00",
-    "venue": "Boston’s Premier Venues",
-    "address": "1 City Hall Square, Boston, MA 02201, USA",
-    "latitude": 42.3604065,
-    "longitude": -71.0577624,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6af5188340e7c79b2b197980",
-    "url": "https://posh.vip/e/paid-2-party-fgxzotix-eventertainment-2026-11-27-7-0",
-    "image_url": "https://images.posh.vip/originals/6af51655c445315df7be6781",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Nightlife",
-      "Party"
     ]
   },
   {
@@ -1782,36 +1755,37 @@
     "ai_summary": "Poly Diaz performs live at Somerville's Arts at the Armory."
   },
   {
-    "id": "tribe:lizard-lounge:48996",
-    "title": "Bluegrass:  The Band, The Last Waltz 50th Anniversary",
+    "id": "grace-by-nia:3b319b262ca0",
+    "title": "Late-Night Live Soul, Jazz & R&B",
     "start": "2026-11-27T20:00:00-05:00",
-    "end": "2026-11-27T23:00:00-05:00",
-    "venue": "Lizard Lounge",
-    "address": "1667 Massachusetts Ave",
-    "city": "Cambridge",
+    "end": "2026-11-28T00:30:00-05:00",
+    "venue": "Grace by Nia",
+    "address": "60 Seaport Blvd",
+    "city": "Boston",
     "state": "MA",
-    "postal_code": "02138",
-    "latitude": 42.3827,
-    "longitude": -71.1194,
+    "postal_code": "02210",
+    "latitude": 42.3522,
+    "longitude": -71.0442,
     "location_precision": "street",
     "source_type": "venue_website",
-    "source_name": "Lizard Lounge",
-    "source_url": "https://lizardloungeclub.com/event/bluegrass-the-band-the-last-waltz-50th-anniversary/",
-    "description": "Bluegrass The Band presents \"The Grass'd Waltz\" a bluegrass tribute to the Band's legendary \"Last Waltz\" Nov 27th. $20 adv/$25 door Doors 7 It started as a concert, it became a celebration. In honor of the 50th anniversary of The Band’s famous 1976 farewell concert, The Last Waltz, Boston’s own “Bluegrass The Band” will be reuniting, throwing “The Grass’d Waltz”. Putting a bluegrass spin on some of the best music to come out of the 1970’s, the members of Bluegrass The Band—joined by some of...",
-    "image_url": "https://lizardloungeclub.com/wp-content/uploads/08fa956c2b6b828f6dc2772c4644aac9-vnWTPI.tmp_.jpg",
-    "price": "$20.00",
-    "admission_type": "ticketed",
+    "source_name": "Grace by Nia",
+    "source_url": "https://www.gracebynia.com/",
+    "description": "Weekend live jazz, soul, and R&B performances in the heart of Seaport.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "cover",
     "genre": null,
     "ages": null,
     "default_category": "Live Music",
-    "collector": "tribe_api",
+    "collector": "recurring",
+    "recurring_rule": true,
     "ai_category": "Live Music",
     "ai_tags": [
-      "Bluegrass",
-      "Tribute"
+      "Jazz",
+      "Soul",
+      "Late Night"
     ],
-    "ai_price": "$20.00",
-    "ai_summary": "Bluegrass The Band celebrates the 50th anniversary of The Last Waltz with 'The Grass'd Waltz' at Lizard Lounge."
+    "ai_summary": "Weekend live jazz, soul, and R&B performances in the heart of the Seaport."
   },
   {
     "id": "the-bebop:207079586ee6",
@@ -2213,6 +2187,39 @@
     ]
   },
   {
+    "id": "luckys-lounge-weekends:5ac4eb3958e5",
+    "title": "Weekend Live Music & Late-Night DJ",
+    "start": "2026-11-27T21:30:00-05:00",
+    "end": "2026-11-28T01:30:00-05:00",
+    "venue": "Lucky's Lounge",
+    "address": "355 Congress St",
+    "city": "Boston",
+    "state": "MA",
+    "postal_code": "02210",
+    "latitude": 42.3497,
+    "longitude": -71.0468,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Lucky's Lounge",
+    "source_url": "https://luckyslounge.com/happenings/",
+    "description": "Fort Point speakeasy-style lounge featuring live weekend bands and late-night DJs. 21+.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Live Music",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "Live Music",
+    "ai_tags": [
+      "Live Bands",
+      "DJ",
+      "21+"
+    ],
+    "ai_summary": "Speakeasy-style lounge in Fort Point featuring live weekend bands and late-night DJs."
+  },
+  {
     "id": "lansdowne-pub:97818a4b7c8b",
     "title": "Live Band & Late-Night DJ",
     "start": "2026-11-27T21:30:00-05:00",
@@ -2370,6 +2377,39 @@
       "Nightlife"
     ],
     "ai_summary": "DJ Frank White spins a Friday night set at Middlesex Lounge."
+  },
+  {
+    "id": "empire-seaport:9eb8185ed5ce",
+    "title": "Empire Late-Night DJ Lounge",
+    "start": "2026-11-27T22:00:00-05:00",
+    "end": "2026-11-28T02:00:00-05:00",
+    "venue": "Empire",
+    "address": "1 Marina Park Dr",
+    "city": "Boston",
+    "state": "MA",
+    "postal_code": "02210",
+    "latitude": 42.3532,
+    "longitude": -71.0439,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Empire",
+    "source_url": "https://empireboston.com/",
+    "description": "High-energy Seaport Asian restaurant & late-night DJ lounge. 21+.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "cover",
+    "genre": null,
+    "ages": null,
+    "default_category": "DJ",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "DJ",
+    "ai_tags": [
+      "DJ",
+      "Late Night",
+      "21+"
+    ],
+    "ai_summary": "High-energy Seaport Asian restaurant and late-night DJ lounge."
   },
   {
     "title": "Friday — late night lou’s — proper presented by DJ L’DUKE — in the lounge",
@@ -2625,26 +2665,6 @@
     ]
   },
   {
-    "title": "Bussdown Fridays",
-    "start": "2026-11-27T22:00:00-05:00",
-    "end": "2026-11-28T02:00:00-05:00",
-    "venue": "Legacy",
-    "address": "79 Warrenton St, Boston, MA 02116, USA",
-    "latitude": 42.3499097,
-    "longitude": -71.065855,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6b0724633e07707cee004446",
-    "url": "https://posh.vip/e/bussdown-fridays-45",
-    "image_url": "https://images.posh.vip/originals/6b07245707b83393a88d10d2",
-    "min_ticket_price": 2.15,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Hip Hop",
-      "Nightclub"
-    ]
-  },
-  {
     "title": "BLACKaf",
     "start": "2026-11-27T22:00:00-05:00",
     "end": "2026-11-28T02:00:00-05:00",
@@ -2662,6 +2682,26 @@
     "ai_tags": [
       "Party",
       "Nightlife"
+    ]
+  },
+  {
+    "title": "Bussdown Fridays",
+    "start": "2026-11-27T22:00:00-05:00",
+    "end": "2026-11-28T02:00:00-05:00",
+    "venue": "Legacy",
+    "address": "79 Warrenton St, Boston, MA 02116, USA",
+    "latitude": 42.3499097,
+    "longitude": -71.065855,
+    "location_precision": "street",
+    "source_name": "POSH",
+    "source_id": "6b0724633e07707cee004446",
+    "url": "https://posh.vip/e/bussdown-fridays-45",
+    "image_url": "https://images.posh.vip/originals/6b07245707b83393a88d10d2",
+    "min_ticket_price": 2.15,
+    "ai_category": "DJ",
+    "ai_tags": [
+      "Hip Hop",
+      "Nightclub"
     ]
   },
   {
@@ -2745,95 +2785,6 @@
     ]
   },
   {
-    "title": "⚠️☢️FUSION FRIDAY☢️⚠️@ HAN - FR🥶ST FGXzotix",
-    "start": "2026-11-27T22:00:00-05:00",
-    "end": "2026-11-28T02:00:00-05:00",
-    "venue": "HAN Nightclub ",
-    "address": "HAN, Harvard Avenue, Allston, MA, USA",
-    "latitude": 42.3509805,
-    "longitude": -71.1310421,
-    "location_precision": "city",
-    "source_name": "POSH",
-    "source_id": "67f69e53f7704eb1d72c7d10",
-    "url": "https://posh.vip/e/fusion-friday-frst-fgxzotix-2025-11-1-6-0",
-    "image_url": "https://images.posh.vip/originals/6b069b5e2bf61643f8ddd832",
-    "min_ticket_price": 0,
-    "sources": [
-      "POSH"
-    ],
-    "ticket_links": [
-      "https://posh.vip/e/fusion-friday-frst-fgxzotix-2025-11-1-6-0",
-      "https://posh.vip/e/fusion-friday-han-frst-fgxzotix-2026-10-31-6-0",
-      "https://posh.vip/e/fusion-friday-han-frst-fgxzotix-2026-8-22-6-0",
-      "https://posh.vip/e/fusion-friday-han-frst-fgxzotix-2026-7-4-6-0"
-    ],
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Club",
-      "Nightlife"
-    ]
-  },
-  {
-    "title": "Masquerade Presents: Black Friday",
-    "start": "2026-11-27T22:00:00-05:00",
-    "end": "2026-11-28T02:00:00-05:00",
-    "venue": "288 Green St",
-    "address": "288 Green St, Cambridge, MA 02139, USA",
-    "latitude": 42.3646038,
-    "longitude": -71.1043268,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6add08ef67398402e33c8c99",
-    "url": "https://posh.vip/e/masquerade-presents-black-friday",
-    "image_url": "https://images.posh.vip/originals/6ae0babec08f96662c30e7c4",
-    "min_ticket_price": 47.99,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Dance",
-      "Nightlife"
-    ]
-  },
-  {
-    "title": "🖤♠️♣️BLACK AF♣️♠️🖤 @ DESCENT - FR🥶ST FGXzotix",
-    "start": "2026-11-27T22:00:00-05:00",
-    "end": "2026-11-28T02:00:00-05:00",
-    "venue": "The Grand Boston",
-    "address": "58 Seaport Blvd #300, Boston, MA 02210, USA",
-    "latitude": 42.3531349,
-    "longitude": -71.0474416,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6a7f718aadd7c12c8fad97cf",
-    "url": "https://posh.vip/e/black-af-the-grand-frst-fgxzotix-copy",
-    "image_url": "https://images.posh.vip/originals/6b00f39eac9af17be4af0b8d",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Club",
-      "Nightlife"
-    ]
-  },
-  {
-    "title": "☢️FUSION🥧THXGVG☢️@ HAN - FR🥶ST FGXzotix",
-    "start": "2026-11-27T22:00:00-05:00",
-    "end": "2026-11-28T02:00:00-05:00",
-    "venue": "HAN Nightclub ",
-    "address": "HAN, Harvard Avenue, Allston, MA, USA",
-    "latitude": 42.3509805,
-    "longitude": -71.1310421,
-    "location_precision": "city",
-    "source_name": "POSH",
-    "source_id": "69727d0def6a6903977097ea",
-    "url": "https://posh.vip/e/fusion-friday-han-frst-fgxzotix-2026-11-28-7-0",
-    "image_url": "https://images.posh.vip/originals/6af25d23ef825b4060582789",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Club",
-      "Nightlife"
-    ]
-  },
-  {
     "title": "FUSION FRIDAYS AT HAN BOSTON - MTP EVENTS",
     "start": "2026-11-27T22:00:00-05:00",
     "end": "2026-11-28T02:00:00-05:00",
@@ -2895,26 +2846,6 @@
     ]
   },
   {
-    "title": "💰🤑PAID 2 PARTY🤑💰 - FGXzotix Eventertainment",
-    "start": "2026-11-27T22:00:00-05:00",
-    "end": "2026-11-28T02:00:00-05:00",
-    "venue": "Boston’s Premier Venues",
-    "address": "1 City Hall Square, Boston, MA 02201, USA",
-    "latitude": 42.3604065,
-    "longitude": -71.0577624,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6af5188340e7c79b2b197983",
-    "url": "https://posh.vip/e/paid-2-party-fgxzotix-eventertainment-2026-11-28-7-0",
-    "image_url": "https://images.posh.vip/originals/6af51655c445315df7be6781",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Party",
-      "Nightlife"
-    ]
-  },
-  {
     "title": "mob",
     "start": "2026-11-27T22:00:00-05:00",
     "end": "2026-11-28T02:00:00-05:00",
@@ -2935,62 +2866,22 @@
     ]
   },
   {
-    "title": "🍹SCORPION FRIDAYS🦂 ⛔️🆓ENTRY⛔️ (FR❄️ST FGXzotix)",
+    "title": "Masquerade Presents: Black Friday",
     "start": "2026-11-27T22:00:00-05:00",
     "end": "2026-11-28T02:00:00-05:00",
-    "venue": "Scorpion Bar Seaport Boston",
-    "address": "58 Seaport Blvd #200, Boston, MA 02210, USA",
-    "latitude": 42.3530398,
-    "longitude": -71.04756669999999,
+    "venue": "288 Green St",
+    "address": "288 Green St, Cambridge, MA 02139, USA",
+    "latitude": 42.3646038,
+    "longitude": -71.1043268,
     "location_precision": "street",
     "source_name": "POSH",
-    "source_id": "6a7a38db694aee6299464b1a",
-    "url": "https://posh.vip/e/-scorpion-fridaysentryfrst-fgxzotix-2026-11-28-7-0",
-    "image_url": "https://images.posh.vip/originals/68d2cf94d21a15a14acaf5c9",
-    "min_ticket_price": 0,
+    "source_id": "6add08ef67398402e33c8c99",
+    "url": "https://posh.vip/e/masquerade-presents-black-friday",
+    "image_url": "https://images.posh.vip/originals/6ae0babec08f96662c30e7c4",
+    "min_ticket_price": 47.99,
     "ai_category": "DJ",
     "ai_tags": [
-      "Club",
-      "Nightlife"
-    ]
-  },
-  {
-    "title": "FETE NIGHTS (Fridays) - FR🥶ST FGXzotix",
-    "start": "2026-11-27T22:00:00-05:00",
-    "end": "2026-11-28T02:00:00-05:00",
-    "venue": "Fete",
-    "address": "25 Kingston St, Boston, MA 02111, USA",
-    "latitude": 42.3537274,
-    "longitude": -71.0592945,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6a216afaf74424681f7c482a",
-    "url": "https://posh.vip/e/fete-nights-fridays-frst-fgxzotix-2026-11-28-7-0",
-    "image_url": "https://images.posh.vip/originals/6a2168a2d2a0d999b6912867",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Party",
-      "Nightlife"
-    ]
-  },
-  {
-    "title": "🎩FRIDAYS  @ THE GRAND🎹 ⛔️🆓 ENTRY⛔️- FR🥶ST FGXzotix",
-    "start": "2026-11-27T22:00:00-05:00",
-    "end": "2026-11-28T02:00:00-05:00",
-    "venue": "THE GRAND",
-    "address": "58 Seaport Blvd #300, Boston, MA 02210, USA",
-    "latitude": 42.3531349,
-    "longitude": -71.0474416,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "69268b79dee0294bdccaa3f0",
-    "url": "https://posh.vip/e/amal-nemer-the-grand-2026-11-28-7-0",
-    "image_url": "https://images.posh.vip/originals/6940f9bfccfe8bc7994ab7ff",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Club",
+      "Dance",
       "Nightlife"
     ]
   },
@@ -3780,39 +3671,6 @@
     ]
   },
   {
-    "id": "tribe:lizard-lounge:50646",
-    "title": "Club d’Elf feat Rob Compa and Vicente Lebron  Early Show",
-    "start": "2026-11-28T19:30:00-05:00",
-    "end": "2026-11-28T21:30:00-05:00",
-    "venue": "Lizard Lounge",
-    "address": "1667 Massachusetts Ave",
-    "city": "Cambridge",
-    "state": "MA",
-    "postal_code": "02138",
-    "latitude": 42.3827,
-    "longitude": -71.1194,
-    "location_precision": "street",
-    "source_type": "venue_website",
-    "source_name": "Lizard Lounge",
-    "source_url": "https://lizardloungeclub.com/event/club-delf-feat-rob-compa-and-vicente-lebron-early-show/",
-    "description": "Club d'Elf returns to the Lizard Lounge with special guests Rob Compa and Vicente Lebron Nov 28th! Event is 21+ $30/$35 GA $80 reserved table Doors 6:30 Club d’Elf returns to the Lizard Lounge Nov 28th for two post Thanksgiving shows! The line up features Rob Compa (guitar), Mister Rourke (turntables), Paul Schultheis (keys) Mike Rivard (bass & sintir), Vicente Lebron (congas) and Dean Johnston (drums). The band played its first show at The Lizard in Feb 1998 and began a residency that ran...",
-    "image_url": "https://lizardloungeclub.com/wp-content/uploads/f7e22baab439c358f4bddc451b669f9b-ZbAqJJ.tmp_.jpg",
-    "price": "$30.00 - $80.00",
-    "admission_type": "ticketed",
-    "genre": null,
-    "ages": null,
-    "default_category": "Live Music",
-    "collector": "tribe_api",
-    "ai_category": "Live Music",
-    "ai_tags": [
-      "Funk",
-      "Jam",
-      "21+"
-    ],
-    "ai_price": "$30.00 - $80.00",
-    "ai_summary": "Groove powerhouse Club d'Elf plays an early show at the Lizard Lounge joined by guests Rob Compa and Vicente Lebron."
-  },
-  {
     "id": "sally-obriens:927313b85dde",
     "title": "Sarah Levecque Band, American Beauties",
     "start": "2026-11-28T19:30:00-05:00",
@@ -3941,6 +3799,39 @@
       "Holiday"
     ],
     "ai_summary": "Enjoy an evening of festive laughs with Sister's Christmas Catechism at Charles Playhouse."
+  },
+  {
+    "id": "grace-by-nia:a35b21b63179",
+    "title": "Late-Night Live Soul, Jazz & R&B",
+    "start": "2026-11-28T20:00:00-05:00",
+    "end": "2026-11-29T00:30:00-05:00",
+    "venue": "Grace by Nia",
+    "address": "60 Seaport Blvd",
+    "city": "Boston",
+    "state": "MA",
+    "postal_code": "02210",
+    "latitude": 42.3522,
+    "longitude": -71.0442,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Grace by Nia",
+    "source_url": "https://www.gracebynia.com/",
+    "description": "Weekend live jazz, soul, and R&B performances in the heart of Seaport.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "cover",
+    "genre": null,
+    "ages": null,
+    "default_category": "Live Music",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "Live Music",
+    "ai_tags": [
+      "Jazz",
+      "Soul",
+      "Late Night"
+    ],
+    "ai_summary": "Weekend live jazz, soul, and R&B performances in the heart of the Seaport."
   },
   {
     "id": "the-bebop:da1a9f5a7db9",
@@ -4605,6 +4496,39 @@
     ]
   },
   {
+    "id": "luckys-lounge-weekends:97c453adfe09",
+    "title": "Weekend Live Music & Late-Night DJ",
+    "start": "2026-11-28T21:30:00-05:00",
+    "end": "2026-11-29T01:30:00-05:00",
+    "venue": "Lucky's Lounge",
+    "address": "355 Congress St",
+    "city": "Boston",
+    "state": "MA",
+    "postal_code": "02210",
+    "latitude": 42.3497,
+    "longitude": -71.0468,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Lucky's Lounge",
+    "source_url": "https://luckyslounge.com/happenings/",
+    "description": "Fort Point speakeasy-style lounge featuring live weekend bands and late-night DJs. 21+.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Live Music",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "Live Music",
+    "ai_tags": [
+      "Live Bands",
+      "DJ",
+      "21+"
+    ],
+    "ai_summary": "Speakeasy-style lounge in Fort Point featuring live weekend bands and late-night DJs."
+  },
+  {
     "id": "lansdowne-pub:efd53a1021fb",
     "title": "Live Band & Late-Night DJ",
     "start": "2026-11-28T21:30:00-05:00",
@@ -4664,38 +4588,6 @@
       "Dance"
     ],
     "ai_summary": "Middle East Corner hosts a late-night electronic dance session with DJ APPARITION and Dolly Molly."
-  },
-  {
-    "id": "tribe:lizard-lounge:50647",
-    "title": "Club d’Elf feat Rob Compa, Vicente Lebron  Late Show",
-    "start": "2026-11-28T22:00:00-05:00",
-    "end": "2026-11-29T00:00:00-05:00",
-    "venue": "Lizard Lounge",
-    "address": "1667 Massachusetts Ave",
-    "city": "Cambridge",
-    "state": "MA",
-    "postal_code": "02138",
-    "latitude": 42.3827,
-    "longitude": -71.1194,
-    "location_precision": "street",
-    "source_type": "venue_website",
-    "source_name": "Lizard Lounge",
-    "source_url": "https://lizardloungeclub.com/event/club-delf-feat-rob-compa-vicente-lebron-late-show/",
-    "description": "Club d'Elf returns to the Lizard Lounge with special guests Rob Compa and Vicente Lebron Nov 28th! Event is 21+ $30/$35 GA $80 reserved table Doors 9:30 Club d’Elf returns to the Lizard Lounge Nov 28th for two post Thanksgiving shows! The line up features Rob Compa (guitar), Mister Rourke (turntables), Paul Schultheis (keys) Mike Rivard (bass & sintir), Vicente Lebron (congas) and Dean Johnston (drums). The band played its first show at The Lizard in Feb 1998 and began a residency that ran...",
-    "image_url": "https://lizardloungeclub.com/wp-content/uploads/81b0ead676c217fceee00082cc726c25-gf8wVo.tmp_.jpg",
-    "price": "$30.00 - $80.00",
-    "admission_type": "ticketed",
-    "genre": null,
-    "ages": null,
-    "default_category": "Live Music",
-    "collector": "tribe_api",
-    "ai_category": "Live Music",
-    "ai_tags": [
-      "Jam",
-      "21+"
-    ],
-    "ai_price": "$30.00 - $80.00",
-    "ai_summary": "Club d’Elf returns to Lizard Lounge for a late show featuring special guests Rob Compa and Vicente Lebron."
   },
   {
     "id": "the-burren:69c9e5e39f7e",
@@ -4828,6 +4720,39 @@
       "21+"
     ],
     "ai_summary": "The Phoenix Landing hosts its weekly Boom Boom Room party with DJs spinning dance hits and throwbacks in Central Square."
+  },
+  {
+    "id": "empire-seaport:0818325a5a91",
+    "title": "Empire Late-Night DJ Lounge",
+    "start": "2026-11-28T22:00:00-05:00",
+    "end": "2026-11-29T02:00:00-05:00",
+    "venue": "Empire",
+    "address": "1 Marina Park Dr",
+    "city": "Boston",
+    "state": "MA",
+    "postal_code": "02210",
+    "latitude": 42.3532,
+    "longitude": -71.0439,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Empire",
+    "source_url": "https://empireboston.com/",
+    "description": "High-energy Seaport Asian restaurant & late-night DJ lounge. 21+.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "cover",
+    "genre": null,
+    "ages": null,
+    "default_category": "DJ",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "DJ",
+    "ai_tags": [
+      "DJ",
+      "Late Night",
+      "21+"
+    ],
+    "ai_summary": "High-energy Seaport Asian restaurant and late-night DJ lounge."
   },
   {
     "title": "SATURDAY – late night lou’s – galaxy express ft. dj saucy lady - IN THE LOUNGE",
@@ -5077,6 +5002,26 @@
     ]
   },
   {
+    "title": "Supreme Island 🏝️",
+    "start": "2026-11-28T22:00:00-05:00",
+    "end": "2026-11-29T02:00:00-05:00",
+    "venue": "Hava Nightclub",
+    "address": "246 Tremont St, Boston, MA 02116, USA",
+    "latitude": 42.3507311,
+    "longitude": -71.0647252,
+    "location_precision": "street",
+    "source_name": "POSH",
+    "source_id": "6ab3e527a7b74c7f36e4366b",
+    "url": "https://posh.vip/e/supreme-island-2026-11-29-7-0",
+    "image_url": "https://images.posh.vip/originals/6b04dc739a1607241a4f3edd",
+    "min_ticket_price": 0,
+    "ai_category": "DJ",
+    "ai_tags": [
+      "Nightclub",
+      "Dance Party"
+    ]
+  },
+  {
     "title": "TREMONT NIGHTS @ Reunion After Dark (21+)",
     "start": "2026-11-28T22:00:00-05:00",
     "end": "2026-11-29T02:00:00-05:00",
@@ -5134,26 +5079,6 @@
     "ai_tags": [
       "Caribbean",
       "Club"
-    ]
-  },
-  {
-    "title": "💰🤑PAID 2 PARTY🤑💰 - FGXzotix Eventertainment",
-    "start": "2026-11-28T22:00:00-05:00",
-    "end": "2026-11-29T02:00:00-05:00",
-    "venue": "Boston’s Premier Venues",
-    "address": "1 City Hall Square, Boston, MA 02201, USA",
-    "latitude": 42.3604065,
-    "longitude": -71.0577624,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6af5188340e7c79b2b197986",
-    "url": "https://posh.vip/e/paid-2-party-fgxzotix-eventertainment-2026-11-29-7-0",
-    "image_url": "https://images.posh.vip/originals/6af51655c445315df7be6781",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Party",
-      "Nightlife"
     ]
   },
   {
@@ -5237,47 +5162,6 @@
     ]
   },
   {
-    "title": "🔒🇯🇲STRICTLY VYBZ🇹🇹🔒 @ HAN - FR🥶ST FGXZOTIX",
-    "start": "2026-11-28T22:00:00-05:00",
-    "end": "2026-11-29T14:45:00-05:00",
-    "venue": "HAN",
-    "address": "186 Harvard Ave, Allston, MA 02134, USA",
-    "latitude": 42.35098050000001,
-    "longitude": -71.1310421,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6ab6cd43e66881c73fea6995",
-    "url": "https://posh.vip/e/strictly-vybz-han-frst-fgxzotix",
-    "image_url": "https://images.posh.vip/originals/6b07576d9bec3f0b0581067e",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Caribbean",
-      "Dancehall",
-      "Nightclub"
-    ]
-  },
-  {
-    "title": "Supreme Island 🏝️",
-    "start": "2026-11-28T22:00:00-05:00",
-    "end": "2026-11-29T02:00:00-05:00",
-    "venue": "Hava Nightclub",
-    "address": "246 Tremont St, Boston, MA 02116, USA",
-    "latitude": 42.3507311,
-    "longitude": -71.0647252,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6ab3e527a7b74c7f36e4366b",
-    "url": "https://posh.vip/e/supreme-island-2026-11-29-7-0",
-    "image_url": "https://images.posh.vip/originals/6b04dc739a1607241a4f3edd",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Nightclub",
-      "Dance Party"
-    ]
-  },
-  {
     "title": "Dre Sinatra @ The Grand Saturdays",
     "start": "2026-11-28T22:00:00-05:00",
     "end": "2026-11-29T02:00:00-05:00",
@@ -5295,34 +5179,6 @@
     "ai_tags": [
       "DJ",
       "Nightclub"
-    ]
-  },
-  {
-    "title": "🏖️SUPREME ISLAND🏖️ @ HAVA - FR🥶ST FGXzotix",
-    "start": "2026-11-28T22:00:00-05:00",
-    "end": "2026-11-29T02:00:00-05:00",
-    "venue": "HAVA Nightclub",
-    "address": "246 Tremont St, Boston, MA 02116, USA",
-    "latitude": 42.3507311,
-    "longitude": -71.0647252,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "69cc542cdf2ab227931c26df",
-    "url": "https://posh.vip/e/supreme-island-hava-frst-fgxzotix-2026-11-29-7-0",
-    "image_url": "https://images.posh.vip/originals/6b0615a8ab54c3c070d0f960",
-    "min_ticket_price": 0,
-    "sources": [
-      "POSH"
-    ],
-    "ticket_links": [
-      "https://posh.vip/e/supreme-island-hava-frst-fgxzotix-2026-11-29-7-0",
-      "https://posh.vip/e/supreme-island-hava-frst-fgxzotix-2026-11-1-6-0",
-      "https://posh.vip/e/supreme-island-frst-fgxzotix-2025-11-2-6-0"
-    ],
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Nightclub",
-      "Dance Party"
     ]
   },
   {
@@ -6036,38 +5892,6 @@
     "ai_summary": "Les Extemps brings improvisational and experimental music to the intimate stage at The Lilypad."
   },
   {
-    "id": "tribe:lizard-lounge:50119",
-    "title": "Lizard Lounge Poetry Jam-William James",
-    "start": "2026-11-29T19:00:00-05:00",
-    "end": "2026-11-29T22:30:00-05:00",
-    "venue": "Lizard Lounge",
-    "address": "1667 Massachusetts Ave",
-    "city": "Cambridge",
-    "state": "MA",
-    "postal_code": "02138",
-    "latitude": 42.3827,
-    "longitude": -71.1194,
-    "location_precision": "street",
-    "source_type": "venue_website",
-    "source_name": "Lizard Lounge",
-    "source_url": "https://lizardloungeclub.com/event/lizard-lounge-poetry-jam-william-james-2/",
-    "description": "The Lizard Lounge Poetry Jam with featured poet William James Nov 29th! $10 William James (Bill Stambaugh) had his first feature at the Lounge in November of 2025. He has been writing since his college days. A performer at heart, he was pulled to the stage at an early age and has never looked back . He is an actor, director, teacher, and coach who preaches self-confidence to poets and actors he guides to the next level. As the dark days of Covid-19 were finally fading, he wandered into the...",
-    "image_url": "https://lizardloungeclub.com/wp-content/uploads/fdbad1a61d6a14fd754586bee63b57bf-GCw9Da.tmp_.jpg",
-    "price": "$10.00",
-    "admission_type": "ticketed",
-    "genre": null,
-    "ages": null,
-    "default_category": "Live Music",
-    "collector": "tribe_api",
-    "ai_category": "Social",
-    "ai_tags": [
-      "Poetry",
-      "Spoken Word"
-    ],
-    "ai_price": "$10.00",
-    "ai_summary": "Lizard Lounge hosts its signature Poetry Jam, featuring a showcase performance by poet and actor William James."
-  },
-  {
     "id": "tribe:the-rockwell:13096",
     "title": "Doprah’s Favorite Things",
     "start": "2026-11-29T19:00:00-05:00",
@@ -6230,6 +6054,39 @@
       "Comedy"
     ],
     "ai_summary": "A night of long-form improv comedy performed by Boston talent."
+  },
+  {
+    "id": "grace-by-nia:4e32ac37f3df",
+    "title": "Live Jazz, Soul & R&B",
+    "start": "2026-11-29T19:30:00-05:00",
+    "end": "2026-11-29T23:00:00-05:00",
+    "venue": "Grace by Nia",
+    "address": "60 Seaport Blvd",
+    "city": "Boston",
+    "state": "MA",
+    "postal_code": "02210",
+    "latitude": 42.3522,
+    "longitude": -71.0442,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Grace by Nia",
+    "source_url": "https://www.gracebynia.com/",
+    "description": "Seaport supper club and lounge featuring live jazz, soul, and R&B bands.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "cover",
+    "genre": null,
+    "ages": null,
+    "default_category": "Live Music",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "Live Music",
+    "ai_tags": [
+      "Jazz",
+      "Soul",
+      "R&B"
+    ],
+    "ai_summary": "Seaport supper club and lounge featuring live jazz, soul, and R&B bands."
   },
   {
     "id": "the-beehive:3a4bc7d83600",
@@ -6618,26 +6475,6 @@
     "ai_tags": [
       "DJ",
       "Nightclub"
-    ]
-  },
-  {
-    "title": "💰🤑PAID 2 PARTY🤑💰 - FGXzotix Eventertainment",
-    "start": "2026-11-29T22:00:00-05:00",
-    "end": "2026-11-30T02:00:00-05:00",
-    "venue": "Boston’s Premier Venues",
-    "address": "1 City Hall Square, Boston, MA 02201, USA",
-    "latitude": 42.3604065,
-    "longitude": -71.0577624,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6af5188340e7c79b2b197989",
-    "url": "https://posh.vip/e/paid-2-party-fgxzotix-eventertainment-2026-11-30-7-0",
-    "image_url": "https://images.posh.vip/originals/6af51655c445315df7be6781",
-    "min_ticket_price": 0,
-    "ai_category": "Social",
-    "ai_tags": [
-      "Party",
-      "Nightlife"
     ]
   },
   {
@@ -7459,25 +7296,6 @@
     "ai_summary": "The Fringe performs a late-night set at The Lilypad."
   },
   {
-    "title": "💰🤑PAID 2 PARTY🤑💰 - FGXzotix Eventertainment",
-    "start": "2026-11-30T22:00:00-05:00",
-    "end": "2026-12-01T02:00:00-05:00",
-    "venue": "Boston’s Premier Venues",
-    "address": "1 City Hall Square, Boston, MA 02201, USA",
-    "latitude": 42.3604065,
-    "longitude": -71.0577624,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6af5188340e7c79b2b19798c",
-    "url": "https://posh.vip/e/paid-2-party-fgxzotix-eventertainment-2026-12-1-7-0",
-    "image_url": "https://images.posh.vip/originals/6af51655c445315df7be6781",
-    "min_ticket_price": 0,
-    "ai_category": "Exclude",
-    "ai_tags": [
-      "Nightlife"
-    ]
-  },
-  {
     "id": "sqsp:castle-island-southie:6ad905fcad215c70383b33f7",
     "title": "Musical Bingo",
     "start": "2026-12-01T18:30:00.524000-05:00",
@@ -8246,25 +8064,6 @@
     ]
   },
   {
-    "title": "💰🤑PAID 2 PARTY🤑💰 - FGXzotix Eventertainment",
-    "start": "2026-12-01T22:00:00-05:00",
-    "end": "2026-12-02T02:00:00-05:00",
-    "venue": "Boston’s Premier Venues",
-    "address": "1 City Hall Square, Boston, MA 02201, USA",
-    "latitude": 42.3604065,
-    "longitude": -71.0577624,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6af5188340e7c79b2b19798f",
-    "url": "https://posh.vip/e/paid-2-party-fgxzotix-eventertainment-2026-12-2-7-0",
-    "image_url": "https://images.posh.vip/originals/6af51655c445315df7be6781",
-    "min_ticket_price": 0,
-    "ai_category": "Exclude",
-    "ai_tags": [
-      "Nightlife"
-    ]
-  },
-  {
     "id": "the-burren:8acc4b4391af",
     "title": "Brian O'Donovan Legacy Series: An Irish Christmas with John Doyle, Cathie Ryan & Mick McAuley (Early Show)",
     "start": "2026-12-02T18:00:00-05:00",
@@ -8456,39 +8255,6 @@
       "Craft Beer"
     ],
     "ai_summary": "Learn American mah-jongg with 4 Blondes Mahjong, with ticket admission including one drink."
-  },
-  {
-    "id": "tribe:lizard-lounge:50332",
-    "title": "Duke Levine & The Super Sweet Sounds Of The 70s Early Show",
-    "start": "2026-12-02T19:00:00-05:00",
-    "end": "2026-12-02T21:00:00-05:00",
-    "venue": "Lizard Lounge",
-    "address": "1667 Massachusetts Ave",
-    "city": "Cambridge",
-    "state": "MA",
-    "postal_code": "02138",
-    "latitude": 42.3827,
-    "longitude": -71.1194,
-    "location_precision": "street",
-    "source_type": "venue_website",
-    "source_name": "Lizard Lounge",
-    "source_url": "https://lizardloungeclub.com/event/duke-levine-the-super-sweet-sounds-of-the-70s-early-show-2/",
-    "description": "Duke Levine & The Super Sweet Sound of the 70's Return to the Lizard Lounge Dec 2nd at 7 and 9:30 Do ors 6 Take a stroll down the bong-lined sidewalks of Duke Levine’s musical youth. His all-star band is gonna help him travel back to a time when The Lord’s Prayer, Strauss, Isaac Hayes and Charlie Daniels were all on the Top 40. Instrumental arrangements of a bunch of tunes you know, a couple you maybe never heard, and a few you may have wanted to forget. Duke Levine – Guitar Kevin Barry –...",
-    "image_url": "https://lizardloungeclub.com/wp-content/uploads/8008c9da8708446fd834bbf36dfab5b9-WSQPkk.tmp_.jpg",
-    "price": "$30.00 - $80.00",
-    "admission_type": "ticketed",
-    "genre": null,
-    "ages": null,
-    "default_category": "Live Music",
-    "collector": "tribe_api",
-    "ai_category": "Live Music",
-    "ai_tags": [
-      "70s Rock",
-      "Lizard Lounge",
-      "Roots Rock"
-    ],
-    "ai_price": "$30.00 - $80.00",
-    "ai_summary": "Duke Levine and his all-star band take over Lizard Lounge for an early set celebrating classic '70s sounds."
   },
   {
     "id": "tribe:the-rockwell:13147",
@@ -9200,39 +8966,6 @@
     "ai_summary": "Head to Zuzu in Central Square for a night of electronic beats at The Ooze."
   },
   {
-    "id": "tribe:lizard-lounge:50333",
-    "title": "Duke Levine & The Super Sweet Sounds Of The 70’s-Late Show",
-    "start": "2026-12-02T21:30:00-05:00",
-    "end": "2026-12-02T23:30:00-05:00",
-    "venue": "Lizard Lounge",
-    "address": "1667 Massachusetts Ave",
-    "city": "Cambridge",
-    "state": "MA",
-    "postal_code": "02138",
-    "latitude": 42.3827,
-    "longitude": -71.1194,
-    "location_precision": "street",
-    "source_type": "venue_website",
-    "source_name": "Lizard Lounge",
-    "source_url": "https://lizardloungeclub.com/event/duke-levine-the-super-sweet-sounds-of-the-70s-late-show-2/",
-    "description": "Duke Levine & The Super Sweet Sound of the 70's Return to the Lizard Lounge Dec 2nd at 9:30 late show. Do ors 9 Take a stroll down the bong-lined sidewalks of Duke Levine’s musical youth. His all-star band is gonna help him travel back to a time when The Lord’s Prayer, Strauss, Isaac Hayes and Charlie Daniels were all on the Top 40. Instrumental arrangements of a bunch of tunes you know, a couple you maybe never heard, and a few you may have wanted to forget. Duke Levine – Guitar Kevin Barry...",
-    "image_url": "https://lizardloungeclub.com/wp-content/uploads/021fba38c2c6c47fec899a40ed2b6d85-gxJLIK.tmp_.jpg",
-    "price": "$30.00 - $80.00",
-    "admission_type": "ticketed",
-    "genre": null,
-    "ages": null,
-    "default_category": "Live Music",
-    "collector": "tribe_api",
-    "ai_category": "Live Music",
-    "ai_tags": [
-      "70s Rock",
-      "Lizard Lounge",
-      "Roots Rock"
-    ],
-    "ai_price": "$30.00 - $80.00",
-    "ai_summary": "Duke Levine & The Super Sweet Sound of the 70's return for a late-night set at Lizard Lounge."
-  },
-  {
     "id": "luckys-lounge:8d8ce2073424",
     "title": "Karaoke Night",
     "start": "2026-12-02T21:30:00-05:00",
@@ -9287,26 +9020,6 @@
       "Inman Square"
     ],
     "ai_summary": "Cap off your Wednesday with an eclectic showcase of local talent at The Lilypad Variety Show."
-  },
-  {
-    "title": "💰🤑PAID 2 PARTY🤑💰 - FGXzotix Eventertainment",
-    "start": "2026-12-02T22:00:00-05:00",
-    "end": "2026-12-03T02:00:00-05:00",
-    "venue": "Boston’s Premier Venues",
-    "address": "1 City Hall Square, Boston, MA 02201, USA",
-    "latitude": 42.3604065,
-    "longitude": -71.0577624,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6af5188340e7c79b2b197992",
-    "url": "https://posh.vip/e/paid-2-party-fgxzotix-eventertainment-2026-12-3-7-0",
-    "image_url": "https://images.posh.vip/originals/6af51655c445315df7be6781",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Party",
-      "Nightlife"
-    ]
   },
   {
     "title": "Pepita Lo-Fi Thursday",
@@ -9816,6 +9529,39 @@
     "ai_summary": "The Adam Sherman Band takes the stage for their First Thursdays residency."
   },
   {
+    "id": "grace-by-nia:d9646ac3eaa0",
+    "title": "Live Jazz, Soul & R&B",
+    "start": "2026-12-03T19:30:00-05:00",
+    "end": "2026-12-03T23:00:00-05:00",
+    "venue": "Grace by Nia",
+    "address": "60 Seaport Blvd",
+    "city": "Boston",
+    "state": "MA",
+    "postal_code": "02210",
+    "latitude": 42.3522,
+    "longitude": -71.0442,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Grace by Nia",
+    "source_url": "https://www.gracebynia.com/",
+    "description": "Seaport supper club and lounge featuring live jazz, soul, and R&B bands.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "cover",
+    "genre": null,
+    "ages": null,
+    "default_category": "Live Music",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "Live Music",
+    "ai_tags": [
+      "Jazz",
+      "Soul",
+      "R&B"
+    ],
+    "ai_summary": "Seaport supper club and lounge featuring live jazz, soul, and R&B bands."
+  },
+  {
     "id": "the-beehive:dce055432e6a",
     "title": "Live Jazz, Soul & Cabaret",
     "start": "2026-12-03T19:30:00-05:00",
@@ -10263,27 +10009,6 @@
     ]
   },
   {
-    "title": "The best Thursday night in the city! 🔥 FREE hookah before 10PM, FREE entry before 10:30PM! Vibe Thursdays at Karma Hookah Lounge — early bi",
-    "start": "2026-12-03T20:00:00-05:00",
-    "end": "2027-03-12T02:00:00-05:00",
-    "venue": "Karma Hookah Lounge ",
-    "address": "355 Ferry St, Everett, MA 02149, USA",
-    "latitude": 42.4154832,
-    "longitude": -71.0484192,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6aa55a4151048c8a160b4ab5",
-    "url": "https://posh.vip/e/the-best-thursday-night-in-the-city-free-hookah-before-10pm-free-entry-before-1030pm-vibe-thursdays-at-karma-hookah-lounge-early-bi-2027-3-12-7-0",
-    "image_url": "https://images.posh.vip/originals/6aa55656a3eb8d8166b40b8f",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Hookah",
-      "Lounge",
-      "Nightlife"
-    ]
-  },
-  {
     "title": "Fashionably Late: Boston Fashion Nights",
     "start": "2026-12-03T20:00:00-05:00",
     "end": "2026-12-03T22:30:00-05:00",
@@ -10672,26 +10397,6 @@
     "ai_tags": [
       "Club",
       "DJ"
-    ]
-  },
-  {
-    "title": "💰🤑PAID 2 PARTY🤑💰 - FGXzotix Eventertainment",
-    "start": "2026-12-03T22:00:00-05:00",
-    "end": "2026-12-04T02:00:00-05:00",
-    "venue": "Boston’s Premier Venues",
-    "address": "1 City Hall Square, Boston, MA 02201, USA",
-    "latitude": 42.3604065,
-    "longitude": -71.0577624,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6af5188340e7c79b2b197995",
-    "url": "https://posh.vip/e/paid-2-party-fgxzotix-eventertainment-2026-12-4-7-0",
-    "image_url": "https://images.posh.vip/originals/6af51655c445315df7be6781",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Party",
-      "Nightlife"
     ]
   },
   {
@@ -11656,36 +11361,37 @@
     "ai_summary": "Celebrate the season with the traditional Holiday Pops concert at Boston Symphony Hall."
   },
   {
-    "id": "tribe:lizard-lounge:50650",
-    "title": "Madoc “Cake” Single Release with Prophet PM",
+    "id": "grace-by-nia:9451fe8602bc",
+    "title": "Late-Night Live Soul, Jazz & R&B",
     "start": "2026-12-04T20:00:00-05:00",
-    "end": "2026-12-04T23:00:00-05:00",
-    "venue": "Lizard Lounge",
-    "address": "1667 Massachusetts Ave",
-    "city": "Cambridge",
+    "end": "2026-12-05T00:30:00-05:00",
+    "venue": "Grace by Nia",
+    "address": "60 Seaport Blvd",
+    "city": "Boston",
     "state": "MA",
-    "postal_code": "02138",
-    "latitude": 42.3827,
-    "longitude": -71.1194,
+    "postal_code": "02210",
+    "latitude": 42.3522,
+    "longitude": -71.0442,
     "location_precision": "street",
     "source_type": "venue_website",
-    "source_name": "Lizard Lounge",
-    "source_url": "https://lizardloungeclub.com/event/madoc-cake-single-release-with-prophet-pm/",
-    "description": "Madoc releases her highly anticipated single, “Cake” with special guest Prophet PM at the Lizard Lounge Dec 4th! $20 adv/$25 door Doors 7 Taking inspiration from her Pacific Northwest and Irish roots, Madóc (she/they) is a Boston-based queer artist who poetically blends the styles of folk and indie pop with Celtic storytelling to create an artistic world of their own. In the summer of 2023, Madóc taught herself to play guitar. Since then, they have independently released their 2025 debut EP...",
-    "image_url": "https://lizardloungeclub.com/wp-content/uploads/30aea9843bc5b697130b1e0ca3574aec-VHk2Q5.tmp_.jpg",
-    "price": "$20.00",
-    "admission_type": "ticketed",
+    "source_name": "Grace by Nia",
+    "source_url": "https://www.gracebynia.com/",
+    "description": "Weekend live jazz, soul, and R&B performances in the heart of Seaport.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "cover",
     "genre": null,
     "ages": null,
     "default_category": "Live Music",
-    "collector": "tribe_api",
+    "collector": "recurring",
+    "recurring_rule": true,
     "ai_category": "Live Music",
     "ai_tags": [
-      "Folk Pop",
-      "Indie"
+      "Jazz",
+      "Soul",
+      "Late Night"
     ],
-    "ai_price": "$20.00",
-    "ai_summary": "Boston-based queer artist Madóc celebrates her new single 'Cake' at Lizard Lounge with special guest Prophet PM."
+    "ai_summary": "Weekend live jazz, soul, and R&B performances in the heart of the Seaport."
   },
   {
     "id": "the-bebop:50aeaa12270e",
@@ -12241,6 +11947,39 @@
     ]
   },
   {
+    "id": "luckys-lounge-weekends:db6273817d83",
+    "title": "Weekend Live Music & Late-Night DJ",
+    "start": "2026-12-04T21:30:00-05:00",
+    "end": "2026-12-05T01:30:00-05:00",
+    "venue": "Lucky's Lounge",
+    "address": "355 Congress St",
+    "city": "Boston",
+    "state": "MA",
+    "postal_code": "02210",
+    "latitude": 42.3497,
+    "longitude": -71.0468,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Lucky's Lounge",
+    "source_url": "https://luckyslounge.com/happenings/",
+    "description": "Fort Point speakeasy-style lounge featuring live weekend bands and late-night DJs. 21+.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Live Music",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "Live Music",
+    "ai_tags": [
+      "Live Bands",
+      "DJ",
+      "21+"
+    ],
+    "ai_summary": "Speakeasy-style lounge in Fort Point featuring live weekend bands and late-night DJs."
+  },
+  {
     "id": "lansdowne-pub:78fbe048c7df",
     "title": "Live Band & Late-Night DJ",
     "start": "2026-12-04T21:30:00-05:00",
@@ -12367,6 +12106,39 @@
       "Dance Party"
     ],
     "ai_summary": "Dance to throwback nineties classics at Middlesex Lounge's Friday night party."
+  },
+  {
+    "id": "empire-seaport:fb6aafae7693",
+    "title": "Empire Late-Night DJ Lounge",
+    "start": "2026-12-04T22:00:00-05:00",
+    "end": "2026-12-05T02:00:00-05:00",
+    "venue": "Empire",
+    "address": "1 Marina Park Dr",
+    "city": "Boston",
+    "state": "MA",
+    "postal_code": "02210",
+    "latitude": 42.3532,
+    "longitude": -71.0439,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Empire",
+    "source_url": "https://empireboston.com/",
+    "description": "High-energy Seaport Asian restaurant & late-night DJ lounge. 21+.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "cover",
+    "genre": null,
+    "ages": null,
+    "default_category": "DJ",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "DJ",
+    "ai_tags": [
+      "DJ",
+      "Late Night",
+      "21+"
+    ],
+    "ai_summary": "High-energy Seaport Asian restaurant and late-night DJ lounge."
   },
   {
     "title": "The Spring Hill Rounders",
@@ -12686,26 +12458,6 @@
     ]
   },
   {
-    "title": "💰🤑PAID 2 PARTY🤑💰 - FGXzotix Eventertainment",
-    "start": "2026-12-04T22:00:00-05:00",
-    "end": "2026-12-05T02:00:00-05:00",
-    "venue": "Boston’s Premier Venues",
-    "address": "1 City Hall Square, Boston, MA 02201, USA",
-    "latitude": 42.3604065,
-    "longitude": -71.0577624,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6af5188340e7c79b2b197998",
-    "url": "https://posh.vip/e/paid-2-party-fgxzotix-eventertainment-2026-12-5-7-0",
-    "image_url": "https://images.posh.vip/originals/6af51655c445315df7be6781",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Nightclub",
-      "Party"
-    ]
-  },
-  {
     "title": "Fridays @51 - December 4 !",
     "start": "2026-12-04T22:00:00-05:00",
     "end": "2026-12-05T02:00:00-05:00",
@@ -12748,27 +12500,6 @@
     ]
   },
   {
-    "title": "🍹SCORPION FRIDAYS🦂 ⛔️🆓ENTRY⛔️ (FR❄️ST FGXzotix)",
-    "start": "2026-12-04T22:00:00-05:00",
-    "end": "2026-12-05T02:00:00-05:00",
-    "venue": "Scorpion Bar Seaport Boston",
-    "address": "58 Seaport Blvd #200, Boston, MA 02210, USA",
-    "latitude": 42.3530398,
-    "longitude": -71.04756669999999,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6a7a38db694aee6299464b1d",
-    "url": "https://posh.vip/e/-scorpion-fridaysentryfrst-fgxzotix-2026-12-5-7-0",
-    "image_url": "https://images.posh.vip/originals/68d2cf94d21a15a14acaf5c9",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Nightlife",
-      "DJ"
-    ],
-    "ai_price": "Free"
-  },
-  {
     "title": "j worra",
     "start": "2026-12-04T22:00:00-05:00",
     "end": "2026-12-05T02:00:00-05:00",
@@ -12786,46 +12517,6 @@
     "ai_tags": [
       "House",
       "Electronic"
-    ]
-  },
-  {
-    "title": "FETE NIGHTS (Fridays) - FR🥶ST FGXzotix",
-    "start": "2026-12-04T22:00:00-05:00",
-    "end": "2026-12-05T02:00:00-05:00",
-    "venue": "Fete",
-    "address": "25 Kingston St, Boston, MA 02111, USA",
-    "latitude": 42.3537274,
-    "longitude": -71.0592945,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6a216afaf74424681f7c482d",
-    "url": "https://posh.vip/e/fete-nights-fridays-frst-fgxzotix-2026-12-5-7-0",
-    "image_url": "https://images.posh.vip/originals/6a2168a2d2a0d999b6912867",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Nightlife",
-      "DJ"
-    ]
-  },
-  {
-    "title": "⚠️☢️FUSION FRIDAY☢️⚠️@ HAN - FR🥶ST FGXzotix",
-    "start": "2026-12-04T22:00:00-05:00",
-    "end": "2026-12-05T02:00:00-05:00",
-    "venue": "HAN Nightclub ",
-    "address": "HAN, Harvard Avenue, Allston, MA, USA",
-    "latitude": 42.3509805,
-    "longitude": -71.1310421,
-    "location_precision": "city",
-    "source_name": "POSH",
-    "source_id": "69727d0def6a6903977097ed",
-    "url": "https://posh.vip/e/fusion-friday-han-frst-fgxzotix-2026-12-5-7-0",
-    "image_url": "https://images.posh.vip/originals/68016de7c3665dce82e66819",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Club",
-      "Nightlife"
     ]
   },
   {
@@ -14525,6 +14216,39 @@
     "ai_summary": "Mix 104.1 presents the Deck The Hall Ball at Agganis Arena, featuring Sara Bareilles and more."
   },
   {
+    "id": "grace-by-nia:d090a6c9190f",
+    "title": "Late-Night Live Soul, Jazz & R&B",
+    "start": "2026-12-05T20:00:00-05:00",
+    "end": "2026-12-06T00:30:00-05:00",
+    "venue": "Grace by Nia",
+    "address": "60 Seaport Blvd",
+    "city": "Boston",
+    "state": "MA",
+    "postal_code": "02210",
+    "latitude": 42.3522,
+    "longitude": -71.0442,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Grace by Nia",
+    "source_url": "https://www.gracebynia.com/",
+    "description": "Weekend live jazz, soul, and R&B performances in the heart of Seaport.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "cover",
+    "genre": null,
+    "ages": null,
+    "default_category": "Live Music",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "Live Music",
+    "ai_tags": [
+      "Jazz",
+      "Soul",
+      "Late Night"
+    ],
+    "ai_summary": "Weekend live jazz, soul, and R&B performances in the heart of the Seaport."
+  },
+  {
     "id": "the-bebop:c6f7203bc200",
     "title": "Live Music & Berklee Sessions",
     "start": "2026-12-05T20:00:00-05:00",
@@ -14835,38 +14559,6 @@
     "ai_summary": "Start the night with a beginner dance lesson followed by social salsa and bachata dancing until 1 AM at the Dante Alighieri Society."
   },
   {
-    "id": "tribe:lizard-lounge:48450",
-    "title": "Kabir Sen & The Krush Factory",
-    "start": "2026-12-05T21:00:00-05:00",
-    "end": "2026-12-05T23:30:00-05:00",
-    "venue": "Lizard Lounge",
-    "address": "1667 Massachusetts Ave",
-    "city": "Cambridge",
-    "state": "MA",
-    "postal_code": "02138",
-    "latitude": 42.3827,
-    "longitude": -71.1194,
-    "location_precision": "street",
-    "source_type": "venue_website",
-    "source_name": "Lizard Lounge",
-    "source_url": "https://lizardloungeclub.com/event/mc-kabir-with-krush-factory-21/",
-    "description": "MC Kabir and Krush Factory at the Lizard Lounge for their monthly first Saturday residency! $15/$20 Doors 8 Emcee, multi-instrumentalist, and songwriter Kabir Sen is a veteran musician, hip hop artist, producer, and music teacher who has released songs with a wide range of established artists (Blackalicious, J-Live, Esoteric, Mr. Lif, Akrobatik, Lyrics Born, EDO G, Ryan Montbleau and many others). Originally from London, he has been a staples of Boston’s music scene, and, with the steady...",
-    "image_url": "https://lizardloungeclub.com/wp-content/uploads/9dd59876dfe0306ff6641252da55ca2b.jpg",
-    "price": "$15.00",
-    "admission_type": "ticketed",
-    "genre": null,
-    "ages": null,
-    "default_category": "Live Music",
-    "collector": "tribe_api",
-    "ai_category": "Live Music",
-    "ai_tags": [
-      "Hip-Hop",
-      "Funk"
-    ],
-    "ai_price": "$15–$20",
-    "ai_summary": "MC Kabir Sen and The Krush Factory play their monthly residency at Lizard Lounge with doors opening at 8 PM."
-  },
-  {
     "id": "ics:ManRay:2agecqtjgcn22gs6aoim2gc0oa@google.com:2026-12-05T21:00:00-05:00",
     "title": "HEROES",
     "start": "2026-12-05T21:00:00-05:00",
@@ -15163,6 +14855,39 @@
     ]
   },
   {
+    "id": "luckys-lounge-weekends:f8e44a971bc7",
+    "title": "Weekend Live Music & Late-Night DJ",
+    "start": "2026-12-05T21:30:00-05:00",
+    "end": "2026-12-06T01:30:00-05:00",
+    "venue": "Lucky's Lounge",
+    "address": "355 Congress St",
+    "city": "Boston",
+    "state": "MA",
+    "postal_code": "02210",
+    "latitude": 42.3497,
+    "longitude": -71.0468,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Lucky's Lounge",
+    "source_url": "https://luckyslounge.com/happenings/",
+    "description": "Fort Point speakeasy-style lounge featuring live weekend bands and late-night DJs. 21+.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Live Music",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "Live Music",
+    "ai_tags": [
+      "Live Bands",
+      "DJ",
+      "21+"
+    ],
+    "ai_summary": "Speakeasy-style lounge in Fort Point featuring live weekend bands and late-night DJs."
+  },
+  {
     "id": "lansdowne-pub:39eda0d4bfc6",
     "title": "Live Band & Late-Night DJ",
     "start": "2026-12-05T21:30:00-05:00",
@@ -15355,6 +15080,39 @@
     "ai_summary": "Dance hits and retro throwbacks take over Central Square for Saturday night at The Phoenix Landing."
   },
   {
+    "id": "empire-seaport:71f2186a0d12",
+    "title": "Empire Late-Night DJ Lounge",
+    "start": "2026-12-05T22:00:00-05:00",
+    "end": "2026-12-06T02:00:00-05:00",
+    "venue": "Empire",
+    "address": "1 Marina Park Dr",
+    "city": "Boston",
+    "state": "MA",
+    "postal_code": "02210",
+    "latitude": 42.3532,
+    "longitude": -71.0439,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Empire",
+    "source_url": "https://empireboston.com/",
+    "description": "High-energy Seaport Asian restaurant & late-night DJ lounge. 21+.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "cover",
+    "genre": null,
+    "ages": null,
+    "default_category": "DJ",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "DJ",
+    "ai_tags": [
+      "DJ",
+      "Late Night",
+      "21+"
+    ],
+    "ai_summary": "High-energy Seaport Asian restaurant and late-night DJ lounge."
+  },
+  {
     "title": "Emily Grogan Band",
     "start": "2026-12-05T22:00:00-05:00",
     "end": null,
@@ -15516,26 +15274,6 @@
     ]
   },
   {
-    "title": "💰🤑PAID 2 PARTY🤑💰 - FGXzotix Eventertainment",
-    "start": "2026-12-05T22:00:00-05:00",
-    "end": "2026-12-06T02:00:00-05:00",
-    "venue": "Boston’s Premier Venues",
-    "address": "1 City Hall Square, Boston, MA 02201, USA",
-    "latitude": 42.3604065,
-    "longitude": -71.0577624,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6af5188340e7c79b2b19799b",
-    "url": "https://posh.vip/e/paid-2-party-fgxzotix-eventertainment-2026-12-6-7-0",
-    "image_url": "https://images.posh.vip/originals/6af51655c445315df7be6781",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Club Party",
-      "Nightlife"
-    ]
-  },
-  {
     "title": "SUPREME ISLAND",
     "start": "2026-12-05T22:00:00-05:00",
     "end": "2026-12-06T02:00:00-05:00",
@@ -15632,26 +15370,6 @@
     "ai_tags": [
       "Nightlife",
       "Late Night"
-    ]
-  },
-  {
-    "title": "🏖️SUPREME ISLAND🏖️ @ HAVA - FR🥶ST FGXzotix",
-    "start": "2026-12-05T22:00:00-05:00",
-    "end": "2026-12-06T02:00:00-05:00",
-    "venue": "HAVA Nightclub",
-    "address": "246 Tremont St, Boston, MA 02116, USA",
-    "latitude": 42.3507311,
-    "longitude": -71.0647252,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "69cc542cdf2ab227931c26e2",
-    "url": "https://posh.vip/e/supreme-island-hava-frst-fgxzotix-2026-12-6-7-0",
-    "image_url": "https://images.posh.vip/originals/6aee1b1b3df85d1a4e4eed4a",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Nightclub",
-      "Dance"
     ]
   },
   {
@@ -17075,6 +16793,39 @@
     "ai_summary": "The monthly first-Sunday blues residency continues with Tiger Moan."
   },
   {
+    "id": "grace-by-nia:b16cdb550d42",
+    "title": "Live Jazz, Soul & R&B",
+    "start": "2026-12-06T19:30:00-05:00",
+    "end": "2026-12-06T23:00:00-05:00",
+    "venue": "Grace by Nia",
+    "address": "60 Seaport Blvd",
+    "city": "Boston",
+    "state": "MA",
+    "postal_code": "02210",
+    "latitude": 42.3522,
+    "longitude": -71.0442,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Grace by Nia",
+    "source_url": "https://www.gracebynia.com/",
+    "description": "Seaport supper club and lounge featuring live jazz, soul, and R&B bands.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "cover",
+    "genre": null,
+    "ages": null,
+    "default_category": "Live Music",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "Live Music",
+    "ai_tags": [
+      "Jazz",
+      "Soul",
+      "R&B"
+    ],
+    "ai_summary": "Seaport supper club and lounge featuring live jazz, soul, and R&B bands."
+  },
+  {
     "id": "the-beehive:366349354d67",
     "title": "Live Jazz, Soul & Cabaret",
     "start": "2026-12-06T19:30:00-05:00",
@@ -17446,26 +17197,6 @@
     "ai_tags": [
       "Club Night",
       "Late Night"
-    ]
-  },
-  {
-    "title": "💰🤑PAID 2 PARTY🤑💰 - FGXzotix Eventertainment",
-    "start": "2026-12-06T22:00:00-05:00",
-    "end": "2026-12-07T02:00:00-05:00",
-    "venue": "Boston’s Premier Venues",
-    "address": "1 City Hall Square, Boston, MA 02201, USA",
-    "latitude": 42.3604065,
-    "longitude": -71.0577624,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6af5188340e7c79b2b19799e",
-    "url": "https://posh.vip/e/paid-2-party-fgxzotix-eventertainment-2026-12-7-7-0",
-    "image_url": "https://images.posh.vip/originals/6af51655c445315df7be6781",
-    "min_ticket_price": 0,
-    "ai_category": "Social",
-    "ai_tags": [
-      "Nightlife",
-      "Party"
     ]
   },
   {
@@ -18102,26 +17833,6 @@
     "ai_summary": "Long-running Boston jazz staples The Fringe perform late night at The Lilypad."
   },
   {
-    "title": "💰🤑PAID 2 PARTY🤑💰 - FGXzotix Eventertainment",
-    "start": "2026-12-07T22:00:00-05:00",
-    "end": "2026-12-08T02:00:00-05:00",
-    "venue": "Boston’s Premier Venues",
-    "address": "1 City Hall Square, Boston, MA 02201, USA",
-    "latitude": 42.3604065,
-    "longitude": -71.0577624,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6af5188340e7c79b2b1979a1",
-    "url": "https://posh.vip/e/paid-2-party-fgxzotix-eventertainment-2026-12-8-7-0",
-    "image_url": "https://images.posh.vip/originals/6af51655c445315df7be6781",
-    "min_ticket_price": 0,
-    "ai_category": "Social",
-    "ai_tags": [
-      "Nightlife",
-      "Party"
-    ]
-  },
-  {
     "title": "Smith & Myers",
     "start": "2026-12-08T18:30:00-05:00",
     "end": null,
@@ -18182,39 +17893,6 @@
       "Video Game Music"
     ],
     "ai_summary": "Bit Brigade performs live rock soundtracks to The Legend of Zelda, Castlevania, and Tetris at Brighton Music Hall."
-  },
-  {
-    "id": "tribe:lizard-lounge:49646",
-    "title": "OG Dennis Brennan Band Thanksgiving Eve Early Set",
-    "start": "2026-12-08T19:00:00-05:00",
-    "end": "2026-12-08T21:00:00-05:00",
-    "venue": "Lizard Lounge",
-    "address": "1667 Massachusetts Ave",
-    "city": "Cambridge",
-    "state": "MA",
-    "postal_code": "02138",
-    "latitude": 42.3827,
-    "longitude": -71.1194,
-    "location_precision": "street",
-    "source_type": "venue_website",
-    "source_name": "Lizard Lounge",
-    "source_url": "https://lizardloungeclub.com/event/og-dennis-brennan-band-thanksgiving-eve-early-set/",
-    "description": "The Dennis Brennan Band featuring Duke Levine, Kevin Barry, Richard Gates and Billy Beard November 25th to jump start your Thanksgiving! $60 Reserved Tables $20/25 GA Doors 6 Lizard Lounge is pleased to welcome back the classic Dennis Brennan Band feat Duke Levine, Kevin Barry, Richard Gates and Billy Beard for a very special Thanksgiving kick off! Dennis Brennan could be considered Boston’s own Leonard Cohen or Elvis Costello. His songwriting is respected by critics and musicians alike. Not...",
-    "image_url": "https://lizardloungeclub.com/wp-content/uploads/81ab9a05b768f7c08d19552e66952436.jpg",
-    "price": "$20.00 - $60.00",
-    "admission_type": "ticketed",
-    "genre": null,
-    "ages": null,
-    "default_category": "Live Music",
-    "collector": "tribe_api",
-    "ai_category": "Live Music",
-    "ai_tags": [
-      "Rock",
-      "Roots",
-      "Holiday"
-    ],
-    "ai_price": "$20.00 - $60.00",
-    "ai_summary": "The classic Dennis Brennan Band, featuring Duke Levine, Kevin Barry, Richard Gates, and Billy Beard, plays an early Thanksgiving Eve set."
   },
   {
     "id": "tribe:the-rockwell:13344",
@@ -18768,39 +18446,6 @@
     "ai_summary": "Dance all night at Middle East ZuZu for Bunny Rave featuring sets by Rabbit Crimes and Mere Notilde."
   },
   {
-    "id": "tribe:lizard-lounge:49647",
-    "title": "OG Dennis Brennan Band Thanksgiving Eve Late Set",
-    "start": "2026-12-08T21:30:00-05:00",
-    "end": "2026-12-08T23:30:00-05:00",
-    "venue": "Lizard Lounge",
-    "address": "1667 Massachusetts Ave",
-    "city": "Cambridge",
-    "state": "MA",
-    "postal_code": "02138",
-    "latitude": 42.3827,
-    "longitude": -71.1194,
-    "location_precision": "street",
-    "source_type": "venue_website",
-    "source_name": "Lizard Lounge",
-    "source_url": "https://lizardloungeclub.com/event/og-dennis-brennan-band-thanksgiving-eve-late-set/",
-    "description": "The Dennis Brennan Band featuring Duke Levine, Kevin Barry, Richard Gates and Billy Beard November 25th to jump start your Thanksgiving! $60 Reserved Tables $20/25 GA Doors 9 Lizard Lounge is pleased to welcome back the classic Dennis Brennan Band feat Duke Levine, Kevin Barry, Richard Gates and Billy Beard for a very special Thanksgiving Eve! Dennis Brennan could be considered Boston’s own Leonard Cohen or Elvis Costello. His songwriting is respected by critics and musicians alike. Not only...",
-    "image_url": "https://lizardloungeclub.com/wp-content/uploads/81ab9a05b768f7c08d19552e66952436.jpg",
-    "price": "$20.00 - $60.00",
-    "admission_type": "ticketed",
-    "genre": null,
-    "ages": null,
-    "default_category": "Live Music",
-    "collector": "tribe_api",
-    "ai_category": "Live Music",
-    "ai_tags": [
-      "Rock",
-      "Roots",
-      "Holiday"
-    ],
-    "ai_price": "$20.00 - $60.00",
-    "ai_summary": "The Dennis Brennan Band, featuring Duke Levine, Kevin Barry, Richard Gates, and Billy Beard, returns for a late Thanksgiving Eve set."
-  },
-  {
     "title": "Mood",
     "start": "2026-12-08T21:30:00-05:00",
     "end": null,
@@ -18847,26 +18492,6 @@
       "Soul",
       "Funk",
       "Late Night"
-    ]
-  },
-  {
-    "title": "💰🤑PAID 2 PARTY🤑💰 - FGXzotix Eventertainment",
-    "start": "2026-12-08T22:00:00-05:00",
-    "end": "2026-12-09T02:00:00-05:00",
-    "venue": "Boston’s Premier Venues",
-    "address": "1 City Hall Square, Boston, MA 02201, USA",
-    "latitude": 42.3604065,
-    "longitude": -71.0577624,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6af5188340e7c79b2b1979a4",
-    "url": "https://posh.vip/e/paid-2-party-fgxzotix-eventertainment-2026-12-9-7-0",
-    "image_url": "https://images.posh.vip/originals/6af51655c445315df7be6781",
-    "min_ticket_price": 0,
-    "ai_category": "Social",
-    "ai_tags": [
-      "Nightlife",
-      "Party"
     ]
   },
   {
@@ -19266,38 +18891,6 @@
     "ai_summary": "Live jazz, soul, blues, and cabaret at the bohemian South End underground restaurant and bar."
   },
   {
-    "id": "tribe:lizard-lounge:50334",
-    "title": "Rich Hinman, Kevin Barry, Zacharian Hickman and John Sands",
-    "start": "2026-12-09T20:00:00-05:00",
-    "end": "2026-12-09T22:30:00-05:00",
-    "venue": "Lizard Lounge",
-    "address": "1667 Massachusetts Ave",
-    "city": "Cambridge",
-    "state": "MA",
-    "postal_code": "02138",
-    "latitude": 42.3827,
-    "longitude": -71.1194,
-    "location_precision": "street",
-    "source_type": "venue_website",
-    "source_name": "Lizard Lounge",
-    "source_url": "https://lizardloungeclub.com/event/rich-hinman-kevin-barry-zacharian-hickman-and-john-sands-7/",
-    "description": "Rich Hinman returns to the Lizard Lounge with Kevin Barry, Zach Hickman and John Sands November 11th! $15/$20 Door Doors 7 On his recent LP “Memorial,” on Colorfield Records, multi-instrumentalist and composer Rich Hinman creates an arresting collage containing elements of electronica, psychedelia, and searching improvisation, with Hinman’s pedal steel as the (mostly) primary voice. Here he debuts a new band of like-minded explorers featuring local heroes Kevin Barry (Jackson Browne, Rosanne...",
-    "image_url": "https://lizardloungeclub.com/wp-content/uploads/721a5b24f23a6e7b59b9e0cd93eeb6cd.jpg",
-    "price": "$15.00",
-    "admission_type": "ticketed",
-    "genre": null,
-    "ages": null,
-    "default_category": "Live Music",
-    "collector": "tribe_api",
-    "ai_category": "Live Music",
-    "ai_tags": [
-      "Psychedelia",
-      "Improv"
-    ],
-    "ai_price": "$15.00",
-    "ai_summary": "Multi-instrumentalist and composer Rich Hinman performs with Kevin Barry, Zach Hickman, and John Sands, blending electronica, psychedelia, and searching improv."
-  },
-  {
     "id": "lorettas-last-call:df29c693c10d",
     "title": "Live Band Line Dancing",
     "start": "2026-12-09T20:00:00-05:00",
@@ -19600,26 +19193,6 @@
     "ai_category": "Social",
     "ai_tags": [
       "Variety Show"
-    ]
-  },
-  {
-    "title": "💰🤑PAID 2 PARTY🤑💰 - FGXzotix Eventertainment",
-    "start": "2026-12-09T22:00:00-05:00",
-    "end": "2026-12-10T02:00:00-05:00",
-    "venue": "Boston’s Premier Venues",
-    "address": "1 City Hall Square, Boston, MA 02201, USA",
-    "latitude": 42.3604065,
-    "longitude": -71.0577624,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6af5188340e7c79b2b1979a7",
-    "url": "https://posh.vip/e/paid-2-party-fgxzotix-eventertainment-2026-12-10-7-0",
-    "image_url": "https://images.posh.vip/originals/6af51655c445315df7be6781",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Party",
-      "Nightlife"
     ]
   }
 ]

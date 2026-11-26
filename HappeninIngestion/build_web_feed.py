@@ -9,12 +9,32 @@ Non-destructive: writes ONLY to HappeninWeb/public/events.json.
 """
 import argparse
 import json
+import re
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from happenin_deduplication import deduplicate, normalize
 from ingest import event_is_in_time_window
+
+POSH_SPAM_RE = re.compile(
+    r"(⛔|🆓|free\s*entry|guest\s*list|text\s+for|promo\s*code|fr🥶st|fr❄️st|free\s+before\s+\d)",
+    re.I,
+)
+EMOJI_RE = re.compile(r"[\U0001F300-\U0001FAFF\u2600-\u27BF]")
+
+
+def is_promoter_spam(event):
+    """Filter noisy third-party promoter guestlist spam while keeping genuine POSH events."""
+    if event.get("source_name") != "POSH":
+        return False
+    title = str(event.get("title") or "")
+    if POSH_SPAM_RE.search(title):
+        return True
+    # Heavy emoji spam titles (4+ emojis) are almost always duplicate promoter blasts.
+    if len(EMOJI_RE.findall(title)) >= 4:
+        return True
+    return False
 
 ROOT = Path(__file__).resolve().parent
 VENUES_PATH = ROOT / "venues.json"
@@ -135,7 +155,12 @@ def main(with_posh=False, with_sinclair=False, skip_ai=False):
     enriched = enrich_coordinates(all_events, coord_lookup)
     print(f"\nStamped verified venue coordinates onto {enriched} first-party events.")
 
-    windowed = [e for e in all_events if event_is_in_time_window(e, window_start, window_end)]
+    spam_filtered = [e for e in all_events if not is_promoter_spam(e)]
+    removed_spam = len(all_events) - len(spam_filtered)
+    if removed_spam:
+        print(f"Filtered {removed_spam} noisy POSH promoter/guestlist spam listings.")
+
+    windowed = [e for e in spam_filtered if event_is_in_time_window(e, window_start, window_end)]
     unique_events, groups = deduplicate(windowed)
     unique_events.sort(key=lambda e: e["start"])
 

@@ -17,6 +17,9 @@ VENUE_ALIASES = {
     'sinclair music hall': 'the sinclair',
     'bijou nightclub lounge': 'bijou',
     'bijou nightclub and lounge': 'bijou',
+    'the grand boston': 'the grand',
+    'scorpion bar seaport boston': 'scorpion boston',
+    'scorpion bar boston': 'scorpion boston',
 }
 VENUE_SOURCES = {'Lamplighter', 'Lilypad', 'Sinclair', "Lou's", 'ManRay', 'The Plough and Stars'}
 
