@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "notes": "Canonical Cambridge/Somerville venue registry for Happenin'. Coordinates here are the single source of truth so collectors never invent map pins.",
+  "notes": "Canonical Cambridge/Somerville/Boston/Allston-Brighton venue registry for Happenin'. Coordinates here are the single source of truth so collectors never invent map pins.",
   "venues": [
     {
       "id": "cantab-lounge",
@@ -788,6 +788,331 @@
           "start_time": "20:00",
           "end_time": "01:30",
           "description": "High-energy interactive dueling pianos and live band singalong show in Downtown Boston. 21+."
+        }
+      ]
+    },
+    {
+      "id": "obriens-pub",
+      "venue": "O'Brien's Pub",
+      "address": "3 Harvard Ave",
+      "city": "Allston",
+      "state": "MA",
+      "postal_code": "02134",
+      "latitude": 42.35524,
+      "longitude": -71.13287,
+      "collector_type": "llm_html",
+      "url": "https://obrienspubboston.com/",
+      "default_category": "Live Music",
+      "default_admission": "ticketed",
+      "default_start_time": "19:00",
+      "llm_hint": "Iconic Allston underground rock, punk, indie, metal, drag & karaoke venue. Extract each distinct upcoming show in the 14-day window (deduplicate shows repeated in both 'Just Announced' and the weekly schedule). Include printed start time (e.g. 7PM -> 19:00, Doors 8PM -> 20:00), genre tags, and age limit (21+/18+).",
+      "enabled": true
+    },
+    {
+      "id": "charles-river-speedway",
+      "venue": "Charles River Speedway",
+      "address": "525 Western Ave",
+      "city": "Brighton",
+      "state": "MA",
+      "postal_code": "02135",
+      "latitude": 42.36175,
+      "longitude": -71.14478,
+      "collector_type": "tribe_api",
+      "url": "https://charlesriverspeedway.com/events/",
+      "tribe_base_url": "https://charlesriverspeedway.com",
+      "default_category": "Social",
+      "default_admission": "free",
+      "enabled": true
+    },
+    {
+      "id": "notch-brewing-brighton",
+      "venue": "Notch Brewing - Brighton",
+      "address": "525 Western Ave",
+      "city": "Brighton",
+      "state": "MA",
+      "postal_code": "02135",
+      "latitude": 42.36175,
+      "longitude": -71.14478,
+      "collector_type": "squarespace_json",
+      "url": "https://www.notchbrewing.com/brighton-events",
+      "default_category": "Social",
+      "default_admission": "free",
+      "enabled": true
+    },
+    {
+      "id": "exit-galleries",
+      "venue": "EXIT Galleries",
+      "address": "99 Franklin St",
+      "city": "Allston",
+      "state": "MA",
+      "postal_code": "02134",
+      "latitude": 42.35943,
+      "longitude": -71.13278,
+      "collector_type": "squarespace_json",
+      "url": "https://www.exitgalleries.com/calendar",
+      "default_category": "Social",
+      "default_admission": "ticketed",
+      "enabled": true
+    },
+    {
+      "id": "allstonway",
+      "venue": "Allstonway",
+      "address": "267 Western Ave",
+      "city": "Allston",
+      "state": "MA",
+      "postal_code": "02134",
+      "latitude": 42.36354,
+      "longitude": -71.13314,
+      "collector_type": "llm_html",
+      "url": "https://allstonway.com/events",
+      "default_category": "Social",
+      "default_admission": "free",
+      "default_start_time": "18:00",
+      "llm_hint": "Lower Allston / Western Ave neighborhood hub (Zone 3, Allstonway Park, Laneway) hosting pop-ups, markets, workshops, and community gatherings. Extract each concrete dated event in the 14-day window with printed start and end times.",
+      "enabled": true
+    },
+    {
+      "id": "harvard-artlab",
+      "venue": "Harvard ArtLab",
+      "address": "140 N Harvard St",
+      "city": "Allston",
+      "state": "MA",
+      "postal_code": "02134",
+      "latitude": 42.36389,
+      "longitude": -71.12868,
+      "collector_type": "llm_html",
+      "url": "https://artlab.harvard.edu/upcoming-events/",
+      "default_category": "Social",
+      "default_admission": "free",
+      "default_start_time": "18:00",
+      "llm_hint": "Harvard interdisciplinary arts & performance space in Allston. Extract ONLY concrete upcoming public performances, exhibitions, and adult workshops in the 14-day window; skip private/academic-only notices.",
+      "enabled": false,
+      "notes": "List page omits start times (causes 00:00 entries) and mixes academic workshops; revisit in Plan 01 venue review."
+    },
+    {
+      "id": "irish-village-live",
+      "venue": "Irish Village",
+      "address": "224 Market St",
+      "city": "Brighton",
+      "state": "MA",
+      "postal_code": "02135",
+      "latitude": 42.35489,
+      "longitude": -71.14968,
+      "collector_type": "llm_html",
+      "url": "https://www.irishvillageboston.com/",
+      "default_category": "Live Music",
+      "default_admission": "free",
+      "default_start_time": "21:30",
+      "llm_hint": "Brighton Center neighborhood Irish pub. Extract ONLY the specifically dated Friday/Saturday live music artist listings (e.g. 'FRI, 11/27 - Andrew Geano', 9:30 PM - 1:30 AM) within the 14-day window. Do NOT extract the generic weekly Mon/Tue/Wed/Thu/Fri-Sat bullet schedule, as those are handled separately.",
+      "enabled": true
+    },
+    {
+      "id": "irish-village-weekly",
+      "venue": "Irish Village",
+      "address": "224 Market St",
+      "city": "Brighton",
+      "state": "MA",
+      "postal_code": "02135",
+      "latitude": 42.35489,
+      "longitude": -71.14968,
+      "collector_type": "recurring",
+      "url": "https://www.irishvillageboston.com/",
+      "default_category": "Social",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Comedy Open Mic",
+          "weekdays": ["MON"],
+          "start_time": "19:00",
+          "end_time": "22:00",
+          "description": "Weekly Monday comedy open mic night in the lounge at Irish Village in Brighton Center."
+        },
+        {
+          "title": "Pub Trivia",
+          "weekdays": ["TUE"],
+          "start_time": "19:00",
+          "end_time": "21:30",
+          "description": "Weekly Tuesday pub trivia night at Irish Village in Brighton Center."
+        },
+        {
+          "title": "Theme Karaoke",
+          "weekdays": ["WED"],
+          "start_time": "21:00",
+          "end_time": "01:00",
+          "description": "Weekly Wednesday themed karaoke night at Irish Village in Brighton Center."
+        },
+        {
+          "title": "Thursday Karaoke",
+          "weekdays": ["THU"],
+          "start_time": "21:00",
+          "end_time": "01:00",
+          "description": "Weekly Thursday karaoke night at Irish Village in Brighton Center."
+        }
+      ]
+    },
+    {
+      "id": "blondies-brighton",
+      "venue": "Blondie's",
+      "address": "458 Western Ave",
+      "city": "Brighton",
+      "state": "MA",
+      "postal_code": "02135",
+      "latitude": 42.36194,
+      "longitude": -71.14220,
+      "collector_type": "recurring",
+      "url": "https://www.blondiesboston.com/",
+      "default_category": "Social",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Beers & Brains Trivia",
+          "weekdays": ["WED"],
+          "start_time": "19:30",
+          "end_time": "21:30",
+          "description": "Weekly Wednesday trivia night hosted by Brian & Caele at Blondie's on Western Ave."
+        },
+        {
+          "title": "Friday Late-Night Karaoke",
+          "weekdays": ["FRI"],
+          "start_time": "22:00",
+          "end_time": "02:00",
+          "description": "Weekly Friday late-night karaoke party at Blondie's in Brighton. 21+."
+        },
+        {
+          "title": "Sunday Boozy Bingo",
+          "weekdays": ["SUN"],
+          "start_time": "14:00",
+          "end_time": "16:30",
+          "description": "Weekly Sunday afternoon Boozy Bingo at Blondie's in Brighton."
+        }
+      ]
+    },
+    {
+      "id": "widowmaker-brighton",
+      "venue": "Widowmaker Brewing - Brighton",
+      "address": "190 N Beacon St",
+      "city": "Brighton",
+      "state": "MA",
+      "postal_code": "02135",
+      "latitude": 42.35570,
+      "longitude": -71.14794,
+      "collector_type": "recurring",
+      "url": "https://www.widowmakerbrewing.com/",
+      "default_category": "Social",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Stump! Trivia Night",
+          "weekdays": ["TUE"],
+          "start_time": "19:00",
+          "end_time": "21:00",
+          "description": "Free weekly Stump! Trivia night at Widowmaker Taproom & Kitchen in Brighton."
+        },
+        {
+          "title": "Wax Is Wednesday: Vinyl Spin Night",
+          "weekdays": ["WED"],
+          "start_time": "18:00",
+          "end_time": "22:00",
+          "description": "Weekly vinyl listening and DJ spin night with DJ Nothing Means Nothing at Widowmaker Brighton. Bring your own records."
+        }
+      ]
+    },
+    {
+      "id": "broken-records",
+      "venue": "Broken Records Beer Hall",
+      "address": "85 Guest St",
+      "city": "Brighton",
+      "state": "MA",
+      "postal_code": "02135",
+      "latitude": 42.35680,
+      "longitude": -71.14397,
+      "collector_type": "recurring",
+      "url": "https://www.brokenrecordsbeerhall.com/upcoming-events/",
+      "default_category": "Social",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Friday Night Karaoke",
+          "weekdays": ["FRI"],
+          "start_time": "20:00",
+          "end_time": "23:00",
+          "description": "Weekly Friday karaoke night at Broken Records Beer Hall in Boston Landing."
+        }
+      ]
+    },
+    {
+      "id": "porter-bellys",
+      "venue": "Porter Belly's Pub",
+      "address": "338 Washington St",
+      "city": "Brighton",
+      "state": "MA",
+      "postal_code": "02135",
+      "latitude": 42.34899,
+      "longitude": -71.15240,
+      "collector_type": "recurring",
+      "url": "https://brightonmainstreets.org/venue/porter-bellys-pub/",
+      "default_category": "Live Music",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Weekly Acoustic Open Mic Night",
+          "weekdays": ["MON"],
+          "start_time": "20:00",
+          "end_time": "00:00",
+          "description": "Popular Brighton Center Monday acoustic open mic night hosted by Tim Ko. Sign-ups start at 7:30 PM."
+        }
+      ]
+    },
+    {
+      "id": "cityside-tavern",
+      "venue": "Cityside Tavern",
+      "address": "1960 Beacon St",
+      "city": "Brighton",
+      "state": "MA",
+      "postal_code": "02135",
+      "latitude": 42.33637,
+      "longitude": -71.15041,
+      "collector_type": "recurring",
+      "url": "https://www.citysideboston.com/",
+      "default_category": "Social",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Sporcle Live Pub Trivia",
+          "weekdays": ["WED"],
+          "start_time": "19:00",
+          "end_time": "21:00",
+          "description": "Weekly Wednesday Sporcle Trivia night in the upstairs bar at Cityside Tavern in Cleveland Circle."
+        }
+      ]
+    },
+    {
+      "id": "viva-karaoke-stage",
+      "venue": "VIVA Karaoke Allston (Main Stage)",
+      "address": "138 Brighton Ave",
+      "city": "Allston",
+      "state": "MA",
+      "postal_code": "02134",
+      "latitude": 42.35280,
+      "longitude": -71.13169,
+      "collector_type": "recurring",
+      "url": "https://www.vivakaraoke.com/",
+      "default_category": "Social",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Public Main-Stage Karaoke",
+          "weekdays": ["THU", "FRI", "SAT"],
+          "start_time": "20:00",
+          "end_time": "01:30",
+          "description": "Public main-stage lounge karaoke at VIVA Karaoke (formerly Stage Karaoke) in Allston Village. First-come, first-served; private rooms excluded."
         }
       ]
     }

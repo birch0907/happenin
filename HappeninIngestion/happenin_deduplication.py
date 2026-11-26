@@ -20,6 +20,9 @@ VENUE_ALIASES = {
     'the grand boston': 'the grand',
     'scorpion bar seaport boston': 'scorpion boston',
     'scorpion bar boston': 'scorpion boston',
+    '99 franklin st': 'exit galleries',
+    'exit galleries allston': 'exit galleries',
+    'notch brewing brighton': 'charles river speedway',
 }
 VENUE_SOURCES = {'Lamplighter', 'Lilypad', 'Sinclair', "Lou's", 'ManRay', 'The Plough and Stars'}
 

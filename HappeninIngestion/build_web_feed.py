@@ -75,6 +75,8 @@ def build_venue_coord_lookup():
         "lamplighter brewing co": "lamplighter brewing co",
         "lamplighter brewing co broadway": "lamplighter brewing co",
         "lous": "lou s",
+        "99 franklin st": "exit galleries",
+        "exit galleries allston": "exit galleries",
     }
     for alias, target in aliases.items():
         if target in lookup:
