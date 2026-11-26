@@ -1446,6 +1446,38 @@
     "ai_summary": "Enjoy live jazz, soul, blues, and cabaret at this bohemian South End underground venue."
   },
   {
+    "id": "post-underground:0cfd733e39ac",
+    "title": "Epistrophy",
+    "start": "2026-11-27T19:30:00-05:00",
+    "end": null,
+    "venue": "Post Underground",
+    "address": "386 Washington St",
+    "city": "Brookline",
+    "state": "MA",
+    "postal_code": "02445",
+    "latitude": 42.33443,
+    "longitude": -71.12264,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Post Underground",
+    "source_url": "https://postunderground.com/",
+    "description": "Live jazz at Post Underground",
+    "image_url": null,
+    "price": "Free",
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Live Music",
+    "collector": "llm_html",
+    "ai_category": "Live Music",
+    "start_time_inferred": false,
+    "source_quote": "Epistrophy",
+    "ai_tags": [
+      "Jazz"
+    ],
+    "ai_price": "Free"
+  },
+  {
     "title": "Sisters Christmas Catechism",
     "start": "2026-11-27T19:30:00-05:00",
     "end": null,
@@ -1814,6 +1846,38 @@
       "Lounge",
       "Nightlife"
     ]
+  },
+  {
+    "id": "post-underground:006211e29f12",
+    "title": "Fenno Street Jazz",
+    "start": "2026-11-27T20:30:00-05:00",
+    "end": null,
+    "venue": "Post Underground",
+    "address": "386 Washington St",
+    "city": "Brookline",
+    "state": "MA",
+    "postal_code": "02445",
+    "latitude": 42.33443,
+    "longitude": -71.12264,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Post Underground",
+    "source_url": "https://postunderground.com/",
+    "description": "Live jazz at Post Underground",
+    "image_url": null,
+    "price": "Free",
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Live Music",
+    "collector": "llm_html",
+    "ai_category": "Live Music",
+    "start_time_inferred": false,
+    "source_quote": "Fenno Street Jazz",
+    "ai_tags": [
+      "Jazz"
+    ],
+    "ai_price": "Free"
   },
   {
     "id": "ics:ManRay:2irttj3i7tqpk1dqemrg50ua5l@google.com:2026-11-27T21:00:00-05:00",
@@ -2256,6 +2320,39 @@
     ],
     "ai_price": "$10",
     "ai_summary": "Smile Lines plays live emo and pop punk covers."
+  },
+  {
+    "id": "post-underground:37f419700782",
+    "title": "Hard Bop Cafe",
+    "start": "2026-11-27T21:30:00-05:00",
+    "end": null,
+    "venue": "Post Underground",
+    "address": "386 Washington St",
+    "city": "Brookline",
+    "state": "MA",
+    "postal_code": "02445",
+    "latitude": 42.33443,
+    "longitude": -71.12264,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Post Underground",
+    "source_url": "https://postunderground.com/",
+    "description": "Dan Fox trombone, Jack Broomhead piano, Jude Seiner bass, Greg Conroy drums, John Purcell alto, mystery guest",
+    "image_url": null,
+    "price": "Free",
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Live Music",
+    "collector": "llm_html",
+    "ai_category": "Live Music",
+    "start_time_inferred": false,
+    "source_quote": "Hard Bop Cafe:",
+    "ai_tags": [
+      "Jazz"
+    ],
+    "ai_price": "Free",
+    "ai_summary": "Features Dan Fox on trombone, Jack Broomhead on piano, Jude Seiner on bass, Greg Conroy on drums, John Purcell on alto, plus a mystery guest."
   },
   {
     "title": "Shake It with DJ Panda, Djake, DJ Nyaf, DJ Visty, Marchitect",
@@ -2707,6 +2804,26 @@
     "ai_summary": "Catch hip-hop heavyweight Fabolous headlining a late-night show at Mémoire in Everett."
   },
   {
+    "title": "Bussdown Fridays",
+    "start": "2026-11-27T22:00:00-05:00",
+    "end": "2026-11-28T02:00:00-05:00",
+    "venue": "Legacy",
+    "address": "79 Warrenton St, Boston, MA 02116, USA",
+    "latitude": 42.3499097,
+    "longitude": -71.065855,
+    "location_precision": "street",
+    "source_name": "POSH",
+    "source_id": "6b0724633e07707cee004446",
+    "url": "https://posh.vip/e/bussdown-fridays-45",
+    "image_url": "https://images.posh.vip/originals/6b07245707b83393a88d10d2",
+    "min_ticket_price": 2.15,
+    "ai_category": "DJ",
+    "ai_tags": [
+      "Hip Hop",
+      "Nightclub"
+    ]
+  },
+  {
     "title": "Thirty Plus: Family Matters",
     "start": "2026-11-27T22:00:00-05:00",
     "end": "2026-11-28T02:00:00-05:00",
@@ -2747,26 +2864,6 @@
     ]
   },
   {
-    "title": "Bussdown Fridays",
-    "start": "2026-11-27T22:00:00-05:00",
-    "end": "2026-11-28T02:00:00-05:00",
-    "venue": "Legacy",
-    "address": "79 Warrenton St, Boston, MA 02116, USA",
-    "latitude": 42.3499097,
-    "longitude": -71.065855,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6b0724633e07707cee004446",
-    "url": "https://posh.vip/e/bussdown-fridays-45",
-    "image_url": "https://images.posh.vip/originals/6b07245707b83393a88d10d2",
-    "min_ticket_price": 2.15,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Hip Hop",
-      "Nightclub"
-    ]
-  },
-  {
     "title": "FriendsGiving @ 51 - November 27 !",
     "start": "2026-11-27T22:00:00-05:00",
     "end": "2026-11-28T02:00:00-05:00",
@@ -2787,6 +2884,26 @@
     ]
   },
   {
+    "title": "Chus & Ceballos",
+    "start": "2026-11-27T22:00:00-05:00",
+    "end": "2026-11-28T02:00:00-05:00",
+    "venue": "Bijou Nightclub & Lounge",
+    "address": "51 Stuart St, Boston, MA 02116, USA",
+    "latitude": 42.3511995,
+    "longitude": -71.0641984,
+    "location_precision": "street",
+    "source_name": "POSH",
+    "source_id": "6ad795676c03723f4cd6ba21",
+    "url": "https://posh.vip/e/chus-ceballos",
+    "image_url": "https://images.posh.vip/originals/6ad79505122ff32dbcdf70d6",
+    "min_ticket_price": 19.64,
+    "ai_category": "DJ",
+    "ai_tags": [
+      "House",
+      "Techno"
+    ]
+  },
+  {
     "title": "FUSION FRIDAYS",
     "start": "2026-11-27T22:00:00-05:00",
     "end": "2026-11-28T02:00:00-05:00",
@@ -2799,6 +2916,26 @@
     "source_id": "6aaea380fc8accfb14867981",
     "url": "https://posh.vip/e/fusion-fridays-2026-11-28-7-0",
     "image_url": "https://images.posh.vip/originals/6b07330e9710d6fedfa7ba2c",
+    "min_ticket_price": 0,
+    "ai_category": "DJ",
+    "ai_tags": [
+      "Club",
+      "Nightlife"
+    ]
+  },
+  {
+    "title": "mob",
+    "start": "2026-11-27T22:00:00-05:00",
+    "end": "2026-11-28T02:00:00-05:00",
+    "venue": "bsmnt",
+    "address": "100 Stuart St, Boston, MA 02116, USA",
+    "latitude": 42.3508419,
+    "longitude": -71.0656551,
+    "location_precision": "street",
+    "source_name": "POSH",
+    "source_id": "6aecc59a3f812f1a52620149",
+    "url": "https://posh.vip/e/mob-3",
+    "image_url": "https://images.posh.vip/originals/6af4d33ddabbecc18aec0ea0",
     "min_ticket_price": 0,
     "ai_category": "DJ",
     "ai_tags": [
@@ -2827,26 +2964,6 @@
     ]
   },
   {
-    "title": "Chus & Ceballos",
-    "start": "2026-11-27T22:00:00-05:00",
-    "end": "2026-11-28T02:00:00-05:00",
-    "venue": "Bijou Nightclub & Lounge",
-    "address": "51 Stuart St, Boston, MA 02116, USA",
-    "latitude": 42.3511995,
-    "longitude": -71.0641984,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6ad795676c03723f4cd6ba21",
-    "url": "https://posh.vip/e/chus-ceballos",
-    "image_url": "https://images.posh.vip/originals/6ad79505122ff32dbcdf70d6",
-    "min_ticket_price": 19.64,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "House",
-      "Techno"
-    ]
-  },
-  {
     "title": "THANK ME LATER",
     "start": "2026-11-27T22:00:00-05:00",
     "end": "2026-11-28T02:00:00-05:00",
@@ -2860,6 +2977,46 @@
     "url": "https://posh.vip/e/thank-me-later-2",
     "image_url": "https://images.posh.vip/originals/6ab3e319f4656cb97d31ca4d",
     "min_ticket_price": 5.01,
+    "ai_category": "DJ",
+    "ai_tags": [
+      "Club",
+      "Nightlife"
+    ]
+  },
+  {
+    "title": "UpTown Social After Dark Fridays",
+    "start": "2026-11-27T22:00:00-05:00",
+    "end": "2026-11-28T02:00:00-05:00",
+    "venue": "Uptown Social",
+    "address": "604 Columbus Ave, Boston, MA 02118, USA",
+    "latitude": 42.3397567,
+    "longitude": -71.08242349999999,
+    "location_precision": "street",
+    "source_name": "POSH",
+    "source_id": "6a8c924bb118f2e68e45942a",
+    "url": "https://posh.vip/e/uptown-social-after-dark-fridays-2026-11-28-7-0",
+    "image_url": "https://images.posh.vip/originals/6b04d7a05ded01d07c2dd72c",
+    "min_ticket_price": 0,
+    "ai_category": "DJ",
+    "ai_tags": [
+      "Late Night",
+      "Nightlife"
+    ]
+  },
+  {
+    "title": "FUSION FRIDAYS AT HAN BOSTON - MTP EVENTS",
+    "start": "2026-11-27T22:00:00-05:00",
+    "end": "2026-11-28T02:00:00-05:00",
+    "venue": "Han Boston",
+    "address": "186 Harvard Ave, Allston, MA 02134, USA",
+    "latitude": 42.35098050000001,
+    "longitude": -71.1310421,
+    "location_precision": "street",
+    "source_name": "POSH",
+    "source_id": "6953b6eef1d0312db0bb6733",
+    "url": "https://posh.vip/e/fusion-fridays-at-han-boston-mtp-events-2026-11-28-7-0",
+    "image_url": "https://images.posh.vip/originals/6ae8bcfa2482befb7b43719b",
+    "min_ticket_price": 22.99,
     "ai_category": "DJ",
     "ai_tags": [
       "Club",
@@ -2928,26 +3085,6 @@
     ]
   },
   {
-    "title": "mob",
-    "start": "2026-11-27T22:00:00-05:00",
-    "end": "2026-11-28T02:00:00-05:00",
-    "venue": "bsmnt",
-    "address": "100 Stuart St, Boston, MA 02116, USA",
-    "latitude": 42.3508419,
-    "longitude": -71.0656551,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6aecc59a3f812f1a52620149",
-    "url": "https://posh.vip/e/mob-3",
-    "image_url": "https://images.posh.vip/originals/6af4d33ddabbecc18aec0ea0",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Club",
-      "Nightlife"
-    ]
-  },
-  {
     "title": "BASHMENT FRIDAYS",
     "start": "2026-11-27T22:00:00-05:00",
     "end": "2026-11-28T02:00:00-05:00",
@@ -2965,46 +3102,6 @@
     "ai_tags": [
       "Dancehall",
       "Nightclub"
-    ]
-  },
-  {
-    "title": "UpTown Social After Dark Fridays",
-    "start": "2026-11-27T22:00:00-05:00",
-    "end": "2026-11-28T02:00:00-05:00",
-    "venue": "Uptown Social",
-    "address": "604 Columbus Ave, Boston, MA 02118, USA",
-    "latitude": 42.3397567,
-    "longitude": -71.08242349999999,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6a8c924bb118f2e68e45942a",
-    "url": "https://posh.vip/e/uptown-social-after-dark-fridays-2026-11-28-7-0",
-    "image_url": "https://images.posh.vip/originals/6b04d7a05ded01d07c2dd72c",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Late Night",
-      "Nightlife"
-    ]
-  },
-  {
-    "title": "FUSION FRIDAYS AT HAN BOSTON - MTP EVENTS",
-    "start": "2026-11-27T22:00:00-05:00",
-    "end": "2026-11-28T02:00:00-05:00",
-    "venue": "Han Boston",
-    "address": "186 Harvard Ave, Allston, MA 02134, USA",
-    "latitude": 42.35098050000001,
-    "longitude": -71.1310421,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6953b6eef1d0312db0bb6733",
-    "url": "https://posh.vip/e/fusion-fridays-at-han-boston-mtp-events-2026-11-28-7-0",
-    "image_url": "https://images.posh.vip/originals/6ae8bcfa2482befb7b43719b",
-    "min_ticket_price": 22.99,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Club",
-      "Nightlife"
     ]
   },
   {
@@ -5464,26 +5561,6 @@
     "ai_summary": "Costa spins amapiano and electronic dance tracks at Mémoire in Everett."
   },
   {
-    "title": "51 THANKSGIVING | NOV 28",
-    "start": "2026-11-28T22:00:00-05:00",
-    "end": "2026-11-29T02:00:00-05:00",
-    "venue": "51",
-    "address": "51 Stuart St, Boston, MA 02116, USA",
-    "latitude": 42.3512309,
-    "longitude": -71.0641593,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6aeb0bf9f6d293d09b9449eb",
-    "url": "https://posh.vip/e/5ess1ons-re51dents-nov-28",
-    "image_url": "https://images.posh.vip/originals/6aeb0bfef6d293d09b944a35",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Holiday",
-      "Nightlife"
-    ]
-  },
-  {
     "title": "Uptown Social After Dark Saturdays",
     "start": "2026-11-28T22:00:00-05:00",
     "end": "2026-11-29T02:00:00-05:00",
@@ -5521,6 +5598,26 @@
     "ai_tags": [
       "Soca",
       "Dance Party"
+    ]
+  },
+  {
+    "title": "51 THANKSGIVING | NOV 28",
+    "start": "2026-11-28T22:00:00-05:00",
+    "end": "2026-11-29T02:00:00-05:00",
+    "venue": "51",
+    "address": "51 Stuart St, Boston, MA 02116, USA",
+    "latitude": 42.3512309,
+    "longitude": -71.0641593,
+    "location_precision": "street",
+    "source_name": "POSH",
+    "source_id": "6aeb0bf9f6d293d09b9449eb",
+    "url": "https://posh.vip/e/5ess1ons-re51dents-nov-28",
+    "image_url": "https://images.posh.vip/originals/6aeb0bfef6d293d09b944a35",
+    "min_ticket_price": 0,
+    "ai_category": "DJ",
+    "ai_tags": [
+      "Holiday",
+      "Nightlife"
     ]
   },
   {
@@ -7817,7 +7914,7 @@
     "source_type": "venue_website",
     "source_name": "Club Café",
     "source_url": "https://www.clubcafe.com/events/",
-    "description": "Queer Line & Partner Dancing hosted by Moonshine Events at Club Café.",
+    "description": "Moonshine Events presents Queer Line & Partner Dancing at Club Café.",
     "image_url": null,
     "price": "Free",
     "admission_type": "free",
@@ -7827,7 +7924,7 @@
     "collector": "llm_html",
     "ai_category": "DJ",
     "start_time_inferred": false,
-    "source_quote": "Free RSVP for 11/30",
+    "source_quote": "Queer Line & Partner Dancing",
     "ai_tags": [
       "Line Dancing",
       "Queer Night",
@@ -7870,6 +7967,37 @@
     ],
     "ai_price": "Free",
     "ai_summary": "Free standup comedy downstairs every Monday night, with doors at 4 PM and showtime at 7:30 PM."
+  },
+  {
+    "id": "hamilton-brookline:26611d30a3ee",
+    "title": "Geeks Who Drink Trivia",
+    "start": "2026-11-30T19:30:00-05:00",
+    "end": "2026-11-30T21:30:00-05:00",
+    "venue": "Hamilton Restaurant & Bar",
+    "address": "1366 Beacon St",
+    "city": "Brookline",
+    "state": "MA",
+    "postal_code": "02446",
+    "latitude": 42.34186,
+    "longitude": -71.1233,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Hamilton Restaurant & Bar",
+    "source_url": "https://hamiltonbrookline.com/events",
+    "description": "Weekly Monday Geeks Who Drink trivia night at Hamilton Restaurant & Bar in Coolidge Corner.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Social",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "Social",
+    "ai_tags": [
+      "Trivia",
+      "Pub Trivia"
+    ]
   },
   {
     "title": "Jeremy Jordan",
@@ -8953,6 +9081,37 @@
       "Acoustic"
     ],
     "ai_price": "Free"
+  },
+  {
+    "id": "coolidge-corner-clubhouse:5fe50902bf3b",
+    "title": "Tuesday Pub Trivia",
+    "start": "2026-12-01T19:30:00-05:00",
+    "end": "2026-12-01T21:30:00-05:00",
+    "venue": "Coolidge Corner Clubhouse",
+    "address": "307 Harvard St",
+    "city": "Brookline",
+    "state": "MA",
+    "postal_code": "02446",
+    "latitude": 42.34329,
+    "longitude": -71.12285,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Coolidge Corner Clubhouse",
+    "source_url": "https://www.coolidgecornerclubhouse.com/",
+    "description": "Weekly Tuesday night pub trivia at Coolidge Corner Clubhouse in Brookline.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Social",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "Social",
+    "ai_tags": [
+      "Trivia",
+      "Pub Trivia"
+    ]
   },
   {
     "title": "Jeremy Jordan",
@@ -10173,6 +10332,37 @@
     ]
   },
   {
+    "id": "grainne-omalleys:f14fc9457cad",
+    "title": "Wednesday Pub Trivia",
+    "start": "2026-12-02T19:30:00-05:00",
+    "end": "2026-12-02T21:30:00-05:00",
+    "venue": "Grainne O'Malley's Tavern",
+    "address": "201 Harvard St",
+    "city": "Brookline",
+    "state": "MA",
+    "postal_code": "02446",
+    "latitude": 42.33977,
+    "longitude": -71.12071,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Grainne O'Malley's Tavern",
+    "source_url": "https://www.omalleystavern.com/",
+    "description": "Weekly Wednesday trivia night at Grainne O'Malley's traditional Irish tavern in Coolidge Corner.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Social",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "Social",
+    "ai_tags": [
+      "Trivia",
+      "Pub Trivia"
+    ]
+  },
+  {
     "id": "tunehatch:68a19128-e6f4-4b76-8cf2-8eebe7585110",
     "title": "POP UP SHOW",
     "start": "2026-12-02T20:00:00-05:00",
@@ -10692,6 +10882,40 @@
       "Brewery"
     ],
     "ai_summary": "Enjoy mellow morning tunes and coffee at Lamplighter's Pepita Lo-Fi Thursday."
+  },
+  {
+    "id": "coolidge-corner-district:7d96908314f6",
+    "title": "First Light Brookline",
+    "start": "2026-12-03T16:00:00-05:00",
+    "end": "2026-12-03T18:00:00-05:00",
+    "venue": "Coolidge Corner",
+    "address": "290 Harvard St",
+    "city": "Brookline",
+    "state": "MA",
+    "postal_code": "02446",
+    "latitude": 42.34244,
+    "longitude": -71.1227,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Coolidge Corner",
+    "source_url": "https://coolidgecornerbrookline.com/events",
+    "description": "Brookline's annual holiday season kickoff featuring live music, festive window displays, family fun, and seasonal treats across shopping districts.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Social",
+    "collector": "llm_html",
+    "ai_category": "Social",
+    "start_time_inferred": false,
+    "source_quote": "Thursday, Dec 3 4-6pm",
+    "ai_tags": [
+      "Holiday",
+      "Festival",
+      "All Ages"
+    ],
+    "ai_summary": "Brookline's annual holiday kickoff across shopping districts, featuring live music, festive window displays, seasonal treats, and family-friendly activities."
   },
   {
     "id": "ica-boston:5e8220992ab8",
@@ -12317,26 +12541,6 @@
     "ai_summary": "Dance to electronic beats at Patchwork inside ZuZu at The Middle East."
   },
   {
-    "title": "MARV AFTER DARK 🔥 | BOSTON WEEKLY NIGHTLIFE",
-    "start": "2026-12-03T22:00:00-05:00",
-    "end": "2026-12-06T02:00:00-05:00",
-    "venue": "Boston",
-    "address": "Boston, MA, USA",
-    "latitude": 42.3555076,
-    "longitude": -71.0565364,
-    "location_precision": "city",
-    "source_name": "POSH",
-    "source_id": "6aea9779507e7bca3e517ef1",
-    "url": "https://posh.vip/e/marv-after-dark-boston-weekly-nightlife-2026-12-6-7-0",
-    "image_url": "https://images.posh.vip/originals/6aea980e39c49cbd43e7384d",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Club",
-      "Nightlife"
-    ]
-  },
-  {
     "title": "just us",
     "start": "2026-12-03T22:00:00-05:00",
     "end": "2026-12-04T02:00:00-05:00",
@@ -12354,6 +12558,26 @@
     "ai_tags": [
       "Club",
       "DJ"
+    ]
+  },
+  {
+    "title": "MARV AFTER DARK 🔥 | BOSTON WEEKLY NIGHTLIFE",
+    "start": "2026-12-03T22:00:00-05:00",
+    "end": "2026-12-06T02:00:00-05:00",
+    "venue": "Boston",
+    "address": "Boston, MA, USA",
+    "latitude": 42.3555076,
+    "longitude": -71.0565364,
+    "location_precision": "city",
+    "source_name": "POSH",
+    "source_id": "6aea9779507e7bca3e517ef1",
+    "url": "https://posh.vip/e/marv-after-dark-boston-weekly-nightlife-2026-12-6-7-0",
+    "image_url": "https://images.posh.vip/originals/6aea980e39c49cbd43e7384d",
+    "min_ticket_price": 0,
+    "ai_category": "DJ",
+    "ai_tags": [
+      "Club",
+      "Nightlife"
     ]
   },
   {
@@ -13275,6 +13499,38 @@
     "ai_summary": "Bohemian South End underground venue featuring live jazz, soul, blues, and cabaret bands."
   },
   {
+    "id": "post-underground:a69045b69399",
+    "title": "Bob's Chili Combo",
+    "start": "2026-12-04T19:30:00-05:00",
+    "end": null,
+    "venue": "Post Underground",
+    "address": "386 Washington St",
+    "city": "Brookline",
+    "state": "MA",
+    "postal_code": "02445",
+    "latitude": 42.33443,
+    "longitude": -71.12264,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Post Underground",
+    "source_url": "https://postunderground.com/",
+    "description": "Wildcard Night",
+    "image_url": null,
+    "price": "Free",
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Live Music",
+    "collector": "llm_html",
+    "ai_category": "Live Music",
+    "start_time_inferred": false,
+    "source_quote": "Bob's Chili Combo",
+    "ai_tags": [
+      "Live Music"
+    ],
+    "ai_price": "Free"
+  },
+  {
     "title": "Gianmarco Soresi: The Misery Loves Tour",
     "start": "2026-12-04T19:30:00-05:00",
     "end": null,
@@ -13861,6 +14117,39 @@
     ]
   },
   {
+    "id": "post-underground:a642c473e058",
+    "title": "Albert Lam Sextet",
+    "start": "2026-12-04T20:30:00-05:00",
+    "end": null,
+    "venue": "Post Underground",
+    "address": "386 Washington St",
+    "city": "Brookline",
+    "state": "MA",
+    "postal_code": "02445",
+    "latitude": 42.33443,
+    "longitude": -71.12264,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Post Underground",
+    "source_url": "https://postunderground.com/",
+    "description": "Wildcard Night",
+    "image_url": null,
+    "price": "Free",
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Live Music",
+    "collector": "llm_html",
+    "ai_category": "Live Music",
+    "start_time_inferred": false,
+    "source_quote": "Albert Lam Sextet",
+    "ai_tags": [
+      "Jazz",
+      "Live Music"
+    ],
+    "ai_price": "Free"
+  },
+  {
     "id": "ics:ManRay:4pg5e8lgeicen9ul2h7urkupk0_R20250802T010000@google.com:2026-12-04T21:00:00-05:00",
     "title": "The Portal - A Dark Arts Production",
     "start": "2026-12-04T21:00:00-05:00",
@@ -14300,6 +14589,38 @@
     "ai_price": "$10"
   },
   {
+    "id": "post-underground:14a973824fd2",
+    "title": "KR5",
+    "start": "2026-12-04T21:30:00-05:00",
+    "end": null,
+    "venue": "Post Underground",
+    "address": "386 Washington St",
+    "city": "Brookline",
+    "state": "MA",
+    "postal_code": "02445",
+    "latitude": 42.33443,
+    "longitude": -71.12264,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Post Underground",
+    "source_url": "https://postunderground.com/",
+    "description": "Wildcard Night",
+    "image_url": null,
+    "price": "Free",
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Live Music",
+    "collector": "llm_html",
+    "ai_category": "Live Music",
+    "start_time_inferred": false,
+    "source_quote": "KR5",
+    "ai_tags": [
+      "Live Music"
+    ],
+    "ai_price": "Free"
+  },
+  {
     "id": "the-burren:194f2fd4772f",
     "title": "Brick Park",
     "start": "2026-12-04T22:00:00-05:00",
@@ -14737,27 +15058,6 @@
     "ai_summary": "Head to Middle East Corner for KiKi, a late-night dance and electronic party."
   },
   {
-    "title": "APRÈS SKI - WIN RECORDS",
-    "start": "2026-12-04T22:00:00-05:00",
-    "end": "2026-12-05T02:00:00-05:00",
-    "venue": "Hava Nightclub",
-    "address": "246 Tremont St, Boston, MA 02116, USA",
-    "latitude": 42.3507311,
-    "longitude": -71.0647252,
-    "location_precision": "street",
-    "source_name": "POSH",
-    "source_id": "6af7d94fb37560f96fe59cc7",
-    "url": "https://posh.vip/e/apres-ski-win-records",
-    "image_url": "https://images.posh.vip/originals/6afeed9ca11c9c89c50a3ec5",
-    "min_ticket_price": 0,
-    "ai_category": "DJ",
-    "ai_tags": [
-      "Nightclub",
-      "DJ",
-      "Electronic"
-    ]
-  },
-  {
     "title": "BEIRUT Without Borders",
     "start": "2026-12-04T22:00:00-05:00",
     "end": "2026-12-05T02:00:00-05:00",
@@ -14776,6 +15076,27 @@
       "Arabic",
       "DJ",
       "Nightlife"
+    ]
+  },
+  {
+    "title": "APRÈS SKI - WIN RECORDS",
+    "start": "2026-12-04T22:00:00-05:00",
+    "end": "2026-12-05T02:00:00-05:00",
+    "venue": "Hava Nightclub",
+    "address": "246 Tremont St, Boston, MA 02116, USA",
+    "latitude": 42.3507311,
+    "longitude": -71.0647252,
+    "location_precision": "street",
+    "source_name": "POSH",
+    "source_id": "6af7d94fb37560f96fe59cc7",
+    "url": "https://posh.vip/e/apres-ski-win-records",
+    "image_url": "https://images.posh.vip/originals/6afeed9ca11c9c89c50a3ec5",
+    "min_ticket_price": 0,
+    "ai_category": "DJ",
+    "ai_tags": [
+      "Nightclub",
+      "DJ",
+      "Electronic"
     ]
   },
   {
@@ -16646,6 +16967,39 @@
       "Blues"
     ],
     "ai_summary": "South End bohemian underground restaurant and bar featuring live jazz, soul, blues, and cabaret bands."
+  },
+  {
+    "id": "post-underground:1438a8ce115d",
+    "title": "Berklee/NEC Night",
+    "start": "2026-12-05T19:30:00-05:00",
+    "end": null,
+    "venue": "Post Underground",
+    "address": "386 Washington St",
+    "city": "Brookline",
+    "state": "MA",
+    "postal_code": "02445",
+    "latitude": 42.33443,
+    "longitude": -71.12264,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Post Underground",
+    "source_url": "https://postunderground.com/",
+    "description": "Schedule TBA! It's a PARTY!!!",
+    "image_url": null,
+    "price": "Free",
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Live Music",
+    "collector": "llm_html",
+    "ai_category": "Live Music",
+    "start_time_inferred": true,
+    "source_quote": "Berklee/NEC Night",
+    "ai_tags": [
+      "Live Music",
+      "College"
+    ],
+    "ai_price": "Free"
   },
   {
     "title": "Chris Lee-Rodriguez",
@@ -20556,7 +20910,7 @@
     "source_type": "venue_website",
     "source_name": "Club Café",
     "source_url": "https://www.clubcafe.com/events/",
-    "description": "Queer Line & Partner Dancing hosted by Moonshine Events at Club Café.",
+    "description": "Moonshine Events presents Queer Line & Partner Dancing at Club Café.",
     "image_url": null,
     "price": "Free",
     "admission_type": "free",
@@ -20640,6 +20994,37 @@
       "21+"
     ],
     "ai_price": "$10"
+  },
+  {
+    "id": "hamilton-brookline:1f148b3e6d72",
+    "title": "Geeks Who Drink Trivia",
+    "start": "2026-12-07T19:30:00-05:00",
+    "end": "2026-12-07T21:30:00-05:00",
+    "venue": "Hamilton Restaurant & Bar",
+    "address": "1366 Beacon St",
+    "city": "Brookline",
+    "state": "MA",
+    "postal_code": "02446",
+    "latitude": 42.34186,
+    "longitude": -71.1233,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Hamilton Restaurant & Bar",
+    "source_url": "https://hamiltonbrookline.com/events",
+    "description": "Weekly Monday Geeks Who Drink trivia night at Hamilton Restaurant & Bar in Coolidge Corner.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Social",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "Social",
+    "ai_tags": [
+      "Trivia",
+      "Pub Trivia"
+    ]
   },
   {
     "id": "tunehatch:1adfbca5-edd1-4ebd-a181-b829cfb5c7a1",
@@ -21641,6 +22026,37 @@
     "ai_price": "Free"
   },
   {
+    "id": "coolidge-corner-clubhouse:04eeb3c08187",
+    "title": "Tuesday Pub Trivia",
+    "start": "2026-12-08T19:30:00-05:00",
+    "end": "2026-12-08T21:30:00-05:00",
+    "venue": "Coolidge Corner Clubhouse",
+    "address": "307 Harvard St",
+    "city": "Brookline",
+    "state": "MA",
+    "postal_code": "02446",
+    "latitude": 42.34329,
+    "longitude": -71.12285,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Coolidge Corner Clubhouse",
+    "source_url": "https://www.coolidgecornerclubhouse.com/",
+    "description": "Weekly Tuesday night pub trivia at Coolidge Corner Clubhouse in Brookline.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Social",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "Social",
+    "ai_tags": [
+      "Trivia",
+      "Pub Trivia"
+    ]
+  },
+  {
     "title": "Point 01 Percent",
     "start": "2026-12-08T19:30:00-05:00",
     "end": "2026-12-08T21:45:00-05:00",
@@ -22628,6 +23044,37 @@
     "source_name": "Jeanie Johnston Pub & Grill",
     "source_url": "https://www.jeaniejohnstonpub.com/events",
     "description": "Weekly Wednesday pub trivia night at Jeanie Johnston Pub in Jamaica Plain.",
+    "image_url": null,
+    "price": null,
+    "admission_type": "free",
+    "genre": null,
+    "ages": null,
+    "default_category": "Social",
+    "collector": "recurring",
+    "recurring_rule": true,
+    "ai_category": "Social",
+    "ai_tags": [
+      "Trivia",
+      "Pub Trivia"
+    ]
+  },
+  {
+    "id": "grainne-omalleys:2fab146cec68",
+    "title": "Wednesday Pub Trivia",
+    "start": "2026-12-09T19:30:00-05:00",
+    "end": "2026-12-09T21:30:00-05:00",
+    "venue": "Grainne O'Malley's Tavern",
+    "address": "201 Harvard St",
+    "city": "Brookline",
+    "state": "MA",
+    "postal_code": "02446",
+    "latitude": 42.33977,
+    "longitude": -71.12071,
+    "location_precision": "street",
+    "source_type": "venue_website",
+    "source_name": "Grainne O'Malley's Tavern",
+    "source_url": "https://www.omalleystavern.com/",
+    "description": "Weekly Wednesday trivia night at Grainne O'Malley's traditional Irish tavern in Coolidge Corner.",
     "image_url": null,
     "price": null,
     "admission_type": "free",

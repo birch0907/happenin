@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "notes": "Canonical Cambridge/Somerville/Boston/Allston-Brighton venue registry for Happenin'. Coordinates here are the single source of truth so collectors never invent map pins.",
+  "notes": "Canonical Greater Boston (Cambridge, Somerville, Boston, Allston/Brighton, JP, Dorchester, East Boston, Roxbury, Brookline) venue registry for Happenin'. Coordinates here are the single source of truth so collectors never invent map pins.",
   "venues": [
     {
       "id": "cantab-lounge",
@@ -1538,6 +1538,178 @@
           "start_time": "22:00",
           "end_time": "02:00",
           "description": "Legendary Roxbury soul-food & nightlife spot featuring weekend DJ sets spinning R&B, reggae, and dancehall. 21+."
+        }
+      ]
+    },
+    {
+      "id": "post-underground",
+      "venue": "Post Underground",
+      "address": "386 Washington St",
+      "city": "Brookline",
+      "state": "MA",
+      "postal_code": "02445",
+      "latitude": 42.33443,
+      "longitude": -71.12264,
+      "collector_type": "llm_html",
+      "url": "https://postunderground.com/",
+      "default_category": "Live Music",
+      "default_admission": "free",
+      "default_start_time": "19:30",
+      "llm_hint": "Volunteer-run basement jazz club downstairs at the Brookline Veterans Post (386 Washington St). Free admission, cash bar. Extract each distinct upcoming live jazz set or jam session within the 14-day window with its printed date and start time (e.g. 7:30 -> 19:30, 8:30 -> 20:30).",
+      "enabled": true
+    },
+    {
+      "id": "village-social-club",
+      "venue": "Village Social Club",
+      "address": "6 Harvard Square",
+      "city": "Brookline",
+      "state": "MA",
+      "postal_code": "02445",
+      "latitude": 42.33278,
+      "longitude": -71.11851,
+      "collector_type": "bentobox_jsonld",
+      "url": "https://www.villagesocialclub.com/event-calendar/",
+      "default_category": "Live Music",
+      "default_admission": "free",
+      "enabled": true
+    },
+    {
+      "id": "coolidge-after-midnite",
+      "venue": "Coolidge Corner Theatre",
+      "address": "290 Harvard St",
+      "city": "Brookline",
+      "state": "MA",
+      "postal_code": "02446",
+      "latitude": 42.34244,
+      "longitude": -71.12270,
+      "collector_type": "llm_html",
+      "url": "https://coolidge.org/programs/coolidge-after-midnite",
+      "default_category": "Social",
+      "default_admission": "ticketed",
+      "default_start_time": "23:59",
+      "llm_hint": "Iconic indie movie house in Coolidge Corner hosting Coolidge After Midnite cult/35mm screenings. Extract ONLY concrete dated upcoming screenings in the 14-day window with exact printed start time.",
+      "enabled": true
+    },
+    {
+      "id": "coolidge-onstage",
+      "venue": "Coolidge Corner Theatre",
+      "address": "290 Harvard St",
+      "city": "Brookline",
+      "state": "MA",
+      "postal_code": "02446",
+      "latitude": 42.34244,
+      "longitude": -71.12270,
+      "collector_type": "llm_html",
+      "url": "https://coolidge.org/programs/onstage-coolidge",
+      "default_category": "Live Music",
+      "default_admission": "ticketed",
+      "default_start_time": "19:30",
+      "llm_hint": "Special live onstage performances, music, comedy, and Q&A events at Coolidge Corner Theatre. Extract ONLY concrete dated upcoming events in the 14-day window with printed start times.",
+      "enabled": true
+    },
+    {
+      "id": "coolidge-corner-district",
+      "venue": "Coolidge Corner",
+      "address": "290 Harvard St",
+      "city": "Brookline",
+      "state": "MA",
+      "postal_code": "02446",
+      "latitude": 42.34244,
+      "longitude": -71.12270,
+      "collector_type": "llm_html",
+      "url": "https://coolidgecornerbrookline.com/events",
+      "default_category": "Social",
+      "default_admission": "free",
+      "default_start_time": "16:00",
+      "llm_hint": "Coolidge Corner neighborhood events & seasonal festivals (e.g. Brookline First Light). Extract ONLY concrete dated upcoming community events in the 14-day window with printed start and end times.",
+      "enabled": true
+    },
+    {
+      "id": "puppet-showplace-night",
+      "venue": "Puppet Showplace Theater",
+      "address": "32 Station St",
+      "city": "Brookline",
+      "state": "MA",
+      "postal_code": "02445",
+      "latitude": 42.33303,
+      "longitude": -71.11691,
+      "collector_type": "llm_html",
+      "url": "https://www.puppetshowplace.org/puppets-at-night",
+      "default_category": "Social",
+      "default_admission": "ticketed",
+      "default_start_time": "20:00",
+      "llm_hint": "Brookline Village theater's 'Puppets at Night' series for adults & teens (puppet slams, evening performances). Extract ONLY concrete dated upcoming evening shows in the 14-day window.",
+      "enabled": true
+    },
+    {
+      "id": "hamilton-brookline",
+      "venue": "Hamilton Restaurant & Bar",
+      "address": "1366 Beacon St",
+      "city": "Brookline",
+      "state": "MA",
+      "postal_code": "02446",
+      "latitude": 42.34186,
+      "longitude": -71.12330,
+      "collector_type": "recurring",
+      "url": "https://hamiltonbrookline.com/events",
+      "default_category": "Social",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Geeks Who Drink Trivia",
+          "weekdays": ["MON"],
+          "start_time": "19:30",
+          "end_time": "21:30",
+          "description": "Weekly Monday Geeks Who Drink trivia night at Hamilton Restaurant & Bar in Coolidge Corner."
+        }
+      ]
+    },
+    {
+      "id": "coolidge-corner-clubhouse",
+      "venue": "Coolidge Corner Clubhouse",
+      "address": "307 Harvard St",
+      "city": "Brookline",
+      "state": "MA",
+      "postal_code": "02446",
+      "latitude": 42.34329,
+      "longitude": -71.12285,
+      "collector_type": "recurring",
+      "url": "https://www.coolidgecornerclubhouse.com/",
+      "default_category": "Social",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Tuesday Pub Trivia",
+          "weekdays": ["TUE"],
+          "start_time": "19:30",
+          "end_time": "21:30",
+          "description": "Weekly Tuesday night pub trivia at Coolidge Corner Clubhouse in Brookline."
+        }
+      ]
+    },
+    {
+      "id": "grainne-omalleys",
+      "venue": "Grainne O'Malley's Tavern",
+      "address": "201 Harvard St",
+      "city": "Brookline",
+      "state": "MA",
+      "postal_code": "02446",
+      "latitude": 42.33977,
+      "longitude": -71.12071,
+      "collector_type": "recurring",
+      "url": "https://www.omalleystavern.com/",
+      "default_category": "Social",
+      "default_admission": "free",
+      "enabled": true,
+      "rules": [
+        {
+          "title": "Wednesday Pub Trivia",
+          "weekdays": ["WED"],
+          "start_time": "19:30",
+          "end_time": "21:30",
+          "description": "Weekly Wednesday trivia night at Grainne O'Malley's traditional Irish tavern in Coolidge Corner."
         }
       ]
     }
