@@ -17,8 +17,8 @@ type MapViewProps = {
 
 const DARK_MATTER_STYLE = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
 const POSITRON_LIGHT_STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
-const DEFAULT_CENTER: [number, number] = [-71.106, 42.369];
-const DEFAULT_ZOOM = 13.4;
+const DEFAULT_CENTER: [number, number] = [-71.092, 42.348];
+const DEFAULT_ZOOM = 11.5;
 
 const LIGHT_EVENT_COLORS: Record<string, string> = {
   'Live Music': '#E63946',
