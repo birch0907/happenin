@@ -7,7 +7,7 @@ echo.
 cd /d "%~dp0HappeninIngestion"
 python hybrid_collector.py
 echo.
-python build_web_feed.py
+python build_web_feed.py --with-posh
 echo.
 echo Done! Refresh http://localhost:5173/ in your browser to see the latest events.
 pause

@@ -54,7 +54,7 @@ jobs:
           TICKETMASTER_API_KEY: ${{ secrets.TICKETMASTER_API_KEY }}
         run: |
           python HappeninIngestion/hybrid_collector.py
-          python HappeninIngestion/build_web_feed.py
+          python HappeninIngestion/build_web_feed.py --with-posh
 
       - name: Set up Node
         uses: actions/setup-node@v4
