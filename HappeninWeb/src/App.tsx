@@ -367,13 +367,13 @@ function MapApp() {
                           width="22"
                           height="22"
                           transform="rotate(10 17 17)"
-                          stroke="#FFFFFF"
+                          stroke="#141414"
                           strokeWidth="2.1"
                         />
                         <path
                           d="M11 25C15 21 15 14 21 10C24 8 28 8.5 28.5 11.5C29 14.5 23 17 17 18.5C11 20 7.5 23 8.5 26C9.5 28.5 16 28 24 23"
-                          stroke="#D6DE6B"
-                          strokeWidth="2.2"
+                          stroke="#1FA9AC"
+                          strokeWidth="2.3"
                           strokeLinecap="round"
                         />
                       </svg>

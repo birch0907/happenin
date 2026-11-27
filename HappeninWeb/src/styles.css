@@ -1044,15 +1044,15 @@ body,
 }
 
 /* =====================================================================
-   STUDIO ALLSTON HOTEL — SOFT ART-GALLERY & STUDIO COLLAGE SKIN
+   STUDIO ALLSTON HOTEL — SOFT ART-GALLERY & PAINTERLY BLUE STUDIO SKIN
    Inspired directly by hotelstudioallston.com:
-   Borderless matte black (#101012) · Soft gallery white (#FFFFFF) ·
-   Flat chartreuse (#D6DE6B) · Painterly teal wash (#2AB3B0) ·
-   No harsh comic outlines or hard offset shadows — airy, quirky, modern
+   Airy Gallery White (#FFFFFF) · Painterly Slate-Sky Blue (#5695B3) ·
+   Aqua-Turquoise Brush (#1FA9AC) · Signature Chartreuse (#D6DE6B) ·
+   Crisp ink typography without heavy black blocks or harsh outlines
    ===================================================================== */
 
 .variant-studio-gallery {
-  color: #141414;
+  color: #162228;
 }
 
 .studio-frame-badge {
@@ -1063,19 +1063,31 @@ body,
 }
 
 .variant-studio-gallery .filter-panel {
-  background: rgba(14, 14, 16, 0.94);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(238, 248, 251, 0.95) 100%);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: none;
-  border-radius: 12px 4px 14px 6px;
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.24);
+  border-radius: 14px 5px 16px 8px;
+  box-shadow: 0 14px 36px rgba(32, 74, 92, 0.14), 0 2px 6px rgba(16, 34, 40, 0.05);
   padding: 13px 15px 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.variant-studio-gallery .filter-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #5695b3 0%, #1fa9ac 56%, #d6de6b 56%, #d6de6b 100%);
 }
 
 .variant-studio-gallery .brand-row {
   padding-bottom: 9px;
   margin-bottom: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(86, 149, 179, 0.18);
 }
 
 .variant-studio-gallery .brand-title {
@@ -1087,18 +1099,18 @@ body,
   font-family: 'Space Grotesk', sans-serif;
   font-size: 15.5px;
   font-weight: 700;
-  letter-spacing: 0.18em;
-  color: #ffffff;
+  letter-spacing: 0.17em;
+  color: #141c20;
   text-transform: uppercase;
   line-height: 1;
 }
 
 .variant-studio-gallery .event-count {
   font-family: 'Caveat', cursive;
-  font-size: 18px;
+  font-size: 18.5px;
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: #d6de6b;
+  color: #1a9196;
   line-height: 1;
   transform: rotate(-1.5deg);
   display: inline-block;
@@ -1109,12 +1121,13 @@ body,
   text-transform: lowercase;
   letter-spacing: 0.03em;
   font-size: 12px;
-  font-weight: 600;
-  border-radius: 3px;
+  font-weight: 700;
+  border-radius: 4px;
   border: none;
   background: #d6de6b;
-  color: #111111;
+  color: #141c20;
   padding: 6px 13px;
+  box-shadow: 0 3px 10px rgba(214, 222, 107, 0.35);
   transition: transform 0.14s ease, background 0.14s ease;
 }
 
@@ -1124,84 +1137,84 @@ body,
 }
 
 .variant-studio-gallery .hotel-mode-tabs {
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(86, 149, 179, 0.14);
   border: none;
-  border-radius: 8px;
+  border-radius: 9px;
   padding: 3px;
   gap: 4px;
 }
 
 .variant-studio-gallery .hotel-tab-btn {
   font-family: 'Space Grotesk', sans-serif;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   font-size: 12px;
   font-weight: 600;
-  color: #d6d6d0;
+  color: #2f5568;
   border: none;
-  border-radius: 6px;
+  border-radius: 7px;
   padding: 8px 10px;
 }
 
 .variant-studio-gallery .hotel-tab-btn:hover {
-  color: #ffffff;
+  color: #141c20;
 }
 
 .variant-studio-gallery .hotel-tab-btn.active {
   background: #d6de6b;
-  color: #111111;
+  color: #141c20;
   font-weight: 700;
-  box-shadow: 0 3px 12px rgba(214, 222, 107, 0.25);
+  box-shadow: 0 3px 10px rgba(214, 222, 107, 0.4);
 }
 
 .variant-studio-gallery .category-chip {
   font-family: 'Space Grotesk', sans-serif;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   font-size: 12px;
   font-weight: 600;
   border-radius: 999px;
   border: none;
-  background: rgba(255, 255, 255, 0.1);
-  color: #f3f3ef;
+  background: rgba(86, 149, 179, 0.14);
+  color: #284b5c;
   padding: 6px 13px;
 }
 
 .variant-studio-gallery .category-chip:hover {
-  background: rgba(255, 255, 255, 0.17);
+  background: rgba(31, 169, 172, 0.22);
 }
 
 .variant-studio-gallery .category-chip.active {
   background: #d6de6b;
-  color: #111111;
+  color: #141c20;
   font-weight: 700;
-  box-shadow: 0 3px 10px rgba(214, 222, 107, 0.22);
+  box-shadow: 0 3px 10px rgba(214, 222, 107, 0.35);
 }
 
 .variant-studio-gallery .category-chip .category-dot,
 .variant-studio-gallery .category-chip.active .category-dot {
   background: var(--chip-color);
   border: none;
-  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.9);
 }
 
 .variant-studio-gallery .locate-btn {
   background: #ffffff;
-  color: #111111;
+  color: #2f6c85;
   border: none;
   border-radius: 12px 6px 12px 6px;
-  box-shadow: 0 8px 24px rgba(10, 10, 10, 0.16);
+  box-shadow: 0 8px 24px rgba(32, 74, 92, 0.18);
 }
 
 .variant-studio-gallery .locate-btn:hover {
-  background: #d6de6b;
-  color: #111111;
+  background: #1fa9ac;
+  color: #ffffff;
 }
 
 .variant-studio-gallery .event-card {
   background: rgba(255, 255, 255, 0.97);
-  color: #141414;
+  color: #162228;
   border: none;
-  border-radius: 14px 4px 16px 8px;
-  box-shadow: 0 18px 46px rgba(10, 10, 10, 0.18), 0 2px 8px rgba(10, 10, 10, 0.06);
+  border-radius: 14px 5px 16px 8px;
+  box-shadow: 0 18px 46px rgba(32, 74, 92, 0.18), 0 2px 8px rgba(16, 34, 40, 0.06);
   backdrop-filter: blur(12px);
   overflow: hidden;
   position: relative;
@@ -1214,44 +1227,44 @@ body,
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #d6de6b 0%, #d6de6b 62%, #45c4c0 62%, #45c4c0 100%);
+  background: linear-gradient(90deg, #5695b3 0%, #1fa9ac 55%, #d6de6b 55%, #d6de6b 100%);
 }
 
 .variant-studio-gallery .venue-tab {
   border-radius: 999px;
   border: none;
-  background: #f0f0ec;
-  color: #333330;
+  background: rgba(86, 149, 179, 0.13);
+  color: #2c5163;
   font-family: 'Space Grotesk', sans-serif;
 }
 
 .variant-studio-gallery .venue-tab.active {
-  background: #141414;
-  color: #d6de6b;
+  background: #5695b3;
+  color: #ffffff;
 }
 
 .variant-studio-gallery .category-badge {
   font-family: 'Space Grotesk', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  border-radius: 4px;
-  background: #141414 !important;
-  color: #d6de6b !important;
+  border-radius: 5px;
+  background: #1fa9ac !important;
+  color: #ffffff !important;
   padding: 3px 9px;
 }
 
 .variant-studio-gallery .walk-pill {
   border-radius: 999px;
-  background: rgba(42, 179, 176, 0.16);
-  color: #0f6866;
+  background: rgba(86, 149, 179, 0.15);
+  color: #29566b;
   border: none;
   font-family: 'Space Grotesk', sans-serif;
 }
 
 .variant-studio-gallery .tag-pill {
   border-radius: 999px;
-  background: #f2f2ee;
-  color: #3a3a36;
+  background: #eef5f7;
+  color: #385866;
   border: none;
 }
 
@@ -1263,30 +1276,30 @@ body,
 }
 
 .variant-studio-gallery .admission-free {
-  background: rgba(42, 179, 176, 0.16);
-  color: #0e6361;
+  background: rgba(31, 169, 172, 0.16);
+  color: #0f6b6d;
 }
 
 .variant-studio-gallery .admission-cover {
-  background: rgba(214, 222, 107, 0.42);
+  background: rgba(214, 222, 107, 0.45);
   color: #3a4005;
 }
 
 .variant-studio-gallery .admission-ticketed {
-  background: #efefea;
-  color: #1e1e1c;
+  background: rgba(86, 149, 179, 0.16);
+  color: #244b5e;
 }
 
 .variant-studio-gallery .close-btn {
   border-radius: 999px;
-  background: #f0f0ec;
-  color: #222220;
+  background: #eef5f7;
+  color: #2c5163;
   border: none;
 }
 
 .variant-studio-gallery .close-btn:hover {
   background: #d6de6b;
-  color: #111111;
+  color: #141c20;
 }
 
 .variant-studio-gallery .event-title {
@@ -1294,24 +1307,24 @@ body,
   letter-spacing: -0.01em;
   font-size: 20px;
   font-weight: 700;
-  color: #111111;
+  color: #141c20;
   margin-bottom: 6px;
 }
 
 .variant-studio-gallery .event-venue {
-  color: #5c5c56;
+  color: #516b78;
   font-weight: 600;
 }
 
 .variant-studio-gallery .event-time {
-  color: #117371;
+  color: #188c90;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   font-size: 13.5px;
 }
 
 .variant-studio-gallery .event-description {
-  color: #343430;
+  color: #324650;
 }
 
 .variant-studio-gallery .btn-primary {
@@ -1319,11 +1332,11 @@ body,
   letter-spacing: 0.04em;
   font-size: 13px;
   font-weight: 700;
-  border-radius: 4px;
+  border-radius: 5px;
   background: #d6de6b;
-  color: #111111;
+  color: #141c20;
   border: none;
-  box-shadow: 0 4px 14px rgba(214, 222, 107, 0.35);
+  box-shadow: 0 4px 14px rgba(214, 222, 107, 0.4);
 }
 
 .variant-studio-gallery .btn-primary:hover {
@@ -1335,28 +1348,32 @@ body,
   letter-spacing: 0.04em;
   font-size: 13px;
   font-weight: 600;
-  border-radius: 4px;
-  background: #141414;
+  border-radius: 5px;
+  background: #5695b3;
   color: #ffffff;
   border: none;
 }
 
+.variant-studio-gallery .btn-secondary:hover {
+  background: #4885a2;
+}
+
 .variant-studio-gallery .preview-tonight-pill {
   border-radius: 999px;
-  background: rgba(16, 16, 18, 0.92);
+  background: linear-gradient(135deg, rgba(78, 138, 166, 0.95) 0%, rgba(31, 169, 172, 0.95) 100%);
   border: none;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 10px 28px rgba(32, 74, 92, 0.22);
   backdrop-filter: blur(12px);
 }
 
 .variant-studio-gallery .preview-muted,
 .variant-studio-gallery .preview-dot {
-  color: #d6d6d0;
+  color: rgba(255, 255, 255, 0.9);
   font-family: 'Space Grotesk', sans-serif;
 }
 
 .variant-studio-gallery .preview-cta {
-  color: #d6de6b;
+  color: #f3f7a8;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
 }
@@ -1364,16 +1381,16 @@ body,
 .variant-studio-gallery .date-tile {
   border-radius: 10px 4px 10px 4px;
   background: rgba(255, 255, 255, 0.96);
-  color: #161616;
+  color: #244757;
   border: none;
-  box-shadow: 0 6px 18px rgba(10, 10, 10, 0.13);
+  box-shadow: 0 6px 18px rgba(32, 74, 92, 0.14);
   backdrop-filter: blur(10px);
 }
 
 .variant-studio-gallery .date-tile.selected {
   background: #d6de6b;
-  color: #111111;
-  box-shadow: 0 8px 22px rgba(214, 222, 107, 0.42);
+  color: #141c20;
+  box-shadow: 0 8px 22px rgba(214, 222, 107, 0.45);
 }
 
 .variant-studio-gallery .date-weekday,
@@ -1382,21 +1399,21 @@ body,
 }
 
 .variant-studio-gallery .time-panel {
-  background: rgba(14, 14, 16, 0.94);
+  background: linear-gradient(135deg, rgba(78, 138, 166, 0.95) 0%, rgba(31, 169, 172, 0.95) 100%);
   border: none;
   border-radius: 6px 14px 12px 10px;
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 14px 36px rgba(32, 74, 92, 0.24);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 }
 
 .variant-studio-gallery .time-label {
   font-family: 'Caveat', cursive;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 700;
   text-transform: none;
   letter-spacing: 0.02em;
-  color: #d6de6b;
+  color: #f3f7a8;
 }
 
 .variant-studio-gallery .time-readout {
@@ -1406,30 +1423,30 @@ body,
 }
 
 .variant-studio-gallery .time-endpoints {
-  color: #b4b4ae;
+  color: rgba(255, 255, 255, 0.84);
   font-weight: 500;
 }
 
 .variant-studio-gallery .time-range::-webkit-slider-thumb {
   border-radius: 999px;
   background: #d6de6b;
-  border: 3px solid #141414;
-  box-shadow: 0 0 0 2px rgba(214, 222, 107, 0.5);
+  border: 3px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(16, 34, 40, 0.25);
 }
 
 .variant-studio-gallery .time-range::-moz-range-thumb {
   border-radius: 999px;
   background: #d6de6b;
-  border: 3px solid #141414;
-  box-shadow: 0 0 0 2px rgba(214, 222, 107, 0.5);
+  border: 3px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(16, 34, 40, 0.25);
 }
 
 .variant-studio-gallery .hotel-footer-hint {
   border-radius: 999px;
-  background: rgba(16, 16, 18, 0.9);
-  color: #f0f0ec;
+  background: linear-gradient(135deg, rgba(78, 138, 166, 0.94) 0%, rgba(31, 169, 172, 0.94) 100%);
+  color: #ffffff;
   border: none;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 28px rgba(32, 74, 92, 0.2);
   font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
   backdrop-filter: blur(10px);
