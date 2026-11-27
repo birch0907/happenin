@@ -1407,12 +1407,19 @@ body,
   -webkit-backdrop-filter: blur(14px);
 }
 
+.studio-handwritten-subtitle {
+  display: inline-flex;
+  align-items: center;
+  transform: rotate(-1.2deg);
+  margin-left: 2px;
+}
+
 .variant-studio-gallery .time-label {
-  font-family: 'Caveat', cursive;
-  font-size: 18.5px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11.5px;
   font-weight: 700;
-  text-transform: none;
-  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
   color: #1a9196;
 }
 

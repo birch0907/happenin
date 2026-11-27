@@ -97,7 +97,7 @@ function homeToGeoJSON(hotel: HotelConfig | null | undefined): GeoJSON.FeatureCo
         },
         properties: {
           name: hotel.name,
-          accent: hotel.theme.accent,
+          accent: hotel.homePinColor || hotel.theme.accent,
         },
       },
     ],

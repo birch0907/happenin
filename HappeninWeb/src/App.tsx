@@ -377,7 +377,53 @@ function MapApp() {
                     </span>
                   )}
                   <span className="brand-wordmark hotel-wordmark">{hotel.wordmark}</span>
-                  <span className="event-count">{hotel.subtitle}</span>
+                  {isStudioGallery ? (
+                    <span className="studio-handwritten-subtitle" aria-label={hotel.subtitle}>
+                      <svg width="132" height="17" viewBox="0 0 208 26" fill="none">
+                        <g
+                          stroke="#1A9196"
+                          strokeWidth="1.75"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          {/* D */}
+                          <path d="M6 21 L8.5 7.5 M7.8 8 C15 7.5 16.5 12 15.2 16.5 C14 20.5 9.5 21.5 5.5 20.8" />
+                          {/* I */}
+                          <path d="M20.5 20.5 L22.8 8" />
+                          {/* G */}
+                          <path d="M36 9.5 C32 6.5 27.5 10.5 26.8 15.5 C26.2 20 30.2 21.8 34 20 L35.2 15.2 L31.2 15.6" />
+                          {/* I */}
+                          <path d="M40.5 21 L42.6 8.5" />
+                          {/* T */}
+                          <path d="M49.5 20.5 L52 8.2 M46.2 8.8 L57.5 7.2" />
+                          {/* A */}
+                          <path d="M57.5 21.2 L64.5 7.5 L67 20.8 M59.5 16.2 L66.5 15.2" />
+                          {/* L */}
+                          <path d="M72 8 L70.2 20.8 L78.5 20.2" />
+                          {/* C */}
+                          <path d="M97.5 9.2 C93.2 6.8 88.5 10.8 88 15.8 C87.5 20.4 92.2 21.8 96.5 19.6" />
+                          {/* O */}
+                          <path d="M106.5 8 C101.8 8.2 99.5 13.5 100.5 17.8 C101.5 21.5 106.8 21.6 109.2 17.5 C111.5 13.5 110.2 7.8 106.5 8" />
+                          {/* N */}
+                          <path d="M114.2 21 L116.5 8.2 L122.8 20.5 L125.5 7.8" />
+                          {/* C */}
+                          <path d="M138.8 9.2 C134.5 6.8 129.8 11 129.4 16 C129 20.5 133.5 21.8 137.8 19.5" />
+                          {/* I */}
+                          <path d="M143.5 20.8 L145.6 8.2" />
+                          {/* E */}
+                          <path d="M150.2 20.8 L152.6 8 M152 8.2 L159.5 7.2 M151.4 14.5 L157.8 13.8 M150 20.8 L158.8 19.8" />
+                          {/* R */}
+                          <path d="M163.8 21 L166.2 8 M165.6 8.2 C171.8 7.4 173.8 10.6 171.8 13.4 C170.2 15.2 167 15.2 165.2 15 M168 15 L172.8 21" />
+                          {/* G */}
+                          <path d="M186.5 9.2 C182.5 6.5 177.8 10.5 177.2 15.8 C176.6 20.2 180.8 21.8 184.5 20 L185.8 15.2 L181.8 15.6" />
+                          {/* E */}
+                          <path d="M190.8 20.8 L193.2 8 M192.6 8.2 L200.5 7.2 M192 14.4 L198.5 13.7 M190.6 20.8 L199.6 19.8" />
+                        </g>
+                      </svg>
+                    </span>
+                  ) : (
+                    <span className="event-count">{hotel.subtitle}</span>
+                  )}
                 </>
               ) : (
                 <>

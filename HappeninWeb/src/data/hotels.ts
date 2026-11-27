@@ -39,6 +39,7 @@ export type HotelConfig = {
   styleVariant?: HotelStyleVariant;
   mapStyle?: 'dark' | 'light';
   logoIcon?: 'pick' | 'studio-frame';
+  homePinColor?: string;
   contentPolicy?: HotelContentPolicy;
   theme: {
     bg: string;

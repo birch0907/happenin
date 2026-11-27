@@ -2,7 +2,7 @@
   "id": "studio-allston",
   "name": "Studio Allston Hotel",
   "wordmark": "STUDIO ALLSTON",
-  "subtitle": "Stay Outside the Frame",
+  "subtitle": "Digital Concierge",
   "address": "1234 Soldiers Field Rd, Boston, MA 02135",
   "latitude": 42.36348,
   "longitude": -71.13632,
@@ -10,6 +10,7 @@
   "styleVariant": "studio-gallery",
   "mapStyle": "light",
   "logoIcon": "studio-frame",
+  "homePinColor": "#1e9e68",
   "contentPolicy": {
     "maxRating": "R"
   },
