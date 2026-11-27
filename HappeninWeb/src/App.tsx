@@ -18,14 +18,27 @@ import {
   groupEventsByPin,
   normalizeEvents,
 } from './data/events';
-import { HotelConfig, HotelTab, getHotelParam } from './data/hotels';
+import { HotelConfig, HotelTab, eventAllowedForHotel, getHotelParam } from './data/hotels';
 import { MapView } from './components/MapView';
 import { EventCard } from './components/EventCard';
 import { PlaceCard } from './components/PlaceCard';
+import { DatabaseView } from './components/DatabaseView';
 
 const HOTEL_TABS: HotelTab[] = ['Dining', 'Sights', 'Tonight'];
 
+function isDatabaseMode(): boolean {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('view') === 'db';
+}
+
 export default function App() {
+  if (isDatabaseMode()) {
+    return <DatabaseView />;
+  }
+  return <MapApp />;
+}
+
+function MapApp() {
   const [hotel, setHotel] = useState<HotelConfig | null>(null);
   const [hotelTab, setHotelTab] = useState<HotelTab>('Tonight');
   const [selectedPlaceId, setSelectedPlaceId] = useState<string | null>(null);
@@ -130,14 +143,19 @@ export default function App() {
     [today]
   );
 
+  const eligibleEvents = useMemo(
+    () => (hotel ? allEvents.filter((ev) => eventAllowedForHotel(ev, hotel)) : allEvents),
+    [allEvents, hotel]
+  );
+
   const visibleEvents = useMemo(
     () =>
       showingEvents
-        ? allEvents.filter(
+        ? eligibleEvents.filter(
             (ev) => activeCategories.includes(ev.category) && eventVisibleAtTime(ev, selectedTime)
           )
         : [],
-    [showingEvents, allEvents, activeCategories, selectedTime]
+    [showingEvents, eligibleEvents, activeCategories, selectedTime]
   );
 
   const clusters = useMemo(() => groupEventsByPin(visibleEvents), [visibleEvents]);
@@ -159,10 +177,10 @@ export default function App() {
 
   // When very few events are live at the selected time, find the nearest peak evening slot.
   const previewSuggestion = useMemo(() => {
-    if (!showingEvents || loading || selectedCluster || visibleEvents.length > 3 || allEvents.length === 0) {
+    if (!showingEvents || loading || selectedCluster || visibleEvents.length > 3 || eligibleEvents.length === 0) {
       return null;
     }
-    const matching = allEvents.filter((ev) => activeCategories.includes(ev.category));
+    const matching = eligibleEvents.filter((ev) => activeCategories.includes(ev.category));
     if (matching.length === 0) return null;
 
     let bestTime = selectedTime;
@@ -211,7 +229,7 @@ export default function App() {
     loading,
     selectedCluster,
     visibleEvents.length,
-    allEvents,
+    eligibleEvents,
     activeCategories,
     selectedTime,
     windowStart,

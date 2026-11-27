@@ -10,6 +10,9 @@
   "styleVariant": "verb-poster",
   "mapStyle": "light",
   "logoIcon": "pick",
+  "contentPolicy": {
+    "maxRating": "R"
+  },
   "theme": {
     "bg": "#e2f7fa",
     "panel": "#ffffff",

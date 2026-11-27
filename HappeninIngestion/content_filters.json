@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "notes": "Layer 1 deterministic hospitality safety rules for Happenin'. Strictest rating wins between these rules and Gemini AI classification (PG < R < Explicit). Venues listed under exclude_from_hotels_venues stay live on Happenin' but are hidden on ALL hotel concierges.",
+  "exclude_from_hotels_venues": [
+    "manray"
+  ],
+  "explicit_patterns": [
+    "\\bfetish\\b",
+    "\\bkink\\b",
+    "\\bkinky\\b",
+    "\\bbdsm\\b",
+    "\\bbondage\\b",
+    "\\bdominatrix\\b",
+    "\\bmasochis\\w*",
+    "\\bsubmissive\\b",
+    "\\bdungeon\\b",
+    "\\bsmut\\b",
+    "\\bslutcracker\\b",
+    "\\bhorny\\b",
+    "\\borgy\\b",
+    "\\bstrip\\s*club\\b",
+    "\\blingerie\\s*(party|night)\\b",
+    "\\bnaked\\s*(party|night)\\b",
+    "\\berotic\\w*",
+    "\\bnsfw\\b",
+    "\\bxxx\\b",
+    "\\bcnt\\s*mscle\\b",
+    "\\bfuck\\w*\\b",
+    "\\bcunt\\w*\\b",
+    "\\bplay\\s*party\\b",
+    "\\bswingers?\\b",
+    "\\bleather\\s*night\\b"
+  ],
+  "r_rated_patterns": [
+    "\\bsh!t[- ]?faced\\b",
+    "\\bshit\\b",
+    "\\bbitch\\w*\\b",
+    "\\bburlesque\\b",
+    "\\bhellbound\\b",
+    "\\b3ho3\\b",
+    "\\brave\\b"
+  ],
+  "allow_title_overrides": [
+    "brett goldstein"
+  ]
+}

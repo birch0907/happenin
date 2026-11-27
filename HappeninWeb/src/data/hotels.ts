@@ -1,6 +1,13 @@
 // White-label Hotel Concierge Portal configuration & walking distance helpers.
+import type { ContentRating, HappeninEvent } from './events';
 
 export type HotelTab = 'Tonight' | 'Dining' | 'Sights';
+
+export type HotelContentPolicy = {
+  maxRating?: 'PG' | 'R';
+  excludeVenues?: string[];
+  excludeEventIds?: string[];
+};
 
 export type HotelPlace = {
   id: string;
@@ -32,6 +39,7 @@ export type HotelConfig = {
   styleVariant?: HotelStyleVariant;
   mapStyle?: 'dark' | 'light';
   logoIcon?: 'pick';
+  contentPolicy?: HotelContentPolicy;
   theme: {
     bg: string;
     panel: string;
@@ -90,4 +98,23 @@ export function formatWalkLabel(
 
 export function walkingDirectionsUrl(hotel: HotelConfig, lat: number, lng: number): string {
   return `https://www.google.com/maps/dir/?api=1&origin=${hotel.latitude},${hotel.longitude}&destination=${lat},${lng}&travelmode=walking`;
+}
+
+const RATING_RANK: Record<ContentRating, number> = { PG: 0, R: 1, Explicit: 2 };
+
+/** Decide whether a live event is appropriate to show on a specific hotel's concierge map. */
+export function eventAllowedForHotel(event: HappeninEvent, hotel: HotelConfig): boolean {
+  if (event.hotelBlocked || event.contentRating === 'Explicit') return false;
+  const policy = hotel.contentPolicy;
+  const maxRating: ContentRating = policy?.maxRating === 'R' ? 'R' : 'PG';
+  if (RATING_RANK[event.contentRating] > RATING_RANK[maxRating]) return false;
+
+  if (policy?.excludeEventIds?.includes(event.id)) return false;
+  if (policy?.excludeVenues && policy.excludeVenues.length > 0) {
+    const venueNorm = event.venue.toLowerCase().replace(/[^a-z0-9]/g, '');
+    for (const ex of policy.excludeVenues) {
+      if (ex.toLowerCase().replace(/[^a-z0-9]/g, '') === venueNorm) return false;
+    }
+  }
+  return true;
 }

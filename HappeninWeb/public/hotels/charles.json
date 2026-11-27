@@ -7,6 +7,9 @@
   "latitude": 42.3724,
   "longitude": -71.1225,
   "initialZoom": 14.7,
+  "contentPolicy": {
+    "maxRating": "PG"
+  },
   "theme": {
     "bg": "#0f1420",
     "panel": "rgba(17, 23, 36, 0.88)",

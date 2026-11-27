@@ -13,6 +13,8 @@ export const CATEGORY_COLORS: Record<EventCategory, string> = {
 
 export type AdmissionType = 'free' | 'cover' | 'ticketed';
 
+export type ContentRating = 'PG' | 'R' | 'Explicit';
+
 export type RawEvent = {
   id?: string;
   source_id?: string;
@@ -44,6 +46,9 @@ export type RawEvent = {
   ai_tags?: string[] | null;
   ai_price?: string | null;
   default_category?: EventCategory;
+  content_rating?: ContentRating;
+  safety_reason?: string;
+  hotel_blocked?: boolean;
 };
 
 export type HappeninEvent = {
@@ -57,6 +62,9 @@ export type HappeninEvent = {
   admissionType?: AdmissionType;
   admissionLabel?: string;
   price?: string;
+  contentRating: ContentRating;
+  safetyReason?: string;
+  hotelBlocked: boolean;
   latitude: number;
   longitude: number;
   start: string;
@@ -298,6 +306,9 @@ export function normalizeEvents(rawEvents: RawEvent[]): HappeninEvent[] {
       admissionType,
       admissionLabel,
       price,
+      contentRating: e.content_rating === 'R' || e.content_rating === 'Explicit' ? e.content_rating : 'PG',
+      safetyReason: e.safety_reason || undefined,
+      hotelBlocked: Boolean(e.hotel_blocked || e.content_rating === 'Explicit'),
       latitude: e.latitude!,
       longitude: e.longitude!,
       start: e.start,
