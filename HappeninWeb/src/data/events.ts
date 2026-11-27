@@ -404,30 +404,39 @@ export function groupEventsByPin(events: HappeninEvent[]): VenueCluster[] {
 // BOSTON / EASTERN TIME UTILITIES
 // ---------------------------------------------------------------------------
 
-export const WINDOW_HOURS = 24;
 export const QUARTER_MS = 15 * 60 * 1000;
-export const WINDOW_MS = WINDOW_HOURS * 60 * 60 * 1000;
 export const DATE_COUNT = 14;
 
 export function currentQuarter(): number {
   return Math.floor(Date.now() / QUARTER_MS) * QUARTER_MS;
 }
 
+// Logical "nightlife day" in America/New_York:
+// Between 12:00 AM and 1:59 AM, stay anchored to the evening that is still underway.
 export function easternToday(): string {
   const parts = new Intl.DateTimeFormat('en-US', {
     timeZone: 'America/New_York',
+    hourCycle: 'h23',
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
+    hour: '2-digit',
   }).formatToParts(new Date());
   const get = (type: string) => parts.find((p) => p.type === type)?.value || '';
-  return `${get('year')}-${get('month')}-${get('day')}`;
+  const calendarDate = `${get('year')}-${get('month')}-${get('day')}`;
+  const hour = Number(get('hour') || '0');
+  return hour < 2 ? addCalendarDays(calendarDate, -1) : calendarDate;
 }
 
 export function addCalendarDays(date: string, days: number): string {
   const d = new Date(`${date}T12:00:00Z`);
   d.setUTCDate(d.getUTCDate() + days);
   return d.toISOString().slice(0, 10);
+}
+
+export function isWeekendDate(date: string): boolean {
+  const dow = new Date(`${date}T12:00:00Z`).getUTCDay();
+  return dow === 0 || dow === 6;
 }
 
 export function dateParts(date: string): { weekday: string; day: number; month: string } {
@@ -439,10 +448,16 @@ export function dateParts(date: string): { weekday: string; day: number; month: 
   };
 }
 
-// Convert 4 PM in Boston to a real timestamp, including DST transitions.
-export function futureWindowStart(date: string): number {
-  const utcWallClock = Date.parse(`${date}T16:00:00Z`);
-  let instant = utcWallClock + 4 * 60 * 60 * 1000;
+// Convert any Eastern wall-clock date + hour (supports hour >= 24 for next-day late night)
+// into a real UTC timestamp, accurately across DST transitions.
+export function easternWallClockMs(date: string, hour: number, minute = 0): number {
+  const dayOffset = Math.floor(hour / 24);
+  const targetDate = dayOffset === 0 ? date : addCalendarDays(date, dayOffset);
+  const targetHour = ((hour % 24) + 24) % 24;
+  const hh = String(targetHour).padStart(2, '0');
+  const mm = String(minute).padStart(2, '0');
+  const utcWallClock = Date.parse(`${targetDate}T${hh}:${mm}:00Z`);
+  let instant = utcWallClock + 5 * 60 * 60 * 1000;
   for (let attempt = 0; attempt < 3; attempt++) {
     const parts = new Intl.DateTimeFormat('en-US', {
       timeZone: 'America/New_York',
@@ -466,6 +481,39 @@ export function futureWindowStart(date: string): number {
     if (diff === 0) break;
   }
   return instant;
+}
+
+export type ScrubberWindow = {
+  start: number;
+  end: number;
+  midpoint: number;
+  totalSteps: number;
+  startHour: number;
+  endHour: number;
+};
+
+// Smart time scrubber bounds:
+// - Digital Concierge (hotels): 8:00 AM – 2:00 AM every day (daytime + nightlife)
+// - Happenin' standalone:       4:00 PM – 2:00 AM Mon–Fri, 12:00 PM – 2:00 AM Sat–Sun
+export function getScrubberWindow(date: string, isHotel: boolean): ScrubberWindow {
+  const startHour = isHotel ? 8 : isWeekendDate(date) ? 12 : 16;
+  const endHour = 26; // 2:00 AM next morning
+  const start = easternWallClockMs(date, startHour, 0);
+  const end = easternWallClockMs(date, endHour, 0);
+  const totalSteps = Math.max(1, Math.round((end - start) / QUARTER_MS));
+  const midpoint = start + Math.round(totalSteps / 2) * QUARTER_MS;
+  return { start, end, midpoint, totalSteps, startHour, endHour };
+}
+
+export function defaultTimeForDate(date: string, isHotel: boolean, today: string): number {
+  const win = getScrubberWindow(date, isHotel);
+  if (date === today) {
+    const now = currentQuarter();
+    if (now >= win.start && now <= win.end) {
+      return now;
+    }
+  }
+  return win.start;
 }
 
 export function formatTimelineTime(timestamp: number): string {

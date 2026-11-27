@@ -9,15 +9,16 @@ import {
   REGIONS,
   RawEvent,
   RegionId,
-  WINDOW_MS,
   addCalendarDays,
   currentQuarter,
   dateParts,
+  defaultTimeForDate,
   easternToday,
+  easternWallClockMs,
   eventVisibleAtTime,
   formatTimelineTime,
-  futureWindowStart,
   getRegionParam,
+  getScrubberWindow,
   groupEventsByPin,
   normalizeEvents,
 } from './data/events';
@@ -61,8 +62,12 @@ function MapApp() {
   const [selectedDate, setSelectedDate] = useState(easternToday);
   const [datesExpanded, setDatesExpanded] = useState(false);
 
-  const [windowStart, setWindowStart] = useState(currentQuarter);
-  const [selectedTime, setSelectedTime] = useState(currentQuarter);
+  const isHotelMode = Boolean(hotel || initialHotelParam);
+  const [selectedTime, setSelectedTime] = useState(() => {
+    const t = easternToday();
+    return defaultTimeForDate(t, Boolean(initialHotelParam), t);
+  });
+  const [clockQuarter, setClockQuarter] = useState(currentQuarter);
   const [selectedClusterKey, setSelectedClusterKey] = useState<string | null>(null);
 
   // Load optional white-label hotel config from ?hotel=<id>
@@ -106,31 +111,32 @@ function MapApp() {
     };
   }, []);
 
-  // Keep the rolling 24-hour window aligned with the current 15-minute quarter.
+  // Keep logical "today" and live clock synced every minute.
   useEffect(() => {
     const refresh = () => {
-      const nextStart = currentQuarter();
+      const nextNow = currentQuarter();
       const newToday = easternToday();
       setToday(newToday);
-      setSelectedDate((prevDate) => {
-        if (prevDate < newToday) {
-          setWindowStart(nextStart);
-          setSelectedTime(nextStart);
-          setDatesExpanded(false);
-          return newToday;
-        }
-        if (prevDate === newToday) {
-          setWindowStart((oldStart) => {
-            if (oldStart === nextStart) return oldStart;
-            setSelectedTime((prevSel) =>
-              prevSel <= oldStart
-                ? nextStart
-                : Math.max(nextStart, Math.min(nextStart + WINDOW_MS, prevSel))
-            );
-            return nextStart;
-          });
-        }
-        return prevDate;
+      setClockQuarter((prevNow) => {
+        setSelectedDate((prevDate) => {
+          if (prevDate < newToday) {
+            setSelectedTime(defaultTimeForDate(newToday, isHotelMode, newToday));
+            setDatesExpanded(false);
+            return newToday;
+          }
+          if (prevDate === newToday) {
+            const win = getScrubberWindow(newToday, isHotelMode);
+            setSelectedTime((prevSel) => {
+              // If user was tracking "Now" and we're in the active window, advance with the clock.
+              if (nextNow >= win.start && nextNow <= win.end && Math.abs(prevSel - prevNow) < QUARTER_MS) {
+                return nextNow;
+              }
+              return Math.max(win.start, Math.min(win.end, prevSel));
+            });
+          }
+          return prevDate;
+        });
+        return nextNow;
       });
     };
 
@@ -143,7 +149,19 @@ function MapApp() {
       window.clearInterval(timer);
       document.removeEventListener('visibilitychange', onVisible);
     };
-  }, []);
+  }, [isHotelMode]);
+
+  const scrubberWindow = useMemo(
+    () => getScrubberWindow(selectedDate, isHotelMode),
+    [selectedDate, isHotelMode]
+  );
+  const todayWindow = useMemo(
+    () => getScrubberWindow(today, isHotelMode),
+    [today, isHotelMode]
+  );
+  const windowStart = scrubberWindow.start;
+  const windowEnd = scrubberWindow.end;
+  const nowInTodayWindow = clockQuarter >= todayWindow.start && clockQuarter <= todayWindow.end;
 
   const showingEvents = !hotel || hotelTab === 'Tonight';
 
@@ -202,7 +220,26 @@ function MapApp() {
     [visiblePlaces, selectedPlaceId]
   );
 
-  // When very few events are live at the selected time, find the nearest peak evening slot.
+  // Activity density across the current scrubber window (30-min bins) for the heat strip.
+  const activityHeat = useMemo(() => {
+    const binMs = 30 * 60 * 1000;
+    const binCount = Math.max(1, Math.round((windowEnd - windowStart) / binMs));
+    const matching = eligibleEvents.filter((ev) => activeCategories.includes(ev.category));
+    const counts: number[] = [];
+    let maxCount = 0;
+    for (let i = 0; i < binCount; i++) {
+      const sampleTime = windowStart + i * binMs + binMs / 2;
+      let c = 0;
+      for (const ev of matching) {
+        if (eventVisibleAtTime(ev, sampleTime)) c++;
+      }
+      counts.push(c);
+      if (c > maxCount) maxCount = c;
+    }
+    return { counts, maxCount };
+  }, [eligibleEvents, activeCategories, windowStart, windowEnd]);
+
+  // When very few events are live at the selected time, find the nearest peak slot.
   const previewSuggestion = useMemo(() => {
     if (!showingEvents || loading || selectedCluster || visibleEvents.length > 3 || eligibleEvents.length === 0) {
       return null;
@@ -213,7 +250,7 @@ function MapApp() {
     let bestTime = selectedTime;
     let bestCount = visibleEvents.length;
     const stepMs = 30 * 60 * 1000;
-    for (let t = windowStart; t <= windowStart + WINDOW_MS; t += stepMs) {
+    for (let t = windowStart; t <= windowEnd; t += stepMs) {
       if (Math.abs(t - selectedTime) < stepMs) continue;
       let count = 0;
       for (const ev of matching) {
@@ -229,12 +266,11 @@ function MapApp() {
         selectedDate === today
           ? `Preview ${formatTimelineTime(bestTime)}`
           : `Jump to ${formatTimelineTime(bestTime)}`;
-      return { date: selectedDate, windowStart, time: bestTime, count: bestCount, label };
+      return { date: selectedDate, time: bestTime, count: bestCount, label };
     }
 
     for (const date of availableDates.slice(1, 6)) {
-      const start = futureWindowStart(date);
-      const evening = start + 4 * 60 * 60 * 1000;
+      const evening = easternWallClockMs(date, 20, 0);
       let count = 0;
       for (const ev of matching) {
         if (eventVisibleAtTime(ev, evening)) count++;
@@ -243,7 +279,6 @@ function MapApp() {
         const parts = dateParts(date);
         return {
           date,
-          windowStart: start,
           time: evening,
           count,
           label: `Preview ${parts.weekday} 8:00 PM`,
@@ -260,6 +295,7 @@ function MapApp() {
     activeCategories,
     selectedTime,
     windowStart,
+    windowEnd,
     selectedDate,
     today,
     availableDates,
@@ -273,21 +309,18 @@ function MapApp() {
   }
 
   function handleSelectDate(date: string) {
-    const start = date === today ? currentQuarter() : futureWindowStart(date);
     setSelectedDate(date);
-    setWindowStart(start);
-    setSelectedTime(start);
+    setSelectedTime(defaultTimeForDate(date, isHotelMode, today));
     setDatesExpanded(false);
     setSelectedClusterKey(null);
   }
 
   function jumpToNow() {
-    const now = currentQuarter();
     const t = easternToday();
     setToday(t);
+    setClockQuarter(currentQuarter());
     setSelectedDate(t);
-    setWindowStart(now);
-    setSelectedTime(now);
+    setSelectedTime(defaultTimeForDate(t, isHotelMode, t));
     setDatesExpanded(false);
     setSelectedClusterKey(null);
   }
@@ -299,13 +332,16 @@ function MapApp() {
     setDatesExpanded(false);
   }
 
-  const totalSteps = Math.round(WINDOW_MS / QUARTER_MS);
+  const totalSteps = scrubberWindow.totalSteps;
   const currentStep = Math.max(
     0,
     Math.min(totalSteps, Math.round((selectedTime - windowStart) / QUARTER_MS))
   );
   const progressPct = (currentStep / totalSteps) * 100;
-  const isAtNow = selectedDate === today && Math.abs(selectedTime - currentQuarter()) < QUARTER_MS;
+  const defaultTodayTime = defaultTimeForDate(today, isHotelMode, today);
+  const isAtDefault =
+    selectedDate === today && Math.abs(selectedTime - defaultTodayTime) < QUARTER_MS;
+  const isAtLiveNow = isAtDefault && nowInTodayWindow;
   const selectedDateInfo = dateParts(selectedDate);
 
   const isVerbPoster = hotel?.styleVariant === 'verb-poster';
@@ -472,9 +508,9 @@ function MapApp() {
                 </>
               )}
             </div>
-            {showingEvents && !isAtNow && (
+            {showingEvents && !isAtDefault && (
               <button type="button" className="now-jump-btn" onClick={jumpToNow}>
-                Back to Now
+                {nowInTodayWindow ? 'Back to Now' : 'Back to Tonight'}
               </button>
             )}
           </div>
@@ -495,7 +531,7 @@ function MapApp() {
                     className={`hotel-tab-btn${hotelTab === tab ? ' active' : ''}`}
                     onClick={() => switchHotelTab(tab)}
                   >
-                    {tab === 'Tonight' ? 'Tonight Live' : tab}
+                    {tab === 'Tonight' ? 'Events' : tab}
                     <span className="hotel-tab-count">{count}</span>
                   </button>
                 );
@@ -550,13 +586,14 @@ function MapApp() {
             className="preview-tonight-pill"
             onClick={() => {
               setSelectedDate(previewSuggestion.date);
-              setWindowStart(previewSuggestion.windowStart);
               setSelectedTime(previewSuggestion.time);
               setDatesExpanded(false);
               setSelectedClusterKey(null);
             }}
           >
-            <span className="preview-muted">Quiet right now</span>
+            <span className="preview-muted">
+              {isAtLiveNow ? 'Quiet right now' : `Quiet at ${formatTimelineTime(selectedTime)}`}
+            </span>
             <span className="preview-dot">·</span>
             <span className="preview-cta">
               {previewSuggestion.label} ({previewSuggestion.count} events) →
@@ -615,6 +652,22 @@ function MapApp() {
                 <span className="time-readout">{formatTimelineTime(selectedTime)}</span>
               </div>
 
+              <div className="time-heat-strip" aria-hidden="true">
+                {activityHeat.counts.map((count, idx) => {
+                  const ratio = activityHeat.maxCount > 0 ? count / activityHeat.maxCount : 0;
+                  const heightPct = count === 0 ? 12 : Math.round(24 + ratio * 76);
+                  const binPct = ((idx + 0.5) / activityHeat.counts.length) * 100;
+                  const isPassed = binPct <= progressPct + 1.5;
+                  return (
+                    <span
+                      key={idx}
+                      className={`time-heat-bar${isPassed ? ' passed' : ''}${count === 0 ? ' empty' : ''}`}
+                      style={{ height: `${heightPct}%` }}
+                    />
+                  );
+                })}
+              </div>
+
               <div className="slider-wrap">
                 <input
                   type="range"
@@ -641,7 +694,8 @@ function MapApp() {
 
               <div className="time-endpoints">
                 <span>{formatTimelineTime(windowStart)}</span>
-                <span>{formatTimelineTime(windowStart + WINDOW_MS)}</span>
+                <span>{formatTimelineTime(scrubberWindow.midpoint)}</span>
+                <span>{formatTimelineTime(windowEnd)}</span>
               </div>
             </section>
           </>
