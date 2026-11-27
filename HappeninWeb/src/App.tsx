@@ -282,6 +282,7 @@ function MapApp() {
   const selectedDateInfo = dateParts(selectedDate);
 
   const isVerbPoster = hotel?.styleVariant === 'verb-poster';
+  const isStudioGallery = hotel?.styleVariant === 'studio-gallery';
   const accentColor = hotel ? hotel.theme.accent : '#2FE6E6';
   const themeStyle = hotel
     ? ({
@@ -295,13 +296,14 @@ function MapApp() {
       } as React.CSSProperties)
     : undefined;
 
-  const chipPalette: Record<EventCategory, string> = isVerbPoster
-    ? { 'Live Music': '#E63946', DJ: '#00A6B4', Social: '#7B2CBF' }
-    : CATEGORY_COLORS;
+  const chipPalette: Record<EventCategory, string> =
+    isVerbPoster || isStudioGallery
+      ? { 'Live Music': '#E63946', DJ: '#00A6B4', Social: '#7B2CBF' }
+      : CATEGORY_COLORS;
 
   return (
     <main
-      className={`app-shell${hotel ? ' hotel-mode' : ''}${isVerbPoster ? ' variant-verb-poster' : ''}`}
+      className={`app-shell${hotel ? ' hotel-mode' : ''}${isVerbPoster ? ' variant-verb-poster' : ''}${isStudioGallery ? ' variant-studio-gallery' : ''}`}
       style={themeStyle}
     >
       <MapView
@@ -353,6 +355,27 @@ function MapApp() {
                         >
                           VERB
                         </text>
+                      </svg>
+                    </span>
+                  )}
+                  {hotel.logoIcon === 'studio-frame' && (
+                    <span className="studio-frame-badge" aria-hidden="true">
+                      <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+                        <rect
+                          x="6"
+                          y="6"
+                          width="22"
+                          height="22"
+                          transform="rotate(10 17 17)"
+                          stroke="#FFFFFF"
+                          strokeWidth="2.1"
+                        />
+                        <path
+                          d="M11 25C15 21 15 14 21 10C24 8 28 8.5 28.5 11.5C29 14.5 23 17 17 18.5C11 20 7.5 23 8.5 26C9.5 28.5 16 28 24 23"
+                          stroke="#D6DE6B"
+                          strokeWidth="2.2"
+                          strokeLinecap="round"
+                        />
                       </svg>
                     </span>
                   )}

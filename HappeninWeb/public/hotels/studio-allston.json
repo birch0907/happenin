@@ -1,0 +1,191 @@
+{
+  "id": "studio-allston",
+  "name": "Studio Allston Hotel",
+  "wordmark": "STUDIO ALLSTON",
+  "subtitle": "Stay Outside the Frame",
+  "address": "1234 Soldiers Field Rd, Boston, MA 02135",
+  "latitude": 42.36348,
+  "longitude": -71.13632,
+  "initialZoom": 13.8,
+  "styleVariant": "studio-gallery",
+  "mapStyle": "light",
+  "logoIcon": "studio-frame",
+  "contentPolicy": {
+    "maxRating": "R"
+  },
+  "theme": {
+    "bg": "#f4f4f2",
+    "panel": "#0a0a0a",
+    "panelSolid": "#0a0a0a",
+    "accent": "#d6de6b",
+    "border": "#0a0a0a",
+    "borderStrong": "#0a0a0a",
+    "textMuted": "#b8b8b2"
+  },
+  "places": [
+    {
+      "id": "casa-cana",
+      "tab": "Dining",
+      "name": "Casa Caña",
+      "tagline": "Latin Kitchen, Tequila Bar & Patio",
+      "priceTier": "$$",
+      "onProperty": true,
+      "latitude": 42.36342,
+      "longitude": -71.13615,
+      "address": "1234 Soldiers Field Rd (On Property)",
+      "description": "Studio Allston's vibrant on-property restaurant and lounge featuring bold tropical tiles, street tacos, Latin-inspired plates, craft margaritas, and a lively patio.",
+      "websiteUrl": "https://www.hotelstudioallston.com/"
+    },
+    {
+      "id": "charles-river-speedway-dining",
+      "tab": "Dining",
+      "name": "Charles River Speedway",
+      "tagline": "Historic Courtyard Food & Drink Marketplace",
+      "priceTier": "$$",
+      "latitude": 42.36175,
+      "longitude": -71.14478,
+      "address": "525 Western Ave, Brighton",
+      "description": "Restored 1899 courtyard marketplace minutes from the hotel housing Super Bien empanadas, The Koji Club sake bar, Pizza Project, Rite Tea & Espresso, and rotating pop-ups.",
+      "websiteUrl": "https://charlesriverspeedway.com/"
+    },
+    {
+      "id": "notch-biergarten",
+      "tab": "Dining",
+      "name": "Notch Brewing & Biergarten",
+      "tagline": "Session Beer Brewery & Courtyard",
+      "priceTier": "$$",
+      "latitude": 42.36185,
+      "longitude": -71.14455,
+      "address": "525 Western Ave, Brighton",
+      "description": "Award-winning session lager brewery and sunny brick courtyard beer garden inside the Speedway complex, pouring Czech-style pilsners and European classics.",
+      "websiteUrl": "https://www.notchbrewing.com/"
+    },
+    {
+      "id": "sloanes-allston",
+      "tab": "Dining",
+      "name": "Sloane's",
+      "tagline": "Neighborhood Bistro & Craft Cocktails",
+      "priceTier": "$$",
+      "latitude": 42.36359,
+      "longitude": -71.1295,
+      "address": "197 N Harvard St, Allston",
+      "description": "Warm, intimate Lower Allston restaurant and cocktail bar serving seasonal New England comfort dishes, standout burgers, and house cocktails.",
+      "websiteUrl": "https://www.sloanesboston.com/"
+    },
+    {
+      "id": "lulus-allston",
+      "tab": "Dining",
+      "name": "Lulu's Allston",
+      "tagline": "Comfort Kitchen & 50 Draft Lines",
+      "priceTier": "$$",
+      "latitude": 42.35508,
+      "longitude": -71.13422,
+      "address": "421 Cambridge St, Allston",
+      "description": "Cult-favorite Allston hangout known for inventive comfort plates, loaded mac & cheese, weekend brunch, and one of the best rotating craft beer lists in the neighborhood.",
+      "websiteUrl": "https://www.lulusallston.com/"
+    },
+    {
+      "id": "lone-star-taco-allston",
+      "tab": "Dining",
+      "name": "Lone Star Taco Bar",
+      "tagline": "Street Tacos & Smoky Mezcal Bar",
+      "priceTier": "$$",
+      "latitude": 42.35388,
+      "longitude": -71.13703,
+      "address": "479 Cambridge St, Allston",
+      "description": "Beloved Allston institution serving Baja-style street tacos, warm queso, and top-shelf mezcal and tequila cocktails late into the evening.",
+      "websiteUrl": "https://www.lonestar-boston.com/"
+    },
+    {
+      "id": "rail-stop-boston-landing",
+      "tab": "Dining",
+      "name": "The Rail Stop Restaurant & Bar",
+      "tagline": "Modern New England Brasserie",
+      "priceTier": "$$$",
+      "latitude": 42.35714,
+      "longitude": -71.14329,
+      "address": "96 Guest St, Boston Landing",
+      "description": "Polished neighborhood brasserie and whiskey bar in Boston Landing serving wood-grilled steaks, raw bar classics, and seasonal New England fare.",
+      "websiteUrl": "https://www.railstopboston.com/"
+    },
+    {
+      "id": "widowmaker-taproom",
+      "tab": "Dining",
+      "name": "Widowmaker Taproom & Kitchen",
+      "tagline": "Craft Brewery & Wood-Fired Kitchen",
+      "priceTier": "$$",
+      "latitude": 42.3557,
+      "longitude": -71.14794,
+      "address": "190 N Beacon St, Brighton",
+      "description": "Industrial-chic Brighton brewery pouring hazy IPAs and crisp lagers alongside flatbreads, wings, and weekly vinyl and trivia nights.",
+      "websiteUrl": "https://www.widowmakerbrewing.com/"
+    },
+    {
+      "id": "studio-allston-art-collection",
+      "tab": "Sights",
+      "name": "Studio Allston Art Collection",
+      "tagline": "22+ Artists · Lobby & Corridor Murals",
+      "onProperty": true,
+      "latitude": 42.36354,
+      "longitude": -71.13645,
+      "address": "1234 Soldiers Field Rd (On Property)",
+      "description": "Explore original large-scale murals, lobby installations by Jason Woodside, custom elevator art by Kenji Nakayama, and curated works by over 20 local and national artists right inside the hotel.",
+      "websiteUrl": "https://www.hotelstudioallston.com/"
+    },
+    {
+      "id": "herter-park-charles-river",
+      "tab": "Sights",
+      "name": "Herter Park & Charles River Path",
+      "tagline": "Riverfront Trail & Outdoor Amphitheater",
+      "latitude": 42.36296,
+      "longitude": -71.14408,
+      "address": "1175 Soldiers Field Rd, Brighton",
+      "description": "Scenic riverside walking and jogging path steps from Studio Allston, winding along the Charles River past kayaking docks and the seasonal Riverstage amphitheater.",
+      "websiteUrl": "https://www.herterpark.org/"
+    },
+    {
+      "id": "zone-3-western-ave",
+      "tab": "Sights",
+      "name": "Zone 3 & Western Ave Murals",
+      "tagline": "Creative Corridor · Street Art & Pop-Ups",
+      "latitude": 42.36354,
+      "longitude": -71.13314,
+      "address": "267 Western Ave, Allston",
+      "description": "Lower Allston's creative corridor showcasing rotating street art murals, artist workshops, experimental pop-up galleries, and neighborhood activations.",
+      "websiteUrl": "https://allstonway.com/explore"
+    },
+    {
+      "id": "harvard-artlab-allston",
+      "tab": "Sights",
+      "name": "Harvard ArtLab & Allston Campus",
+      "tagline": "Contemporary Architecture & Sculpture",
+      "latitude": 42.36423,
+      "longitude": -71.12821,
+      "address": "140 N Harvard St, Allston",
+      "description": "Striking timber-and-glass interdisciplinary arts studio and modern pedestrian plaza right across Western Ave, hosting public artist showcases and outdoor installations.",
+      "websiteUrl": "https://artlab.harvard.edu/"
+    },
+    {
+      "id": "harvard-art-museums",
+      "tab": "Sights",
+      "name": "Harvard Art Museums",
+      "tagline": "Renzo Piano Courtyard · World-Class Art",
+      "latitude": 42.37422,
+      "longitude": -71.11453,
+      "address": "32 Quincy St, Cambridge",
+      "description": "Three historic museums united under a soaring glass roof just across the Charles River, featuring Monet, Van Gogh, Warhol, and contemporary exhibitions. Free admission.",
+      "websiteUrl": "https://harvardartmuseums.org/"
+    },
+    {
+      "id": "boston-landing-district",
+      "tab": "Sights",
+      "name": "Boston Landing & The TRACK",
+      "tagline": "Live Music, Athletics & Beer Hall Hub",
+      "latitude": 42.35646,
+      "longitude": -71.14466,
+      "address": "91 Guest St, Brighton",
+      "description": "Brighton's lively modern hub home to Roadrunner concert hall, New Balance's indoor track arena, Bruins practice rink, and Broken Records Beer Hall.",
+      "websiteUrl": "https://bostonlanding.co/"
+    }
+  ]
+}

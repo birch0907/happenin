@@ -25,7 +25,7 @@ export type HotelPlace = {
   websiteUrl?: string;
 };
 
-export type HotelStyleVariant = 'standard' | 'verb-poster';
+export type HotelStyleVariant = 'standard' | 'verb-poster' | 'studio-gallery';
 
 export type HotelConfig = {
   id: string;
@@ -38,7 +38,7 @@ export type HotelConfig = {
   initialZoom: number;
   styleVariant?: HotelStyleVariant;
   mapStyle?: 'dark' | 'light';
-  logoIcon?: 'pick';
+  logoIcon?: 'pick' | 'studio-frame';
   contentPolicy?: HotelContentPolicy;
   theme: {
     bg: string;

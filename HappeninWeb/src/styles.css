@@ -1044,6 +1044,380 @@ body,
 }
 
 /* =====================================================================
+   STUDIO ALLSTON HOTEL — CONTEMPORARY ART GALLERY SKIN ("Stay Outside the Frame")
+   Inspired directly by hotelstudioallston.com:
+   Jet Gallery Black (#0A0A0A) · Crisp Gallery White (#FFFFFF) · Chartreuse (#D6DE6B) · Teal Swatch (#2AB3B0)
+   Clean Architectural Geometry (0px corners) · Space Grotesk + Caveat Artist Handwritten Accent
+   ===================================================================== */
+
+.variant-studio-gallery {
+  color: #0a0a0a;
+}
+
+.studio-frame-badge {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.variant-studio-gallery .filter-panel {
+  background: #0a0a0a;
+  backdrop-filter: none;
+  border: 1.5px solid #0a0a0a;
+  border-bottom: 4px solid #d6de6b;
+  border-radius: 0;
+  box-shadow: 6px 6px 0 rgba(10, 10, 10, 0.22);
+  padding: 12px 14px 12px;
+}
+
+.variant-studio-gallery .brand-row {
+  padding-bottom: 9px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.variant-studio-gallery .brand-title {
+  align-items: center;
+  gap: 9px;
+}
+
+.variant-studio-gallery .hotel-wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.variant-studio-gallery .event-count {
+  font-family: 'Caveat', cursive;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #d6de6b;
+  line-height: 1;
+}
+
+.variant-studio-gallery .now-jump-btn {
+  font-family: 'Space Grotesk', sans-serif;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 0;
+  border: none;
+  background: #d6de6b;
+  color: #0a0a0a;
+  padding: 6px 12px;
+}
+
+.variant-studio-gallery .now-jump-btn:hover {
+  background: #e2e982;
+}
+
+.variant-studio-gallery .hotel-mode-tabs {
+  background: #171717;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0;
+  padding: 3px;
+  gap: 4px;
+}
+
+.variant-studio-gallery .hotel-tab-btn {
+  font-family: 'Space Grotesk', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #e2e2dc;
+  border-radius: 0;
+  padding: 8px 10px;
+}
+
+.variant-studio-gallery .hotel-tab-btn:hover {
+  color: #ffffff;
+}
+
+.variant-studio-gallery .hotel-tab-btn.active {
+  background: #d6de6b;
+  color: #0a0a0a;
+  box-shadow: none;
+}
+
+.variant-studio-gallery .category-chip {
+  font-family: 'Space Grotesk', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 11.5px;
+  font-weight: 700;
+  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: #161616;
+  color: #ffffff;
+  padding: 6px 12px;
+}
+
+.variant-studio-gallery .category-chip.active {
+  background: #d6de6b;
+  color: #0a0a0a;
+  border-color: #d6de6b;
+  box-shadow: none;
+}
+
+.variant-studio-gallery .category-chip .category-dot,
+.variant-studio-gallery .category-chip.active .category-dot {
+  background: var(--chip-color);
+  border: 1px solid #0a0a0a;
+}
+
+.variant-studio-gallery .locate-btn {
+  background: #0a0a0a;
+  color: #d6de6b;
+  border: 1.5px solid #0a0a0a;
+  border-radius: 0;
+  box-shadow: 4px 4px 0 #d6de6b;
+}
+
+.variant-studio-gallery .locate-btn:hover {
+  background: #d6de6b;
+  color: #0a0a0a;
+}
+
+.variant-studio-gallery .event-card {
+  background: #ffffff;
+  color: #0a0a0a;
+  border: 1.5px solid #0a0a0a;
+  border-top: 4px solid #d6de6b;
+  border-radius: 0;
+  box-shadow: 6px 6px 0 #0a0a0a;
+  backdrop-filter: none;
+}
+
+.variant-studio-gallery .venue-tab {
+  border-radius: 0;
+  border: 1px solid #d4d4ce;
+  background: #f4f4f2;
+  color: #0a0a0a;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.variant-studio-gallery .venue-tab.active {
+  background: #0a0a0a;
+  color: #d6de6b;
+  border-color: #0a0a0a;
+}
+
+.variant-studio-gallery .category-badge {
+  font-family: 'Space Grotesk', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 0;
+  background: #0a0a0a !important;
+  color: #d6de6b !important;
+  padding: 3px 9px;
+}
+
+.variant-studio-gallery .walk-pill {
+  border-radius: 0;
+  background: #dff4f3;
+  color: #0c5e5c;
+  border: 1px solid #2ab3b0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.variant-studio-gallery .tag-pill {
+  border-radius: 0;
+  background: #f4f4f2;
+  color: #222220;
+  border: 1px solid #d8d8d2;
+}
+
+.variant-studio-gallery .admission-pill {
+  border-radius: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.variant-studio-gallery .admission-free {
+  background: #dff4f3;
+  color: #0c5e5c;
+  border: 1px solid #2ab3b0;
+}
+
+.variant-studio-gallery .admission-cover {
+  background: #f6f7d2;
+  color: #3d4206;
+  border: 1px solid #aeb83b;
+}
+
+.variant-studio-gallery .admission-ticketed {
+  background: #f4f4f2;
+  color: #0a0a0a;
+  border: 1px solid #0a0a0a;
+}
+
+.variant-studio-gallery .close-btn {
+  border-radius: 0;
+  background: #0a0a0a;
+  color: #ffffff;
+  border: none;
+}
+
+.variant-studio-gallery .close-btn:hover {
+  background: #d6de6b;
+  color: #0a0a0a;
+}
+
+.variant-studio-gallery .event-title {
+  font-family: 'Space Grotesk', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin-bottom: 6px;
+}
+
+.variant-studio-gallery .event-venue {
+  color: #4d4d48;
+  font-weight: 600;
+}
+
+.variant-studio-gallery .event-time {
+  color: #0c5e5c;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  font-size: 13.5px;
+}
+
+.variant-studio-gallery .event-description {
+  color: #262624;
+}
+
+.variant-studio-gallery .btn-primary {
+  font-family: 'Space Grotesk', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12.5px;
+  border-radius: 0;
+  background: #d6de6b;
+  color: #0a0a0a;
+  border: 1.5px solid #0a0a0a;
+}
+
+.variant-studio-gallery .btn-secondary {
+  font-family: 'Space Grotesk', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12.5px;
+  border-radius: 0;
+  background: #0a0a0a;
+  color: #ffffff;
+  border: 1.5px solid #0a0a0a;
+}
+
+.variant-studio-gallery .preview-tonight-pill {
+  border-radius: 0;
+  background: #0a0a0a;
+  border: 1.5px solid #0a0a0a;
+  border-left: 4px solid #d6de6b;
+  box-shadow: 5px 5px 0 rgba(10, 10, 10, 0.22);
+  backdrop-filter: none;
+}
+
+.variant-studio-gallery .preview-muted,
+.variant-studio-gallery .preview-dot {
+  color: #d8d8d2;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.variant-studio-gallery .preview-cta {
+  color: #d6de6b;
+  font-family: 'Space Grotesk', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.variant-studio-gallery .date-tile {
+  border-radius: 0;
+  background: #ffffff;
+  color: #0a0a0a;
+  border: 1.5px solid #0a0a0a;
+  box-shadow: 3px 3px 0 rgba(10, 10, 10, 0.2);
+  backdrop-filter: none;
+}
+
+.variant-studio-gallery .date-tile.selected {
+  background: #d6de6b;
+  color: #0a0a0a;
+  border-color: #0a0a0a;
+  box-shadow: 3px 3px 0 #0a0a0a;
+}
+
+.variant-studio-gallery .date-weekday,
+.variant-studio-gallery .date-day {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.variant-studio-gallery .time-panel {
+  background: #0a0a0a;
+  border: 1.5px solid #0a0a0a;
+  border-top: 3px solid #d6de6b;
+  border-radius: 0;
+  box-shadow: 6px 6px 0 rgba(10, 10, 10, 0.22);
+  backdrop-filter: none;
+}
+
+.variant-studio-gallery .time-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #d6de6b;
+}
+
+.variant-studio-gallery .time-readout {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.variant-studio-gallery .time-endpoints {
+  color: #b8b8b2;
+  font-weight: 600;
+}
+
+.variant-studio-gallery .time-range::-webkit-slider-thumb {
+  border-radius: 0;
+  background: #d6de6b;
+  border: 2px solid #0a0a0a;
+  box-shadow: 0 0 0 1px #d6de6b;
+}
+
+.variant-studio-gallery .time-range::-moz-range-thumb {
+  border-radius: 0;
+  background: #d6de6b;
+  border: 2px solid #0a0a0a;
+  box-shadow: 0 0 0 1px #d6de6b;
+}
+
+.variant-studio-gallery .hotel-footer-hint {
+  border-radius: 0;
+  background: #0a0a0a;
+  color: #ffffff;
+  border: 1.5px solid #0a0a0a;
+  border-left: 4px solid #2ab3b0;
+  box-shadow: 5px 5px 0 rgba(10, 10, 10, 0.22);
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 0.04em;
+  font-size: 12px;
+  backdrop-filter: none;
+}
+
+/* =====================================================================
    HAPPENIN' DATABASE EXPLORER (?view=db)
    Styled directly from Happenin's midnight glassmorphism palette:
    #110e24 canvas · rgba(25,20,51,0.84) panels · Cyan #2fe6e6 · Pink #ff4fa3 · Violet #b388ff
