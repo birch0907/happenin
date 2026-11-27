@@ -1044,36 +1044,38 @@ body,
 }
 
 /* =====================================================================
-   STUDIO ALLSTON HOTEL — CONTEMPORARY ART GALLERY SKIN ("Stay Outside the Frame")
+   STUDIO ALLSTON HOTEL — SOFT ART-GALLERY & STUDIO COLLAGE SKIN
    Inspired directly by hotelstudioallston.com:
-   Jet Gallery Black (#0A0A0A) · Crisp Gallery White (#FFFFFF) · Chartreuse (#D6DE6B) · Teal Swatch (#2AB3B0)
-   Clean Architectural Geometry (0px corners) · Space Grotesk + Caveat Artist Handwritten Accent
+   Borderless matte black (#101012) · Soft gallery white (#FFFFFF) ·
+   Flat chartreuse (#D6DE6B) · Painterly teal wash (#2AB3B0) ·
+   No harsh comic outlines or hard offset shadows — airy, quirky, modern
    ===================================================================== */
 
 .variant-studio-gallery {
-  color: #0a0a0a;
+  color: #141414;
 }
 
 .studio-frame-badge {
   display: inline-flex;
   align-items: center;
   flex: 0 0 auto;
+  transform: rotate(-3deg);
 }
 
 .variant-studio-gallery .filter-panel {
-  background: #0a0a0a;
-  backdrop-filter: none;
-  border: 1.5px solid #0a0a0a;
-  border-bottom: 4px solid #d6de6b;
-  border-radius: 0;
-  box-shadow: 6px 6px 0 rgba(10, 10, 10, 0.22);
-  padding: 12px 14px 12px;
+  background: rgba(14, 14, 16, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: none;
+  border-radius: 12px 4px 14px 6px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.24);
+  padding: 13px 15px 12px;
 }
 
 .variant-studio-gallery .brand-row {
   padding-bottom: 9px;
   margin-bottom: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .variant-studio-gallery .brand-title {
@@ -1083,9 +1085,9 @@ body,
 
 .variant-studio-gallery .hotel-wordmark {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 16.5px;
+  font-size: 15.5px;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   color: #ffffff;
   text-transform: uppercase;
   line-height: 1;
@@ -1093,46 +1095,50 @@ body,
 
 .variant-studio-gallery .event-count {
   font-family: 'Caveat', cursive;
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
   letter-spacing: 0.02em;
   color: #d6de6b;
   line-height: 1;
+  transform: rotate(-1.5deg);
+  display: inline-block;
 }
 
 .variant-studio-gallery .now-jump-btn {
   font-family: 'Space Grotesk', sans-serif;
   text-transform: lowercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   font-size: 12px;
-  font-weight: 700;
-  border-radius: 0;
+  font-weight: 600;
+  border-radius: 3px;
   border: none;
   background: #d6de6b;
-  color: #0a0a0a;
-  padding: 6px 12px;
+  color: #111111;
+  padding: 6px 13px;
+  transition: transform 0.14s ease, background 0.14s ease;
 }
 
 .variant-studio-gallery .now-jump-btn:hover {
-  background: #e2e982;
+  background: #e1e880;
+  transform: translateY(-1px);
 }
 
 .variant-studio-gallery .hotel-mode-tabs {
-  background: #171717;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 0;
+  background: rgba(255, 255, 255, 0.07);
+  border: none;
+  border-radius: 8px;
   padding: 3px;
   gap: 4px;
 }
 
 .variant-studio-gallery .hotel-tab-btn {
   font-family: 'Space Grotesk', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 11.5px;
-  font-weight: 700;
-  color: #e2e2dc;
-  border-radius: 0;
+  letter-spacing: 0.04em;
+  font-size: 12px;
+  font-weight: 600;
+  color: #d6d6d0;
+  border: none;
+  border-radius: 6px;
   padding: 8px 10px;
 }
 
@@ -1142,220 +1148,232 @@ body,
 
 .variant-studio-gallery .hotel-tab-btn.active {
   background: #d6de6b;
-  color: #0a0a0a;
-  box-shadow: none;
+  color: #111111;
+  font-weight: 700;
+  box-shadow: 0 3px 12px rgba(214, 222, 107, 0.25);
 }
 
 .variant-studio-gallery .category-chip {
   font-family: 'Space Grotesk', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  font-size: 11.5px;
-  font-weight: 700;
-  border-radius: 0;
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  background: #161616;
-  color: #ffffff;
-  padding: 6px 12px;
+  letter-spacing: 0.03em;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #f3f3ef;
+  padding: 6px 13px;
+}
+
+.variant-studio-gallery .category-chip:hover {
+  background: rgba(255, 255, 255, 0.17);
 }
 
 .variant-studio-gallery .category-chip.active {
   background: #d6de6b;
-  color: #0a0a0a;
-  border-color: #d6de6b;
-  box-shadow: none;
+  color: #111111;
+  font-weight: 700;
+  box-shadow: 0 3px 10px rgba(214, 222, 107, 0.22);
 }
 
 .variant-studio-gallery .category-chip .category-dot,
 .variant-studio-gallery .category-chip.active .category-dot {
   background: var(--chip-color);
-  border: 1px solid #0a0a0a;
+  border: none;
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.85);
 }
 
 .variant-studio-gallery .locate-btn {
-  background: #0a0a0a;
-  color: #d6de6b;
-  border: 1.5px solid #0a0a0a;
-  border-radius: 0;
-  box-shadow: 4px 4px 0 #d6de6b;
+  background: #ffffff;
+  color: #111111;
+  border: none;
+  border-radius: 12px 6px 12px 6px;
+  box-shadow: 0 8px 24px rgba(10, 10, 10, 0.16);
 }
 
 .variant-studio-gallery .locate-btn:hover {
   background: #d6de6b;
-  color: #0a0a0a;
+  color: #111111;
 }
 
 .variant-studio-gallery .event-card {
-  background: #ffffff;
-  color: #0a0a0a;
-  border: 1.5px solid #0a0a0a;
-  border-top: 4px solid #d6de6b;
-  border-radius: 0;
-  box-shadow: 6px 6px 0 #0a0a0a;
-  backdrop-filter: none;
+  background: rgba(255, 255, 255, 0.97);
+  color: #141414;
+  border: none;
+  border-radius: 14px 4px 16px 8px;
+  box-shadow: 0 18px 46px rgba(10, 10, 10, 0.18), 0 2px 8px rgba(10, 10, 10, 0.06);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  position: relative;
+}
+
+.variant-studio-gallery .event-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #d6de6b 0%, #d6de6b 62%, #45c4c0 62%, #45c4c0 100%);
 }
 
 .variant-studio-gallery .venue-tab {
-  border-radius: 0;
-  border: 1px solid #d4d4ce;
-  background: #f4f4f2;
-  color: #0a0a0a;
+  border-radius: 999px;
+  border: none;
+  background: #f0f0ec;
+  color: #333330;
   font-family: 'Space Grotesk', sans-serif;
 }
 
 .variant-studio-gallery .venue-tab.active {
-  background: #0a0a0a;
+  background: #141414;
   color: #d6de6b;
-  border-color: #0a0a0a;
 }
 
 .variant-studio-gallery .category-badge {
   font-family: 'Space Grotesk', sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border-radius: 0;
-  background: #0a0a0a !important;
+  letter-spacing: 0.06em;
+  border-radius: 4px;
+  background: #141414 !important;
   color: #d6de6b !important;
   padding: 3px 9px;
 }
 
 .variant-studio-gallery .walk-pill {
-  border-radius: 0;
-  background: #dff4f3;
-  color: #0c5e5c;
-  border: 1px solid #2ab3b0;
+  border-radius: 999px;
+  background: rgba(42, 179, 176, 0.16);
+  color: #0f6866;
+  border: none;
   font-family: 'Space Grotesk', sans-serif;
 }
 
 .variant-studio-gallery .tag-pill {
-  border-radius: 0;
-  background: #f4f4f2;
-  color: #222220;
-  border: 1px solid #d8d8d2;
+  border-radius: 999px;
+  background: #f2f2ee;
+  color: #3a3a36;
+  border: none;
 }
 
 .variant-studio-gallery .admission-pill {
-  border-radius: 0;
+  border-radius: 999px;
   font-family: 'Space Grotesk', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
+  border: none;
 }
 
 .variant-studio-gallery .admission-free {
-  background: #dff4f3;
-  color: #0c5e5c;
-  border: 1px solid #2ab3b0;
+  background: rgba(42, 179, 176, 0.16);
+  color: #0e6361;
 }
 
 .variant-studio-gallery .admission-cover {
-  background: #f6f7d2;
-  color: #3d4206;
-  border: 1px solid #aeb83b;
+  background: rgba(214, 222, 107, 0.42);
+  color: #3a4005;
 }
 
 .variant-studio-gallery .admission-ticketed {
-  background: #f4f4f2;
-  color: #0a0a0a;
-  border: 1px solid #0a0a0a;
+  background: #efefea;
+  color: #1e1e1c;
 }
 
 .variant-studio-gallery .close-btn {
-  border-radius: 0;
-  background: #0a0a0a;
-  color: #ffffff;
+  border-radius: 999px;
+  background: #f0f0ec;
+  color: #222220;
   border: none;
 }
 
 .variant-studio-gallery .close-btn:hover {
   background: #d6de6b;
-  color: #0a0a0a;
+  color: #111111;
 }
 
 .variant-studio-gallery .event-title {
   font-family: 'Space Grotesk', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: -0.01em;
   font-size: 20px;
   font-weight: 700;
-  color: #0a0a0a;
+  color: #111111;
   margin-bottom: 6px;
 }
 
 .variant-studio-gallery .event-venue {
-  color: #4d4d48;
+  color: #5c5c56;
   font-weight: 600;
 }
 
 .variant-studio-gallery .event-time {
-  color: #0c5e5c;
+  color: #117371;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
-  letter-spacing: 0.03em;
   font-size: 13.5px;
 }
 
 .variant-studio-gallery .event-description {
-  color: #262624;
+  color: #343430;
 }
 
 .variant-studio-gallery .btn-primary {
   font-family: 'Space Grotesk', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 12.5px;
-  border-radius: 0;
+  letter-spacing: 0.04em;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 4px;
   background: #d6de6b;
-  color: #0a0a0a;
-  border: 1.5px solid #0a0a0a;
+  color: #111111;
+  border: none;
+  box-shadow: 0 4px 14px rgba(214, 222, 107, 0.35);
+}
+
+.variant-studio-gallery .btn-primary:hover {
+  background: #dfe77c;
 }
 
 .variant-studio-gallery .btn-secondary {
   font-family: 'Space Grotesk', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 12.5px;
-  border-radius: 0;
-  background: #0a0a0a;
+  letter-spacing: 0.04em;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 4px;
+  background: #141414;
   color: #ffffff;
-  border: 1.5px solid #0a0a0a;
+  border: none;
 }
 
 .variant-studio-gallery .preview-tonight-pill {
-  border-radius: 0;
-  background: #0a0a0a;
-  border: 1.5px solid #0a0a0a;
-  border-left: 4px solid #d6de6b;
-  box-shadow: 5px 5px 0 rgba(10, 10, 10, 0.22);
-  backdrop-filter: none;
+  border-radius: 999px;
+  background: rgba(16, 16, 18, 0.92);
+  border: none;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(12px);
 }
 
 .variant-studio-gallery .preview-muted,
 .variant-studio-gallery .preview-dot {
-  color: #d8d8d2;
+  color: #d6d6d0;
   font-family: 'Space Grotesk', sans-serif;
 }
 
 .variant-studio-gallery .preview-cta {
   color: #d6de6b;
   font-family: 'Space Grotesk', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-weight: 700;
 }
 
 .variant-studio-gallery .date-tile {
-  border-radius: 0;
-  background: #ffffff;
-  color: #0a0a0a;
-  border: 1.5px solid #0a0a0a;
-  box-shadow: 3px 3px 0 rgba(10, 10, 10, 0.2);
-  backdrop-filter: none;
+  border-radius: 10px 4px 10px 4px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #161616;
+  border: none;
+  box-shadow: 0 6px 18px rgba(10, 10, 10, 0.13);
+  backdrop-filter: blur(10px);
 }
 
 .variant-studio-gallery .date-tile.selected {
   background: #d6de6b;
-  color: #0a0a0a;
-  border-color: #0a0a0a;
-  box-shadow: 3px 3px 0 #0a0a0a;
+  color: #111111;
+  box-shadow: 0 8px 22px rgba(214, 222, 107, 0.42);
 }
 
 .variant-studio-gallery .date-weekday,
@@ -1364,18 +1382,20 @@ body,
 }
 
 .variant-studio-gallery .time-panel {
-  background: #0a0a0a;
-  border: 1.5px solid #0a0a0a;
-  border-top: 3px solid #d6de6b;
-  border-radius: 0;
-  box-shadow: 6px 6px 0 rgba(10, 10, 10, 0.22);
-  backdrop-filter: none;
+  background: rgba(14, 14, 16, 0.94);
+  border: none;
+  border-radius: 6px 14px 12px 10px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .variant-studio-gallery .time-label {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.1em;
+  font-family: 'Caveat', cursive;
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0.02em;
   color: #d6de6b;
 }
 
@@ -1386,35 +1406,33 @@ body,
 }
 
 .variant-studio-gallery .time-endpoints {
-  color: #b8b8b2;
-  font-weight: 600;
+  color: #b4b4ae;
+  font-weight: 500;
 }
 
 .variant-studio-gallery .time-range::-webkit-slider-thumb {
-  border-radius: 0;
+  border-radius: 999px;
   background: #d6de6b;
-  border: 2px solid #0a0a0a;
-  box-shadow: 0 0 0 1px #d6de6b;
+  border: 3px solid #141414;
+  box-shadow: 0 0 0 2px rgba(214, 222, 107, 0.5);
 }
 
 .variant-studio-gallery .time-range::-moz-range-thumb {
-  border-radius: 0;
+  border-radius: 999px;
   background: #d6de6b;
-  border: 2px solid #0a0a0a;
-  box-shadow: 0 0 0 1px #d6de6b;
+  border: 3px solid #141414;
+  box-shadow: 0 0 0 2px rgba(214, 222, 107, 0.5);
 }
 
 .variant-studio-gallery .hotel-footer-hint {
-  border-radius: 0;
-  background: #0a0a0a;
-  color: #ffffff;
-  border: 1.5px solid #0a0a0a;
-  border-left: 4px solid #2ab3b0;
-  box-shadow: 5px 5px 0 rgba(10, 10, 10, 0.22);
+  border-radius: 999px;
+  background: rgba(16, 16, 18, 0.9);
+  color: #f0f0ec;
+  border: none;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
   font-family: 'Space Grotesk', sans-serif;
-  letter-spacing: 0.04em;
   font-size: 12px;
-  backdrop-filter: none;
+  backdrop-filter: blur(10px);
 }
 
 /* =====================================================================
