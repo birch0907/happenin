@@ -767,6 +767,51 @@ def main():
             "hotelBlocked": bool(ev.get("hotel_blocked")),
         })
 
+    # Auto-discover all Digital Concierge hotel configs from HappeninWeb/public/hotels/*.json
+    hotels_dir = ROOT / "HappeninWeb" / "public" / "hotels"
+    concierges = []
+    if hotels_dir.exists():
+        for hp in sorted(hotels_dir.glob("*.json")):
+            try:
+                cfg = json.loads(hp.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            hid = cfg.get("id") or hp.stem
+            lat = cfg.get("latitude") or 0
+            h_region = cfg.get("region") or ("seacoast" if float(lat) >= 42.82 else "boston")
+            max_rating = (cfg.get("contentPolicy") or {}).get("maxRating") or "PG"
+            places = cfg.get("places") or []
+            dining_count = sum(1 for p in places if p.get("tab") == "Dining")
+            sights_count = sum(1 for p in places if p.get("tab") == "Sights")
+            allowed_rank = {"PG": 0, "R": 1, "Explicit": 2}.get(max_rating, 0)
+            eligible_events = 0
+            for ev in db_events:
+                if (ev.get("region") or "boston") != h_region:
+                    continue
+                if ev.get("hotelBlocked"):
+                    continue
+                ev_rank = {"PG": 0, "R": 1, "Explicit": 2}.get(ev.get("contentRating") or "PG", 0)
+                if ev_rank <= allowed_rank:
+                    eligible_events += 1
+            theme = cfg.get("theme") or {}
+            concierges.append({
+                "id": hid,
+                "name": cfg.get("name") or hid,
+                "wordmark": cfg.get("wordmark") or cfg.get("name") or hid,
+                "subtitle": cfg.get("subtitle") or "Digital Concierge",
+                "address": cfg.get("address") or "",
+                "region": h_region,
+                "mapStyle": cfg.get("mapStyle") or "dark",
+                "styleVariant": cfg.get("styleVariant") or "standard",
+                "accent": theme.get("accent") or "#2FE6E6",
+                "bg": theme.get("bg") or "#131026",
+                "maxRating": max_rating,
+                "diningCount": dining_count,
+                "sightsCount": sights_count,
+                "totalPlaces": len(places),
+                "eligibleEventCount": eligible_events,
+            })
+
     # Summary stats
     status_counts = Counter(v["status"] for v in venue_records)
     area_counts = Counter(v["area"] for v in venue_records)
@@ -778,6 +823,7 @@ def main():
         "stats": {
             "totalVenues": len(venue_records),
             "totalEvents": len(db_events),
+            "totalConcierges": len(concierges),
             "statusCounts": dict(status_counts),
             "areaCounts": dict(area_counts),
             "priorityCounts": dict(prio_counts),
@@ -789,6 +835,7 @@ def main():
                 or (v["priority"] == "A" and v["status"] in {"Not Pulling", "Aggregator Only"})
             ),
         },
+        "concierges": concierges,
         "venues": venue_records,
         "events": db_events,
     }

@@ -1,8 +1,9 @@
 {
-  "generatedAt": "2026-11-27T13:05:21-05:00",
+  "generatedAt": "2026-11-27T14:03:42-05:00",
   "stats": {
     "totalVenues": 518,
     "totalEvents": 919,
+    "totalConcierges": 0,
     "statusCounts": {
       "Aggregator Only": 100,
       "Live (First-Party)": 73,

@@ -68,16 +68,36 @@ export type DbEvent = {
   hotelBlocked?: boolean;
 };
 
+export type DbConcierge = {
+  id: string;
+  name: string;
+  wordmark: string;
+  subtitle: string;
+  address: string;
+  region: 'boston' | 'seacoast';
+  mapStyle: 'dark' | 'light';
+  styleVariant: string;
+  accent: string;
+  bg: string;
+  maxRating: 'PG' | 'R' | 'Explicit';
+  diningCount: number;
+  sightsCount: number;
+  totalPlaces: number;
+  eligibleEventCount: number;
+};
+
 export type DbPayload = {
   generatedAt: string;
   stats: {
     totalVenues: number;
     totalEvents: number;
+    totalConcierges?: number;
     statusCounts: Record<string, number>;
     areaCounts: Record<string, number>;
     priorityCounts: Record<string, number>;
     attentionCount: number;
   };
+  concierges?: DbConcierge[];
   venues: DbVenue[];
   events: DbEvent[];
 };
@@ -99,6 +119,7 @@ export const METHOD_LABELS: Record<string, string> = {
   squarespace_json: 'Squarespace JSON',
   bentobox_jsonld: 'BentoBox JSON-LD',
   wix_events_jsonld: 'Wix JSON-LD',
+  musicidb: 'MusicIDB',
   ics: 'ICS Calendar',
   llm_html: 'AI HTML Scraper',
   recurring: 'Recurring Rule',

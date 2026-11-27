@@ -18,7 +18,7 @@ import {
   statusSlug,
 } from '../data/database';
 
-type DbMode = 'venues' | 'events' | 'attention';
+type DbMode = 'venues' | 'events' | 'attention' | 'concierges';
 type VenueGroupBy = 'area' | 'status' | 'priority' | 'method' | 'neighborhood' | 'none';
 type VenueSortBy = 'priority' | 'events' | 'name' | 'area' | 'status';
 type EventGroupBy = 'day' | 'venue' | 'area' | 'category' | 'provenance' | 'none';
@@ -359,7 +359,7 @@ export function DatabaseView() {
               <span className="db-studio-pill">DATABASE EXPLORER</span>
             </div>
             <p className="db-subtitle">
-              Greater Boston venue registry &amp; live 14-day event index
+              Boston &amp; Seacoast NH venue registry, live 14-day events &amp; Digital Concierges
               {data ? ` · Updated ${formatShortDateTime(data.generatedAt)}` : ''}
             </p>
           </div>
@@ -407,15 +407,31 @@ export function DatabaseView() {
                 Attention Queue
                 {data && <span className="db-tab-badge">{data.stats.attentionCount}</span>}
               </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={mode === 'concierges'}
+                className={`db-mode-tab${mode === 'concierges' ? ' active' : ''}`}
+                onClick={() => {
+                  setMode('concierges');
+                  setSelectedVenueId(null);
+                  setSelectedEventId(null);
+                }}
+              >
+                Concierges
+                {data && (
+                  <span className="db-tab-badge">{data.concierges?.length ?? 0}</span>
+                )}
+              </button>
             </div>
 
-            <a className="db-map-link" href="./">
+            <a className="db-map-link" href="./" target="_blank" rel="noopener noreferrer">
               Open Map ↗
             </a>
           </div>
         </header>
 
-        {loading && <div className="db-state-card">Loading Greater Boston database…</div>}
+        {loading && <div className="db-state-card">Loading database…</div>}
         {error && <div className="db-state-card error">{error}</div>}
 
         {data && (
@@ -429,7 +445,7 @@ export function DatabaseView() {
               >
                 <span className="db-kpi-label">Master Venues</span>
                 <strong className="db-kpi-value">{data.stats.totalVenues}</strong>
-                <span className="db-kpi-sub">6 spreadsheets + live feeds</span>
+                <span className="db-kpi-sub">7 spreadsheets + live feeds</span>
               </button>
 
               <button
@@ -483,7 +499,8 @@ export function DatabaseView() {
               </button>
             </section>
 
-            {/* STICKY SEARCH, FILTER & GROUP TOOLBAR */}
+            {/* STICKY SEARCH, FILTER & GROUP TOOLBAR (Venues / Events / Attention) */}
+            {mode !== 'concierges' && (
             <section className="db-toolbar">
               <div className="db-toolbar-top">
                 <div className="db-search-wrap">
@@ -729,9 +746,96 @@ export function DatabaseView() {
                 )}
               </div>
             </section>
+            )}
 
-            {/* MAIN CONTENT: VENUES / ATTENTION OR EVENTS */}
-            {mode !== 'events' ? (
+            {/* MAIN CONTENT: CONCIERGES, VENUES / ATTENTION, OR EVENTS */}
+            {mode === 'concierges' ? (
+              <section className="db-concierge-section">
+                <div className="db-quick-maps-bar">
+                  <div className="db-quick-maps-label">Happenin&apos; Public Maps</div>
+                  <div className="db-quick-maps-links">
+                    <a className="db-launch-pill" href="./" target="_blank" rel="noopener noreferrer">
+                      Location Picker ↗
+                    </a>
+                    <a className="db-launch-pill" href="./?region=boston" target="_blank" rel="noopener noreferrer">
+                      Boston Map ↗
+                    </a>
+                    <a className="db-launch-pill" href="./?region=seacoast" target="_blank" rel="noopener noreferrer">
+                      Seacoast NH Map ↗
+                    </a>
+                  </div>
+                </div>
+
+                <div className="db-concierge-grid">
+                  {(data.concierges || []).map((h) => (
+                    <article key={h.id} className="db-concierge-card">
+                      <div
+                        className="db-concierge-banner"
+                        style={{
+                          background: `linear-gradient(135deg, ${h.bg} 0%, ${h.accent}44 100%)`,
+                          borderBottom: `2px solid ${h.accent}`,
+                        }}
+                      >
+                        <div className="db-concierge-banner-top">
+                          <span
+                            className="db-concierge-swatch"
+                            style={{ backgroundColor: h.accent }}
+                            aria-hidden="true"
+                          />
+                          <span className="db-concierge-region">
+                            {h.region === 'seacoast' ? 'Seacoast NH' : 'Boston'}
+                          </span>
+                          <span className={`db-rating-pill rating-${h.maxRating.toLowerCase()}`}>
+                            {h.maxRating} Policy
+                          </span>
+                          <span className="db-concierge-style">
+                            {h.mapStyle === 'light' ? 'Light Map' : 'Dark Map'}
+                          </span>
+                        </div>
+                        <h3 className="db-concierge-name">{h.name}</h3>
+                        <p className="db-concierge-addr">{h.address}</p>
+                      </div>
+
+                      <div className="db-concierge-body">
+                        <div className="db-concierge-metrics">
+                          <div className="db-concierge-metric">
+                            <strong>{h.diningCount}</strong>
+                            <span>Dining</span>
+                          </div>
+                          <div className="db-concierge-metric">
+                            <strong>{h.sightsCount}</strong>
+                            <span>Sights</span>
+                          </div>
+                          <div className="db-concierge-metric">
+                            <strong>{h.eligibleEventCount}</strong>
+                            <span>Live Events</span>
+                          </div>
+                        </div>
+
+                        <div className="db-concierge-actions">
+                          <a
+                            className="db-concierge-btn primary"
+                            href={`./?hotel=${encodeURIComponent(h.id)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Guest View ↗
+                          </a>
+                          <a
+                            className="db-concierge-btn secondary"
+                            href={`./?hotel=${encodeURIComponent(h.id)}&desk=1`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            ★ Concierge Desk ↗
+                          </a>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ) : mode !== 'events' ? (
               <section className="db-groups">
                 {groupedVenues.length === 0 || filteredVenues.length === 0 ? (
                   <div className="db-state-card">No venues match the current filters.</div>

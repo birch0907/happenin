@@ -3154,3 +3154,195 @@ body,
 .share-clear-btn:hover {
   color: #ef4444;
 }
+
+/* ---------------------------------------------------------------------------
+   DATABASE EXPLORER — DIGITAL CONCIERGES LAUNCHER TAB
+   --------------------------------------------------------------------------- */
+
+.db-concierge-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.db-quick-maps-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: rgba(25, 20, 51, 0.72);
+  border: 1px solid var(--border);
+}
+
+.db-quick-maps-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.db-quick-maps-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.db-launch-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-strong);
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: border-color 0.14s ease, color 0.14s ease, background 0.14s ease;
+}
+
+.db-launch-pill:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(47, 230, 230, 0.1);
+}
+
+.db-concierge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 16px;
+}
+
+.db-concierge-card {
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(24, 19, 50, 0.82);
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+}
+
+.db-concierge-banner {
+  padding: 16px 18px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.db-concierge-banner-top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.db-concierge-swatch {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  flex-shrink: 0;
+}
+
+.db-concierge-region,
+.db-concierge-style {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #f8fafc;
+}
+
+.db-concierge-name {
+  margin: 4px 0 0;
+  font-size: 19px;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+}
+
+.db-concierge-addr {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.82);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+
+.db-concierge-body {
+  padding: 14px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.db-concierge-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.db-concierge-metric {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 9px 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.db-concierge-metric strong {
+  font-size: 17px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.db-concierge-metric span {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.db-concierge-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.db-concierge-btn {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 11px;
+  font-size: 12.5px;
+  font-weight: 700;
+  transition: opacity 0.14s ease, border-color 0.14s ease;
+}
+
+.db-concierge-btn.primary {
+  background: var(--cyan);
+  color: #110e24;
+}
+
+.db-concierge-btn.secondary {
+  background: rgba(245, 158, 11, 0.16);
+  border: 1px solid rgba(245, 158, 11, 0.55);
+  color: #fde68a;
+}
+
+.db-concierge-btn:hover {
+  opacity: 0.9;
+}
