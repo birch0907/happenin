@@ -98,6 +98,14 @@ function homeToGeoJSON(hotel: HotelConfig | null | undefined): GeoJSON.FeatureCo
         properties: {
           name: hotel.name,
           accent: hotel.homePinColor || hotel.theme.accent,
+          dotColor: hotel.homePinColor
+            ? hotel.homePinColor
+            : hotel.mapStyle === 'light'
+              ? '#0D0D0D'
+              : '#ffffff',
+          strokeColor: hotel.homePinColor
+            ? '#FFFFFF'
+            : hotel.theme.accent,
         },
       },
     ],
@@ -191,9 +199,9 @@ export function MapView({
         source: HOME_SOURCE_ID,
         paint: {
           'circle-radius': light ? 22 : 24,
-          'circle-color': light ? '#FAF089' : ['get', 'accent'],
-          'circle-opacity': light ? 0.85 : 0.28,
-          'circle-blur': light ? 0.15 : 0.55,
+          'circle-color': ['get', 'accent'],
+          'circle-opacity': light ? 0.45 : 0.28,
+          'circle-blur': light ? 0.25 : 0.55,
         },
       });
 
@@ -203,9 +211,9 @@ export function MapView({
         source: HOME_SOURCE_ID,
         paint: {
           'circle-radius': 9,
-          'circle-color': light ? '#0D0D0D' : '#ffffff',
+          'circle-color': ['get', 'dotColor'],
           'circle-stroke-width': 3,
-          'circle-stroke-color': light ? '#FAF089' : ['get', 'accent'],
+          'circle-stroke-color': ['get', 'strokeColor'],
         },
       });
 
