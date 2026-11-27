@@ -548,7 +548,9 @@ function MapApp() {
                   style={{
                     background: isVerbPoster
                       ? `linear-gradient(to right, #0D0D0D 0%, #0D0D0D ${progressPct}%, rgba(13, 13, 13, 0.2) ${progressPct}%, rgba(13, 13, 13, 0.2) 100%)`
-                      : `linear-gradient(to right, ${accentColor} 0%, ${accentColor} ${progressPct}%, rgba(180, 170, 195, 0.28) ${progressPct}%, rgba(180, 170, 195, 0.28) 100%)`,
+                      : isStudioGallery
+                        ? `linear-gradient(to right, #1a9196 0%, #1a9196 ${progressPct}%, rgba(86, 149, 179, 0.24) ${progressPct}%, rgba(86, 149, 179, 0.24) 100%)`
+                        : `linear-gradient(to right, ${accentColor} 0%, ${accentColor} ${progressPct}%, rgba(180, 170, 195, 0.28) ${progressPct}%, rgba(180, 170, 195, 0.28) 100%)`,
                   }}
                   onChange={(e) => {
                     const step = Number(e.target.value);
