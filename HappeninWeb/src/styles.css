@@ -2716,3 +2716,441 @@ body,
   color: #ff6fb7;
   border: 1px solid rgba(255, 79, 163, 0.48);
 }
+
+/* ---------------------------------------------------------------------------
+   DIGITAL CONCIERGE — CUSTOM PIN DROP + QR SHARE
+   --------------------------------------------------------------------------- */
+
+.brand-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.desk-mode-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.22);
+  border: 1px solid rgba(245, 158, 11, 0.65);
+  color: #fbbf24;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.variant-verb-poster .desk-mode-badge,
+.variant-studio-gallery .desk-mode-badge {
+  background: #fef3c7;
+  border-color: #d97706;
+  color: #92400e;
+}
+
+/* Floating Drop Pin & Share QR pills stacked cleanly above .locate-btn */
+.pin-fab-stack {
+  position: absolute;
+  right: 14px;
+  bottom: 238px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.pin-fab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 13px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--panel);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.14s ease, border-color 0.14s ease, background 0.14s ease;
+}
+
+.pin-fab:hover {
+  transform: translateY(-1px);
+  border-color: var(--cyan);
+}
+
+.pin-fab-share {
+  border-color: rgba(245, 158, 11, 0.65);
+  background: rgba(245, 158, 11, 0.2);
+  color: #fde68a;
+}
+
+.pin-fab-star {
+  color: #f59e0b;
+  font-size: 13px;
+}
+
+.pin-fab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #f59e0b;
+  color: #111111;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.variant-verb-poster .pin-fab {
+  background: #ffffff;
+  border: 2px solid #0d0d0d;
+  color: #0d0d0d;
+  box-shadow: 3px 3px 0 #0d0d0d;
+}
+
+.variant-verb-poster .pin-fab-share {
+  background: #faf089;
+  color: #0d0d0d;
+}
+
+.variant-studio-gallery .pin-fab {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(86, 149, 179, 0.35);
+  color: #141c20;
+  box-shadow: 0 6px 20px rgba(20, 38, 50, 0.16);
+}
+
+.variant-studio-gallery .pin-fab-drop:hover {
+  border-color: #1a9196;
+  color: #1a9196;
+}
+
+.variant-studio-gallery .pin-fab-share {
+  background: #fffbeb;
+  border-color: #d97706;
+  color: #92400e;
+}
+
+/* Custom Pin Badge & Card Tweaks */
+.custom-pin-badge {
+  background: #f59e0b !important;
+  color: #111111 !important;
+}
+
+.custom-pin-note {
+  font-style: italic;
+}
+
+.btn-pin-delete {
+  flex: 0 0 auto;
+  padding: 11px 12px;
+}
+
+/* Pin Drop Composer Sheet */
+.pin-drop-sheet {
+  max-height: min(64dvh, 500px);
+  overflow-y: auto;
+}
+
+.pin-drop-hint-inline {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.pin-search-box {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.pin-search-status {
+  position: absolute;
+  right: 12px;
+  top: 11px;
+  font-size: 11px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.pin-search-results {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid var(--border-strong);
+  background: rgba(14, 11, 30, 0.96);
+  max-height: 155px;
+  overflow-y: auto;
+}
+
+.pin-search-item {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pin-search-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pin-search-name {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pin-search-addr {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.pin-drop-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pin-input,
+.pin-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 11px;
+  border: 1px solid var(--border-strong);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13.5px;
+  padding: 9px 12px;
+  outline: none;
+}
+
+.pin-input:focus,
+.pin-textarea:focus {
+  border-color: var(--cyan);
+}
+
+.pin-textarea {
+  resize: none;
+  line-height: 1.4;
+}
+
+.pin-tap-prompt {
+  margin: 0;
+  font-size: 12px;
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.pin-drop-form .btn-primary:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+.variant-verb-poster .pin-input,
+.variant-verb-poster .pin-textarea,
+.variant-studio-gallery .pin-input,
+.variant-studio-gallery .pin-textarea {
+  background: rgba(244, 248, 251, 0.95);
+  border: 1px solid rgba(86, 149, 179, 0.4);
+  color: #141c20;
+}
+
+.variant-verb-poster .pin-input,
+.variant-verb-poster .pin-textarea {
+  background: #ffffff;
+  border: 1.5px solid #0d0d0d;
+  color: #0d0d0d;
+}
+
+.variant-verb-poster .pin-search-results,
+.variant-studio-gallery .pin-search-results {
+  background: #ffffff;
+  border-color: rgba(86, 149, 179, 0.4);
+  box-shadow: 0 8px 24px rgba(15, 30, 40, 0.14);
+}
+
+.variant-verb-poster .pin-search-item,
+.variant-studio-gallery .pin-search-item {
+  color: #141c20;
+}
+
+.variant-verb-poster .pin-search-item:hover,
+.variant-studio-gallery .pin-search-item:hover {
+  background: rgba(86, 149, 179, 0.12);
+}
+
+.variant-verb-poster .pin-tap-prompt,
+.variant-studio-gallery .pin-tap-prompt {
+  color: #b45309;
+}
+
+/* Share QR Modal */
+.share-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(10, 8, 22, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.share-modal {
+  width: min(420px, 100%);
+  max-height: min(88dvh, 660px);
+  overflow-y: auto;
+  background: rgba(24, 19, 50, 0.97);
+  border: 1px solid var(--border-strong);
+  border-radius: 22px;
+  padding: 18px 20px 20px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.65);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.variant-verb-poster .share-modal,
+.variant-studio-gallery .share-modal {
+  background: #ffffff;
+  color: #141c20;
+  border-color: rgba(86, 149, 179, 0.38);
+}
+
+.variant-verb-poster .share-modal {
+  border: 2px solid #0d0d0d;
+  box-shadow: 6px 6px 0 #0d0d0d;
+}
+
+.share-modal-title {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.share-modal-sub {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+.share-qr-box {
+  align-self: center;
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-qr-box img {
+  display: block;
+  border-radius: 6px;
+}
+
+.share-pin-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.share-pin-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+}
+
+.variant-verb-poster .share-pin-row,
+.variant-studio-gallery .share-pin-row {
+  background: rgba(86, 149, 179, 0.08);
+  border-color: rgba(86, 149, 179, 0.24);
+}
+
+.share-pin-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.share-pin-name {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.share-pin-note {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.share-pin-remove {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 13px;
+  padding: 2px 5px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.share-pin-remove:hover {
+  background: rgba(239, 68, 68, 0.16);
+  color: #ef4444;
+}
+
+.share-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.share-clear-btn {
+  align-self: center;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  text-decoration: underline;
+}
+
+.share-clear-btn:hover {
+  color: #ef4444;
+}

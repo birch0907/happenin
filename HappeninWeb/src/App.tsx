@@ -23,9 +23,20 @@ import {
   normalizeEvents,
 } from './data/events';
 import { HotelConfig, HotelTab, eventAllowedForHotel, getHotelParam } from './data/hotels';
+import {
+  CustomPin,
+  getDeskModeParam,
+  getUrlSharedPins,
+  loadGuestPins,
+  reverseGeocodePoint,
+  saveGuestPins,
+} from './data/customPins';
 import { MapView } from './components/MapView';
 import { EventCard } from './components/EventCard';
 import { PlaceCard } from './components/PlaceCard';
+import { CustomPinCard } from './components/CustomPinCard';
+import { DraftPinLocation, PinDropSheet } from './components/PinDropSheet';
+import { SharePinsModal } from './components/SharePinsModal';
 import { DatabaseView } from './components/DatabaseView';
 
 const HOTEL_TABS: HotelTab[] = ['Dining', 'Sights', 'Tonight'];
@@ -45,6 +56,7 @@ export default function App() {
 function MapApp() {
   const initialHotelParam = useMemo(() => getHotelParam(), []);
   const initialRegionParam = useMemo(() => getRegionParam(), []);
+  const isDeskMode = useMemo(() => getDeskModeParam(), []);
   const [hotel, setHotel] = useState<HotelConfig | null>(null);
   const [hotelTab, setHotelTab] = useState<HotelTab>('Tonight');
   const [selectedPlaceId, setSelectedPlaceId] = useState<string | null>(null);
@@ -52,6 +64,17 @@ function MapApp() {
   const [showRegionPicker, setShowRegionPicker] = useState<boolean>(
     () => !initialHotelParam && !initialRegionParam
   );
+
+  // Custom Pin Drop state (Concierge Desk + Guest Self-Drop)
+  const [sharedPins] = useState<CustomPin[]>(() => getUrlSharedPins());
+  const [guestPins, setGuestPins] = useState<CustomPin[]>([]);
+  const [deskPins, setDeskPins] = useState<CustomPin[]>(() => (isDeskMode ? getUrlSharedPins() : []));
+  const [selectedCustomPinId, setSelectedCustomPinId] = useState<string | null>(
+    () => (!isDeskMode && getUrlSharedPins()[0]?.id) || null
+  );
+  const [pinDropActive, setPinDropActive] = useState(false);
+  const [draftPinLocation, setDraftPinLocation] = useState<DraftPinLocation | null>(null);
+  const [shareModalOpen, setShareModalOpen] = useState(false);
 
   const [allEvents, setAllEvents] = useState<HappeninEvent[]>([]);
   const [loading, setLoading] = useState(true);
@@ -80,7 +103,12 @@ function MapApp() {
       .then((cfg: HotelConfig | null) => {
         if (cancelled || !cfg) return;
         setHotel(cfg);
-        document.title = `${cfg.name} · ${cfg.subtitle}`;
+        if (!isDeskMode) {
+          setGuestPins(loadGuestPins(cfg.id));
+        }
+        document.title = isDeskMode
+          ? `${cfg.name} · Concierge Desk`
+          : `${cfg.name} · ${cfg.subtitle}`;
       })
       .catch(() => {});
     return () => {
@@ -210,6 +238,16 @@ function MapApp() {
     return hotel.places.filter((p) => p.tab === hotelTab);
   }, [hotel, hotelTab]);
 
+  const customPins = useMemo(
+    () => (isDeskMode ? deskPins : [...sharedPins, ...guestPins]),
+    [isDeskMode, deskPins, sharedPins, guestPins]
+  );
+
+  const selectedCustomPin = useMemo(
+    () => (selectedCustomPinId ? customPins.find((p) => p.id === selectedCustomPinId) || null : null),
+    [customPins, selectedCustomPinId]
+  );
+
   const selectedCluster = useMemo(
     () => (selectedClusterKey ? clusters.find((c) => c.key === selectedClusterKey) || null : null),
     [clusters, selectedClusterKey]
@@ -219,6 +257,82 @@ function MapApp() {
     () => (selectedPlaceId ? visiblePlaces.find((p) => p.id === selectedPlaceId) || null : null),
     [visiblePlaces, selectedPlaceId]
   );
+
+  function startPinDrop() {
+    setSelectedClusterKey(null);
+    setSelectedPlaceId(null);
+    setSelectedCustomPinId(null);
+    setDraftPinLocation(null);
+    setDatesExpanded(false);
+    setPinDropActive(true);
+  }
+
+  function handleMapPinDropClick(coords: { latitude: number; longitude: number }) {
+    setDraftPinLocation({ latitude: coords.latitude, longitude: coords.longitude });
+    reverseGeocodePoint(coords.latitude, coords.longitude).then((info) => {
+      setDraftPinLocation((prev) => {
+        if (!prev || prev.latitude !== coords.latitude || prev.longitude !== coords.longitude) {
+          return prev;
+        }
+        return {
+          ...prev,
+          suggestedName: prev.suggestedName || info.name,
+          address: prev.address || info.address,
+        };
+      });
+    });
+  }
+
+  function handleSaveCustomPin(input: {
+    name: string;
+    note: string;
+    address?: string;
+    latitude: number;
+    longitude: number;
+  }) {
+    if (!hotel) return;
+    const newPin: CustomPin = {
+      id: `${isDeskMode ? 'desk' : 'guest'}-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+      name: input.name,
+      note: input.note || undefined,
+      address: input.address,
+      latitude: input.latitude,
+      longitude: input.longitude,
+      origin: isDeskMode ? 'concierge' : 'guest',
+    };
+    if (isDeskMode) {
+      setDeskPins((prev) => [...prev, newPin]);
+    } else {
+      setGuestPins((prev) => {
+        const next = [...prev, newPin];
+        saveGuestPins(hotel.id, next);
+        return next;
+      });
+    }
+    setPinDropActive(false);
+    setDraftPinLocation(null);
+    setSelectedCustomPinId(newPin.id);
+  }
+
+  function handleDeleteCustomPin(id: string) {
+    if (!hotel) return;
+    if (isDeskMode) {
+      setDeskPins((prev) => prev.filter((p) => p.id !== id));
+    } else {
+      setGuestPins((prev) => {
+        const next = prev.filter((p) => p.id !== id);
+        saveGuestPins(hotel.id, next);
+        return next;
+      });
+    }
+    if (selectedCustomPinId === id) setSelectedCustomPinId(null);
+  }
+
+  function handleClearDeskPins() {
+    setDeskPins([]);
+    setSelectedCustomPinId(null);
+    setShareModalOpen(false);
+  }
 
   // Activity density across the current scrubber window (30-min bins) for the heat strip.
   const activityHeat = useMemo(() => {
@@ -374,21 +488,74 @@ function MapApp() {
         selectedClusterKey={selectedCluster ? selectedCluster.key : null}
         onSelectCluster={(cluster) => {
           setSelectedPlaceId(null);
+          setSelectedCustomPinId(null);
           setSelectedClusterKey(cluster.key);
         }}
         places={visiblePlaces}
         selectedPlaceId={selectedPlace ? selectedPlace.id : null}
         onSelectPlace={(place) => {
           setSelectedClusterKey(null);
+          setSelectedCustomPinId(null);
           setSelectedPlaceId(place.id);
         }}
+        customPins={hotel ? customPins : []}
+        selectedCustomPinId={selectedCustomPin ? selectedCustomPin.id : null}
+        onSelectCustomPin={(pin) => {
+          setSelectedClusterKey(null);
+          setSelectedPlaceId(null);
+          setSelectedCustomPinId(pin.id);
+        }}
+        draftPin={
+          pinDropActive && draftPinLocation
+            ? {
+                latitude: draftPinLocation.latitude,
+                longitude: draftPinLocation.longitude,
+                name: draftPinLocation.suggestedName,
+              }
+            : null
+        }
+        pinDropActive={pinDropActive}
+        onMapPinDropClick={handleMapPinDropClick}
         hotel={hotel}
         region={activeRegion}
         onMapBackgroundClick={() => {
           setSelectedClusterKey(null);
           setSelectedPlaceId(null);
+          setSelectedCustomPinId(null);
         }}
       />
+
+      {/* FLOATING PIN DROP + SHARE CONTROLS (Digital Concierge only) */}
+      {hotel && !pinDropActive && (
+        <div className="pin-fab-stack">
+          {customPins.length > 0 && (
+            <button
+              type="button"
+              className="pin-fab pin-fab-share"
+              onClick={() => setShareModalOpen(true)}
+              title={isDeskMode ? 'Share picks with guest (QR)' : 'View & share your saved pins'}
+              aria-label="Share custom pins"
+            >
+              <span className="pin-fab-star" aria-hidden="true">★</span>
+              <span className="pin-fab-label">{isDeskMode ? 'Share QR' : 'Pins'}</span>
+              <span className="pin-fab-count">{customPins.length}</span>
+            </button>
+          )}
+          <button
+            type="button"
+            className="pin-fab pin-fab-drop"
+            onClick={startPinDrop}
+            title={isDeskMode ? 'Drop a custom concierge pin' : 'Drop a custom pin on the map'}
+            aria-label="Drop a pin"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10z" />
+              <circle cx="12" cy="11" r="2.2" />
+            </svg>
+            <span className="pin-fab-label">Drop Pin</span>
+          </button>
+        </div>
+      )}
 
       {loading && <div className="status-banner">Loading what&apos;s happenin&apos;…</div>}
       {error && <div className="status-banner">{error}</div>}
@@ -508,11 +675,18 @@ function MapApp() {
                 </>
               )}
             </div>
-            {showingEvents && !isAtDefault && (
-              <button type="button" className="now-jump-btn" onClick={jumpToNow}>
-                {nowInTodayWindow ? 'Back to Now' : 'Back to Tonight'}
-              </button>
-            )}
+            <div className="brand-right-actions">
+              {hotel && isDeskMode && (
+                <span className="desk-mode-badge" title="Front Desk Pin Drop Mode">
+                  CONCIERGE DESK
+                </span>
+              )}
+              {showingEvents && !isAtDefault && (
+                <button type="button" className="now-jump-btn" onClick={jumpToNow}>
+                  {nowInTodayWindow ? 'Back to Now' : 'Back to Tonight'}
+                </button>
+              )}
+            </div>
           </div>
 
           {hotel && (
@@ -562,9 +736,41 @@ function MapApp() {
         </div>
       </header>
 
-      {/* BOTTOM STACK: EVENT / PLACE CARD + PREVIEW PILL + DATE STRIP + TIME SLIDER */}
+      {/* BOTTOM STACK: PIN DROP / EVENT / PLACE / CUSTOM PIN CARD + PREVIEW PILL + DATE STRIP + TIME SLIDER */}
       <div className="bottom-overlay">
-        {selectedCluster && (
+        {pinDropActive && hotel && (
+          <PinDropSheet
+            hotel={hotel}
+            isDeskMode={isDeskMode}
+            draftLocation={draftPinLocation}
+            onSelectSearchResult={(r) =>
+              setDraftPinLocation({
+                latitude: r.latitude,
+                longitude: r.longitude,
+                suggestedName: r.name,
+                address: r.address,
+              })
+            }
+            onSavePin={handleSaveCustomPin}
+            onCancel={() => {
+              setPinDropActive(false);
+              setDraftPinLocation(null);
+            }}
+          />
+        )}
+
+        {!pinDropActive && selectedCustomPin && hotel && (
+          <CustomPinCard
+            pin={selectedCustomPin}
+            hotel={hotel}
+            canDelete={isDeskMode || selectedCustomPin.origin === 'guest'}
+            onDelete={handleDeleteCustomPin}
+            onShare={() => setShareModalOpen(true)}
+            onClose={() => setSelectedCustomPinId(null)}
+          />
+        )}
+
+        {!pinDropActive && selectedCluster && (
           <EventCard
             cluster={selectedCluster}
             hotel={hotel}
@@ -572,7 +778,7 @@ function MapApp() {
           />
         )}
 
-        {selectedPlace && hotel && (
+        {!pinDropActive && selectedPlace && hotel && (
           <PlaceCard
             place={selectedPlace}
             hotel={hotel}
@@ -580,7 +786,7 @@ function MapApp() {
           />
         )}
 
-        {previewSuggestion && (
+        {!pinDropActive && !selectedCustomPin && previewSuggestion && (
           <button
             type="button"
             className="preview-tonight-pill"
@@ -601,7 +807,7 @@ function MapApp() {
           </button>
         )}
 
-        {showingEvents && (
+        {!pinDropActive && showingEvents && (
           <>
             <div className="date-row">
               <button
@@ -701,12 +907,24 @@ function MapApp() {
           </>
         )}
 
-        {hotel && !showingEvents && !selectedPlace && (
+        {hotel && !pinDropActive && !showingEvents && !selectedPlace && !selectedCustomPin && (
           <div className="hotel-footer-hint">
-            Curated by {hotel.name} · Tap any pin for menus, details & walking directions
+            Curated by {hotel.name} · Tap any pin for details, or Drop Pin to save a spot
           </div>
         )}
       </div>
+
+      {/* SHARE CUSTOM PINS / QR CODE MODAL (Digital Concierge) */}
+      {shareModalOpen && hotel && (
+        <SharePinsModal
+          hotel={hotel}
+          pins={customPins}
+          isDeskMode={isDeskMode}
+          onDeletePin={handleDeleteCustomPin}
+          onClearAll={handleClearDeskPins}
+          onClose={() => setShareModalOpen(false)}
+        />
+      )}
 
       {/* LOCATION PICKER MODAL (Happenin' standalone only; bypassed for all hotel concierges) */}
       {!hotel && !initialHotelParam && showRegionPicker && (

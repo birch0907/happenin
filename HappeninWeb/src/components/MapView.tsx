@@ -3,6 +3,7 @@ import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { CATEGORY_COLORS, REGIONS, RegionId, VenueCluster } from '../data/events';
 import { HotelConfig, HotelPlace, PLACE_TAB_COLORS } from '../data/hotels';
+import { CustomPin } from '../data/customPins';
 
 type MapViewProps = {
   clusters: VenueCluster[];
@@ -11,6 +12,12 @@ type MapViewProps = {
   places?: HotelPlace[];
   selectedPlaceId?: string | null;
   onSelectPlace?: (place: HotelPlace) => void;
+  customPins?: CustomPin[];
+  selectedCustomPinId?: string | null;
+  onSelectCustomPin?: (pin: CustomPin) => void;
+  draftPin?: { latitude: number; longitude: number; name?: string } | null;
+  pinDropActive?: boolean;
+  onMapPinDropClick?: (lngLat: { latitude: number; longitude: number }) => void;
   hotel?: HotelConfig | null;
   region?: RegionId;
   onMapBackgroundClick: () => void;
@@ -35,6 +42,8 @@ const LIGHT_PLACE_COLORS: Record<'Dining' | 'Sights', string> = {
 const EVENT_SOURCE_ID = 'happenin-pins';
 const PLACE_SOURCE_ID = 'hotel-places';
 const HOME_SOURCE_ID = 'hotel-home';
+const CUSTOM_SOURCE_ID = 'custom-pins';
+const DRAFT_SOURCE_ID = 'draft-pin';
 
 function clustersToGeoJSON(
   clusters: VenueCluster[],
@@ -113,6 +122,49 @@ function homeToGeoJSON(hotel: HotelConfig | null | undefined): GeoJSON.FeatureCo
   };
 }
 
+function customPinsToGeoJSON(
+  pins: CustomPin[],
+  selectedId: string | null
+): GeoJSON.FeatureCollection<GeoJSON.Point> {
+  return {
+    type: 'FeatureCollection',
+    features: pins.map((pin) => ({
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [pin.longitude, pin.latitude],
+      },
+      properties: {
+        id: pin.id,
+        name: pin.name,
+        origin: pin.origin,
+        selected: pin.id === selectedId,
+      },
+    })),
+  };
+}
+
+function draftPinToGeoJSON(
+  draft: { latitude: number; longitude: number; name?: string } | null | undefined
+): GeoJSON.FeatureCollection<GeoJSON.Point> {
+  if (!draft) return { type: 'FeatureCollection', features: [] };
+  return {
+    type: 'FeatureCollection',
+    features: [
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [draft.longitude, draft.latitude],
+        },
+        properties: {
+          name: draft.name || 'New Pin',
+        },
+      },
+    ],
+  };
+}
+
 export function MapView({
   clusters,
   selectedClusterKey,
@@ -120,6 +172,12 @@ export function MapView({
   places = [],
   selectedPlaceId = null,
   onSelectPlace,
+  customPins = [],
+  selectedCustomPinId = null,
+  onSelectCustomPin,
+  draftPin = null,
+  pinDropActive = false,
+  onMapPinDropClick,
   hotel = null,
   region = 'boston',
   onMapBackgroundClick,
@@ -135,18 +193,30 @@ export function MapView({
   const selectedKeyRef = useRef(selectedClusterKey);
   const placesRef = useRef(places);
   const selectedPlaceRef = useRef(selectedPlaceId);
+  const customPinsRef = useRef(customPins);
+  const selectedCustomPinRef = useRef(selectedCustomPinId);
+  const draftPinRef = useRef(draftPin);
+  const pinDropActiveRef = useRef(pinDropActive);
   const hotelRef = useRef(hotel);
   const onSelectRef = useRef(onSelectCluster);
   const onSelectPlaceRef = useRef(onSelectPlace);
+  const onSelectCustomPinRef = useRef(onSelectCustomPin);
+  const onMapPinDropClickRef = useRef(onMapPinDropClick);
   const onBgClickRef = useRef(onMapBackgroundClick);
 
   clustersRef.current = clusters;
   selectedKeyRef.current = selectedClusterKey;
   placesRef.current = places;
   selectedPlaceRef.current = selectedPlaceId;
+  customPinsRef.current = customPins;
+  selectedCustomPinRef.current = selectedCustomPinId;
+  draftPinRef.current = draftPin;
+  pinDropActiveRef.current = pinDropActive;
   hotelRef.current = hotel;
   onSelectRef.current = onSelectCluster;
   onSelectPlaceRef.current = onSelectPlace;
+  onSelectCustomPinRef.current = onSelectCustomPin;
+  onMapPinDropClickRef.current = onMapPinDropClick;
   onBgClickRef.current = onMapBackgroundClick;
 
   const isLight = hotel?.mapStyle === 'light';
@@ -367,12 +437,118 @@ export function MapView({
         },
       });
 
-      for (const layer of ['pins-hit', 'places-hit']) {
+      // 4. Custom Concierge & Guest Dropped Pins (always on top of regular layers)
+      if (!map.getSource(CUSTOM_SOURCE_ID)) {
+        map.addSource(CUSTOM_SOURCE_ID, {
+          type: 'geojson',
+          data: customPinsToGeoJSON(customPinsRef.current, selectedCustomPinRef.current),
+        });
+      }
+
+      map.addLayer({
+        id: 'custom-hit',
+        type: 'circle',
+        source: CUSTOM_SOURCE_ID,
+        paint: { 'circle-radius': 24, 'circle-color': '#000000', 'circle-opacity': 0 },
+      });
+
+      map.addLayer({
+        id: 'custom-glow',
+        type: 'circle',
+        source: CUSTOM_SOURCE_ID,
+        paint: {
+          'circle-radius': ['case', ['==', ['get', 'selected'], true], 24, 18],
+          'circle-color': '#F59E0B',
+          'circle-opacity': ['case', ['==', ['get', 'selected'], true], 0.55, 0.32],
+          'circle-blur': 0.55,
+        },
+      });
+
+      map.addLayer({
+        id: 'custom-dot',
+        type: 'circle',
+        source: CUSTOM_SOURCE_ID,
+        paint: {
+          'circle-radius': ['case', ['==', ['get', 'selected'], true], 12, 10.5],
+          'circle-color': '#F59E0B',
+          'circle-stroke-width': 2.8,
+          'circle-stroke-color': light ? '#0D0D0D' : '#FFFFFF',
+        },
+      });
+
+      map.addLayer({
+        id: 'custom-star',
+        type: 'symbol',
+        source: CUSTOM_SOURCE_ID,
+        layout: {
+          'text-field': '★',
+          'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+          'text-size': 12,
+          'text-allow-overlap': true,
+          'text-ignore-placement': true,
+        },
+        paint: {
+          'text-color': '#0D0D0D',
+        },
+      });
+
+      map.addLayer({
+        id: 'custom-label',
+        type: 'symbol',
+        source: CUSTOM_SOURCE_ID,
+        layout: {
+          'text-field': ['get', 'name'],
+          'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+          'text-size': 11.5,
+          'text-offset': [0, 1.4],
+          'text-anchor': 'top',
+          'text-allow-overlap': true,
+        },
+        paint: {
+          'text-color': labelTextColor,
+          'text-halo-color': labelHaloColor,
+          'text-halo-width': 2,
+        },
+      });
+
+      // 5. Draft Pin Preview while placing
+      if (!map.getSource(DRAFT_SOURCE_ID)) {
+        map.addSource(DRAFT_SOURCE_ID, {
+          type: 'geojson',
+          data: draftPinToGeoJSON(draftPinRef.current),
+        });
+      }
+
+      map.addLayer({
+        id: 'draft-halo',
+        type: 'circle',
+        source: DRAFT_SOURCE_ID,
+        paint: {
+          'circle-radius': 24,
+          'circle-color': '#F59E0B',
+          'circle-opacity': 0.42,
+          'circle-blur': 0.35,
+        },
+      });
+
+      map.addLayer({
+        id: 'draft-dot',
+        type: 'circle',
+        source: DRAFT_SOURCE_ID,
+        paint: {
+          'circle-radius': 10,
+          'circle-color': '#FFFFFF',
+          'circle-stroke-width': 3.5,
+          'circle-stroke-color': '#F59E0B',
+        },
+      });
+
+      for (const layer of ['pins-hit', 'places-hit', 'custom-hit']) {
         map.on('mouseenter', layer, () => {
-          map.getCanvas().style.cursor = 'pointer';
+          map.getCanvas().style.cursor = pinDropActiveRef.current ? 'crosshair' : 'pointer';
         });
         map.on('mouseleave', layer, () => {
-          map.getCanvas().style.cursor = '';
+          map.getCanvas().style.cursor = pinDropActiveRef.current ? 'crosshair' : '';
         });
       }
     }
@@ -380,9 +556,25 @@ export function MapView({
     map.on('style.load', mountLayers);
 
     map.on('click', (e) => {
+      if (pinDropActiveRef.current && onMapPinDropClickRef.current) {
+        onMapPinDropClickRef.current({
+          latitude: e.lngLat.lat,
+          longitude: e.lngLat.lng,
+        });
+        return;
+      }
       if (!styleLoadedRef.current) {
         onBgClickRef.current();
         return;
+      }
+      const customHits = map.queryRenderedFeatures(e.point, { layers: ['custom-hit'] });
+      const hitCustomId = customHits[0]?.properties?.id as string | undefined;
+      if (hitCustomId && onSelectCustomPinRef.current) {
+        const match = customPinsRef.current.find((p) => p.id === hitCustomId);
+        if (match) {
+          onSelectCustomPinRef.current(match);
+          return;
+        }
       }
       const eventHits = map.queryRenderedFeatures(e.point, { layers: ['pins-hit'] });
       const hitKey = eventHits[0]?.properties?.key as string | undefined;
@@ -438,6 +630,48 @@ export function MapView({
     const source = map.getSource(PLACE_SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
     if (source) source.setData(placesToGeoJSON(places, selectedPlaceId, isLight));
   }, [places, selectedPlaceId, isLight]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !styleLoadedRef.current) return;
+    const source = map.getSource(CUSTOM_SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
+    if (source) source.setData(customPinsToGeoJSON(customPins, selectedCustomPinId));
+  }, [customPins, selectedCustomPinId]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !styleLoadedRef.current) return;
+    const source = map.getSource(DRAFT_SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
+    if (source) source.setData(draftPinToGeoJSON(draftPin));
+  }, [draftPin]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
+    map.getCanvas().style.cursor = pinDropActive ? 'crosshair' : '';
+  }, [pinDropActive]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !draftPin) return;
+    map.easeTo({
+      center: [draftPin.longitude, draftPin.latitude],
+      offset: [0, -135],
+      duration: 320,
+    });
+  }, [draftPin]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !selectedCustomPinId) return;
+    const target = customPins.find((p) => p.id === selectedCustomPinId);
+    if (!target) return;
+    map.easeTo({
+      center: [target.longitude, target.latitude],
+      offset: [0, -110],
+      duration: 280,
+    });
+  }, [selectedCustomPinId, customPins]);
 
   useEffect(() => {
     const map = mapRef.current;
