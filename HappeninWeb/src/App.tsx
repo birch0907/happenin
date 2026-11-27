@@ -14,7 +14,6 @@ import {
   dateParts,
   defaultTimeForDate,
   easternToday,
-  easternWallClockMs,
   eventVisibleAtTime,
   formatTimelineTime,
   getRegionParam,
@@ -353,68 +352,6 @@ function MapApp() {
     return { counts, maxCount };
   }, [eligibleEvents, activeCategories, windowStart, windowEnd]);
 
-  // When very few events are live at the selected time, find the nearest peak slot.
-  const previewSuggestion = useMemo(() => {
-    if (!showingEvents || loading || selectedCluster || visibleEvents.length > 3 || eligibleEvents.length === 0) {
-      return null;
-    }
-    const matching = eligibleEvents.filter((ev) => activeCategories.includes(ev.category));
-    if (matching.length === 0) return null;
-
-    let bestTime = selectedTime;
-    let bestCount = visibleEvents.length;
-    const stepMs = 30 * 60 * 1000;
-    for (let t = windowStart; t <= windowEnd; t += stepMs) {
-      if (Math.abs(t - selectedTime) < stepMs) continue;
-      let count = 0;
-      for (const ev of matching) {
-        if (eventVisibleAtTime(ev, t)) count++;
-      }
-      if (count > bestCount) {
-        bestCount = count;
-        bestTime = t;
-      }
-    }
-    if (bestCount >= Math.max(2, visibleEvents.length + 2)) {
-      const label =
-        selectedDate === today
-          ? `Preview ${formatTimelineTime(bestTime)}`
-          : `Jump to ${formatTimelineTime(bestTime)}`;
-      return { date: selectedDate, time: bestTime, count: bestCount, label };
-    }
-
-    for (const date of availableDates.slice(1, 6)) {
-      const evening = easternWallClockMs(date, 20, 0);
-      let count = 0;
-      for (const ev of matching) {
-        if (eventVisibleAtTime(ev, evening)) count++;
-      }
-      if (count >= Math.max(2, visibleEvents.length + 2)) {
-        const parts = dateParts(date);
-        return {
-          date,
-          time: evening,
-          count,
-          label: `Preview ${parts.weekday} 8:00 PM`,
-        };
-      }
-    }
-    return null;
-  }, [
-    showingEvents,
-    loading,
-    selectedCluster,
-    visibleEvents.length,
-    eligibleEvents,
-    activeCategories,
-    selectedTime,
-    windowStart,
-    windowEnd,
-    selectedDate,
-    today,
-    availableDates,
-  ]);
-
   function toggleCategory(cat: EventCategory) {
     setActiveCategories((prev) =>
       prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
@@ -455,7 +392,6 @@ function MapApp() {
   const defaultTodayTime = defaultTimeForDate(today, isHotelMode, today);
   const isAtDefault =
     selectedDate === today && Math.abs(selectedTime - defaultTodayTime) < QUARTER_MS;
-  const isAtLiveNow = isAtDefault && nowInTodayWindow;
   const selectedDateInfo = dateParts(selectedDate);
 
   const isVerbPoster = hotel?.styleVariant === 'verb-poster';
@@ -784,27 +720,6 @@ function MapApp() {
             hotel={hotel}
             onClose={() => setSelectedPlaceId(null)}
           />
-        )}
-
-        {!pinDropActive && !selectedCustomPin && previewSuggestion && (
-          <button
-            type="button"
-            className="preview-tonight-pill"
-            onClick={() => {
-              setSelectedDate(previewSuggestion.date);
-              setSelectedTime(previewSuggestion.time);
-              setDatesExpanded(false);
-              setSelectedClusterKey(null);
-            }}
-          >
-            <span className="preview-muted">
-              {isAtLiveNow ? 'Quiet right now' : `Quiet at ${formatTimelineTime(selectedTime)}`}
-            </span>
-            <span className="preview-dot">·</span>
-            <span className="preview-cta">
-              {previewSuggestion.label} ({previewSuggestion.count} events) →
-            </span>
-          </button>
         )}
 
         {!pinDropActive && showingEvents && (
