@@ -1059,7 +1059,6 @@ body,
   display: inline-flex;
   align-items: center;
   flex: 0 0 auto;
-  transform: rotate(-3deg);
 }
 
 .variant-studio-gallery .filter-panel {

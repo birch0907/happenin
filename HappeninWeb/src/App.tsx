@@ -360,22 +360,19 @@ function MapApp() {
                   )}
                   {hotel.logoIcon === 'studio-frame' && (
                     <span className="studio-frame-badge" aria-hidden="true">
-                      <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
-                        <rect
-                          x="6"
-                          y="6"
-                          width="22"
-                          height="22"
-                          transform="rotate(10 17 17)"
-                          stroke="#141414"
-                          strokeWidth="2.1"
-                        />
-                        <path
-                          d="M11 25C15 21 15 14 21 10C24 8 28 8.5 28.5 11.5C29 14.5 23 17 17 18.5C11 20 7.5 23 8.5 26C9.5 28.5 16 28 24 23"
-                          stroke="#1FA9AC"
-                          strokeWidth="2.3"
-                          strokeLinecap="round"
-                        />
+                      <svg width="34" height="34" viewBox="0 0 52 52" fill="none">
+                        <g
+                          transform="rotate(15 26 26)"
+                          stroke="#141C20"
+                          strokeWidth="2.5"
+                          strokeLinecap="butt"
+                          strokeLinejoin="miter"
+                        >
+                          <rect x="12" y="13" width="23" height="23" />
+                          <path d="M13.5 36 L34.5 7.5" />
+                          <path d="M35 7.5 C23.5 5 18.5 16 22.5 24 C25.5 29.5 32 30.5 42 30.5" />
+                          <path d="M12 22.5 C22 23 24.5 32 19 38.5 C15.5 42.5 10.5 42.5 7.5 41.5" />
+                        </g>
                       </svg>
                     </span>
                   )}
