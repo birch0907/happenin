@@ -3,6 +3,23 @@
 
 export type EventCategory = 'Live Music' | 'DJ' | 'Social';
 
+export type RegionId = 'boston' | 'seacoast';
+
+export const REGIONS: Record<
+  RegionId,
+  { id: RegionId; label: string; center: [number, number]; zoom: number }
+> = {
+  boston: { id: 'boston', label: 'Boston', center: [-71.092, 42.348], zoom: 11.5 },
+  seacoast: { id: 'seacoast', label: 'Seacoast NH', center: [-70.79, 43.005], zoom: 11.0 },
+};
+
+export function getRegionParam(): RegionId | null {
+  const params = new URLSearchParams(window.location.search);
+  const raw = params.get('region')?.trim().toLowerCase();
+  if (raw === 'boston' || raw === 'seacoast') return raw;
+  return null;
+}
+
 export const CATEGORIES: EventCategory[] = ['Live Music', 'DJ', 'Social'];
 
 export const CATEGORY_COLORS: Record<EventCategory, string> = {
@@ -49,6 +66,7 @@ export type RawEvent = {
   content_rating?: ContentRating;
   safety_reason?: string;
   hotel_blocked?: boolean;
+  region?: RegionId;
 };
 
 export type HappeninEvent = {
@@ -57,6 +75,7 @@ export type HappeninEvent = {
   venue: string;
   address?: string;
   city?: string;
+  region: RegionId;
   category: EventCategory;
   tags: string[];
   admissionType?: AdmissionType;
@@ -301,6 +320,12 @@ export function normalizeEvents(rawEvents: RawEvent[]): HappeninEvent[] {
       venue: (e.venue || e.address || 'Venue TBA').trim(),
       address: e.address?.trim(),
       city: e.city?.trim(),
+      region:
+        e.region === 'seacoast' || e.region === 'boston'
+          ? e.region
+          : e.state?.toUpperCase() === 'NH' || e.latitude! >= 42.82
+            ? 'seacoast'
+            : 'boston',
       category,
       tags: extractTags(e),
       admissionType,

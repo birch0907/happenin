@@ -1,5 +1,5 @@
 // White-label Hotel Concierge Portal configuration & walking distance helpers.
-import type { ContentRating, HappeninEvent } from './events';
+import type { ContentRating, HappeninEvent, RegionId } from './events';
 
 export type HotelTab = 'Tonight' | 'Dining' | 'Sights';
 
@@ -40,6 +40,7 @@ export type HotelConfig = {
   mapStyle?: 'dark' | 'light';
   logoIcon?: 'pick' | 'studio-frame';
   homePinColor?: string;
+  region?: RegionId;
   contentPolicy?: HotelContentPolicy;
   theme: {
     bg: string;

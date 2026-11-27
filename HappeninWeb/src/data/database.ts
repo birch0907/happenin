@@ -19,6 +19,7 @@ export type DbVenue = {
   id: string;
   canonicalKey: string;
   venue: string;
+  region?: 'boston' | 'seacoast';
   area: string;
   neighborhood: string;
   address: string;
@@ -44,6 +45,7 @@ export type DbEvent = {
   id: string;
   venueId: string | null;
   venue: string;
+  region?: 'boston' | 'seacoast';
   area: string;
   neighborhood: string;
   title: string;
@@ -116,6 +118,9 @@ export const AREA_ORDER = [
   'Dorchester',
   'Roxbury',
   'East Boston',
+  'Portsmouth NH',
+  'Hampton / Beach NH',
+  'Seacoast NH',
   'Greater Boston',
 ];
 

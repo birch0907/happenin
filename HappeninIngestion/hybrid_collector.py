@@ -100,6 +100,7 @@ def base_event(
         "city": venue_cfg.get("city"),
         "state": venue_cfg.get("state"),
         "postal_code": venue_cfg.get("postal_code"),
+        "region": venue_cfg.get("region") or ("seacoast" if venue_cfg.get("state") == "NH" else "boston"),
         "latitude": venue_cfg.get("latitude"),
         "longitude": venue_cfg.get("longitude"),
         "location_precision": "street" if venue_cfg.get("latitude") is not None else "unknown",
@@ -978,6 +979,124 @@ def collect_wix_events_jsonld(venue_cfg, window_start, window_end):
 
 
 # ---------------------------------------------------------------------------
+# 6d. DETERMINISTIC: MUSICIDB VENUE EVENTS WIDGET (e.g. The Goat, Chop Shop)
+# ---------------------------------------------------------------------------
+
+def collect_musicidb(venue_cfg, window_start, window_end):
+    vid = venue_cfg["musicidb_venue_id"]
+    default_time = venue_cfg.get("default_start_time") or "20:00"
+    events = []
+    seen_ids = set()
+
+    for page in range(0, 3):
+        resp = requests.get(
+            "https://musicidb.com/venue/getVenueEvents.htm",
+            params={
+                "listType": "upcoming",
+                "page": page,
+                "frameType": "listWidget",
+                "descrip": 1,
+                "venueId": vid,
+            },
+            headers=HEADERS,
+            timeout=20,
+        )
+        resp.raise_for_status()
+        soup = BeautifulSoup(resp.text, "html.parser")
+        items = soup.select("li.listEvent")
+        if not items:
+            break
+
+        page_max_dt = None
+        for li in items:
+            ev_id = (li.get("id") or "").strip()
+            if ev_id and ev_id in seen_ids:
+                continue
+
+            date_h3 = li.select_one("h3.date")
+            if not date_h3:
+                continue
+            month_spans = [
+                s.get_text(strip=True)
+                for s in date_h3.select("span.monthName")
+                if "dayNameAbb" not in (s.get("class") or [])
+            ]
+            day_el = date_h3.select_one("span.dayNum")
+            year_el = date_h3.select_one("span.yearNum")
+            if not month_spans or not day_el or not year_el:
+                continue
+            month_str = month_spans[0]
+            day_str = day_el.get_text(strip=True)
+            year_str = year_el.get_text(strip=True)
+
+            title_el = li.select_one("h3.titleofevent a") or li.select_one("h3.titleofevent")
+            title = html_lib.unescape(re.sub(r"\s+", " ", title_el.get_text(" ", strip=True))).strip() if title_el else ""
+            if not title or CLOSURE_RE.search(title):
+                continue
+
+            # Parse start time from eventLogistics or fallback to default_start_time
+            log_el = li.select_one("p.eventLogistics")
+            log_text = re.sub(r"\s+", " ", log_el.get_text(" ", strip=True)) if log_el else ""
+            tm = re.search(r"(\d{1,2})(?::(\d{2}))?\s*([ap])\.?m\.?", log_text, re.I)
+            if tm:
+                hr = int(tm.group(1))
+                mn = int(tm.group(2) or "0")
+                ap = tm.group(3).lower()
+                if ap == "p" and hr < 12:
+                    hr += 12
+                elif ap == "a" and hr == 12:
+                    hr = 0
+                time_inferred = False
+            else:
+                parts = default_time.split(":")
+                hr, mn = int(parts[0]), int(parts[1])
+                time_inferred = True
+
+            try:
+                base_date = datetime.strptime(f"{month_str} {day_str} {year_str}", "%b %d %Y")
+            except ValueError:
+                try:
+                    base_date = datetime.strptime(f"{month_str} {day_str} {year_str}", "%B %d %Y")
+                except ValueError:
+                    continue
+
+            start_dt = base_date.replace(hour=hr, minute=mn, second=0, tzinfo=EASTERN)
+            if page_max_dt is None or start_dt > page_max_dt:
+                page_max_dt = start_dt
+
+            if not in_window(start_dt, None, window_start, window_end):
+                continue
+
+            if ev_id:
+                seen_ids.add(ev_id)
+
+            genres_el = li.select_one("p.genresOnEvent")
+            genres_txt = re.sub(r"\s+", " ", genres_el.get_text(" ", strip=True)) if genres_el else ""
+            genres_txt = re.sub(r"^Genres:\s*", "", genres_txt, flags=re.I).strip()
+            desc = f"Live music at {venue_cfg['venue']}." + (f" Genres: {genres_txt}." if genres_txt else "")
+
+            img_el = li.select_one("img.eventImg")
+            image_url = img_el.get("src") if img_el and img_el.get("src") else None
+
+            events.append(base_event(
+                venue_cfg,
+                title=title,
+                start=start_dt.isoformat(),
+                end=None,
+                url=venue_cfg["url"],
+                description=desc,
+                source_id=f"musicidb:{venue_cfg['id']}:{ev_id or start_dt.isoformat()}",
+                image_url=image_url,
+                extra={"collector": "musicidb", "start_time_inferred": time_inferred},
+            ))
+
+        if page_max_dt and page_max_dt > window_end:
+            break
+
+    return sorted(events, key=lambda e: e["start"])
+
+
+# ---------------------------------------------------------------------------
 # RUNNER
 # ---------------------------------------------------------------------------
 
@@ -1017,6 +1136,8 @@ def run(venue_filter=None, dry_run=False, use_cache=True):
                 found = collect_tockify(venue_cfg, window_start, window_end)
             elif ctype == "wix_events_jsonld":
                 found = collect_wix_events_jsonld(venue_cfg, window_start, window_end)
+            elif ctype == "musicidb":
+                found = collect_musicidb(venue_cfg, window_start, window_end)
             elif ctype == "llm_html":
                 found = collect_llm_html(venue_cfg, window_start, window_end, dry_run=dry_run, use_cache=use_cache)
             else:

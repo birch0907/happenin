@@ -189,6 +189,19 @@ CANONICAL_ALIASES = {
     "middle east zuzu": "middle east sonia zuzu",
     "middle east": "middle east sonia zuzu",
     "middle east sonia zuzu": "middle east sonia zuzu",
+    "jimmy s jazz and blues club": "jimmys jazz and blues club",
+    "jimmys jazz and blues club": "jimmys jazz and blues club",
+    "jimmys jazz blues club": "jimmys jazz and blues club",
+    "wally s": "wallys",
+    "wallys": "wallys",
+    "bernie s beach bar": "bernies beach bar",
+    "bogie s at depot square": "bogies at depot square",
+    "the press room": "press room",
+    "press room": "press room",
+    "portsmouth gas light co": "portsmouth gas light co",
+    "3s artspace": "3s artspace",
+    "the music hall": "music hall",
+    "the music hall lounge": "music hall lounge",
 }
 
 
@@ -246,6 +259,12 @@ def infer_area_from_city_or_hood(city: str, neighborhood: str) -> str:
         return "Roxbury"
     if "medford" in blob:
         return "Medford / North"
+    if any(k in blob for k in ("portsmouth", "hampton", "seabrook", "rye", "durham", "salisbury", "new castle", "seacoast")):
+        if "hampton" in blob:
+            return "Hampton / Beach NH"
+        if "portsmouth" in blob:
+            return "Portsmouth NH"
+        return "Seacoast NH"
     if "boston" in blob or any(
         k in blob for k in ("fenway", "seaport", "back bay", "south end", "beacon hill", "north end", "downtown", "theater", "chinatown", "south boston", "charlestown", "fort point")
     ):
@@ -434,6 +453,40 @@ def parse_spreadsheets():
                 "notes": "Permanently closed after 66 years." if is_closed else status_note,
                 "url": lead_url if lead_url.startswith("http") else "",
                 "permanently_closed": is_closed,
+                "region": "boston",
+                "source_sheet": p.name,
+            })
+
+    # 7. NH Seacoast Nightlife Venue Directory (Portsmouth, Hampton, North Hampton, Seabrook, Rye)
+    p = DOWNLOADS / "NH_Seacoast_Nightlife_Venue_Directory.xlsx"
+    if p.exists():
+        wb = openpyxl.load_workbook(p, read_only=True, data_only=True)
+        ws = wb["Venues"]
+        for row in list(ws.iter_rows(values_only=True))[1:]:
+            if not row or not row[0]:
+                continue
+            name = clean_str(row[0])
+            hood = clean_str(row[1] if len(row) > 1 else "")
+            addr = clean_str(row[2] if len(row) > 2 else "")
+            vtype = clean_str(row[3] if len(row) > 3 else "")
+            prog = clean_str(row[5] if len(row) > 5 else "")
+            prio = clean_priority(row[6] if len(row) > 6 else "")
+            status_note = clean_str(row[7] if len(row) > 7 else "")
+            lead_url = clean_str(row[8] if len(row) > 8 else "")
+            muni = clean_str(row[10] if len(row) > 10 else "")
+            seasonality = clean_str(row[11] if len(row) > 11 else "")
+            area = "Portsmouth NH" if muni == "Portsmouth" else ("Hampton / Beach NH" if "Hampton" in muni else "Seacoast NH")
+            notes_parts = [x for x in (seasonality, status_note) if x]
+            records.append({
+                "venue": name,
+                "area": area,
+                "neighborhood": f"{muni} · {hood}" if (muni and hood and muni != hood) else (hood or muni or "Seacoast NH"),
+                "address": f"{addr}, {muni or 'Portsmouth'}, NH" if addr else "",
+                "priority": prio,
+                "vibe": " · ".join(x for x in (vtype, prog) if x),
+                "notes": " · ".join(notes_parts),
+                "url": lead_url if lead_url.startswith("http") else "",
+                "region": "seacoast",
                 "source_sheet": p.name,
             })
 
@@ -630,12 +683,19 @@ def main():
         if not categories_present and cfg_primary and cfg_primary.get("default_category"):
             categories_present = [cfg_primary["default_category"]]
 
+        venue_region = (
+            rec.get("region")
+            or (cfg_primary or {}).get("region")
+            or (sample_ev.get("region") if sample_ev else None)
+            or ("seacoast" if (lat is not None and lat >= 42.82) or "NH" in rec["area"] else "boston")
+        )
         venue_id = (cfg_primary or {}).get("id") or slugify(f"{rec['area']}-{rec['venue']}")
         # Ensure unique IDs
         venue_records.append({
             "id": venue_id,
             "canonicalKey": ck,
             "venue": rec["venue"],
+            "region": venue_region,
             "area": rec["area"],
             "neighborhood": rec.get("neighborhood") or rec["area"],
             "address": address,
@@ -684,6 +744,7 @@ def main():
             "id": ev.get("id") or slugify(f"{ev.get('venue')}-{ev.get('title')}-{ev.get('start')}"),
             "venueId": vrec["id"] if vrec else None,
             "venue": ev.get("venue") or "Unknown Venue",
+            "region": ev.get("region") or (vrec["region"] if vrec else "boston"),
             "area": vrec["area"] if vrec else infer_area_from_city_or_hood(ev.get("city", ""), ev.get("address", "")),
             "neighborhood": vrec["neighborhood"] if vrec else (ev.get("city") or ""),
             "title": ev.get("title") or "Untitled Event",
@@ -710,6 +771,7 @@ def main():
     status_counts = Counter(v["status"] for v in venue_records)
     area_counts = Counter(v["area"] for v in venue_records)
     prio_counts = Counter(v["priority"] for v in venue_records)
+    region_counts = Counter(v["region"] for v in venue_records)
 
     payload = {
         "generatedAt": datetime.now(EASTERN).isoformat(timespec="seconds"),
@@ -719,6 +781,7 @@ def main():
             "statusCounts": dict(status_counts),
             "areaCounts": dict(area_counts),
             "priorityCounts": dict(prio_counts),
+            "regionCounts": dict(region_counts),
             "attentionCount": sum(
                 1
                 for v in venue_records

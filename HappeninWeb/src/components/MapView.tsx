@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { CATEGORY_COLORS, VenueCluster } from '../data/events';
+import { CATEGORY_COLORS, REGIONS, RegionId, VenueCluster } from '../data/events';
 import { HotelConfig, HotelPlace, PLACE_TAB_COLORS } from '../data/hotels';
 
 type MapViewProps = {
@@ -12,6 +12,7 @@ type MapViewProps = {
   selectedPlaceId?: string | null;
   onSelectPlace?: (place: HotelPlace) => void;
   hotel?: HotelConfig | null;
+  region?: RegionId;
   onMapBackgroundClick: () => void;
 };
 
@@ -120,12 +121,14 @@ export function MapView({
   selectedPlaceId = null,
   onSelectPlace,
   hotel = null,
+  region = 'boston',
   onMapBackgroundClick,
 }: MapViewProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const styleLoadedRef = useRef(false);
   const activeStyleModeRef = useRef<'dark' | 'light'>('dark');
+  const centeredRegionRef = useRef<RegionId>(region);
   const centeredHotelRef = useRef<string | null>(null);
 
   const clustersRef = useRef(clusters);
@@ -156,8 +159,8 @@ export function MapView({
 
     const initialCenter: [number, number] = hotelRef.current
       ? [hotelRef.current.longitude, hotelRef.current.latitude]
-      : DEFAULT_CENTER;
-    const initialZoom = hotelRef.current ? hotelRef.current.initialZoom : DEFAULT_ZOOM;
+      : REGIONS[region].center;
+    const initialZoom = hotelRef.current ? hotelRef.current.initialZoom : REGIONS[region].zoom;
 
     const map = new maplibregl.Map({
       container: containerRef.current,
@@ -451,6 +454,17 @@ export function MapView({
       });
     }
   }, [hotel]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || hotel || centeredRegionRef.current === region) return;
+    centeredRegionRef.current = region;
+    map.flyTo({
+      center: REGIONS[region].center,
+      zoom: REGIONS[region].zoom,
+      duration: 850,
+    });
+  }, [region, hotel]);
 
   useEffect(() => {
     const map = mapRef.current;

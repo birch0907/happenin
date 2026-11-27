@@ -6,7 +6,9 @@ import {
   EventCategory,
   HappeninEvent,
   QUARTER_MS,
+  REGIONS,
   RawEvent,
+  RegionId,
   WINDOW_MS,
   addCalendarDays,
   currentQuarter,
@@ -15,6 +17,7 @@ import {
   eventVisibleAtTime,
   formatTimelineTime,
   futureWindowStart,
+  getRegionParam,
   groupEventsByPin,
   normalizeEvents,
 } from './data/events';
@@ -39,9 +42,15 @@ export default function App() {
 }
 
 function MapApp() {
+  const initialHotelParam = useMemo(() => getHotelParam(), []);
+  const initialRegionParam = useMemo(() => getRegionParam(), []);
   const [hotel, setHotel] = useState<HotelConfig | null>(null);
   const [hotelTab, setHotelTab] = useState<HotelTab>('Tonight');
   const [selectedPlaceId, setSelectedPlaceId] = useState<string | null>(null);
+  const [region, setRegion] = useState<RegionId>(initialRegionParam || 'boston');
+  const [showRegionPicker, setShowRegionPicker] = useState<boolean>(
+    () => !initialHotelParam && !initialRegionParam
+  );
 
   const [allEvents, setAllEvents] = useState<HappeninEvent[]>([]);
   const [loading, setLoading] = useState(true);
@@ -143,9 +152,27 @@ function MapApp() {
     [today]
   );
 
+  const regionCounts = useMemo(() => {
+    let boston = 0;
+    let seacoast = 0;
+    for (const ev of allEvents) {
+      if (ev.region === 'seacoast') seacoast++;
+      else boston++;
+    }
+    return { boston, seacoast };
+  }, [allEvents]);
+
+  const activeRegion: RegionId = hotel
+    ? hotel.region || (hotel.latitude >= 42.82 ? 'seacoast' : 'boston')
+    : region;
+
   const eligibleEvents = useMemo(
-    () => (hotel ? allEvents.filter((ev) => eventAllowedForHotel(ev, hotel)) : allEvents),
-    [allEvents, hotel]
+    () =>
+      allEvents.filter((ev) => {
+        if (ev.region !== activeRegion) return false;
+        return hotel ? eventAllowedForHotel(ev, hotel) : true;
+      }),
+    [allEvents, activeRegion, hotel]
   );
 
   const visibleEvents = useMemo(
@@ -320,6 +347,7 @@ function MapApp() {
           setSelectedPlaceId(place.id);
         }}
         hotel={hotel}
+        region={activeRegion}
         onMapBackgroundClick={() => {
           setSelectedClusterKey(null);
           setSelectedPlaceId(null);
@@ -430,6 +458,14 @@ function MapApp() {
                   <span className="brand-wordmark">
                     HAPPENIN<span>&apos;</span>
                   </span>
+                  <button
+                    type="button"
+                    className="region-pill-btn"
+                    onClick={() => setShowRegionPicker(true)}
+                    aria-label="Switch location"
+                  >
+                    {REGIONS[region].label} ▾
+                  </button>
                   <span className="event-count">
                     {visibleEvents.length} {visibleEvents.length === 1 ? 'event' : 'events'}
                   </span>
@@ -617,6 +653,42 @@ function MapApp() {
           </div>
         )}
       </div>
+
+      {/* LOCATION PICKER MODAL (Happenin' standalone only; bypassed for all hotel concierges) */}
+      {!hotel && !initialHotelParam && showRegionPicker && (
+        <div
+          className="region-modal-backdrop"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Pick location"
+        >
+          <div className="region-modal">
+            <div className="region-modal-brand">
+              HAPPENIN<span>&apos;</span>
+            </div>
+            <p className="region-modal-prompt">Pick a location</p>
+            <div className="region-choice-grid">
+              {(['boston', 'seacoast'] as RegionId[]).map((rid) => (
+                <button
+                  key={rid}
+                  type="button"
+                  className="region-choice-btn"
+                  onClick={() => {
+                    setRegion(rid);
+                    setSelectedClusterKey(null);
+                    setShowRegionPicker(false);
+                  }}
+                >
+                  <span className="region-choice-name">{REGIONS[rid].label}</span>
+                  {!loading && (
+                    <span className="region-choice-count">{regionCounts[rid]} upcoming</span>
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

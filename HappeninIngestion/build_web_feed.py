@@ -110,6 +110,18 @@ def enrich_coordinates(events, coord_lookup):
     return enriched_count
 
 
+def infer_region(event):
+    if event.get("region") in {"boston", "seacoast"}:
+        return event["region"]
+    state = str(event.get("state") or "").strip().upper()
+    if state == "NH":
+        return "seacoast"
+    lat = event.get("latitude")
+    if isinstance(lat, (int, float)) and lat >= 42.82:
+        return "seacoast"
+    return "boston"
+
+
 def main(with_posh=False, with_sinclair=False, skip_ai=False):
     window_start = datetime.now(EASTERN)
     window_end = window_start + timedelta(days=DAYS_AHEAD)
@@ -136,7 +148,13 @@ def main(with_posh=False, with_sinclair=False, skip_ai=False):
         ("Lou's", collect_lous_events),
         ("Plough and Stars", collect_plough_events),
         ("Lamplighter", collect_lamplighter_events),
-        ("Ticketmaster", collect_ticketmaster_events),
+        ("Ticketmaster (Boston)", lambda: collect_ticketmaster_events(region="boston")),
+        (
+            "Ticketmaster (Seacoast NH)",
+            lambda: collect_ticketmaster_events(
+                center_lat=43.02, center_lng=-70.80, radius_miles=18, region="seacoast"
+            ),
+        ),
     ]
     if with_sinclair:
         from sinclair import collect_sinclair_events
@@ -156,6 +174,9 @@ def main(with_posh=False, with_sinclair=False, skip_ai=False):
 
     enriched = enrich_coordinates(all_events, coord_lookup)
     print(f"\nStamped verified venue coordinates onto {enriched} first-party events.")
+
+    for ev in all_events:
+        ev["region"] = infer_region(ev)
 
     spam_filtered = [e for e in all_events if not is_promoter_spam(e)]
     removed_spam = len(all_events) - len(spam_filtered)

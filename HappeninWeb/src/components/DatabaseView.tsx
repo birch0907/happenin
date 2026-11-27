@@ -56,6 +56,7 @@ export function DatabaseView() {
 
   const [mode, setMode] = useState<DbMode>('venues');
   const [search, setSearch] = useState('');
+  const [regionFilter, setRegionFilter] = useState<'ALL' | 'boston' | 'seacoast'>('ALL');
   const [areaFilter, setAreaFilter] = useState<string>('ALL');
 
   // Venue filters & grouping
@@ -137,6 +138,7 @@ export function DatabaseView() {
     const counts = new Map<string, number>();
     const list = mode === 'events' ? data.events : data.venues;
     for (const item of list) {
+      if (regionFilter !== 'ALL' && (item.region || 'boston') !== regionFilter) continue;
       counts.set(item.area, (counts.get(item.area) || 0) + 1);
     }
     return Array.from(counts.entries()).sort((a, b) => {
@@ -147,7 +149,7 @@ export function DatabaseView() {
       if (ib !== -1) return 1;
       return b[1] - a[1];
     });
-  }, [data, mode]);
+  }, [data, mode, regionFilter]);
 
   const availableMethods = useMemo(() => {
     const set = new Set<string>();
@@ -177,6 +179,7 @@ export function DatabaseView() {
           (v.priority === 'A' && (v.status === 'Not Pulling' || v.status === 'Aggregator Only'));
         if (!needsAttention) return false;
       }
+      if (regionFilter !== 'ALL' && (v.region || 'boston') !== regionFilter) return false;
       if (areaFilter !== 'ALL' && v.area !== areaFilter) return false;
       if (statusFilter !== 'ALL' && v.status !== statusFilter) return false;
       if (priorityFilter !== 'ALL' && v.priority !== priorityFilter) return false;
@@ -197,7 +200,7 @@ export function DatabaseView() {
       return PRIO_RANK[a.priority] - PRIO_RANK[b.priority] || b.eventCount - a.eventCount || a.venue.localeCompare(b.venue);
     });
     return sorted;
-  }, [data, mode, search, areaFilter, statusFilter, priorityFilter, methodFilter, venueSortBy]);
+  }, [data, mode, search, regionFilter, areaFilter, statusFilter, priorityFilter, methodFilter, venueSortBy]);
 
   // Grouped Venues
   const groupedVenues = useMemo(() => {
@@ -241,6 +244,7 @@ export function DatabaseView() {
     if (!data) return [];
     const q = search.trim().toLowerCase();
     return data.events.filter((ev) => {
+      if (regionFilter !== 'ALL' && (ev.region || 'boston') !== regionFilter) return false;
       if (areaFilter !== 'ALL' && ev.area !== areaFilter) return false;
       if (categoryFilter !== 'ALL' && ev.category !== categoryFilter) return false;
       if (admissionFilter !== 'ALL') {
@@ -264,7 +268,7 @@ export function DatabaseView() {
       }
       return true;
     });
-  }, [data, search, areaFilter, categoryFilter, admissionFilter, provenanceFilter, ratingFilter, dayFilter]);
+  }, [data, search, regionFilter, areaFilter, categoryFilter, admissionFilter, provenanceFilter, ratingFilter, dayFilter]);
 
   // Grouped Events
   const groupedEvents = useMemo(() => {
@@ -304,6 +308,7 @@ export function DatabaseView() {
 
   const hasActiveFilters =
     search.trim() !== '' ||
+    regionFilter !== 'ALL' ||
     areaFilter !== 'ALL' ||
     statusFilter !== 'ALL' ||
     priorityFilter !== 'ALL' ||
@@ -316,6 +321,7 @@ export function DatabaseView() {
 
   function resetFilters() {
     setSearch('');
+    setRegionFilter('ALL');
     setAreaFilter('ALL');
     setStatusFilter('ALL');
     setPriorityFilter('ALL');
@@ -506,6 +512,21 @@ export function DatabaseView() {
                 {mode !== 'events' ? (
                   <div className="db-select-row">
                     <label className="db-select-field">
+                      <span>Region</span>
+                      <select
+                        value={regionFilter}
+                        onChange={(e) => {
+                          setRegionFilter(e.target.value as 'ALL' | 'boston' | 'seacoast');
+                          setAreaFilter('ALL');
+                        }}
+                      >
+                        <option value="ALL">All Regions</option>
+                        <option value="boston">Boston</option>
+                        <option value="seacoast">Seacoast NH</option>
+                      </select>
+                    </label>
+
+                    <label className="db-select-field">
                       <span>Status</span>
                       <select
                         value={statusFilter}
@@ -578,6 +599,21 @@ export function DatabaseView() {
                   </div>
                 ) : (
                   <div className="db-select-row">
+                    <label className="db-select-field">
+                      <span>Region</span>
+                      <select
+                        value={regionFilter}
+                        onChange={(e) => {
+                          setRegionFilter(e.target.value as 'ALL' | 'boston' | 'seacoast');
+                          setAreaFilter('ALL');
+                        }}
+                      >
+                        <option value="ALL">All Regions</option>
+                        <option value="boston">Boston</option>
+                        <option value="seacoast">Seacoast NH</option>
+                      </select>
+                    </label>
+
                     <label className="db-select-field">
                       <span>Category</span>
                       <select value={categoryFilter} onChange={(e) => setCategoryFilter(e.target.value)}>

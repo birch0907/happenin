@@ -563,7 +563,12 @@ def normalize_ticketmaster_event(event):
 # Main collector
 # --------------------------------------------------
 
-def collect_ticketmaster_events():
+def collect_ticketmaster_events(
+    center_lat=CENTER_LATITUDE,
+    center_lng=CENTER_LONGITUDE,
+    radius_miles=RADIUS_MILES,
+    region="boston",
+):
 
     api_key = os.getenv(
         "TICKETMASTER_API_KEY"
@@ -647,11 +652,11 @@ def collect_ticketmaster_events():
             "apikey": api_key,
 
             "latlong": (
-                f"{CENTER_LATITUDE},"
-                f"{CENTER_LONGITUDE}"
+                f"{center_lat},"
+                f"{center_lng}"
             ),
 
-            "radius": RADIUS_MILES,
+            "radius": radius_miles,
             "unit": "miles",
 
             "startDateTime": start_string,
@@ -740,7 +745,7 @@ def collect_ticketmaster_events():
 
 
             if event is not None:
-
+                event["region"] = region
                 events.append(
                     event
                 )
