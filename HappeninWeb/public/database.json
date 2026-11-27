@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-27T14:03:42-05:00",
+  "generatedAt": "2026-11-27T14:05:58-05:00",
   "stats": {
     "totalVenues": 518,
     "totalEvents": 919,
-    "totalConcierges": 0,
+    "totalConcierges": 3,
     "statusCounts": {
       "Aggregator Only": 100,
       "Live (First-Party)": 73,
@@ -41,7 +41,59 @@
     },
     "attentionCount": 93
   },
-  "concierges": [],
+  "concierges": [
+    {
+      "id": "charles",
+      "name": "The Charles Hotel",
+      "wordmark": "THE CHARLES",
+      "subtitle": "Harvard Square Concierge",
+      "address": "1 Bennett St, Cambridge, MA 02138",
+      "region": "boston",
+      "mapStyle": "dark",
+      "styleVariant": "standard",
+      "accent": "#d8b46a",
+      "bg": "#0f1420",
+      "maxRating": "PG",
+      "diningCount": 7,
+      "sightsCount": 6,
+      "totalPlaces": 13,
+      "eligibleEventCount": 813
+    },
+    {
+      "id": "studio-allston",
+      "name": "Studio Allston Hotel",
+      "wordmark": "STUDIO ALLSTON",
+      "subtitle": "Digital Concierge",
+      "address": "1234 Soldiers Field Rd, Boston, MA 02135",
+      "region": "boston",
+      "mapStyle": "light",
+      "styleVariant": "studio-gallery",
+      "accent": "#d6de6b",
+      "bg": "#f4f7f8",
+      "maxRating": "R",
+      "diningCount": 8,
+      "sightsCount": 6,
+      "totalPlaces": 14,
+      "eligibleEventCount": 830
+    },
+    {
+      "id": "verb",
+      "name": "The Verb Hotel",
+      "wordmark": "THE VERB",
+      "subtitle": "Fenway Music & Neighborhood Guide",
+      "address": "1271 Boylston St, Boston, MA 02215",
+      "region": "boston",
+      "mapStyle": "light",
+      "styleVariant": "verb-poster",
+      "accent": "#faf089",
+      "bg": "#e2f7fa",
+      "maxRating": "R",
+      "diningCount": 8,
+      "sightsCount": 6,
+      "totalPlaces": 14,
+      "eligibleEventCount": 830
+    }
+  ],
   "venues": [
     {
       "id": "cambridge-middle-east-sonia-zuzu",

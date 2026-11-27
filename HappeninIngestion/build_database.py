@@ -768,7 +768,7 @@ def main():
         })
 
     # Auto-discover all Digital Concierge hotel configs from HappeninWeb/public/hotels/*.json
-    hotels_dir = ROOT / "HappeninWeb" / "public" / "hotels"
+    hotels_dir = ROOT.parent / "HappeninWeb" / "public" / "hotels"
     concierges = []
     if hotels_dir.exists():
         for hp in sorted(hotels_dir.glob("*.json")):
