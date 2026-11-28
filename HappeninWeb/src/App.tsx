@@ -593,34 +593,27 @@ function MapApp() {
                   )}
                 </>
               ) : (
-                <>
-                  <span className="brand-wordmark">
-                    HAPPENIN<span>&apos;</span>
-                  </span>
-                  <button
-                    type="button"
-                    className="region-pill-btn"
-                    onClick={() => setShowRegionPicker(true)}
-                    aria-label="Switch location"
-                  >
-                    {REGIONS[region].label} ▾
-                  </button>
-                  <span className="event-count">
-                    {visibleEvents.length} {visibleEvents.length === 1 ? 'event' : 'events'}
-                  </span>
-                </>
+                <button
+                  type="button"
+                  className="brand-wordmark brand-wordmark-btn"
+                  onClick={() => setShowRegionPicker(true)}
+                  title={`Location: ${REGIONS[region].label} (tap to switch)`}
+                  aria-label={`Happenin' (${REGIONS[region].label}) — tap to switch location`}
+                >
+                  HAPPENIN<span>&apos;</span>
+                </button>
               )}
             </div>
             <div className="brand-right-actions">
+              {!hotel && (
+                <span className="event-count">
+                  {visibleEvents.length} {visibleEvents.length === 1 ? 'event' : 'events'}
+                </span>
+              )}
               {hotel && isDeskMode && (
                 <span className="desk-mode-badge" title="Front Desk Pin Drop Mode">
                   CONCIERGE DESK
                 </span>
-              )}
-              {showingEvents && !isAtDefault && (
-                <button type="button" className="now-jump-btn" onClick={jumpToNow}>
-                  {nowInTodayWindow ? 'Back to Now' : 'Back to Tonight'}
-                </button>
               )}
             </div>
           </div>
@@ -737,6 +730,12 @@ function MapApp() {
                 </span>
                 <span className="date-day">{selectedDateInfo.day}</span>
               </button>
+
+              {!datesExpanded && !isAtDefault && (
+                <button type="button" className="now-jump-btn" onClick={jumpToNow}>
+                  {nowInTodayWindow ? 'Back to Now' : 'Back to Tonight'}
+                </button>
+              )}
 
               {datesExpanded && (
                 <div className="date-scroll" role="list" aria-label="Upcoming dates">

@@ -104,26 +104,39 @@ body,
   color: var(--cyan);
 }
 
+.brand-wordmark-btn {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
 .event-count {
   font-size: 12px;
   color: var(--text-muted);
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .now-jump-btn {
-  border: 1px solid rgba(47, 230, 230, 0.45);
-  background: rgba(47, 230, 230, 0.14);
+  border: 1px solid rgba(47, 230, 230, 0.5);
+  background: var(--panel);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   color: var(--cyan);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 5px 10px;
-  border-radius: 999px;
+  letter-spacing: 0.03em;
+  padding: 9px 14px;
+  border-radius: 12px;
   cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
 .now-jump-btn:hover {
-  background: rgba(47, 230, 230, 0.24);
+  border-color: var(--cyan);
 }
 
 .region-pill-btn {
