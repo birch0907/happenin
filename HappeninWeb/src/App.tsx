@@ -36,6 +36,7 @@ import { PlaceCard } from './components/PlaceCard';
 import { CustomPinCard } from './components/CustomPinCard';
 import { DraftPinLocation, PinDropSheet } from './components/PinDropSheet';
 import { SharePinsModal } from './components/SharePinsModal';
+import { HappeninLogo } from './components/HappeninLogo';
 import { DatabaseView } from './components/DatabaseView';
 
 const HOTEL_TABS: HotelTab[] = ['Dining', 'Sights', 'Tonight'];
@@ -619,7 +620,7 @@ function MapApp() {
                   title={`Location: ${REGIONS[region].label} (tap to switch)`}
                   aria-label={`Happenin' (${REGIONS[region].label}) — tap to switch location`}
                 >
-                  HAPPENIN<span>&apos;</span>
+                  <HappeninLogo size="header" neon={isMiamiVice} />
                 </button>
               )}
             </div>
@@ -877,7 +878,7 @@ function MapApp() {
         >
           <div className="region-modal">
             <div className="region-modal-brand">
-              HAPPENIN<span>&apos;</span>
+              <HappeninLogo size="modal" neon={isMiamiVice} />
             </div>
             <p className="region-modal-prompt">Pick a location</p>
             <div className="region-choice-grid">

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#170E36" />
+      <stop offset="100%" stop-color="#0B071C" />
+    </linearGradient>
+    <linearGradient id="neon" x1="8" y1="32" x2="56" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF3EA5" />
+      <stop offset="52%" stop-color="#B64CFF" />
+      <stop offset="100%" stop-color="#2FE6E6" />
+    </linearGradient>
+    <linearGradient id="sweep" x1="32" y1="14" x2="45" y2="27" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2FE6E6" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#2FE6E6" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#bg)" stroke="url(#neon)" stroke-width="2.5" />
+  <path d="M32 27 L32 15.5 A11.5 11.5 0 0 1 43.5 27 Z" fill="url(#sweep)" />
+  <path d="M32 52.5 C32 52.5 16 38.5 16 27 A16 16 0 1 1 48 27 C48 38.5 32 52.5 32 52.5 Z" stroke="url(#neon)" stroke-width="2.6" stroke-linejoin="round" />
+  <circle cx="32" cy="27" r="11.5" stroke="url(#neon)" stroke-width="1.6" stroke-dasharray="18 5 18 5" opacity="0.9" />
+  <circle cx="32" cy="27" r="7.5" stroke="url(#neon)" stroke-width="1.5" opacity="0.88" />
+  <path d="M10 27 H22.2 L24.8 22.5 L27.4 31.2 L30.2 18.5 L33.3 34.8 L36.2 22.2 L38.8 27 H54" stroke="url(#neon)" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
