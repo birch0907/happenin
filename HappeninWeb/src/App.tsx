@@ -464,16 +464,16 @@ function MapApp() {
       {/* FLOATING PIN DROP + SHARE CONTROLS (Digital Concierge only) */}
       {hotel && !pinDropActive && (
         <div className="pin-fab-stack">
-          {customPins.length > 0 && (
+          {isDeskMode && customPins.length > 0 && (
             <button
               type="button"
               className="pin-fab pin-fab-share"
               onClick={() => setShareModalOpen(true)}
-              title={isDeskMode ? 'Share picks with guest (QR)' : 'View & share your saved pins'}
+              title="Share picks with guest (QR)"
               aria-label="Share custom pins"
             >
               <span className="pin-fab-star" aria-hidden="true">★</span>
-              <span className="pin-fab-label">{isDeskMode ? 'Share QR' : 'Pins'}</span>
+              <span className="pin-fab-label">Share QR</span>
               <span className="pin-fab-count">{customPins.length}</span>
             </button>
           )}
@@ -694,7 +694,7 @@ function MapApp() {
             hotel={hotel}
             canDelete={isDeskMode || selectedCustomPin.origin === 'guest'}
             onDelete={handleDeleteCustomPin}
-            onShare={() => setShareModalOpen(true)}
+            onShare={isDeskMode ? () => setShareModalOpen(true) : undefined}
             onClose={() => setSelectedCustomPinId(null)}
           />
         )}
@@ -828,8 +828,8 @@ function MapApp() {
         )}
       </div>
 
-      {/* SHARE CUSTOM PINS / QR CODE MODAL (Digital Concierge) */}
-      {shareModalOpen && hotel && (
+      {/* SHARE CUSTOM PINS / QR CODE MODAL (Concierge Desk mode only) */}
+      {isDeskMode && shareModalOpen && hotel && (
         <SharePinsModal
           hotel={hotel}
           pins={customPins}

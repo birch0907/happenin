@@ -6,7 +6,7 @@ type CustomPinCardProps = {
   hotel: HotelConfig;
   canDelete: boolean;
   onDelete: (id: string) => void;
-  onShare: () => void;
+  onShare?: () => void;
   onClose: () => void;
 };
 
@@ -66,9 +66,11 @@ export function CustomPinCard({
         >
           Walking Directions ↗
         </a>
-        <button type="button" className="btn-secondary" onClick={onShare}>
-          Share / QR
-        </button>
+        {onShare && (
+          <button type="button" className="btn-secondary" onClick={onShare}>
+            Share / QR
+          </button>
+        )}
         {canDelete && (
           <button
             type="button"
