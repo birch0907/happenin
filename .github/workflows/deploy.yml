@@ -47,7 +47,7 @@ jobs:
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: pip install -r HappeninIngestion/requirements.txt
 
-      - name: Refresh live Cambridge & Somerville events
+      - name: Refresh live Boston & Seacoast NH events
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -55,6 +55,7 @@ jobs:
         run: |
           python HappeninIngestion/hybrid_collector.py
           python HappeninIngestion/build_web_feed.py --with-posh
+          python HappeninIngestion/build_database.py
 
       - name: Set up Node
         uses: actions/setup-node@v4
