@@ -3359,3 +3359,142 @@ body,
 .db-concierge-btn:hover {
   opacity: 0.9;
 }
+
+/* ---------------------------------------------------------------------------
+   HAPPENIN' — MIAMI VICE SYNTHWAVE THEME (.theme-miami-vice)
+   Original classic theme stays intact as base model (?theme=classic) & for hotels.
+   --------------------------------------------------------------------------- */
+
+.theme-miami-vice {
+  --bg: #0b0616;
+  --panel: rgba(15, 10, 36, 0.84);
+  --panel-solid: #110b29;
+  --border: rgba(176, 118, 255, 0.3);
+  --border-strong: rgba(47, 230, 230, 0.55);
+  --text-muted: #c6b6eb;
+}
+
+/* Dual-tone pink-to-cyan neon tube glass cards */
+.theme-miami-vice .filter-panel,
+.theme-miami-vice .time-panel,
+.theme-miami-vice .event-card,
+.theme-miami-vice .region-modal {
+  position: relative;
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(155deg, rgba(18, 11, 42, 0.88) 0%, rgba(11, 8, 28, 0.92) 100%) padding-box,
+    linear-gradient(112deg, #ff3ea5 0%, #a855f7 48%, #2fe6e6 100%) border-box;
+  box-shadow:
+    -12px 0 28px rgba(255, 62, 165, 0.24),
+    12px 0 28px rgba(47, 230, 230, 0.24),
+    0 12px 34px rgba(4, 2, 14, 0.65);
+}
+
+.theme-miami-vice .brand-wordmark {
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.32),
+    0 0 22px rgba(255, 62, 165, 0.4);
+}
+
+.theme-miami-vice .brand-wordmark span {
+  color: #3df5f5;
+  text-shadow: 0 0 12px rgba(47, 230, 230, 0.9);
+}
+
+.theme-miami-vice .category-chip.active {
+  box-shadow:
+    0 0 14px color-mix(in srgb, var(--chip-color) 62%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.theme-miami-vice .category-chip:not(.active) {
+  background: rgba(24, 15, 54, 0.72);
+  border-color: rgba(180, 128, 255, 0.34);
+}
+
+/* Glowing cyan-to-magenta TODAY tile */
+.theme-miami-vice .date-tile {
+  background: rgba(15, 10, 36, 0.86);
+  border-color: rgba(176, 118, 255, 0.36);
+}
+
+.theme-miami-vice .date-tile.selected {
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(145deg, rgba(16, 46, 76, 0.94) 0%, rgba(28, 17, 66, 0.94) 100%) padding-box,
+    linear-gradient(135deg, #2fe6e6 0%, #ff3ea5 100%) border-box;
+  color: #5cf7f7;
+  box-shadow:
+    -4px 0 18px rgba(47, 230, 230, 0.42),
+    4px 0 18px rgba(255, 62, 165, 0.36),
+    0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+.theme-miami-vice .date-tile.selected .date-day {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(47, 230, 230, 0.75);
+}
+
+.theme-miami-vice .now-jump-btn {
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(135deg, rgba(17, 12, 42, 0.92), rgba(14, 24, 52, 0.92)) padding-box,
+    linear-gradient(115deg, #ff3ea5, #2fe6e6) border-box;
+  color: #5cf7f7;
+  box-shadow: 0 0 18px rgba(47, 230, 230, 0.3);
+}
+
+.theme-miami-vice .locate-btn {
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(145deg, rgba(16, 11, 38, 0.9), rgba(14, 22, 48, 0.9)) padding-box,
+    linear-gradient(135deg, #ff3ea5, #2fe6e6) border-box;
+  color: #e8e0ff;
+  box-shadow: 0 0 18px rgba(47, 230, 230, 0.28);
+}
+
+.theme-miami-vice .locate-btn:hover {
+  color: #5cf7f7;
+  box-shadow: 0 0 22px rgba(47, 230, 230, 0.48);
+}
+
+/* Time readout & synthwave equalizer heat strip */
+.theme-miami-vice .time-readout {
+  color: #5cf7f7;
+  text-shadow: 0 0 14px rgba(47, 230, 230, 0.78);
+}
+
+.theme-miami-vice .time-heat-bar {
+  opacity: 0.28;
+}
+
+.theme-miami-vice .time-heat-bar.passed {
+  opacity: 0.94;
+  box-shadow: 0 0 8px rgba(255, 62, 165, 0.45);
+}
+
+.theme-miami-vice .time-heat-bar.empty {
+  opacity: 0.14;
+  box-shadow: none;
+}
+
+.theme-miami-vice .time-range::-webkit-slider-thumb {
+  background: #5cf7f7;
+  border: 3px solid #160c30;
+  box-shadow:
+    0 0 16px rgba(47, 230, 230, 0.95),
+    0 0 28px rgba(255, 62, 165, 0.45);
+}
+
+.theme-miami-vice .time-range::-moz-range-thumb {
+  background: #5cf7f7;
+  border: 3px solid #160c30;
+  box-shadow:
+    0 0 16px rgba(47, 230, 230, 0.95),
+    0 0 28px rgba(255, 62, 165, 0.45);
+}
+
+.theme-miami-vice .region-choice-btn:hover {
+  border-color: #ff3ea5;
+  box-shadow: 0 0 22px rgba(255, 62, 165, 0.35), 0 0 14px rgba(47, 230, 230, 0.25);
+}

@@ -45,6 +45,23 @@ function isDatabaseMode(): boolean {
   return params.get('view') === 'db';
 }
 
+function getThemeParam(): 'miami-vice' | 'classic' {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('theme')?.trim().toLowerCase() === 'classic' ? 'classic' : 'miami-vice';
+}
+
+function synthwaveBarColor(pct: number): string {
+  // Interpolate smoothly from hot Miami pink (#FF3EA5) -> electric violet (#B64CFF) -> laser cyan (#2FE6E6)
+  const clamped = Math.max(0, Math.min(1, pct));
+  const lerp = (a: number, b: number, t: number) => Math.round(a + (b - a) * t);
+  if (clamped < 0.55) {
+    const t = clamped / 0.55;
+    return `rgb(${lerp(255, 182, t)}, ${lerp(62, 76, t)}, ${lerp(165, 255, t)})`;
+  }
+  const t = (clamped - 0.55) / 0.45;
+  return `rgb(${lerp(182, 47, t)}, ${lerp(76, 230, t)}, ${lerp(255, 230, t)})`;
+}
+
 export default function App() {
   if (isDatabaseMode()) {
     return <DatabaseView />;
@@ -396,6 +413,7 @@ function MapApp() {
 
   const isVerbPoster = hotel?.styleVariant === 'verb-poster';
   const isStudioGallery = hotel?.styleVariant === 'studio-gallery';
+  const isMiamiVice = !isHotelMode && getThemeParam() === 'miami-vice';
   const accentColor = hotel ? hotel.theme.accent : '#2FE6E6';
   const themeStyle = hotel
     ? ({
@@ -416,7 +434,7 @@ function MapApp() {
 
   return (
     <main
-      className={`app-shell${hotel ? ' hotel-mode' : ''}${isVerbPoster ? ' variant-verb-poster' : ''}${isStudioGallery ? ' variant-studio-gallery' : ''}`}
+      className={`app-shell${hotel ? ' hotel-mode' : ''}${isMiamiVice ? ' theme-miami-vice' : ''}${isVerbPoster ? ' variant-verb-poster' : ''}${isStudioGallery ? ' variant-studio-gallery' : ''}`}
       style={themeStyle}
     >
       <MapView
@@ -454,6 +472,7 @@ function MapApp() {
         onMapPinDropClick={handleMapPinDropClick}
         hotel={hotel}
         region={activeRegion}
+        miamiVice={isMiamiVice}
         onMapBackgroundClick={() => {
           setSelectedClusterKey(null);
           setSelectedPlaceId(null);
@@ -778,11 +797,17 @@ function MapApp() {
                   const heightPct = count === 0 ? 12 : Math.round(24 + ratio * 76);
                   const binPct = ((idx + 0.5) / activityHeat.counts.length) * 100;
                   const isPassed = binPct <= progressPct + 1.5;
+                  const barColor = isMiamiVice
+                    ? synthwaveBarColor((idx + 0.5) / activityHeat.counts.length)
+                    : undefined;
                   return (
                     <span
                       key={idx}
                       className={`time-heat-bar${isPassed ? ' passed' : ''}${count === 0 ? ' empty' : ''}`}
-                      style={{ height: `${heightPct}%` }}
+                      style={{
+                        height: `${heightPct}%`,
+                        ...(barColor ? { background: barColor } : {}),
+                      }}
                     />
                   );
                 })}
@@ -802,7 +827,9 @@ function MapApp() {
                       ? `linear-gradient(to right, #0D0D0D 0%, #0D0D0D ${progressPct}%, rgba(13, 13, 13, 0.2) ${progressPct}%, rgba(13, 13, 13, 0.2) 100%)`
                       : isStudioGallery
                         ? `linear-gradient(to right, #1a9196 0%, #1a9196 ${progressPct}%, rgba(86, 149, 179, 0.24) ${progressPct}%, rgba(86, 149, 179, 0.24) 100%)`
-                        : `linear-gradient(to right, ${accentColor} 0%, ${accentColor} ${progressPct}%, rgba(180, 170, 195, 0.28) ${progressPct}%, rgba(180, 170, 195, 0.28) 100%)`,
+                        : isMiamiVice
+                          ? `linear-gradient(to right, #FF3EA5 0%, #B64CFF ${Math.max(0, progressPct * 0.55)}%, #2FE6E6 ${progressPct}%, rgba(155, 110, 235, 0.26) ${progressPct}%, rgba(155, 110, 235, 0.26) 100%)`
+                          : `linear-gradient(to right, ${accentColor} 0%, ${accentColor} ${progressPct}%, rgba(180, 170, 195, 0.28) ${progressPct}%, rgba(180, 170, 195, 0.28) 100%)`,
                   }}
                   onChange={(e) => {
                     const step = Number(e.target.value);

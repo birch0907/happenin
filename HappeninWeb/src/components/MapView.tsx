@@ -20,6 +20,7 @@ type MapViewProps = {
   onMapPinDropClick?: (lngLat: { latitude: number; longitude: number }) => void;
   hotel?: HotelConfig | null;
   region?: RegionId;
+  miamiVice?: boolean;
   onMapBackgroundClick: () => void;
 };
 
@@ -165,6 +166,112 @@ function draftPinToGeoJSON(
   };
 }
 
+function applyMiamiViceMapTheme(map: maplibregl.Map) {
+  const setPaint = (id: string, prop: string, val: unknown) => {
+    if (map.getLayer(id)) {
+      try {
+        map.setPaintProperty(id, prop, val);
+      } catch {
+        // Ignore if layer doesn't accept property
+      }
+    }
+  };
+
+  // Deep plum-black land & synthwave indigo water
+  setPaint('background', 'background-color', '#0B0616');
+  for (const id of ['landcover', 'landuse', 'landuse_residential']) {
+    setPaint(id, 'fill-color', '#100920');
+  }
+  for (const id of ['park_national_park', 'park_nature_reserve']) {
+    setPaint(id, 'fill-color', '#140B29');
+  }
+  setPaint('water', 'fill-color', '#1A1344');
+  setPaint('water_shadow', 'fill-color', '#241A59');
+  setPaint('waterway', 'line-color', '#34C8D8');
+  setPaint('building', 'fill-color', '#150C2B');
+  setPaint('building-top', 'fill-color', '#1C1036');
+  setPaint('building-top', 'fill-outline-color', '#2C1A54');
+
+  // Turquoise shoreline glow right over Carto's water layer
+  const waterLayer = map.getLayer('water') as (maplibregl.LayerSpecification & { source?: string; 'source-layer'?: string }) | undefined;
+  const waterSource = waterLayer?.source;
+  const waterSourceLayer = waterLayer?.['source-layer'];
+  if (waterSource && waterSourceLayer) {
+    const beforeId = map.getLayer('aeroway-runway') ? 'aeroway-runway' : undefined;
+    if (!map.getLayer('miami-shore-bloom')) {
+      map.addLayer(
+        {
+          id: 'miami-shore-bloom',
+          type: 'line',
+          source: waterSource,
+          'source-layer': waterSourceLayer,
+          paint: {
+            'line-color': '#2FE6E6',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 9, 4, 13, 8, 16, 11],
+            'line-blur': ['interpolate', ['linear'], ['zoom'], 9, 4, 14, 7],
+            'line-opacity': 0.42,
+          },
+        },
+        beforeId
+      );
+    }
+    if (!map.getLayer('miami-shore-rim')) {
+      map.addLayer(
+        {
+          id: 'miami-shore-rim',
+          type: 'line',
+          source: waterSource,
+          'source-layer': waterSourceLayer,
+          paint: {
+            'line-color': '#5CF7F7',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 9, 0.7, 13, 1.3, 16, 1.8],
+            'line-opacity': 0.55,
+          },
+        },
+        beforeId
+      );
+    }
+  }
+
+  // Synthwave violet / electric-plum road hierarchy
+  for (const layer of map.getStyle()?.layers || []) {
+    const id = layer.id;
+    if (layer.type === 'line') {
+      if (/_mot_fill/.test(id)) {
+        setPaint(id, 'line-color', '#9B42E8');
+      } else if (/_mot_case/.test(id)) {
+        setPaint(id, 'line-color', '#3E146B');
+      } else if (/_trunk_fill|_pri_fill/.test(id)) {
+        setPaint(id, 'line-color', '#6F30B8');
+      } else if (/_trunk_case|_pri_case/.test(id)) {
+        setPaint(id, 'line-color', '#2A104C');
+      } else if (/_sec_fill/.test(id)) {
+        setPaint(id, 'line-color', '#47217A');
+      } else if (/_sec_case/.test(id)) {
+        setPaint(id, 'line-color', '#1E0D38');
+      } else if (/_minor_fill|_service_fill|road_path|tunnel_path|bridge_path/.test(id)) {
+        setPaint(id, 'line-color', '#2B164B');
+      } else if (/_minor_case|_service_case/.test(id)) {
+        setPaint(id, 'line-color', '#150A29');
+      } else if (id === 'rail' || id === 'rail_dash' || id === 'tunnel_rail' || id === 'tunnel_rail_dash') {
+        setPaint(id, 'line-color', '#381B63');
+      }
+    } else if (layer.type === 'symbol') {
+      if (id.startsWith('place_')) {
+        setPaint(id, 'text-color', '#F2ECFF');
+        setPaint(id, 'text-halo-color', '#0B0616');
+        setPaint(id, 'text-halo-width', 1.8);
+      } else if (id.startsWith('roadname_')) {
+        setPaint(id, 'text-color', '#B79FE6');
+        setPaint(id, 'text-halo-color', '#0B0616');
+      } else if (id.startsWith('watername_') || id === 'waterway_label') {
+        setPaint(id, 'text-color', '#6BDCE8');
+        setPaint(id, 'text-halo-color', '#15103B');
+      }
+    }
+  }
+}
+
 export function MapView({
   clusters,
   selectedClusterKey,
@@ -180,6 +287,7 @@ export function MapView({
   onMapPinDropClick,
   hotel = null,
   region = 'boston',
+  miamiVice = false,
   onMapBackgroundClick,
 }: MapViewProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -198,6 +306,7 @@ export function MapView({
   const draftPinRef = useRef(draftPin);
   const pinDropActiveRef = useRef(pinDropActive);
   const hotelRef = useRef(hotel);
+  const miamiViceRef = useRef(miamiVice);
   const onSelectRef = useRef(onSelectCluster);
   const onSelectPlaceRef = useRef(onSelectPlace);
   const onSelectCustomPinRef = useRef(onSelectCustomPin);
@@ -213,6 +322,7 @@ export function MapView({
   draftPinRef.current = draftPin;
   pinDropActiveRef.current = pinDropActive;
   hotelRef.current = hotel;
+  miamiViceRef.current = miamiVice;
   onSelectRef.current = onSelectCluster;
   onSelectPlaceRef.current = onSelectPlace;
   onSelectCustomPinRef.current = onSelectCustomPin;
@@ -251,7 +361,12 @@ export function MapView({
 
     function mountLayers() {
       const light = activeStyleModeRef.current === 'light';
+      const synthwave = miamiViceRef.current && !light;
       styleLoadedRef.current = true;
+
+      if (synthwave) {
+        applyMiamiViceMapTheme(map);
+      }
 
       const labelTextColor = light ? '#0D0D0D' : '#f5f2ea';
       const labelHaloColor = light ? '#FFFFFF' : '#0f1420';
@@ -391,15 +506,17 @@ export function MapView({
         paint: {
           'circle-radius': [
             'case',
-            ['==', ['get', 'selected'], true], 24,
-            ['>', ['get', 'count'], 1], 19,
-            15,
+            ['==', ['get', 'selected'], true], synthwave ? 32 : 24,
+            ['>', ['get', 'count'], 1], synthwave ? 26 : 19,
+            synthwave ? 21 : 15,
           ],
           'circle-color': light ? '#FAF089' : ['get', 'color'],
           'circle-opacity': light
             ? ['case', ['==', ['get', 'selected'], true], 0.9, 0.2]
-            : ['case', ['==', ['get', 'selected'], true], 0.55, 0.34],
-          'circle-blur': light ? 0.15 : 0.75,
+            : synthwave
+              ? ['case', ['==', ['get', 'selected'], true], 0.8, 0.56]
+              : ['case', ['==', ['get', 'selected'], true], 0.55, 0.34],
+          'circle-blur': light ? 0.15 : synthwave ? 0.85 : 0.75,
         },
       });
 
